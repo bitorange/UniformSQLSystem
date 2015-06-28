@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<property>
+    <!-- _________________________________ 元数据库相关 _________________________________ -->
+    <!-- 元数据库服务器地址 -->
+    <entry key="metadb.server">localhost</entry>
+
+    <!-- 元数据库用户名 -->
+    <entry key="metadb.username">root</entry>
+
+    <!-- 元数据库用户密码 -->
+    <entry key="metadb.password">root</entry>
+
+    <!-- 元数据库的数据库名 -->
+    <entry key="metadb.dbname">metadb</entry>
+
+    <!-- 元数据库 JDBC 驱动 -->
+    <entry key="metadb.jdbc.driver">com.mysql.jdbc.Driver</entry>
+</property>
