@@ -14,6 +14,16 @@ public class ApplicationEntry {
     }
 
     /**
+     * 初始化系统
+     */
+    private static void initSystem(){
+        // 元数据库初始化（连接元数据库 / 初始化 JDBC 连接 / 判断是否第一次启动 / 读取底层库信息）
+
+
+        // 底层库初始化（尝试连接底层库，初始化 JDBC 连接）
+    }
+
+    /**
      * 主函数
      * @param args 程序参数
      */
@@ -23,6 +33,7 @@ public class ApplicationEntry {
         GlobalVar.printConf();
 
         // 系统初始化
+        ApplicationEntry.initSystem();
 
         // 读取 ZQL 语句
 
