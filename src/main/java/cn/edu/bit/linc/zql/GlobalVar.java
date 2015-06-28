@@ -1,4 +1,4 @@
-package cn.edu.bit.linc;
+package cn.edu.bit.linc.zql;
 
 import java.util.HashMap;
 import net.sourceforge.argparse4j.ArgumentParsers;

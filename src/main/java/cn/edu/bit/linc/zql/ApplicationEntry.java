@@ -1,4 +1,4 @@
-package cn.edu.bit.linc;
+package cn.edu.bit.linc.zql;
 
 /**
  * 应用入口
