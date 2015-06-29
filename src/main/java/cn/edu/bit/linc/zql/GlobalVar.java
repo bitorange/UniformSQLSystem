@@ -21,6 +21,7 @@ public class GlobalVar {
      */
     static {
         // TODO: 设置默认配置值
+        configMap.put("conf.properties.path", "conf.properties");
     }
 
     public static void parseArgs(String args[]) {

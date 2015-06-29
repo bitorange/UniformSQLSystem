@@ -6,7 +6,7 @@ import java.sql.*;
  * JDBC 连接器
  */
 public class JDBCConnector {
-    private String url, username, password, driver;
+    private String url, username, password, dbName, driver;
     private Connection conn = null;
     private Statement stmt = null;
 
@@ -37,30 +37,65 @@ public class JDBCConnector {
      * @param driver   数据库 JDBC 驱动程序
      * @throws java.lang.ClassNotFoundException 找不到 JDBC 驱动
      * @throws java.sql.SQLException            连接远程数据库失败
+     * @throws NotSupportDatabaseException      不支持的数据库类型
      */
-    public JDBCConnector(String url, String username, String password, String driver) throws ClassNotFoundException, SQLException {
-        this.url = url;
+    public JDBCConnector(String url, String username, String password, String dbName, String driver) throws ClassNotFoundException, SQLException, NotSupportDatabaseException {
         this.username = username;
         this.password = password;
         this.driver = driver;
+        this.dbName = dbName;
+
+        // 构建 URL
+        if (driver.equals("com.mysql.jdbc.Driver")) {
+            this.url = "jdbc:mysql://" + url + "/" + dbName;
+        } else if (driver.equals("org.apache.hive.jdbc.HiveDriver")) {
+            this.url = "jdbc:hive://" + url + "/" + dbName;
+        } else {
+            throw new NotSupportDatabaseException();
+        }
 
         // 连接数据库
+        // TODO: 未抛出异常？
         Class.forName(this.driver);
-        this.conn = DriverManager.getConnection(url, username, password);
+        this.conn = DriverManager.getConnection(this.url, this.username, this.password);
         this.stmt = conn.createStatement();
     }
 
     /**
-     * 执行 SQL 命令
+     * 遇见系统不支持的数据库抛出的异常
+     */
+    public class NotSupportDatabaseException extends Exception {
+        public NotSupportDatabaseException() {
+        }
+
+        public NotSupportDatabaseException(String message) {
+            super(message);
+        }
+    }
+
+    /**
+     * 执行 SQL 查询命令
      *
      * @param sql 需要执行的 SQL 命令
      * @return SQL 命令执行结果
      * @throws SQLException 执行 SQL 命令失败
      */
-    public ResultSet execute(String sql) throws SQLException {
+    public ResultSet executeQuery(String sql) throws SQLException {
         ResultSet resultSet = stmt.executeQuery(sql);
         return resultSet;
     }
+
+    /**
+     * 执行 SQL 更新命令
+     *
+     * @param sql 需要执行的 SQL 命令
+     * @return 更改的行数
+     * @throws SQLException 执行 SQL 命令失败
+     */
+    public int executeUpdate(String sql) throws SQLException {
+        return stmt.executeUpdate(sql);
+    }
+
 
     /**
      * 析构函数
