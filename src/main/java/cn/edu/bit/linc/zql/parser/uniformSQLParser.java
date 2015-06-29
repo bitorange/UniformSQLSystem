@@ -5369,6 +5369,9 @@ public class uniformSQLParser extends Parser {
 		public Data_manipulation_statementsContext data_manipulation_statements() {
 			return getRuleContext(Data_manipulation_statementsContext.class,0);
 		}
+		public Data_definition_statementsContext data_definition_statements() {
+			return getRuleContext(Data_definition_statementsContext.class,0);
+		}
 		public TerminalNode SHIFT_LEFT() { return getToken(uniformSQLParser.SHIFT_LEFT, 0); }
 		public TerminalNode SHIFT_RIGHT() { return getToken(uniformSQLParser.SHIFT_RIGHT, 0); }
 		public TerminalNode SEMI() { return getToken(uniformSQLParser.SEMI, 0); }
@@ -5409,9 +5412,11 @@ public class uniformSQLParser extends Parser {
 				data_manipulation_statements();
 				}
 				break;
-			case EOF:
-			case SEMI:
+			case CREATE:
+			case DROP:
 				{
+				setState(854);
+				data_definition_statements();
 				}
 				break;
 			default:
@@ -11703,8 +11708,8 @@ public class uniformSQLParser extends Parser {
 		"\u034c\3\2\2\2\u034f\u0352\3\2\2\2\u0350\u034e\3\2\2\2\u0350\u0351\3\2"+
 		"\2\2\u0351\u009b\3\2\2\2\u0352\u0350\3\2\2\2\u0353\u0354\7\u00f4\2\2\u0354"+
 		"\u0356\7\u00f5\2\2\u0355\u0353\3\2\2\2\u0355\u0356\3\2\2\2\u0356\u0359"+
-		"\3\2\2\2\u0357\u035a\5\u009eP\2\u0358\u035a\3\2\2\2\u0359\u0357\3\2\2"+
-		"\2\u0359\u0358\3\2\2\2\u035a\u035c\3\2\2\2\u035b\u035d\7\u00f7\2\2\u035c"+
+		"\3\2\2\2\u0357\u035a\5\u009eP\2\u0358\u035a\5\u00a0Q\2\u0359\u0357\3\2"+
+		"\2\2\u0359\u0358\3\2\2\2\u035a\u035c\3\2\2\2\u035b\u035d\7\u00f7\2\2\u035c"+
 		"\u035b\3\2\2\2\u035c\u035d\3\2\2\2\u035d\u009d\3\2\2\2\u035e\u035f\5\u00a2"+
 		"R\2\u035f\u009f\3\2\2\2\u0360\u0363\5\u00d2j\2\u0361\u0363\5\u00d4k\2"+
 		"\u0362\u0360\3\2\2\2\u0362\u0361\3\2\2\2\u0363\u00a1\3\2\2\2\u0364\u036c"+

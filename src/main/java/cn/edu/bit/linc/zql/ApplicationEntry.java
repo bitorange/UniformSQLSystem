@@ -1,5 +1,17 @@
 package cn.edu.bit.linc.zql;
 
+import cn.edu.bit.linc.zql.parser.visitor.ZQLVisitor;
+import cn.edu.bit.linc.zql.parser.uniformSQLLexer;
+import cn.edu.bit.linc.zql.parser.uniformSQLParser;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
 /**
  * 应用入口
  */
@@ -36,7 +48,24 @@ public class ApplicationEntry {
         ApplicationEntry.initSystem();
 
         // 读取 ZQL 语句
+        String sqlCommand = "CREATE DATABASE IF NOT EXISTS table_name";
+        InputStream is = new ByteArrayInputStream(sqlCommand.getBytes(StandardCharsets.UTF_8));
+        try {
+            // 获取词法 / 语法解析器
+            ANTLRInputStream input = new ANTLRInputStream(is);
+            uniformSQLLexer lexer = new uniformSQLLexer(input);
+            CommonTokenStream tokens = new CommonTokenStream(lexer);
+            uniformSQLParser parser = new uniformSQLParser(tokens);
+            ParseTree tree = parser.root_statement();
 
-        // 分别执行 ZQL 语句，输出结果
+            // 访问结果，反向生成 SQL 语句
+            ZQLVisitor visitor = new ZQLVisitor();
+            String finalSQL = visitor.visit(tree);
+
+            // 执行 SQL
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

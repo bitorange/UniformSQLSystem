@@ -839,7 +839,7 @@ partition_names:	partition_name (COMMA partition_name)* ;
 // SQL Statement Syntax -----------------------------------------
 root_statement:
 	(SHIFT_LEFT SHIFT_RIGHT)?
-	( data_manipulation_statements | /*data_definition_statements */  /*| transactional_locking_statements | replication_statements*/ )
+	( data_manipulation_statements | data_definition_statements /*| transactional_locking_statements | replication_statements */)
 	(SEMI)?
 ;
 
