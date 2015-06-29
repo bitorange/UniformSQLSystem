@@ -6,7 +6,7 @@ import cn.edu.bit.linc.zql.parser.uniformSQLParser;
 /**
  * 抽象语法树访问器
  */
-public class ZQLVisitor extends uniformSQLBaseVisitor<String> {
+public class ZQLVisitor extends uniformSQLBaseVisitor<VisitResult> {
 
     /**
      * SQL 语句模板
@@ -17,17 +17,18 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<String> {
 
     // 创建数据库
     @Override
-    public String visitCreate_database_statement(uniformSQLParser.Create_database_statementContext ctx) {
-        String schemaName = visit(ctx.schema_name());    // 数据库名
-        String sqlCommand = String.format(SQLCommandTemplate.CREATE_DATABASE_STATEMENT, ctx.IF() == null ? "" : "IF NOT EXISTS", schemaName);
-        System.out.println(sqlCommand);
-        return sqlCommand;
+    public VisitResult visitCreate_database_statement(uniformSQLParser.Create_database_statementContext ctx) {
+        VisitResult visitSchemaNameResult = visit(ctx.schema_name());    // 数据库名
+        String sqlCommand = String.format(SQLCommandTemplate.CREATE_DATABASE_STATEMENT, ctx.IF() == null ? "" : "IF NOT EXISTS", visitSchemaNameResult.getResult());
+        VisitResult visitResult = new VisitResult(sqlCommand, "create_database_statement");
+        return visitResult;
     }
 
     // 获取模式名 / 数据库名
     @Override
-    public String visitSchema_name(uniformSQLParser.Schema_nameContext ctx) {
-        System.out.println(ctx.ID().getText());
-        return ctx.ID().getText();
+    public VisitResult visitSchema_name(uniformSQLParser.Schema_nameContext ctx) {
+        String result = ctx.ID().getText();
+        VisitResult visitResult = new VisitResult(result, null);
+        return visitResult;
     }
 }

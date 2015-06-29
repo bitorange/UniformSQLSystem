@@ -3,7 +3,9 @@ package cn.edu.bit.linc.zql.connector;
 import cn.edu.bit.linc.zql.GlobalVar;
 
 import java.io.*;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 /**
@@ -31,11 +33,11 @@ public class MetaDatabase {
             try {
                 MetaDatabase.connector = new JDBCConnector(url, username, password, dbName, driver);
             } catch (ClassNotFoundException e) {
-                System.err.println("找不到元数据库 JDBC 驱动");
+                System.err.println("找不到元数据库 JDBC 驱动 " + driver);
                 e.printStackTrace();
                 System.exit(0);
             } catch (SQLException e) {
-                System.err.println("连接到元数据库失败");
+                System.err.println("连接到元数据库 + " + dbName + "(" + url + ")" + " + 失败");
                 e.printStackTrace();
                 System.exit(0);
             } catch (JDBCConnector.NotSupportDatabaseException e) {
@@ -57,7 +59,7 @@ public class MetaDatabase {
             System.exit(0);
         }
 
-        if (inputStream != null) {
+        if (null != inputStream) {
             try {
                 prop.load(inputStream);
             } catch (IOException e) {
@@ -128,7 +130,7 @@ public class MetaDatabase {
     }
 
 
-    private static final String CREATE_INNER_DBS_INFO_TABLE =
+    private static final String CREATE_INNER_DBS_INFO_TABLE_SQL =
             "CREATE TABLE IF NOT EXISTS inner_dbs_info_table" +
                     "(db_name VARCHAR(256) NOT NULL, " +
                     "type VARCHAR(256) NOT NULL, " +
@@ -137,7 +139,7 @@ public class MetaDatabase {
                     "password VARCHAR(256) NOT NULL, " +
                     "driver VARCHAR(256) NOT NULL, " +
                     "PRIMARY KEY(db_name))";        // 创建 inner_dbs_info 数据表，用于存储底层数据库信息
-    private static final String CREATE_INNER_TABLE_AND_DB_INFO_TABLE =
+    private static final String CREATE_INNER_TABLE_AND_DB_INFO_TABLE_SQL =
             "CREATE TABLE IF NOT EXISTS inner_table_and_db_info" +
                     "(table_name VARCHAR(256) NOT NULL, " +
                     "db_name VARCHAR(256) REFERENCES inner_dbs_info_table(db_name), " +
@@ -149,12 +151,12 @@ public class MetaDatabase {
      * @throws SQLException 创建数据表失败
      */
     private static void createTables() throws SQLException {
-        connector.executeUpdate(CREATE_INNER_DBS_INFO_TABLE);
-        connector.executeUpdate(CREATE_INNER_TABLE_AND_DB_INFO_TABLE);
+        connector.executeUpdate(CREATE_INNER_DBS_INFO_TABLE_SQL);
+        connector.executeUpdate(CREATE_INNER_TABLE_AND_DB_INFO_TABLE_SQL);
     }
 
 
-    private static final String INSERT_NEW_TABLE = "INSERT INTO inner_dbs_info_table VALUES('%s', '%s', '%s', '%s', '%s', '%s')";
+    private static final String INSERT_NEW_TABLE_SQL = "INSERT INTO inner_dbs_info_table VALUES('%s', '%s', '%s', '%s', '%s', '%s')";
 
     /**
      * 添加底层库信息到 inner_table_and_db_info 数据表中
@@ -168,7 +170,48 @@ public class MetaDatabase {
      * @throws SQLException 执行 SQL 命令失败
      */
     private static void addNewInnerDatabase(String db_name, String type, String url, String username, String password, String driver) throws SQLException {
-        String sql = String.format(INSERT_NEW_TABLE, db_name, type, url, username, password, driver);
+        String sql = String.format(INSERT_NEW_TABLE_SQL, db_name, url, username, password, type, driver);
         connector.executeUpdate(sql);
+    }
+
+
+    private static final String GET_INNER_DBS_INFO_SQL = "SELECT * FROM inner_dbs_info_table";
+
+    /**
+     * 从元数据库中获取底层库信息
+     *
+     * @return 底层库信息列表
+     */
+    public static ArrayList<InnerDatabase> getInnerDatabasesInfo() {
+        ArrayList<InnerDatabase> innerDatabases = new ArrayList<InnerDatabase>();
+        ResultSet rs = null;
+        try {
+            rs = connector.executeQuery(GET_INNER_DBS_INFO_SQL);
+        } catch (SQLException e) {
+            System.err.println("从元数据库中获取底层数据库信息失败");
+            e.printStackTrace();
+            System.exit(0);
+        }
+
+        if (rs != null) {
+            try {
+                while (rs.next()) {
+                    String dbName = rs.getString("db_name");
+                    String url = rs.getString("url");
+                    String type = rs.getString("type");
+                    String username = rs.getString("username");
+                    String password = rs.getString("password");
+                    String driver = rs.getString("driver");
+                    InnerDatabase innerDatabase = new InnerDatabase(dbName, url, type, username, password, driver);
+                    innerDatabases.add(innerDatabase);
+                }
+            } catch (SQLException e) {
+                System.err.println("Result Set 已经关闭");
+                e.printStackTrace();
+                System.exit(0);
+            }
+        }
+
+        return innerDatabases;
     }
 }

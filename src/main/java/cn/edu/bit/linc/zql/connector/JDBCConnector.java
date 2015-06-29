@@ -49,7 +49,7 @@ public class JDBCConnector {
         if (driver.equals("com.mysql.jdbc.Driver")) {
             this.url = "jdbc:mysql://" + url + "/" + dbName;
         } else if (driver.equals("org.apache.hive.jdbc.HiveDriver")) {
-            this.url = "jdbc:hive://" + url + "/" + dbName;
+            this.url = "jdbc:hive2://" + url + "/" + dbName;
         } else {
             throw new NotSupportDatabaseException();
         }

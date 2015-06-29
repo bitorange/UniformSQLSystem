@@ -24,7 +24,7 @@
     <entry key="innerdb.db1.type">MySQL</entry>
 
     <!-- 底层库 1 地址 -->
-    <entry key="innerdb.db1.url">10.4.21.220</entry>
+    <entry key="innerdb.db1.url">localhost:8889</entry>
 
     <!-- 底层库 1 用户名 -->
     <entry key="innerdb.db1.username">root</entry>
@@ -44,14 +44,16 @@
     <entry key="innerdb.db2.url">10.4.21.220:10000</entry>
 
     <!-- 底层库 2 用户名 -->
-    <entry key="innerdb.db2.username">root</entry>
+    <entry key="innerdb.db2.username">hadoop</entry>
 
     <!-- 底层库 2 用户密码 -->
-    <entry key="innerdb.db2.password">root</entry>
+    <entry key="innerdb.db2.password">hadoop</entry>
 
     <!-- 底层库 2 JDBC 驱动 -->
-    <entry key="innerdb.db2.jdbc.driver">org.apache.hive.jdbc.HiveDriver</entry>
+    <entry key="innerdb.db2.jdbc.driver">org.apache.hive.jdbc.HiveDrive</entry>
 
 
     <!-- _________________________________ 默认底层库相关 _________________________________ -->
+    <!-- 默认底层库 -->
+    <entry key="innerdb.dafault.database">db1</entry>
 </property>

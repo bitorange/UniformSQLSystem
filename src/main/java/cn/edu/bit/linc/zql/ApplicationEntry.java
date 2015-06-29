@@ -1,8 +1,10 @@
 package cn.edu.bit.linc.zql;
 
+import cn.edu.bit.linc.zql.connector.InnerDatabases;
 import cn.edu.bit.linc.zql.connector.MetaDatabase;
 import cn.edu.bit.linc.zql.parser.uniformSQLLexer;
 import cn.edu.bit.linc.zql.parser.uniformSQLParser;
+import cn.edu.bit.linc.zql.parser.visitor.VisitResult;
 import cn.edu.bit.linc.zql.parser.visitor.ZQLVisitor;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -34,7 +36,7 @@ public class ApplicationEntry {
         MetaDatabase.initMetaDatabase();
 
         // 底层库初始化（尝试连接底层库，初始化 JDBC 连接）
-
+        InnerDatabases.initInnerDatabases();
     }
 
     /**
@@ -61,12 +63,8 @@ public class ApplicationEntry {
             uniformSQLParser parser = new uniformSQLParser(tokens);
             ParseTree tree = parser.root_statement();
 
-            // 访问结果，反向生成 SQL 语句
-            ZQLVisitor visitor = new ZQLVisitor();
-            String finalSQL = visitor.visit(tree);
-
-            // 执行 SQL
-
+            // 执行 SQL 语句
+            InnerDatabases.executeSQLCommand(sqlCommand);
         } catch (IOException e) {
             e.printStackTrace();
         }
