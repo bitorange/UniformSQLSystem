@@ -53,7 +53,8 @@ public class ApplicationEntry {
         ApplicationEntry.initSystem();
 
         // 读取 ZQL 语句
-        String sqlCommand = "CREATE DATABASE IF NOT EXISTS table_name";
+        String sqlCommand = "CREATE DATABASE IF NOT EXISTS db_name";
+        sqlCommand = "SELECT id FROM tb_test";
         InputStream is = new ByteArrayInputStream(sqlCommand.getBytes(StandardCharsets.UTF_8));
         try {
             // 获取词法 / 语法解析器

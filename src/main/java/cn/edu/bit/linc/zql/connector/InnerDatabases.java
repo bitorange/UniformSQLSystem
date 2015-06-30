@@ -22,7 +22,17 @@ import java.util.ArrayList;
  */
 public class InnerDatabases {
     private static ArrayList<InnerDatabase> databases = null;
+    private static String defaultInnerDatabaseName;
     private static String defaultDatabaseName;
+
+    /**
+     * 获取默认底层库中的默认数据库
+     *
+     * @return 默认底层库中的默认数据库
+     */
+    public static String getDefaultInnerDatabaseName() {
+        return defaultInnerDatabaseName;
+    }
 
     /**
      * 获取创建数据库命令所指定的默认底层库
@@ -41,6 +51,7 @@ public class InnerDatabases {
         InnerDatabases.databases = MetaDatabase.getInnerDatabasesInfo();
 
         // 从配置文件中获取默认数据库和数据表
+        defaultInnerDatabaseName = GlobalVar.configMap.get("innerdb.dafault.innerDatabase");
         defaultDatabaseName = GlobalVar.configMap.get("innerdb.dafault.database");
     }
 

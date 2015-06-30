@@ -34,6 +34,14 @@ public class ExecutiveResult {
     }
 
     /**
+     * 打印结果
+     */
+    public void printResult(){
+
+    }
+
+
+    /**
      * 构造函数
      *
      * @param commandType  命令类型
