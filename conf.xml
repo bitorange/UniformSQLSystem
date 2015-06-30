@@ -50,7 +50,7 @@
     <entry key="innerdb.db2.password">hadoop</entry>
 
     <!-- 底层库 2 JDBC 驱动 -->
-    <entry key="innerdb.db2.jdbc.driver">org.apache.hive.jdbc.HiveDrive</entry>
+    <entry key="innerdb.db2.jdbc.driver">org.apache.hive.jdbc.HiveDriver</entry>
 
 
     <!-- _________________________________ 默认底层库相关 _________________________________ -->

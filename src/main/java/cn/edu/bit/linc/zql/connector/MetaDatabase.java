@@ -59,16 +59,11 @@ public class MetaDatabase {
             System.exit(0);
         }
 
-        if (null != inputStream) {
-            try {
-                prop.load(inputStream);
-            } catch (IOException e) {
-                System.err.println("解析 properties 文件失败");
-                e.printStackTrace();
-                System.exit(0);
-            }
-        } else {
-            System.err.println("找不到系统内部配置文件");
+        try {
+            prop.load(inputStream);
+        } catch (IOException e) {
+            System.err.println("解析 properties 文件失败");
+            e.printStackTrace();
             System.exit(0);
         }
 
@@ -170,7 +165,7 @@ public class MetaDatabase {
      * @throws SQLException 执行 SQL 命令失败
      */
     private static void addNewInnerDatabase(String db_name, String type, String url, String username, String password, String driver) throws SQLException {
-        String sql = String.format(INSERT_NEW_TABLE_SQL, db_name, url, username, password, type, driver);
+        String sql = String.format(INSERT_NEW_TABLE_SQL, db_name, type, url, username, password, driver);
         connector.executeUpdate(sql);
     }
 

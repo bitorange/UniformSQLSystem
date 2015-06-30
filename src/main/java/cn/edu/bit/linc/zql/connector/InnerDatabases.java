@@ -13,6 +13,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -24,9 +25,18 @@ public class InnerDatabases {
     private static String defaultDatabaseName;
 
     /**
+     * 获取创建数据库命令所指定的默认底层库
+     *
+     * @return 默认底层库
+     */
+    public static String getDefaultDatabaseName() {
+        return defaultDatabaseName;
+    }
+
+    /**
      * 初始化底层数据库
      */
-    public static void initInnerDatabases(){
+    public static void initInnerDatabases() {
         // 从元数据库中获取底层库信息
         InnerDatabases.databases = MetaDatabase.getInnerDatabasesInfo();
 
@@ -36,14 +46,13 @@ public class InnerDatabases {
 
     /**
      * 执行 SQL 命令
+     *
      * @param sqlCommand 需要执行的 SQL 命令
      * @throws IOException ？
      */
-    public static void executeSQLCommand(String sqlCommand) throws IOException {
+    public static ExecutiveResult executeSQLCommand(String sqlCommand) throws IOException, SQLException, InnerDBNotFoundException {
+        /* 获取词法 / 语法解析器 */
         InputStream is = new ByteArrayInputStream(sqlCommand.getBytes(StandardCharsets.UTF_8));
-
-        // 获取词法 / 语法解析器
-        // TODO: 异常解析
         ANTLRInputStream input = new ANTLRInputStream(is);
         uniformSQLLexer lexer = new uniformSQLLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -53,19 +62,53 @@ public class InnerDatabases {
         ZQLVisitor visitor = new ZQLVisitor();
         VisitResult visitResult = visitor.visit(tree);
 
-        // 执行 SQL
-        if(visitResult.getOperationType() != null && visitResult.getOperationType().equals("create_database_statement")) {
+
+        /* 执行 SQL */
+        // 更新操作
+        if (visitResult.getOperationType().equals("create_database_statement")) {
             for (InnerDatabase innerDatabase : databases) {
-                if (defaultDatabaseName != null && defaultDatabaseName.equals(innerDatabase.getDbName())) {
-                    try {
-                        innerDatabase.getConnector().executeUpdate(sqlCommand);
-                    } catch (SQLException e) {
-                        System.err.println("执行 SQL 命令失败");
-                        e.printStackTrace();
-                    }
-                    break;
+                if (visitResult.getDbName().equals(innerDatabase.getDbName())) {
+                    int affectedRows = innerDatabase.getConnector().executeUpdate(visitResult.getResult());
+                    return new ExecutiveResult("update", affectedRows, null);
                 }
             }
+        }
+        // 查询操作
+        else {
+            for (InnerDatabase innerDatabase : databases) {
+                if (visitResult.getDbName().equals(innerDatabase.getDbName())) {
+                    ResultSet resultSet = innerDatabase.getConnector().executeQuery(visitResult.getResult());
+                    return new ExecutiveResult("query", -1, resultSet);
+                }
+            }
+        }
+        throw new InnerDBNotFoundException();
+    }
+
+    /**
+     * 获取指定数据库名的底层库类型
+     *
+     * @param dbName 数据库名
+     * @return 底层库类型
+     */
+    public static String getDBType(String dbName) {
+        for (InnerDatabase innerDatabase : databases) {
+            if (innerDatabase.getDbName().equals(dbName)) {
+                return innerDatabase.getType();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 指定名称的底层库不存在
+     */
+    public static class InnerDBNotFoundException extends Exception {
+        public InnerDBNotFoundException() {
+        }
+
+        public InnerDBNotFoundException(String message) {
+            super(message);
         }
     }
 }

@@ -8,6 +8,16 @@ import java.util.ArrayList;
 public class VisitResult {
     private String result;
     private String operationType;
+    private String dbName;
+
+    /**
+     * 获取底层库名
+     *
+     * @return 底层库名
+     */
+    public String getDbName() {
+        return dbName;
+    }
 
     /**
      * 获取操作类型
@@ -32,9 +42,11 @@ public class VisitResult {
      *
      * @param result        节点访问结果
      * @param operationType 操作类型
+     * @param dbName        底层库名
      */
-    public VisitResult(String result, String operationType) {
+    public VisitResult(String result, String operationType, String dbName) {
         this.result = result;
         this.operationType = operationType;
+        this.dbName = dbName;
     }
 }

@@ -64,7 +64,7 @@ public class JDBCConnector {
     /**
      * 遇见系统不支持的数据库抛出的异常
      */
-    public class NotSupportDatabaseException extends Exception {
+    public static class NotSupportDatabaseException extends Exception {
         public NotSupportDatabaseException() {
         }
 

@@ -1,11 +1,10 @@
 package cn.edu.bit.linc.zql;
 
+import cn.edu.bit.linc.zql.connector.ExecutiveResult;
 import cn.edu.bit.linc.zql.connector.InnerDatabases;
 import cn.edu.bit.linc.zql.connector.MetaDatabase;
 import cn.edu.bit.linc.zql.parser.uniformSQLLexer;
 import cn.edu.bit.linc.zql.parser.uniformSQLParser;
-import cn.edu.bit.linc.zql.parser.visitor.VisitResult;
-import cn.edu.bit.linc.zql.parser.visitor.ZQLVisitor;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -14,6 +13,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.sql.SQLException;
 
 /**
  * 应用入口
@@ -64,8 +64,27 @@ public class ApplicationEntry {
             ParseTree tree = parser.root_statement();
 
             // 执行 SQL 语句
-            InnerDatabases.executeSQLCommand(sqlCommand);
+            ExecutiveResult executiveResult = null;
+            try {
+                executiveResult = InnerDatabases.executeSQLCommand(sqlCommand);
+            } catch (SQLException e) {
+                System.err.println("执行 SQL 命令失败");
+                e.printStackTrace();
+            } catch (InnerDatabases.InnerDBNotFoundException e) {
+                System.err.println("指定名称的底层库不存在");
+                e.printStackTrace();
+            }
+
+            // 打印结果
+            if (executiveResult != null) {
+                if (executiveResult.getCommandType().equals("update")) {
+                    System.out.println("Affected Rows: " + executiveResult.getAffectedRows());
+                } else {
+                    // 打印表格
+                }
+            }
         } catch (IOException e) {
+            // TODO: 异常处理
             e.printStackTrace();
         }
     }
