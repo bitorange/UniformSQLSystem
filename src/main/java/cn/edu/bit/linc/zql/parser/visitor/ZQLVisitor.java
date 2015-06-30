@@ -67,18 +67,18 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<VisitResult> {
         VisitResult visitSchemaNameResult = visit(ctx.schema_name());    // 数据库名
 
         // 判断底层库类型
-        String defaultDBName = InnerDatabases.getDefaultDatabaseName();
-        String dbType = InnerDatabases.getDBType(defaultDBName);
+        String defaultInnerDBName = InnerDatabases.getDefaultInnerDatabaseName();
+        String dbType = InnerDatabases.getDBType(defaultInnerDBName);
         String sqlCommand;
         VisitResult visitResult = null;
 
         // TODO: 对不支持类型的处理
         if (dbType.equals("MySQL")) {
             sqlCommand = String.format(SQLCommandTemplate.CREATE_DATABASE_STATEMENT_MYSQL, ctx.IF() == null ? "" : "IF NOT EXISTS", visitSchemaNameResult.getResult());
-            visitResult = new VisitResult(sqlCommand, "create_database_statement", defaultDBName);
+            visitResult = new VisitResult(sqlCommand, "create_database_statement", defaultInnerDBName);
         } else if (dbType.equals("Hive")) {
             sqlCommand = String.format(SQLCommandTemplate.CREATE_DATABASE_STATEMENT_HIVE, ctx.IF() == null ? "" : "IF NOT EXISTS", visitSchemaNameResult.getResult());
-            visitResult = new VisitResult(sqlCommand, "create_database_statement", defaultDBName);
+            visitResult = new VisitResult(sqlCommand, "create_database_statement", defaultInnerDBName);
         }
 
         return visitResult;

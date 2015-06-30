@@ -54,5 +54,11 @@
             <artifactId>hadoop-core</artifactId>
             <version>1.1.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>dnl</groupId>
+            <artifactId>j-text-utils</artifactId>
+            <version>0.3.3</version>
+        </dependency>
     </dependencies>
 </project>

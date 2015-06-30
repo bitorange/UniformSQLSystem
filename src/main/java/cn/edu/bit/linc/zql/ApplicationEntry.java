@@ -54,7 +54,7 @@ public class ApplicationEntry {
 
         // 读取 ZQL 语句
         String sqlCommand = "CREATE DATABASE IF NOT EXISTS db_name";
-        sqlCommand = "SELECT id FROM tb_test";
+        // sqlCommand = "SELECT id FROM tb_test";
         InputStream is = new ByteArrayInputStream(sqlCommand.getBytes(StandardCharsets.UTF_8));
         try {
             // 获取词法 / 语法解析器
@@ -78,10 +78,11 @@ public class ApplicationEntry {
 
             // 打印结果
             if (executiveResult != null) {
-                if (executiveResult.getCommandType().equals("update")) {
-                    System.out.println("Affected Rows: " + executiveResult.getAffectedRows());
-                } else {
-                    // 打印表格
+                try {
+                    executiveResult.printResult();
+                } catch (SQLException e) {
+                    System.err.println("打印查询结果失败");
+                    e.printStackTrace();
                 }
             }
         } catch (IOException e) {
