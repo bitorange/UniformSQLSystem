@@ -1,6 +1,7 @@
 package cn.edu.bit.linc.zql;
 
 import java.util.HashMap;
+
 import net.sourceforge.argparse4j.ArgumentParsers;
 import net.sourceforge.argparse4j.inf.ArgumentParser;
 import net.sourceforge.argparse4j.inf.ArgumentParserException;
@@ -13,7 +14,7 @@ import org.w3c.dom.NodeList;
 /**
  * 全局系统变量 <br />
  */
-public class GlobalVar {
+public class GlobalEnv {
     public static HashMap<String, String> configMap = new HashMap<String, String>();
 
     /**
@@ -41,7 +42,7 @@ public class GlobalVar {
 
         String configureFilePath = ns.getString("config");
         try {
-            GlobalVar.readConFile(configureFilePath);
+            GlobalEnv.readConFile(configureFilePath);
         } catch (Exception e) {
             System.err.println("解析配置文件失败，失败原因：" + e.getMessage());
             System.exit(-1);
@@ -68,8 +69,8 @@ public class GlobalVar {
     /**
      * 输出配置项
      */
-    public static void printConf(){
-        for (String key: configMap.keySet()){
+    public static void printConf() {
+        for (String key : configMap.keySet()) {
             System.out.println(key + ": " + configMap.get(key));
         }
     }
