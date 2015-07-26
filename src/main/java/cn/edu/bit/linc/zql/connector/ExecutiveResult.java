@@ -1,7 +1,6 @@
 package cn.edu.bit.linc.zql.connector;
 
 import dnl.utils.text.table.TextTable;
-import org.hsqldb.Result;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;

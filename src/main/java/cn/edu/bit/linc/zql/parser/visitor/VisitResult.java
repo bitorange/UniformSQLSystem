@@ -1,7 +1,5 @@
 package cn.edu.bit.linc.zql.parser.visitor;
 
-import java.util.ArrayList;
-
 /**
  * 访问结果类
  */

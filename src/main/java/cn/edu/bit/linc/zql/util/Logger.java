@@ -3,7 +3,8 @@ package cn.edu.bit.linc.zql.util;
 import org.apache.log4j.Level;
 
 /**
- * 日志工具类
+ * 日志工具类 <br/>
+ * 参考：http://stackoverflow.com/questions/1486233/java-logging-show-the-source-line-number-of-the-caller-not-the-logging-helper
  */
 public class Logger {
     private static org.apache.log4j.Logger LOG;

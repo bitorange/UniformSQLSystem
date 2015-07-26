@@ -1,0 +1,1442 @@
+2015-07-26 15:26:57 INFO  Logger:20 - Hello World
+2015-07-26 15:27:05 INFO  Logger:20 - Hello World
+2015-07-26 15:27:21 INFO  Logger:20 - Hello World
+2015-07-26 15:32:48 INFO  ZQLContext:23 - 正在启动系统
+2015-07-26 15:35:51 INFO  ZQLContext:23 - 正在启动系统
+2015-07-26 15:36:21 INFO  ZQLContext:23 - 正在启动系统
+2015-07-26 15:36:21 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 15:36:21 FATAL GlobalEnv:79 - 找不到配置文件
+org.apache.commons.configuration.ConfigurationException: Cannot locate configuration source conf.xml
+	at org.apache.commons.configuration.AbstractFileConfiguration.load(AbstractFileConfiguration.java:217)
+	at org.apache.commons.configuration.AbstractFileConfiguration.load(AbstractFileConfiguration.java:197)
+	at org.apache.commons.configuration.AbstractHierarchicalFileConfiguration.load(AbstractHierarchicalFileConfiguration.java:164)
+	at org.apache.commons.configuration.AbstractHierarchicalFileConfiguration.<init>(AbstractHierarchicalFileConfiguration.java:91)
+	at org.apache.commons.configuration.XMLConfiguration.<init>(XMLConfiguration.java:243)
+	at cn.edu.bit.linc.zql.GlobalEnv.readConFile(GlobalEnv.java:55)
+	at cn.edu.bit.linc.zql.GlobalEnv.<clinit>(GlobalEnv.java:31)
+	at cn.edu.bit.linc.zql.ZQLContext.initializeSystem(ZQLContext.java:22)
+	at cn.edu.bit.linc.zql.ZQLContext.<clinit>(ZQLContext.java:13)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:191)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:116)
+2015-07-26 15:37:04 INFO  ZQLContext:23 - 正在启动系统
+2015-07-26 15:37:04 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 15:37:04 FATAL GlobalEnv:79 - 找不到配置文件 conf.xml
+org.apache.commons.configuration.ConfigurationException: Cannot locate configuration source conf.xml
+	at org.apache.commons.configuration.AbstractFileConfiguration.load(AbstractFileConfiguration.java:217)
+	at org.apache.commons.configuration.AbstractFileConfiguration.load(AbstractFileConfiguration.java:197)
+	at org.apache.commons.configuration.AbstractHierarchicalFileConfiguration.load(AbstractHierarchicalFileConfiguration.java:164)
+	at org.apache.commons.configuration.AbstractHierarchicalFileConfiguration.<init>(AbstractHierarchicalFileConfiguration.java:91)
+	at org.apache.commons.configuration.XMLConfiguration.<init>(XMLConfiguration.java:243)
+	at cn.edu.bit.linc.zql.GlobalEnv.readConFile(GlobalEnv.java:55)
+	at cn.edu.bit.linc.zql.GlobalEnv.<clinit>(GlobalEnv.java:31)
+	at cn.edu.bit.linc.zql.ZQLContext.initializeSystem(ZQLContext.java:22)
+	at cn.edu.bit.linc.zql.ZQLContext.<clinit>(ZQLContext.java:13)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:191)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:116)
+2015-07-26 15:37:29 INFO  ZQLContext:23 - 正在启动系统
+2015-07-26 15:37:29 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 15:37:29 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 15:38:52 INFO  ZQLContext:23 - 正在启动系统
+2015-07-26 15:38:52 INFO  GlobalEnv:23 - 正在读取系统配置文件
+2015-07-26 15:38:52 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 15:38:52 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 15:44:48 INFO  Logger:? - Hello World
+2015-07-26 15:44:48 INFO  Logger:29 - Hello World
+2015-07-26 15:45:03 INFO  ZQLContext:? - 正在启动系统
+2015-07-26 15:45:03 INFO  ZQLContext:29 - 正在启动系统
+2015-07-26 15:45:03 INFO  GlobalEnv:22 - 正在读取系统配置文件
+2015-07-26 15:45:03 INFO  GlobalEnv:29 - 正在读取系统配置文件
+2015-07-26 15:45:03 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 15:45:03 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 15:45:56 INFO  ZQLContext:? - 正在启动系统
+2015-07-26 15:45:56 INFO  ZQLContext:29 - 正在启动系统
+2015-07-26 15:45:56 INFO  GlobalEnv:? - 正在读取系统配置文件
+2015-07-26 15:45:56 INFO  GlobalEnv:29 - 正在读取系统配置文件
+2015-07-26 15:45:56 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 15:45:56 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 15:47:06 INFO  Logger:? - Hello World
+2015-07-26 15:47:06 INFO  Logger:29 - Hello World
+2015-07-26 15:52:28 INFO  Log:19 - 正在启动系统
+2015-07-26 15:52:28 INFO  Log:24 - 正在启动系统
+2015-07-26 15:52:28 INFO  Log:24 - 正在读取系统配置文件
+2015-07-26 15:52:28 INFO  Log:24 - 正在读取系统配置文件
+2015-07-26 15:52:29 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 15:52:29 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 15:58:57 INFO  Logger:21 - 正在启动系统
+2015-07-26 15:58:57 INFO  Logger:27 - 正在启动系统
+2015-07-26 15:58:57 INFO  Logger:26 - 正在读取系统配置文件
+2015-07-26 15:58:57 INFO  Logger:27 - 正在读取系统配置文件
+2015-07-26 15:58:57 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 15:58:57 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 15:59:18 INFO  ZQLContext:21 - 正在启动系统
+2015-07-26 15:59:18 INFO  ZQLContext:27 - 正在启动系统
+2015-07-26 15:59:18 INFO  GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 15:59:18 INFO  GlobalEnv:27 - 正在读取系统配置文件
+2015-07-26 15:59:18 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 15:59:18 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 16:01:20 INFO  ZQLContext:21 - 正在启动系统
+2015-07-26 16:01:20 INFO  GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 16:01:20 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 16:01:20 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 16:02:05 INFO  ZQLContext:21 - 正在启动系统
+2015-07-26 16:02:05 INFO  GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 16:02:05 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 16:02:05 FATAL GlobalEnv:29 - 找不到配置文件 conf.xml
+org.apache.commons.configuration.ConfigurationException: Cannot locate configuration source conf.xml
+	at org.apache.commons.configuration.AbstractFileConfiguration.load(AbstractFileConfiguration.java:217)
+	at org.apache.commons.configuration.AbstractFileConfiguration.load(AbstractFileConfiguration.java:197)
+	at org.apache.commons.configuration.AbstractHierarchicalFileConfiguration.load(AbstractHierarchicalFileConfiguration.java:164)
+	at org.apache.commons.configuration.AbstractHierarchicalFileConfiguration.<init>(AbstractHierarchicalFileConfiguration.java:91)
+	at org.apache.commons.configuration.XMLConfiguration.<init>(XMLConfiguration.java:243)
+	at cn.edu.bit.linc.zql.GlobalEnv.readConFile(GlobalEnv.java:57)
+	at cn.edu.bit.linc.zql.GlobalEnv.<clinit>(GlobalEnv.java:27)
+	at cn.edu.bit.linc.zql.ZQLContext.initializeSystem(ZQLContext.java:22)
+	at cn.edu.bit.linc.zql.ZQLContext.<clinit>(ZQLContext.java:13)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:191)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:116)
+2015-07-26 16:03:57 INFO  ZQLContext:21 - 正在启动系统
+2015-07-26 16:03:57 DEBUG GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 16:03:57 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 16:03:57 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 16:16:32 INFO  ZQLContext:22 - 正在初始化系统
+2015-07-26 16:16:32 DEBUG GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 16:16:32 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 16:16:32 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 16:16:32 DEBUG ZQLSession:19 - 用户ihainan创建新会话，连接到数据库 null
+2015-07-26 16:16:57 INFO  ZQLContext:22 - 正在初始化系统
+2015-07-26 16:16:57 DEBUG GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 16:16:58 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 16:16:58 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 16:16:58 DEBUG ZQLSession:19 - 用户 ihainan 创建新会话
+2015-07-26 16:17:05 INFO  ZQLContext:22 - 正在初始化系统
+2015-07-26 16:17:05 DEBUG GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 16:17:05 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 16:17:05 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 16:17:05 DEBUG ZQLSession:19 - 用户 ihainan 创建新会话
+2015-07-26 16:17:20 INFO  ZQLContext:22 - 正在初始化系统
+2015-07-26 16:17:20 DEBUG GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 16:17:20 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 16:17:20 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 16:17:20 DEBUG ZQLSession:19 - 用户 ihainan 创建新会话连接到数据库 db_test
+2015-07-26 16:17:32 INFO  ZQLContext:22 - 正在初始化系统
+2015-07-26 16:17:32 DEBUG GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 16:17:33 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 16:17:33 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 16:17:33 DEBUG ZQLSession:19 - 用户 ihainan 创建新会话，连接到数据库 db_test
+2015-07-26 16:32:05 INFO  ZQLContext:22 - 正在初始化系统
+2015-07-26 16:38:23 INFO  ZQLContext:21 - 正在初始化系统
+2015-07-26 16:38:23 DEBUG GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 16:38:23 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 16:38:23 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 16:38:23 DEBUG ZQLSession:26 - 用户 ihainan于 Sun Jul 26 16:38:23 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 16:38:34 INFO  ZQLContext:21 - 正在初始化系统
+2015-07-26 16:38:34 DEBUG GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 16:38:34 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 16:38:34 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 16:38:34 DEBUG ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 16:38:34 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 16:39:18 INFO  ZQLContext:21 - 正在初始化系统
+2015-07-26 16:39:18 DEBUG GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 16:39:18 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 16:39:18 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 16:39:18 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 16:39:18 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 16:39:35 INFO  ZQLContext:21 - 正在初始化系统
+2015-07-26 16:39:35 DEBUG GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 16:39:35 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 16:39:35 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 16:39:35 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 16:39:35 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 16:39:35 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 16:39:35 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 16:39:44 INFO  ZQLContext:21 - 正在初始化系统
+2015-07-26 16:39:44 DEBUG GlobalEnv:26 - 正在读取系统配置文件
+2015-07-26 16:39:44 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 16:39:44 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 16:39:44 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 16:39:44 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 16:39:44 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 16:39:44 CST 2015 创建新会话
+2015-07-26 17:22:45 INFO  ZQLContext:26 - 正在初始化系统
+2015-07-26 17:22:45 DEBUG ZQLEnv:26 - 正在读取系统配置文件
+2015-07-26 17:22:46 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 17:22:46 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 17:22:46 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 17:22:46 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 17:22:46 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 17:22:46 CST 2015 创建新会话
+2015-07-26 17:22:46 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 17:22:46 CST 2015 创建新会话
+2015-07-26 18:15:31 INFO  ZQLContext:28 - 正在初始化系统
+2015-07-26 18:15:31 DEBUG ZQLEnv:26 - 正在读取系统配置文件
+2015-07-26 18:15:31 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 18:15:31 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 18:15:31 INFO  InnerDatabases:38 - 正在从配置文件中读取底层库信息
+2015-07-26 18:15:31 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 18:15:31 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 18:15:31 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 18:15:31 CST 2015 创建新会话
+2015-07-26 18:15:31 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 18:15:31 CST 2015 创建新会话
+2015-07-26 20:51:00 INFO  ZQLContext:32 - 正在初始化系统模块
+2015-07-26 20:51:00 DEBUG ZQLEnv:26 - 正在读取系统配置文件
+2015-07-26 20:51:01 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 20:51:01 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 20:51:01 INFO  InnerDatabases:50 - 正在从配置文件中读取底层库信息
+2015-07-26 20:51:01 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 20:51:01 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 20:51:01 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 20:51:01 CST 2015 创建新会话
+2015-07-26 20:51:01 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 20:51:01 CST 2015 创建新会话
+2015-07-26 20:51:01 INFO  MetaDatabase:70 - 正在从配置文件中读取元数据库信息
+2015-07-26 20:51:01 DEBUG MetaDatabase:82 - 正在创建元数据库
+2015-07-26 20:51:01 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-26 20:51:01 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-26 20:51:01 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge15w9a1k5vqloze1dze|3b0def13] registered.
+2015-07-26 20:51:01 DEBUG BasicResourcePool:404 - incremented pending_acquires: 1
+2015-07-26 20:51:01 DEBUG BasicResourcePool:404 - incremented pending_acquires: 2
+2015-07-26 20:51:01 DEBUG BasicResourcePool:404 - incremented pending_acquires: 3
+2015-07-26 20:51:01 DEBUG BasicResourcePool:404 - incremented pending_acquires: 4
+2015-07-26 20:51:01 DEBUG BasicResourcePool:404 - incremented pending_acquires: 5
+2015-07-26 20:51:01 DEBUG BasicResourcePool:289 - com.mchange.v2.resourcepool.BasicResourcePool@410afa7d config: [start -> 3; min -> 5; max -> 20; inc -> 5; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; mox_resource_age -> 0; max_idle_time -> 0; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 0; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false]
+2015-07-26 20:51:01 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1k5vqloze1dze|3b0def13, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1k5vqloze1dze|3b0def13, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-26 20:51:01 DEBUG BasicResourcePool:538 - acquire test -- pool size: 0; target_pool_size: 5; desired target? 1
+2015-07-26 20:51:01 DEBUG BasicResourcePool:1291 - awaitAvailable(): [unknown]
+2015-07-26 20:51:01 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@410afa7d [managed: 0, unused: 0, excluded: 0]
+2015-07-26 20:51:01 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:01 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:01 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:02 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:02 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:02 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:03 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:03 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:03 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:04 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:04 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:04 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:05 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:05 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:05 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:06 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:06 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:06 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:07 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:07 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:07 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:08 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:08 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:08 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:09 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:09 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:09 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:10 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:11 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:11 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:12 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:12 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:12 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:13 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:13 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:13 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:14 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:14 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:14 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:15 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:15 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:51:15 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:11 INFO  ZQLContext:32 - 正在初始化系统模块
+2015-07-26 20:53:11 DEBUG ZQLEnv:26 - 正在读取系统配置文件
+2015-07-26 20:53:11 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 20:53:12 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 20:53:12 INFO  InnerDatabases:50 - 正在从配置文件中读取底层库信息
+2015-07-26 20:53:12 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 20:53:12 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 20:53:12 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 20:53:12 CST 2015 创建新会话
+2015-07-26 20:53:12 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 20:53:12 CST 2015 创建新会话
+2015-07-26 20:53:12 INFO  MetaDatabase:70 - 正在从配置文件中读取元数据库信息
+2015-07-26 20:53:12 DEBUG MetaDatabase:82 - 正在创建元数据库
+2015-07-26 20:53:12 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-26 20:53:12 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-26 20:53:12 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge15w9a1k5yjmgw8us3u|51eef342] registered.
+2015-07-26 20:53:12 DEBUG BasicResourcePool:404 - incremented pending_acquires: 1
+2015-07-26 20:53:12 DEBUG BasicResourcePool:404 - incremented pending_acquires: 2
+2015-07-26 20:53:12 DEBUG BasicResourcePool:404 - incremented pending_acquires: 3
+2015-07-26 20:53:12 DEBUG BasicResourcePool:404 - incremented pending_acquires: 4
+2015-07-26 20:53:12 DEBUG BasicResourcePool:404 - incremented pending_acquires: 5
+2015-07-26 20:53:12 DEBUG BasicResourcePool:289 - com.mchange.v2.resourcepool.BasicResourcePool@37c345e7 config: [start -> 3; min -> 5; max -> 20; inc -> 5; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; mox_resource_age -> 0; max_idle_time -> 0; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 0; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false]
+2015-07-26 20:53:12 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1k5yjmgw8us3u|51eef342, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1k5yjmgw8us3u|51eef342, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-26 20:53:12 DEBUG BasicResourcePool:538 - acquire test -- pool size: 0; target_pool_size: 5; desired target? 1
+2015-07-26 20:53:12 DEBUG BasicResourcePool:1291 - awaitAvailable(): [unknown]
+2015-07-26 20:53:12 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:12 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:12 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:12 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@37c345e7 [managed: 0, unused: 0, excluded: 0]
+2015-07-26 20:53:13 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:13 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:13 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:14 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:14 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:14 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:15 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:15 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:15 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:36 INFO  ZQLContext:32 - 正在初始化系统模块
+2015-07-26 20:53:36 DEBUG ZQLEnv:26 - 正在读取系统配置文件
+2015-07-26 20:53:36 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 20:53:36 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 20:53:37 INFO  InnerDatabases:50 - 正在从配置文件中读取底层库信息
+2015-07-26 20:53:37 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 20:53:37 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 20:53:37 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 20:53:37 CST 2015 创建新会话
+2015-07-26 20:53:37 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 20:53:37 CST 2015 创建新会话
+2015-07-26 20:53:37 INFO  MetaDatabase:70 - 正在从配置文件中读取元数据库信息
+2015-07-26 20:53:37 DEBUG MetaDatabase:82 - 正在创建元数据库
+2015-07-26 20:53:37 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-26 20:53:37 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-26 20:53:37 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge15w9a1k5z2teoi1zw8|7567e1fa] registered.
+2015-07-26 20:53:38 DEBUG BasicResourcePool:404 - incremented pending_acquires: 1
+2015-07-26 20:53:38 DEBUG BasicResourcePool:404 - incremented pending_acquires: 2
+2015-07-26 20:53:38 DEBUG BasicResourcePool:404 - incremented pending_acquires: 3
+2015-07-26 20:53:38 DEBUG BasicResourcePool:404 - incremented pending_acquires: 4
+2015-07-26 20:53:38 DEBUG BasicResourcePool:404 - incremented pending_acquires: 5
+2015-07-26 20:53:38 DEBUG BasicResourcePool:289 - com.mchange.v2.resourcepool.BasicResourcePool@3e8a5356 config: [start -> 3; min -> 5; max -> 20; inc -> 5; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; mox_resource_age -> 0; max_idle_time -> 0; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 0; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false]
+2015-07-26 20:53:38 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1k5z2teoi1zw8|7567e1fa, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1k5z2teoi1zw8|7567e1fa, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-26 20:53:38 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:54:30 DEBUG BasicResourcePool:538 - acquire test -- pool size: 0; target_pool_size: 5; desired target? 1
+2015-07-26 20:53:38 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:53:38 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 20:54:30 DEBUG BasicResourcePool:1291 - awaitAvailable(): [unknown]
+2015-07-26 20:54:30 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@3e8a5356 [managed: 0, unused: 0, excluded: 0]
+2015-07-26 20:59:05 INFO  ZQLContext:32 - 正在初始化系统模块
+2015-07-26 20:59:05 DEBUG ZQLEnv:26 - 正在读取系统配置文件
+2015-07-26 20:59:05 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 20:59:05 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 20:59:06 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 20:59:06 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 20:59:06 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 20:59:06 CST 2015 创建新会话
+2015-07-26 20:59:06 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 20:59:06 CST 2015 创建新会话
+2015-07-26 20:59:20 INFO  InnerDatabases:53 - 正在从配置文件中读取底层库信息
+2015-07-26 20:59:49 INFO  MetaDatabase:69 - 正在从配置文件中读取元数据库信息
+2015-07-26 20:59:49 DEBUG MetaDatabase:81 - 正在创建元数据库
+2015-07-26 20:59:49 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-26 20:59:53 INFO  ZQLContext:32 - 正在初始化系统模块
+2015-07-26 20:59:53 DEBUG ZQLEnv:26 - 正在读取系统配置文件
+2015-07-26 20:59:53 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 20:59:53 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 20:59:53 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 20:59:53 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 20:59:53 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 20:59:53 CST 2015 创建新会话
+2015-07-26 20:59:53 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 20:59:53 CST 2015 创建新会话
+2015-07-26 20:59:54 INFO  InnerDatabases:53 - 正在从配置文件中读取底层库信息
+2015-07-26 20:59:54 INFO  MetaDatabase:69 - 正在从配置文件中读取元数据库信息
+2015-07-26 20:59:54 DEBUG MetaDatabase:81 - 正在创建元数据库
+2015-07-26 20:59:54 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-26 21:00:09 INFO  ZQLContext:32 - 正在初始化系统模块
+2015-07-26 21:00:09 DEBUG ZQLEnv:26 - 正在读取系统配置文件
+2015-07-26 21:00:09 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 21:00:09 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 21:00:09 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 21:00:09 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 21:00:09 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:00:09 CST 2015 创建新会话
+2015-07-26 21:00:09 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:00:09 CST 2015 创建新会话
+2015-07-26 21:00:09 INFO  InnerDatabases:53 - 正在从配置文件中读取底层库信息
+2015-07-26 21:00:09 INFO  MetaDatabase:69 - 正在从配置文件中读取元数据库信息
+2015-07-26 21:00:09 DEBUG MetaDatabase:81 - 正在创建元数据库
+2015-07-26 21:00:09 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-26 21:00:09 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-26 21:00:10 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge15w9a1k67hnn1vbxesv|2e8479af] registered.
+2015-07-26 21:00:10 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge15w9a1k67hnn1vbxesv|29df3551] registered.
+2015-07-26 21:00:10 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge15w9a1k67hnn1vbxesv|12911b4f] registered.
+2015-07-26 21:00:10 DEBUG BasicResourcePool:404 - incremented pending_acquires: 1
+2015-07-26 21:00:10 DEBUG BasicResourcePool:404 - incremented pending_acquires: 2
+2015-07-26 21:00:10 DEBUG BasicResourcePool:404 - incremented pending_acquires: 3
+2015-07-26 21:00:10 DEBUG BasicResourcePool:404 - incremented pending_acquires: 4
+2015-07-26 21:00:10 DEBUG BasicResourcePool:404 - incremented pending_acquires: 5
+2015-07-26 21:00:10 DEBUG BasicResourcePool:289 - com.mchange.v2.resourcepool.BasicResourcePool@78b274de config: [start -> 3; min -> 5; max -> 20; inc -> 5; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; mox_resource_age -> 0; max_idle_time -> 0; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 0; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false]
+2015-07-26 21:00:10 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1k67hnn1vbxesv|2e8479af, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1k67hnn1vbxesv|2e8479af, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-26 21:00:10 DEBUG BasicResourcePool:538 - acquire test -- pool size: 0; target_pool_size: 5; desired target? 1
+2015-07-26 21:00:10 DEBUG BasicResourcePool:1291 - awaitAvailable(): [unknown]
+2015-07-26 21:00:10 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@78b274de [managed: 0, unused: 0, excluded: 0]
+2015-07-26 21:00:10 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:00:10 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:00:10 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:00:11 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:00:11 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:00:11 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:00:12 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:00:12 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:00:12 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:00:29 INFO  ZQLContext:32 - 正在初始化系统模块
+2015-07-26 21:00:29 DEBUG ZQLEnv:26 - 正在读取系统配置文件
+2015-07-26 21:00:29 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 21:00:29 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 21:00:30 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 21:00:30 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 21:00:30 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:00:30 CST 2015 创建新会话
+2015-07-26 21:00:30 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:00:30 CST 2015 创建新会话
+2015-07-26 21:00:30 INFO  InnerDatabases:53 - 正在从配置文件中读取底层库信息
+2015-07-26 21:00:51 INFO  MetaDatabase:69 - 正在从配置文件中读取元数据库信息
+2015-07-26 21:00:51 DEBUG MetaDatabase:81 - 正在创建元数据库
+2015-07-26 21:00:51 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-26 21:01:24 INFO  ZQLContext:32 - 正在初始化系统模块
+2015-07-26 21:01:24 DEBUG ZQLEnv:26 - 正在读取系统配置文件
+2015-07-26 21:01:24 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 21:01:24 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 21:01:25 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 21:01:25 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 21:01:25 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:01:25 CST 2015 创建新会话
+2015-07-26 21:01:25 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:01:25 CST 2015 创建新会话
+2015-07-26 21:01:25 INFO  InnerDatabases:53 - 正在从配置文件中读取底层库信息
+2015-07-26 21:01:25 INFO  MetaDatabase:69 - 正在从配置文件中读取元数据库信息
+2015-07-26 21:01:25 DEBUG MetaDatabase:81 - 正在创建元数据库
+2015-07-26 21:01:25 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-26 21:01:25 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-26 21:01:25 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge15w9a1k693s617k0j6s|4033d6f1] registered.
+2015-07-26 21:01:25 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge15w9a1k693s617k0j6s|55c59c26] registered.
+2015-07-26 21:01:25 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge15w9a1k693s617k0j6s|19642dab] registered.
+2015-07-26 21:01:25 DEBUG BasicResourcePool:404 - incremented pending_acquires: 1
+2015-07-26 21:01:25 DEBUG BasicResourcePool:404 - incremented pending_acquires: 2
+2015-07-26 21:01:25 DEBUG BasicResourcePool:404 - incremented pending_acquires: 3
+2015-07-26 21:01:25 DEBUG BasicResourcePool:404 - incremented pending_acquires: 4
+2015-07-26 21:01:25 DEBUG BasicResourcePool:404 - incremented pending_acquires: 5
+2015-07-26 21:01:25 DEBUG BasicResourcePool:289 - com.mchange.v2.resourcepool.BasicResourcePool@5a21fdc8 config: [start -> 3; min -> 5; max -> 20; inc -> 5; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; mox_resource_age -> 0; max_idle_time -> 0; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 0; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false]
+2015-07-26 21:01:25 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:01:25 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1k693s617k0j6s|4033d6f1, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1k693s617k0j6s|4033d6f1, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-26 21:01:25 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:01:25 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:01:25 DEBUG BasicResourcePool:538 - acquire test -- pool size: 0; target_pool_size: 5; desired target? 1
+2015-07-26 21:01:25 DEBUG BasicResourcePool:1291 - awaitAvailable(): [unknown]
+2015-07-26 21:01:25 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@5a21fdc8 [managed: 0, unused: 0, excluded: 0]
+2015-07-26 21:01:26 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:01:26 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:01:26 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:01:27 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:01:27 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:01:27 DEBUG BasicResourcePool:1831 - An exception occurred while acquiring a poolable resource. Will retry.
+java.lang.NullPointerException
+	at org.apache.derby.jdbc.InternalDriver.embeddedDriverAcceptsURL(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.acceptsURL(Unknown Source)
+	at java.sql.DriverManager.getDriver(DriverManager.java:262)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2015-07-26 21:01:33 INFO  ZQLContext:32 - 正在初始化系统模块
+2015-07-26 21:01:33 DEBUG ZQLEnv:26 - 正在读取系统配置文件
+2015-07-26 21:01:33 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 21:01:33 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 21:01:33 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 21:01:33 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 21:01:33 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:01:33 CST 2015 创建新会话
+2015-07-26 21:01:33 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:01:33 CST 2015 创建新会话
+2015-07-26 21:01:33 INFO  InnerDatabases:53 - 正在从配置文件中读取底层库信息
+2015-07-26 21:01:47 INFO  MetaDatabase:69 - 正在从配置文件中读取元数据库信息
+2015-07-26 21:01:47 DEBUG MetaDatabase:81 - 正在创建元数据库
+2015-07-26 21:01:51 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-26 21:02:57 INFO  ZQLContext:32 - 正在初始化系统模块
+2015-07-26 21:02:57 DEBUG ZQLEnv:26 - 正在读取系统配置文件
+2015-07-26 21:02:58 DEBUG ConfigurationUtils:447 - ConfigurationUtils.locate(): base is null, name is conf.xml
+2015-07-26 21:02:58 DEBUG ConfigurationUtils:523 - Loading configuration from the path conf.xml
+2015-07-26 21:02:58 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 21:02:58 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 21:02:58 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:02:58 CST 2015 创建新会话
+2015-07-26 21:02:58 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:02:58 CST 2015 创建新会话
+2015-07-26 21:02:58 INFO  InnerDatabases:53 - 正在从配置文件中读取底层库信息
+2015-07-26 21:02:58 INFO  MetaDatabase:69 - 正在从配置文件中读取元数据库信息
+2015-07-26 21:02:58 DEBUG MetaDatabase:81 - 正在创建元数据库
+2015-07-26 21:02:58 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-26 21:02:58 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-26 21:02:58 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge15w9a1k6b3stfy3b02|1ea49c14] registered.
+2015-07-26 21:02:58 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge15w9a1k6b3stfy3b02|291357e9] registered.
+2015-07-26 21:02:58 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge15w9a1k6b3stfy3b02|270e838f] registered.
+2015-07-26 21:02:58 DEBUG BasicResourcePool:404 - incremented pending_acquires: 1
+2015-07-26 21:02:58 DEBUG BasicResourcePool:404 - incremented pending_acquires: 2
+2015-07-26 21:02:58 DEBUG BasicResourcePool:404 - incremented pending_acquires: 3
+2015-07-26 21:02:58 DEBUG BasicResourcePool:404 - incremented pending_acquires: 4
+2015-07-26 21:02:58 DEBUG BasicResourcePool:404 - incremented pending_acquires: 5
+2015-07-26 21:02:58 DEBUG BasicResourcePool:289 - com.mchange.v2.resourcepool.BasicResourcePool@4db50639 config: [start -> 3; min -> 5; max -> 20; inc -> 5; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; mox_resource_age -> 0; max_idle_time -> 0; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 0; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false]
+2015-07-26 21:02:58 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1k6b3stfy3b02|1ea49c14, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1k6b3stfy3b02|1ea49c14, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-26 21:02:58 DEBUG BasicResourcePool:538 - acquire test -- pool size: 0; target_pool_size: 5; desired target? 1
+2015-07-26 21:02:58 DEBUG BasicResourcePool:1291 - awaitAvailable(): [unknown]
+2015-07-26 21:02:58 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@4db50639 [managed: 0, unused: 0, excluded: 0]
+2015-07-26 21:02:59 DEBUG GooGooStatementCache:297 - checkinAll(): com.mchange.v2.c3p0.stmt.GlobalMaxOnlyStatementCache stats -- total size: 0; checked out: 0; num connections: 0; num keys: 0
+2015-07-26 21:02:59 DEBUG C3P0PooledConnectionPool:217 - com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@467ebee.acquireResource() returning. 
+2015-07-26 21:02:59 DEBUG GooGooStatementCache:297 - checkinAll(): com.mchange.v2.c3p0.stmt.GlobalMaxOnlyStatementCache stats -- total size: 0; checked out: 0; num connections: 0; num keys: 0
+2015-07-26 21:02:59 DEBUG C3P0PooledConnectionPool:217 - com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@467ebee.acquireResource() returning. 
+2015-07-26 21:02:59 DEBUG GooGooStatementCache:297 - checkinAll(): com.mchange.v2.c3p0.stmt.GlobalMaxOnlyStatementCache stats -- total size: 0; checked out: 0; num connections: 0; num keys: 0
+2015-07-26 21:02:59 DEBUG C3P0PooledConnectionPool:217 - com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@467ebee.acquireResource() returning. 
+2015-07-26 21:02:59 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@4db50639 [managed: 1, unused: 1, excluded: 0]
+2015-07-26 21:02:59 DEBUG BasicResourcePool:422 - decremented pending_acquires: 4
+2015-07-26 21:02:59 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@4db50639 [managed: 2, unused: 2, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@79112836)
+2015-07-26 21:02:59 DEBUG BasicResourcePool:422 - decremented pending_acquires: 3
+2015-07-26 21:02:59 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@4db50639 [managed: 3, unused: 3, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@79112836)
+2015-07-26 21:02:59 DEBUG BasicResourcePool:422 - decremented pending_acquires: 2
+2015-07-26 21:02:59 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@4db50639 [managed: 3, unused: 2, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@79112836)
+2015-07-26 21:04:09 INFO  ZQLContext:32 - 正在初始化系统模块
+2015-07-26 21:04:09 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 21:04:09 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 21:04:09 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:04:09 CST 2015 创建新会话
+2015-07-26 21:04:09 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:04:09 CST 2015 创建新会话
+2015-07-26 21:04:09 INFO  InnerDatabases:53 - 正在从配置文件中读取底层库信息
+2015-07-26 21:04:09 INFO  MetaDatabase:69 - 正在从配置文件中读取元数据库信息
+2015-07-26 21:04:09 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-26 21:04:10 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-26 21:04:10 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1k6cmya1dcn1s|611353a7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1k6cmya1dcn1s|611353a7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-26 21:05:37 INFO  ZQLContext:32 - 正在初始化系统模块
+2015-07-26 21:05:37 INFO  ZQLSession:26 - 用户 ihainan 于 Sun Jul 26 21:05:37 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-26 21:05:37 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:05:37 CST 2015 创建新会话
+2015-07-26 21:05:37 INFO  ZQLSession:26 - 用户 snow 于 Sun Jul 26 21:05:37 CST 2015 创建新会话
+2015-07-26 21:05:37 INFO  InnerDatabases:53 - 正在从配置文件中读取底层库信息
+2015-07-26 21:05:37 INFO  MetaDatabase:69 - 正在从配置文件中读取元数据库信息
+2015-07-26 21:05:37 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-26 21:05:38 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-26 21:05:38 INFO  MetaDatabase:52 - 尝试连接到编号为 0 的数据库
+2015-07-26 21:05:38 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1k6eixmxhgpwk|3bd92abb, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1k6eixmxhgpwk|3bd92abb, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-26 21:05:38 INFO  MetaDatabase:59 - 成功连接到编号为 0 的数据库
