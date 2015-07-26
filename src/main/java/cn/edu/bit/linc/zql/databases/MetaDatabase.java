@@ -43,8 +43,14 @@ public class MetaDatabase extends Database {
         return metaDbName;
     }
 
+
     /**
-     * 空构造函数
+     * 构造函数
+     *
+     * @param dbHost     数据库地址
+     * @param dbUser     数据库连接用户
+     * @param dbPassword 数据库用户密码
+     * @param metaDbName 元数据库中，存储元数据的数据库的名字
      */
     private MetaDatabase(String dbHost, String dbUser, String dbPassword, String metaDbName) {
         super(META_DB_ID, META_DB_TYPE, META_DB_ALIAS, dbHost, dbUser, dbPassword);
@@ -79,18 +85,18 @@ public class MetaDatabase extends Database {
         metaDatabase = new MetaDatabase(host, user, password, dbName);
     }
 
-    public final static String CREATE_META_DB_SQL = "CREATE DATABASE IF NOT EXISTS %s";
-    public final static String CREATE_ZQL_USERS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_users(User char(64), Password char(41), PRIMARY KEY(User, Password))";
-    public final static String CREATE_ZQL_DBS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_dbs(" +
+    private final static String CREATE_META_DB_SQL = "CREATE DATABASE IF NOT EXISTS %s";
+    private final static String CREATE_ZQL_USERS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_users(User char(64), Password char(41), PRIMARY KEY(User, Password))";
+    private final static String CREATE_ZQL_DBS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_dbs(" +
             "Inner_db_id int(10), Db_alias char(64), Db char(64), User char(64), Timestamp timestamp, " +
             "PRIMARY KEY(Inner_db_id, Db_alias, Db), " +
             "FOREIGN KEY(User) REFERENCES zql_users(User))";
-    public final static String CREATE_ZQL_TABLES_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_tables(Inner_db_id int(10), Db_alias char(64), " +
+    private final static String CREATE_ZQL_TABLES_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_tables(Inner_db_id int(10), Db_alias char(64), " +
             "Db char(64), Tb char(16), User char(64), Timestamp timestamp, " +
             "PRIMARY KEY(Inner_db_id, Db_alias, Db, Tb), " +
             "FOREIGN KEY(Inner_db_id, Db_alias, Db) REFERENCES zql_dbs(Inner_db_id, Db_alias, Db), " +
             "FOREIGN KEY(User) REFERENCES zql_users(User))";
-    public final static String CREATE_ZQL_TABLES_PRIV = "CREATE TABLE IF NOT EXISTS %s.zql_tables_priv(User char(64), Db char(64), " +
+    private final static String CREATE_ZQL_TABLES_PRIV = "CREATE TABLE IF NOT EXISTS %s.zql_tables_priv(User char(64), Db char(64), " +
             "Tb char(64), Select_priv enum('Y', 'N'), Insert_priv enum('Y', 'N'), " +
             "Update_priv enum('Y', 'N'), Delete_priv enum('Y', 'N'), All_priv enum('Y', 'N'), " +
             "PRIMARY KEY(User, Db, Tb))";

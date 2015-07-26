@@ -66,8 +66,8 @@
 
 
     <!-- _________________________________ 默认底层库相关 _________________________________ -->
-    <!-- 默认底层库 -->
-    <entry key="innerdb.dafault.innerDatabase">db1</entry>
+    <!-- 默认底层库的编号 -->
+    <entry key="innerdb.dafault.innerdb">1</entry>
 
     <!-- 默认底层库中的默认数据库 -->
     <entry key="innerdb.dafault.database">db_test</entry>

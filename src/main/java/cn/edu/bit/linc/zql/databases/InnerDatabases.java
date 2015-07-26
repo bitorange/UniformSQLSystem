@@ -20,8 +20,8 @@ public class InnerDatabases {
      *
      * @return 底层库连接信息
      */
-    public ArrayList<Database> getInnerDatabaseArray() {
-        return new ArrayList<Database>(innerDatabaseArray);
+    public ArrayList<InnerDatabase> getInnerDatabaseArray() {
+        return new ArrayList<InnerDatabase>(innerDatabaseArray);
     }
 
     /**

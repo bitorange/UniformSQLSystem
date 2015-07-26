@@ -1,6 +1,7 @@
 package cn.edu.bit.linc.zql.connections.connector;
 
 import cn.edu.bit.linc.zql.databases.Database;
+import cn.edu.bit.linc.zql.databases.InnerDatabase;
 import cn.edu.bit.linc.zql.databases.InnerDatabases;
 import cn.edu.bit.linc.zql.databases.MetaDatabase;
 import cn.edu.bit.linc.zql.util.Logger;
@@ -19,7 +20,7 @@ public class ConnectionPools {
     private static ConnectionPools connectionPools;
     private ComboPooledDataSource[] cpdsArray;
     private InnerDatabases innerDatabases = null;
-    private ArrayList<Database> innerDatabaseArray;
+    private ArrayList<InnerDatabase> innerDatabaseArray;
     private MetaDatabase metaDatabase = null;
     private final Logger logger = LoggerFactory.getLogger(ConnectionPools.class);
 
