@@ -1,8 +1,13 @@
 package cn.edu.bit.linc.zql.databases;
 
 import cn.edu.bit.linc.zql.ZQLEnv;
+import cn.edu.bit.linc.zql.connections.connector.ConnectionPools;
 import cn.edu.bit.linc.zql.util.Logger;
 import cn.edu.bit.linc.zql.util.LoggerFactory;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * 元数据库类，存储元数据相关的信息与操作
@@ -54,7 +59,7 @@ public class MetaDatabase extends Database {
      * @return MetaDatabase 实例
      */
     public static MetaDatabase getInstance() {
-        if(metaDatabase == null){
+        if (metaDatabase == null) {
             readMetaDatabaseFromConfigurationFile();
             createMetaDatabase();
         }
@@ -74,10 +79,42 @@ public class MetaDatabase extends Database {
         metaDatabase = new MetaDatabase(host, user, password, dbName);
     }
 
+    public final static String CREATE_META_DB_SQL = "CREATE DATABASE IF NOT EXISTS %s";
+    public final static String CREATE_ZQL_USERS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_users(User char(64), Password char(41), PRIMARY KEY(User, Password))";
+    public final static String CREATE_ZQL_DBS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_dbs(" +
+            "Inner_db_id int(10), Db_alias char(64), Db char(64), User char(64), Timestamp timestamp, " +
+            "PRIMARY KEY(Inner_db_id, Db_alias, Db), " +
+            "FOREIGN KEY(User) REFERENCES zql_users(User))";
+    public final static String CREATE_ZQL_TABLES_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_tables(Inner_db_id int(10), Db_alias char(64), " +
+            "Db char(64), Tb char(16), User char(64), Timestamp timestamp, " +
+            "PRIMARY KEY(Inner_db_id, Db_alias, Db, Tb), " +
+            "FOREIGN KEY(Inner_db_id, Db_alias, Db) REFERENCES zql_dbs(Inner_db_id, Db_alias, Db), " +
+            "FOREIGN KEY(User) REFERENCES zql_users(User))";
+    public final static String CREATE_ZQL_TABLES_PRIV = "CREATE TABLE IF NOT EXISTS %s.zql_tables_priv(User char(64), Db char(64), " +
+            "Tb char(64), Select_priv enum('Y', 'N'), Insert_priv enum('Y', 'N'), " +
+            "Update_priv enum('Y', 'N'), Delete_priv enum('Y', 'N'), All_priv enum('Y', 'N'), " +
+            "PRIMARY KEY(User, Db, Tb))";
+
     /**
      * 创建元数据库
      */
     private static void createMetaDatabase() {
-        logger.d("正在创建元数据库");
+        logger.i("正在创建元数据库");
+
+        /* 连接元数据库 */
+        ConnectionPools connectionPools = ConnectionPools.getInstance();
+        Connection connection;
+        try {
+            connection = connectionPools.getConnection(0);
+            Statement statement = connection.createStatement();
+            statement.execute(String.format(CREATE_META_DB_SQL, metaDatabase.getMetaDbName()));
+            statement.execute(String.format(CREATE_ZQL_USERS_TB_SQL, metaDatabase.getMetaDbName()));
+            statement.execute(String.format(CREATE_ZQL_DBS_TB_SQL, metaDatabase.getMetaDbName()));
+            statement.execute(String.format(CREATE_ZQL_TABLES_TB_SQL, metaDatabase.getMetaDbName()));
+            statement.execute(String.format(CREATE_ZQL_TABLES_PRIV, metaDatabase.getMetaDbName()));
+        } catch (SQLException e) {
+            logger.f("创建元数据库失败", e);
+            System.exit(0);
+        }
     }
 }

@@ -2,7 +2,6 @@ package cn.edu.bit.linc.zql;
 
 import cn.edu.bit.linc.zql.connections.ZQLSession;
 import cn.edu.bit.linc.zql.connections.connector.ConnectionPools;
-import cn.edu.bit.linc.zql.databases.InnerDatabases;
 import cn.edu.bit.linc.zql.util.Logger;
 import cn.edu.bit.linc.zql.util.LoggerFactory;
 
@@ -44,6 +43,8 @@ public class ZQLContext {
         ZQLSession session = new ZQLSession("ihainan", "db_test", "12345");
         ZQLSession sessionTwo = new ZQLSession("snow", null, "12345");
         ZQLSession sessionThree = new ZQLSession("snow", null, "12345");
+
+        /* 测试连接池 */
         ConnectionPools connectionPools = ConnectionPools.getInstance();
         Connection connection = null;
         int dbId = 0;

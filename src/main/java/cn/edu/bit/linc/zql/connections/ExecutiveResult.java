@@ -1,4 +1,4 @@
-package cn.edu.bit.linc.zql.connector;
+package cn.edu.bit.linc.zql.connections;
 
 import dnl.utils.text.table.TextTable;
 
