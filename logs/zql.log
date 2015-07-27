@@ -5988,3 +5988,1121 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 2015-07-27 20:37:25 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
 2015-07-27 20:37:25 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lku3mn7itzo6|31299938, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lku3mn7itzo6|31299938, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
 2015-07-27 20:37:26 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lku3mn7itzo6|c4888a7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lku3mn7itzo6|c4888a7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 20:51:18 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 20:51:18 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 20:51:18 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 20:51:18 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 20:51:18 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 20:51:18 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 20:51:18 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 20:51:19 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 20:51:19 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llbymg13kd1hq|4dbba13d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llbymg13kd1hq|4dbba13d, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 20:51:20 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llbymg13kd1hq|b6ae29f, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llbymg13kd1hq|b6ae29f, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 20:51:20 ERROR SQLCommandManager:121 - 在数据库 1 执行 SQL 命令失败：DROP DATABASE IF EXISTS db_test
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:119)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:47)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NOT EXISTS db_test' at line 1
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1030)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:117)
+	... 6 more
+2015-07-27 20:58:04 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 20:58:04 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 20:58:04 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 20:58:04 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 20:58:04 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 20:58:04 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 20:58:04 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 20:58:05 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 20:58:05 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llko8q1mo621q|778ebb11, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llko8q1mo621q|778ebb11, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 20:58:06 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llko8q1mo621q|7591a41d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llko8q1mo621q|7591a41d, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 20:59:41 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 20:59:42 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 20:59:42 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 20:59:42 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 20:59:42 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 20:59:42 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 20:59:42 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 20:59:42 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 20:59:42 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llmr2yalhd8o|4d27ea69, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llmr2yalhd8o|4d27ea69, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 20:59:43 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llmr2yalhd8o|36471861, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llmr2yalhd8o|36471861, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:00:09 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:00:09 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:00:09 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:00:09 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:00:09 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:00:09 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:00:09 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:00:09 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:00:09 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llnc4c1kfz5n3|1babb4d7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llnc4c1kfz5n3|1babb4d7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:00:26 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llnc4c1kfz5n3|5381062e, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llnc4c1kfz5n3|5381062e, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:00:57 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:00:58 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:00:58 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:00:58 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:00:58 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:00:58 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:00:58 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:00:58 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:00:58 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llodpg1mfgnog|25ed9d72, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llodpg1mfgnog|25ed9d72, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:00:59 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llodpg1mfgnog|3bbce0d6, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llodpg1mfgnog|3bbce0d6, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:01:19 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:01:19 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:01:19 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:01:19 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:01:19 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:01:19 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:01:19 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:01:20 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:01:20 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llouc9zzy5xd|63afe611, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llouc9zzy5xd|63afe611, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:01:21 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llouc9zzy5xd|3cff0b72, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llouc9zzy5xd|3cff0b72, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:01:23 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:01:23 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:01:23 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:01:23 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:01:23 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:01:23 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:01:23 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:01:24 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:01:24 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lloxkv1gawkt9|2ab01778, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lloxkv1gawkt9|2ab01778, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:01:58 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lloxkv1gawkt9|3d1e6754, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lloxkv1gawkt9|3d1e6754, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:03:02 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:03:02 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:03:02 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:03:02 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:03:02 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:03:02 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:03:02 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:03:02 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:03:03 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llr1jh1ao0ogi|557555b8, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llr1jh1ao0ogi|557555b8, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:03:04 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llr1jh1ao0ogi|22f8f3dd, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llr1jh1ao0ogi|22f8f3dd, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:03:19 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:03:20 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:03:20 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:03:20 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:03:20 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:03:20 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:03:20 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:03:20 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:03:20 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llrf9i13zbcoj|4d27ea69, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llrf9i13zbcoj|4d27ea69, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:03:21 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llrf9i13zbcoj|36471861, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llrf9i13zbcoj|36471861, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:05:05 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:05:05 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:05:05 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:05:05 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:05:05 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:05:05 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:05:06 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:05:06 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:05:06 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lltp4nl04k5q|3b9b9669, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lltp4nl04k5q|3b9b9669, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:05:07 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lltp4nl04k5q|2cada838, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lltp4nl04k5q|2cada838, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:05:28 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:05:28 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:05:28 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:05:28 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:05:28 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:05:28 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:05:28 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:05:29 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:05:29 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llu6lu13vw8mb|12fbbad2, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llu6lu13vw8mb|12fbbad2, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:05:30 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1llu6lu13vw8mb|6d4d203d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1llu6lu13vw8mb|6d4d203d, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:17:55 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:17:56 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:17:56 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:17:56 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:17:56 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:17:56 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:17:56 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:17:56 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:17:56 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lma7gitacg0w|778ebb11, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lma7gitacg0w|778ebb11, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:17:57 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lma7gitacg0w|2cada838, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lma7gitacg0w|2cada838, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:19:02 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:19:02 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:19:02 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:19:02 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:19:02 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:19:02 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:19:02 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:19:03 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:19:03 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmbmj74flaai|135c7da7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmbmj74flaai|135c7da7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:19:13 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmbmj74flaai|5b6cb210, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmbmj74flaai|5b6cb210, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:19:38 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:19:38 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:19:38 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:19:38 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:19:38 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:19:38 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:19:38 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:19:38 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:19:39 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmce6wbt0aar|31299938, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmce6wbt0aar|31299938, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:19:39 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmce6wbt0aar|c4888a7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmce6wbt0aar|c4888a7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:20:27 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:20:28 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:20:28 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:20:28 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:20:28 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:20:28 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:20:28 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:20:28 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:20:28 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmdghx1anmsq3|4ca63aba, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmdghx1anmsq3|4ca63aba, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:20:51 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：CREATE USER ihainan IDENTIFIED BY password
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:51)
+Caused by: java.sql.SQLException: Operation CREATE USER failed for 'ihainan'@'%'
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1055)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 2 more
+2015-07-27 21:22:02 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:22:03 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:22:03 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:22:03 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:22:03 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:22:03 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:22:03 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:22:03 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:22:03 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmfhx81m5lt7r|3bef1474, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmfhx81m5lt7r|3bef1474, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:22:56 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:22:56 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:22:56 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:22:56 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:22:56 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:22:56 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:22:56 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:22:56 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:22:56 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmgmw016t2c0k|4d27ea69, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmgmw016t2c0k|4d27ea69, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:22:57 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：CREATE USER ihainan IDENTIFIED BY password
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1030)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 21:23:47 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:23:48 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:23:48 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:23:48 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:23:48 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:23:48 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:23:48 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:23:48 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:23:48 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmhqqy8iezy8|3559b0a6, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmhqqy8iezy8|3559b0a6, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:24:17 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：CREATE USER ihainan IDENTIFIED BY password
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:51)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1030)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 2 more
+2015-07-27 21:24:38 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:24:39 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:24:39 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:24:39 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:24:39 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:24:39 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:24:39 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:24:39 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:24:39 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmiu4szjwd8h|ed4dd2d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmiu4szjwd8h|ed4dd2d, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:25:54 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：CREATE USER ihainan IDENTIFIED BY password
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:51)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1030)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 2 more
+2015-07-27 21:26:01 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:26:01 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:26:01 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:26:01 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:26:01 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:26:01 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:26:01 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:26:02 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:26:02 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmkma3e6bown|3bef1474, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmkma3e6bown|3bef1474, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:26:03 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：CREATE USER ihainan IDENTIFIED BY password
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1030)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 21:26:14 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:26:14 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:26:14 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:26:14 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:26:14 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:26:14 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:26:14 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:26:15 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:26:15 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmkw071jzocl8|4d27ea69, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmkw071jzocl8|4d27ea69, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:26:16 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT INTO meta_db.zql_users(ihainan, password)
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1030)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 21:26:40 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:26:41 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:26:41 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:26:41 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:26:41 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:26:41 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:26:41 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:26:41 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:26:41 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmlg5o1ax8nod|4d27ea69, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmlg5o1ax8nod|4d27ea69, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:26:42 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT INTO meta_db.zql_users VALUES(ihainan, password)
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'ihainan' in 'field list'
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1030)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 21:27:04 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:27:04 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:27:04 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:27:04 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:27:04 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:27:04 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:27:04 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:27:04 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:27:04 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmly541advt5|31299938, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmly541advt5|31299938, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:27:05 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT INTO meta_db.zql_users VALUES('ihainan', 'password')
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1055)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 21:27:35 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:27:35 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:27:35 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:27:35 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:27:35 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:27:35 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:27:35 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:27:35 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:27:35 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmmm34vvxrmp|63afe611, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmmm34vvxrmp|63afe611, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:27:36 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT INTO meta_db.zql_users VALUES('ihainan', 'password', 'N')
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'ihainan' for key 'PRIMARY'
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1015)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 21:28:17 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:28:18 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:28:18 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:28:18 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:28:18 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:28:18 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:28:18 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:28:18 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:28:19 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmnjj714dzru2|557555b8, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmnjj714dzru2|557555b8, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:30:08 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:30:08 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:30:08 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:30:08 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:30:08 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:30:08 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:30:08 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:30:08 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:30:08 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmpw91z0j53v|3b9b9669, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmpw91z0j53v|3b9b9669, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:30:09 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT INTO meta_db.zql_users VALUES('ihainan', 'password', 'N')
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'ihainan' for key 'PRIMARY'
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1015)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 21:30:38 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:30:39 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:30:39 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:30:39 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:30:39 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:30:39 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:30:39 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:30:39 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:30:39 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmqjv21afnpt1|778ebb11, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmqjv21afnpt1|778ebb11, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 21:30:40 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：DELETE FROM meta_db.zql_user WHERE User = 'ihainan'
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:52)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'meta_db.zql_user' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1030)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 21:30:50 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 21:30:50 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 21:30:50 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 21:30:50 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 21:30:50 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 21:30:50 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 21:30:50 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 21:30:51 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 21:30:51 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lmqsvaf3jf47|778ebb11, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lmqsvaf3jf47|778ebb11, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:00:56 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:00:56 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:00:56 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 22:00:56 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:00:56 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:00:56 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:00:56 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:00:57 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:00:57 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lntie6x1i8fm|557555b8, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lntie6x1i8fm|557555b8, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:01:33 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:01:33 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:01:33 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 22:01:33 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:01:33 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:01:33 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:01:33 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:01:33 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:01:34 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lnuavfhhsmxw|ed4dd2d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lnuavfhhsmxw|ed4dd2d, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:02:06 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT INTO IGNORE meta_db.zql_tables_priv VALUES('[ihainan, snow]', 'db_test', 'tb_name', 'Y', 'N', 'N', 'Y', 'N')
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:53)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IGNORE meta_db.zql_tables_priv VALUES('[ihainan, snow]', 'db_test', 'tb_name', '' at line 1
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1030)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 2 more
+2015-07-27 22:02:15 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:02:15 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:02:15 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 22:02:15 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:02:15 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:02:15 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:02:15 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:02:16 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:02:16 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lnv7ds1m2z782|12fbbad2, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lnv7ds1m2z782|12fbbad2, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:02:30 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT INTO IGNORE meta_db.zql_tables_priv VALUES('ihainan', 'db_test', 'tb_name', 'Y', 'N', 'N', 'Y', 'N')
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:53)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IGNORE meta_db.zql_tables_priv VALUES('ihainan', 'db_test', 'tb_name', 'Y', 'N',' at line 1
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1030)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 2 more
+2015-07-27 22:03:03 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:03:03 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:03:03 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 22:03:03 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:03:03 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:03:03 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:03:03 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:03:03 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:03:04 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lnw8951vbbide|a4ecedd, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lnw8951vbbide|a4ecedd, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:03:04 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT IGNORE INTO meta_db.zql_tables_priv VALUES('ihainan', 'db_test', 'tb_name', 'Y', 'N', 'N', 'Y', 'N')
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`meta_db`.`zql_tables_priv`, CONSTRAINT `zql_tables_priv_ibfk_1` FOREIGN KEY (`User`) REFERENCES `zql_users` (`User`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1015)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 22:03:41 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:03:41 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:03:41 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 22:03:41 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:03:41 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:03:41 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:03:41 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:03:41 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:03:41 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lnx1brgrnfmy|220a44bf, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lnx1brgrnfmy|220a44bf, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:03:42 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT IGNORE INTO meta_db.zql_tables_priv VALUES('ihainan', 'db_test', 'tb_name', 'Y', 'N', 'N', 'Y', 'N')
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`meta_db`.`zql_tables_priv`, CONSTRAINT `zql_tables_priv_ibfk_1` FOREIGN KEY (`User`) REFERENCES `zql_users` (`User`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1015)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 22:04:28 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:04:28 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:04:28 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 22:04:28 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:04:28 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:04:28 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:04:28 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:04:28 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:04:29 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lny1t7ipez0h|3bef1474, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lny1t7ipez0h|3bef1474, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:04:29 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT IGNORE INTO meta_db.zql_tables_priv VALUES('ihainan', 'db_test', 'tb_name', 'Y', 'N', 'N', 'Y', 'N')
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`meta_db`.`zql_tables_priv`, CONSTRAINT `zql_tables_priv_ibfk_2` FOREIGN KEY (`Db`, `Tb`) REFERENCES `zql_tables` (`Db`, `Tb`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1015)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 22:04:58 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:04:58 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:04:58 CST 2015 创建新会话，连接到数据库 db_test
+2015-07-27 22:04:58 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:04:58 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:04:58 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:04:58 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:04:59 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:04:59 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lnyp61q00kqz|4d27ea69, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lnyp61q00kqz|4d27ea69, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:05:00 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT IGNORE INTO meta_db.zql_tables_priv VALUES('ihainan', 'db_test', 'tb_name', 'Y', 'N', 'N', 'Y', 'N')
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`meta_db`.`zql_tables_priv`, CONSTRAINT `zql_tables_priv_ibfk_2` FOREIGN KEY (`Db`, `Tb`) REFERENCES `zql_tables` (`Db`, `Tb`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1015)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 22:06:42 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:06:42 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:06:42 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:06:42 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:06:42 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:06:42 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:06:42 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:06:42 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:06:43 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lo0x7y1n3zsqt|a4ecedd, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lo0x7y1n3zsqt|a4ecedd, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:06:43 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT IGNORE INTO meta_db.zql_tables_priv VALUES('ihainan', 'db_1_1', 'tb_name', 'Y', 'N', 'N', 'Y', 'N')
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`meta_db`.`zql_tables_priv`, CONSTRAINT `zql_tables_priv_ibfk_2` FOREIGN KEY (`Db`, `Tb`) REFERENCES `zql_tables` (`Db`, `Tb`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1015)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 22:07:17 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:07:17 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:07:17 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:07:17 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:07:17 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:07:17 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:07:17 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:07:17 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:07:18 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lo1ob213sw00s|778ebb11, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lo1ob213sw00s|778ebb11, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:14:35 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:14:35 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:14:35 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:14:35 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:14:35 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:14:35 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:14:35 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:14:35 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:14:35 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lob22j14lg5k5|4d27ea69, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lob22j14lg5k5|4d27ea69, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:14:36 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT IGNORE INTO meta_db.zql_tables_priv VALUES('Y', 'N', 'N', 'Y', 'N', 'ihainan', 'db_1_1', 'tb_1_1_1')
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`meta_db`.`zql_tables_priv`, CONSTRAINT `zql_tables_priv_ibfk_1` FOREIGN KEY (`User`) REFERENCES `zql_users` (`User`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1015)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 22:15:07 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:15:07 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:15:07 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:15:07 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:15:07 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:15:07 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:15:07 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:15:07 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:15:08 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lobqzecsd39t|220a44bf, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lobqzecsd39t|220a44bf, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:15:09 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：INSERT IGNORE INTO meta_db.zql_tables_priv VALUES('Y', 'N', 'N', 'Y', 'N', 'ihainan', 'db_1_1', 'tb_1_1_1')
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`meta_db`.`zql_tables_priv`, CONSTRAINT `zql_tables_priv_ibfk_1` FOREIGN KEY (`User`) REFERENCES `zql_users` (`User`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1015)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 22:15:54 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:15:54 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:15:54 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:15:54 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:15:54 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:15:54 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:15:54 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:15:54 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:15:55 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1locr8iajpf9s|63afe611, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1locr8iajpf9s|63afe611, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:16:32 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:16:33 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:16:33 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:16:33 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:16:33 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:16:33 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:16:33 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:16:33 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:16:33 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lodku51djk7k3|4d27ea69, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lodku51djk7k3|4d27ea69, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:36:37 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:36:37 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:36:37 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:36:37 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:36:37 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:36:37 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:36:37 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:36:38 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:36:38 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lp3een16413s0|3bef1474, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lp3een16413s0|3bef1474, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:37:12 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:37:12 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:37:12 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:37:12 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:37:12 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:37:12 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:37:12 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:37:12 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:37:13 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lp457v13re7vl|4ca63aba, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lp457v13re7vl|4ca63aba, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:39:50 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:39:50 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:39:50 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:39:50 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:39:50 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:39:50 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:39:50 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:39:51 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:39:51 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lp7jfk1wgifx2|a4ecedd, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lp7jfk1wgifx2|a4ecedd, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:40:11 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:40:11 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:40:11 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:40:11 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:40:11 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:40:11 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:40:11 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:40:12 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:40:12 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lp7zj8ozq5t6|778ebb11, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lp7zj8ozq5t6|778ebb11, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:44:18 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:44:18 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:44:18 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:44:18 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:44:18 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:44:18 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:44:18 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:44:19 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:44:19 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lpda5ubo3gx4|3b9b9669, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lpda5ubo3gx4|3b9b9669, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:45:01 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:45:02 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:45:02 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:45:02 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:45:02 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:45:02 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:45:02 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:45:02 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:45:02 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lpe7kfkkirhj|557555b8, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lpe7kfkkirhj|557555b8, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:45:03 ERROR InnerDatabases:106 - 在数据库 0 执行 SQL 命令失败：SELECT * FROM %.zql_tables_priv
+cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:104)
+	at cn.edu.bit.linc.zql.ZQLContext.executeSQL(ZQLContext.java:33)
+	at cn.edu.bit.linc.zql.ZQLContext.main(ZQLContext.java:55)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%.zql_tables_priv' at line 1
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1030)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3491)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3423)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1936)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:734)
+	at com.mchange.v2.c3p0.impl.NewProxyStatement.execute(NewProxyStatement.java:1006)
+	at cn.edu.bit.linc.zql.command.SQLCommandManager.execute(SQLCommandManager.java:102)
+	... 7 more
+2015-07-27 22:45:32 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:45:32 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:45:32 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:45:32 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:45:32 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:45:32 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:45:32 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:45:33 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:45:33 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lpev7qip23vf|778ebb11, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lpev7qip23vf|778ebb11, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:45:58 INFO  ZQLContext:27 - 正在初始化系统模块
+2015-07-27 22:45:59 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:45:59 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:45:59 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:45:59 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:45:59 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:45:59 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:45:59 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:45:59 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lpffi7144s8wd|4d27ea69, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lpffi7144s8wd|4d27ea69, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:58:00 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 22:58:00 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:58:00 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:58:00 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:58:00 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:58:00 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:58:00 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:58:00 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:58:01 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lpuw9f1q7vp59|353180dc, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lpuw9f1q7vp59|353180dc, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:58:36 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 22:58:36 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:58:36 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:58:36 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:58:36 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:58:36 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:58:36 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:58:37 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:58:37 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lpvo8snqe1t5|21f47c7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lpvo8snqe1t5|21f47c7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 22:59:01 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 22:59:01 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 22:59:01 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 22:59:01 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 22:59:01 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 22:59:01 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 22:59:01 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 22:59:01 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 22:59:02 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lpw7c191zced|53a15ae7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lpw7c191zced|53a15ae7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 23:00:37 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 23:00:37 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 23:00:37 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 23:00:37 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 23:00:37 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 23:00:37 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 23:00:37 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 23:00:37 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 23:00:37 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lpy9bmur5aof|53622a11, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lpy9bmur5aof|53622a11, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 23:01:46 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 23:01:46 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 23:01:46 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 23:01:46 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 23:01:46 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 23:01:46 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 23:01:46 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 23:01:46 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 23:01:46 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lpzqh21vtgak9|6571e96, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lpzqh21vtgak9|6571e96, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 23:02:07 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 23:02:07 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 23:02:07 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 23:02:07 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 23:02:07 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 23:02:07 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 23:02:07 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 23:02:07 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 23:02:07 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lq06q31saa7dm|5956d3a9, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lq06q31saa7dm|5956d3a9, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 23:03:37 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 23:03:37 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 23:03:37 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 23:03:37 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 23:03:37 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 23:03:37 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 23:03:37 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 23:03:38 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 23:03:38 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lq24li272dif|51b7ecdb, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lq24li272dif|51b7ecdb, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 23:20:47 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 23:20:47 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 23:20:47 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 23:20:47 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 23:20:47 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 23:20:47 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 23:20:47 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 23:20:47 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 23:20:47 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lqo6zofcz1pj|53a15ae7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lqo6zofcz1pj|53a15ae7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 23:20:58 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 23:20:58 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 23:20:58 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 23:20:58 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 23:20:58 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 23:20:58 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 23:20:58 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 23:20:59 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 23:20:59 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lqofmd19b2tng|41990d1a, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lqofmd19b2tng|41990d1a, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 23:21:11 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 23:21:11 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 23:21:11 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 23:21:11 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 23:21:11 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 23:21:11 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 23:21:11 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 23:21:12 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 23:21:12 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lqopnli6x024|51b7ecdb, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lqopnli6x024|51b7ecdb, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 23:21:47 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 23:21:47 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 23:21:47 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 23:21:47 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 23:21:47 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 23:21:47 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 23:21:47 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 23:21:47 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 23:21:47 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lqph39jiodjb|6571e96, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lqph39jiodjb|6571e96, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 23:23:15 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 23:23:15 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 23:23:15 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 23:23:15 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 23:23:15 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 23:23:15 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 23:23:15 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 23:23:16 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 23:23:16 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lqrdm111fsbd4|7595e705, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lqrdm111fsbd4|7595e705, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 23:24:12 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 23:24:12 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 23:24:12 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 23:24:12 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 23:24:12 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 23:24:12 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 23:24:12 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 23:24:12 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 23:24:12 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lqskzn35997w|272b479b, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lqskzn35997w|272b479b, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2015-07-27 23:24:45 INFO  ZQLContext:29 - 正在初始化系统模块
+2015-07-27 23:24:45 INFO  ZQLSession:26 - 用户 ihainan 于 Mon Jul 27 23:24:45 CST 2015 创建新会话，连接到数据库 db_1_1
+2015-07-27 23:24:45 INFO  MetaDatabase:81 - 正在从配置文件中读取元数据库信息
+2015-07-27 23:24:45 INFO  MetaDatabase:103 - 正在创建元数据库
+2015-07-27 23:24:45 INFO  InnerDatabases:55 - 正在从配置文件中读取底层库信息
+2015-07-27 23:24:45 INFO  MLog:80 - MLog clients using log4j logging.
+2015-07-27 23:24:45 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2015-07-27 23:24:46 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge15w9a1lqtamd1qbnmzu|53a15ae7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge15w9a1lqtamd1qbnmzu|53a15ae7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:8889/, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 20, maxStatements -> 180, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]

@@ -60,6 +60,18 @@ public class SQLCommandBuilder {
     }
 
     /**
+     * 更新授权
+     *
+     * @param dbType 底层库类型
+     * @param args   参数列表
+     * @return SQL命令
+     */
+    public InnerSQLCommand updateGrant(Database.DBType dbType, Object... args) {
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].updateGrant(args), args);
+
+    }
+
+    /**
      * 收回权限
      *
      * @param dbType 底层库类型
@@ -168,6 +180,17 @@ public class SQLCommandBuilder {
      */
     public InnerSQLCommand dropDatabase(Database.DBType dbType, String... args) {
         return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].dropDatabase(args), args);
+    }
+
+    /**
+     * 删除数据库 - 更新元数据库
+     *
+     * @param dbType 底层库类型
+     * @param args   参数列表
+     * @return SQL命令
+     */
+    public InnerSQLCommand dropDatabaseMetaDb(Database.DBType dbType, Object... args) {
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].dropDatabaseMetaDb(args), args);
     }
 
     /**

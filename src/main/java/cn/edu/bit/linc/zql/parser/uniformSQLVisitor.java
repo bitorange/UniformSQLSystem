@@ -18,12 +18,6 @@ public interface uniformSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitKeyword(uniformSQLParser.KeywordContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link uniformSQLParser#delimeted_ID}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDelimeted_ID(uniformSQLParser.Delimeted_IDContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#delimited_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

@@ -25,13 +25,6 @@ public class uniformSQLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDelimeted_ID(uniformSQLParser.Delimeted_IDContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitDelimited_statement(uniformSQLParser.Delimited_statementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

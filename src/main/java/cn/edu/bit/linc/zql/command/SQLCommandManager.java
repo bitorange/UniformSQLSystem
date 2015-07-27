@@ -3,7 +3,6 @@ package cn.edu.bit.linc.zql.command;
 import cn.edu.bit.linc.zql.connections.ZQLSession;
 import cn.edu.bit.linc.zql.connections.connector.ConnectionPools;
 import cn.edu.bit.linc.zql.databases.MetaDatabase;
-import cn.edu.bit.linc.zql.exceptions.MetaDatabaseOperationsException;
 import cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError;
 import cn.edu.bit.linc.zql.exceptions.ZQLConnectionException;
 import cn.edu.bit.linc.zql.exceptions.ZQLSyntaxErrorException;
@@ -13,6 +12,7 @@ import cn.edu.bit.linc.zql.parser.visitor.ASTNodeVisitResult;
 import cn.edu.bit.linc.zql.parser.visitor.ZQLVisitor;
 import cn.edu.bit.linc.zql.util.Logger;
 import cn.edu.bit.linc.zql.util.LoggerFactory;
+import dnl.utils.text.table.TextTable;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -21,31 +21,13 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
  * SQL 命令类，用于执行 SQL 命令并保存执行结果
  */
 public class SQLCommandManager {
-    // TODO: 子类重载域
-
-    /**
-     * SQL 命令类型
-     */
-    public enum CommandType {
-        CREATE_DATABASE_STATEMENT,
-        CREATE_EVENT_STATEMENT,
-        DROP_DATABASE_STATEMENT,
-        DROP_USER,
-
-        // -- Update / Query 分割线 --
-
-    }
-
     /**
      * 构造器
      *
@@ -118,12 +100,12 @@ public class SQLCommandManager {
             } catch (SQLException e) {
                 ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError();
                 zqlCommandExecutionError.initCause(e);
-                logger.e("在数据库 " + dbId + " 执行 SQL 命令失败：" + sqlCommand, zqlCommandExecutionError);
+                logger.e("在数据库 " + dbId + " 执行 SQL 命令失败：" + innerSQLCommand.getCommandStr(), zqlCommandExecutionError);
                 return false;
             }
 
             /* 获取结果 */
-            if (isQuery && dbId != 0) {
+            if (isQuery) {
                 try {
                     this.resultSet = statement.getResultSet();
                 } catch (SQLException e) {
@@ -132,9 +114,10 @@ public class SQLCommandManager {
                     logger.e("从底层库 " + dbId + " 中获取 Result Set 失败：" + sqlCommand, zqlCommandExecutionError);
                     return false;
                 }
-            } else if (isQuery && dbId != 0) {
+            } else {
                 try {
-                    this.updateCount = statement.getUpdateCount();
+                    if (updateCount == -1) updateCount = 0;
+                    this.updateCount += statement.getUpdateCount();
                 } catch (SQLException e) {
                     ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError();
                     zqlCommandExecutionError.initCause(e);
@@ -148,22 +131,61 @@ public class SQLCommandManager {
     }
 
     /**
-     * 返回 SQL 命令与执行结果（如果存在）的格式化字符串
-     *
-     * @return SQL 命令与执行结果（如果存在）的格式化字符串
+     * 打印结果
      */
-    @Override
-    public String toString() {
+    public void printResult() throws SQLException {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("SQL Command: " + sqlCommand + "\n");
         if (resultSet != null) {
             // TODO: 格式化 ResultSet
+            System.out.println("QUERY OK!");
+            /* 获取表头 */
+            ResultSetMetaData rsmd;
+            rsmd = resultSet.getMetaData();
+
+
+            ArrayList<String> headerList = new ArrayList<String>();
+            if (rsmd != null) {
+                for (int i = 1; i <= rsmd.getColumnCount(); ++i) {
+                    headerList.add(rsmd.getColumnName(i));
+                }
+            }
+            String[] header = new String[headerList.size()];
+            header = headerList.toArray(header);
+
+            /* 获取表中数据并存放在二维数据中 */
+            int i = 0;
+            int numberOfRows = 0;
+            String[][] data = null;
+            if (resultSet != null) {
+                resultSet.last();
+                numberOfRows = resultSet.getRow();
+                data = new String[numberOfRows][headerList.size()];
+                resultSet.beforeFirst();
+
+                while (resultSet.next()) {
+                    for (int j = 1; j <= rsmd.getColumnCount(); ++j) {
+                        String result = resultSet.getString(j);
+                        data[i][j - 1] = result;
+                    }
+                    i++;
+                }
+            }
+
+            /* 打印表格 */
+            if (data != null) {
+                TextTable textTable = new TextTable(header, data);
+                textTable.setAddRowNumbering(true);
+                textTable.printTable();
+            }
+
+            System.out.println();
+            System.out.println("Total rows: " + numberOfRows);
         } else if (updateCount != -1) {
             stringBuilder.append("Updated " + updateCount + " rows");
         }
-
-        return stringBuilder.toString();
     }
+
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
     private final String sqlCommand;    // SQL 指令
@@ -171,5 +193,4 @@ public class SQLCommandManager {
     private final ZQLSession session;   // 用户会话
     private ResultSet resultSet = null; // 执行结果，仅在执行结果返回 ResultSet 时候该值不为 null
     private int updateCount = -1;       // 更新行数，仅在执行结果返回数值时候该值不为 - 1
-
 }

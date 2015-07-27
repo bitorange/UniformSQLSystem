@@ -119,44 +119,6 @@ public class MetaDatabase extends Database {
         }
     }
 
-    public final static String ADD_NEW_DATABASE_SQL = "INSERT IGNORE INTO %s.zql_dbs VALUES('%s', '%s', '%s', '%s', '%s')";
-
-    /**
-     * zql_dbs 中插入新纪录，用于存储底层库内部数据库的信息
-     *
-     * @param dbId   数据库 ID
-     * @param dbName 新数据库名
-     * @param user   创建用户名
-     * @throws cn.edu.bit.linc.zql.exceptions.MetaDatabaseOperationsException 数据登记到元数据库失败
-     */
-    public static void addNewDatabase(int dbId, String dbName, String user) throws MetaDatabaseOperationsException {
-        InnerDatabases innerDatabases = InnerDatabases.getInstance();
-        ArrayList<InnerDatabase> innerDatabaseArrayList = innerDatabases.getInnerDatabaseArray();
-        if (dbId <= 0 || dbId >= innerDatabaseArrayList.size()) {
-            throw new MetaDatabaseOperationsException("数据库编号超出范围");
-        }
-
-        String innerDbAlias = innerDatabaseArrayList.get(dbId - 1).getDbAlias();
-
-        /* 连接元数据库并执行命令 */
-        ConnectionPools connectionPools = ConnectionPools.getInstance();
-        Connection connection;
-        try {
-            connection = connectionPools.getConnection(0);
-            Statement statement = connection.createStatement();
-            String sqlCommand = String.format(ADD_NEW_DATABASE_SQL, metaDatabase.getMetaDbName(),
-                    dbId, innerDbAlias, dbName, user,
-                    new Timestamp(new Date().getTime()));
-            logger.d("记录数据库到元数据库中：" + sqlCommand);
-            statement.execute(sqlCommand);
-        } catch (SQLException e) {
-            MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException();
-            metaDatabaseOperationsException.initCause(e);
-            logger.e("数据库信息登记到元数据库中失败", e);
-            throw metaDatabaseOperationsException;
-        }
-    }
-
     public final static String DROP_DATABASE_SQL = "DELETE FROM %s.zql_dbs WHERE Db = '%s'";
     public final static String DROP_RELEVANT_TABLES = "DELETE FROM %s.zql_tables WHERE Db = '%s'";
     public final static String DELETE_RELEVANT_PRIV = "DELETE FROM %s.zql_tables_priv WHERE Db = '%s'";

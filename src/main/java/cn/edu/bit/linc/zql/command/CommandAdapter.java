@@ -8,24 +8,30 @@ import cn.edu.bit.linc.zql.databases.Database;
 public abstract class CommandAdapter {
     public static Database.DBType dbType;
     /* 当前以 MySQL 语法为准 */
-    public final static String CREATE_USER = "CREATE USER %s IDENTIFIED BY '%s'";   // CREATE USER ihainan IDENTIFIED BY 123456，只考虑 MySQL
-    public final static String DROP_USER = "DELETE FROM %s.zql_user";  // DROP user ihainan，只考虑 MySQL
+    public final static String CREATE_USER = "INSERT INTO %s.zql_users VALUES('%s', '%s', 'N')";   // CREATE USER ihainan IDENTIFIED BY 123456，只考虑 MySQL
+    public final static String DROP_USER = "DELETE FROM %s.zql_users WHERE User = '%s'";  // DROP user ihainan，只考虑 MySQL
 
-    public final static String GRANT = "GRANT %s ON table_or_view_name TO %s %s";  // GRANT SELECT, DELETE ON table_test TO ihainan, snow [WITH GRANT OPTION]，只考虑 MySQL
+    public final static String GRANT = "INSERT IGNORE INTO %s.zql_tables_priv VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";  // GRANT SELECT, DELETE ON table_test TO ihainan, snow [WITH GRANT OPTION]，只考虑 MySQL
+    public final static String UPDATE_GRANT = "UPDATE %s.zql_tables_priv SET %s WHERE User = '%s' and Db = '%s' and Tb = '%s'";
+
     public final static String REVOKE_GRANT = "REVOKE %s %s ON %s TO %s %s"; // REVOKE SELECT, DELETE ON table_test [GRANT OPTION] FROM ihainan, snow
-    public final static String SHOW_GRANT = "SHOW GRANT %s ON %s %s";   // SHOW GRANT FOR ihainan
+
+    public final static String SHOW_GRANT = "SELECT * FROM %s.zql_tables_priv";   // SHOW GRANT FOR ihainan
 
     public final static String DROP_TABLE = "DROP TABLE %s %s";         // DROP TABLE [IF EXISTS] tb_name
     public final static String ALTER_TABLE_NAME = "RENAME TABLE %s TO %s"; // RENAME TABLE old_table TO backup_table
     public final static String ALTER_COLUMN_NAME = "ALTER TABLE %s CHANGE COLUMN %s %s %s"; // ALTER TABLE table_name CHANGE COLUMN old_name new_name type
-    public final static String SHOW_TABLES = "SHOW TABLES %s %s";    // SHOW TABLES [IN db_test] [LIKE "db_*"]
+    public final static String SHOW_TABLES = "SELECT * FROM %s.zql_tables %s";    // SHOW TABLES [IN db_test] [LIKE "db_*"]
     public final static String SHOW_COLUMNS = "SHOW COLUMNS FROM %s %s"; // SHOW COLUMNS FROM tb_name [FROM db_name]
 
     public final static String CREATE_DATABASE = "CREATE DATABASE %s %s";   // CREATE DATABASE [IF NOT EXISTS] db_name
     public final static String CREATE_DATABASE_META_DB = "INSERT IGNORE INTO %s.zql_dbs VALUES('%s', '%s', '%s', '%s', '%s')";
 
-    public final static String SHOW_DATABASES = "SHOW DATABASES %s";        // SHOW DATABASES [LIKE "fuck you"];
+    public final static String SHOW_DATABASES = "SELECT * FROM %s.zql_dbs %s";        // SHOW DATABASES [LIKE "fuck you"];
+
     public final static String DROP_DATABASE = "DROP DATABASE %s %s";       // DROP DATABASE [IF EXISTS] db_name
+    public final static String DROP_DATABASE_META_DB = "DELETE FROM %s.zql_dbs WHERE Db = '%s'";
+
     public final static String USE_DATABASE = "USE %s"; // USE db_name
 
     /**
@@ -47,6 +53,17 @@ public abstract class CommandAdapter {
      */
     public String grant(Object... args) {
         String command = String.format(GRANT, args);
+        return command;
+    }
+
+    /**
+     * 更新
+     *
+     * @param args 参数列表
+     * @return SQL 命令
+     */
+    public String updateGrant(Object... args) {
+        String command = String.format(UPDATE_GRANT, args);
         return command;
     }
 
@@ -168,6 +185,16 @@ public abstract class CommandAdapter {
      */
     public String dropDatabase(Object... args) {
         return String.format(DROP_DATABASE, args);
+    }
+
+    /**
+     * 删除数据库 - 更新元数据库
+     *
+     * @param args 参数列表
+     * @return SQL 命令
+     */
+    public String dropDatabaseMetaDb(Object... args) {
+        return String.format(DROP_DATABASE_META_DB, args);
     }
 
     /**

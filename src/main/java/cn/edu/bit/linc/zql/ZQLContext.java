@@ -5,6 +5,8 @@ import cn.edu.bit.linc.zql.connections.*;
 import cn.edu.bit.linc.zql.util.Logger;
 import cn.edu.bit.linc.zql.util.LoggerFactory;
 
+import java.sql.SQLException;
+
 /**
  * 统一 SQL 系统入口，用于初始化系统底层的所有模块
  *
@@ -28,6 +30,17 @@ public class ZQLContext {
         ZQLEnv.init();
     }
 
+    private static void executeSQL(String commandStr, ZQLSession session) {
+        SQLCommandManager sqlCommandManager = new SQLCommandManager(commandStr, session);
+        if (sqlCommandManager.execute()) {
+            try {
+                sqlCommandManager.printResult();
+            } catch (SQLException e) {
+                logger.e("打印执行结果失败", e);
+            }
+        }
+    }
+
     /**
      * 系统入口，在此启动系统
      *
@@ -37,11 +50,15 @@ public class ZQLContext {
         ZQLContext zqlContext = new ZQLContext();
 
         /* 伪造会话用于测试，实际过程是每与客户端建立连接便创建一个会话 */
-        ZQLSession session = new ZQLSession("ihainan", "db_test", "12345");
-        SQLCommandManager sqlCommand = new SQLCommandManager("CREATE DATABASE IF NOT EXISTS db_test", session);
-        // sqlCommand = new SQLCommandManager("DROP DATABASE IF EXISTS db_test", session);
-        if (sqlCommand.execute()) {
-            System.out.println(sqlCommand);
-        }
+        ZQLSession session = new ZQLSession("ihainan", "db_1_1", "12345");
+
+        /* 执行命令 */
+        // executeSQL("DROP DATABASE IF EXISTS db_test", session);
+        // executeSQL("CREATE USER ihainan IDENTIFIED BY password", session);
+        // executeSQL("DROP USER ihainan", session);
+        // executeSQL("GRANT SELECT, DELETE, UPDATE ON tb_1_1_1 TO ihainan, snow WITH GRANT OPTION", session);
+        // executeSQL("REVOKE GRANT OPTION FOR SELECT, UPDATE ON tb_1_1_1 FROM ihainan, snow", session);
+        // executeSQL("SHOW GRANT", session);
+        executeSQL("SHOW DATABASES LIKE db%", session);
     }
 }
