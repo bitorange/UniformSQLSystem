@@ -91,20 +91,10 @@ public class MetaDatabase extends Database {
     }
 
     private final static String CREATE_META_DB_SQL = "CREATE DATABASE IF NOT EXISTS %s";
-    private final static String CREATE_ZQL_USERS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_users(User char(64), Password char(41), PRIMARY KEY(User, Password))";
-    private final static String CREATE_ZQL_DBS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_dbs(" +
-            "Inner_db_id int(10), Db_alias char(64), Db char(64), User char(64), Timestamp timestamp, " +
-            "PRIMARY KEY(Inner_db_id, Db_alias, Db), " +
-            "FOREIGN KEY(User) REFERENCES zql_users(User))";
-    private final static String CREATE_ZQL_TABLES_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_tables(Inner_db_id int(10), Db_alias char(64), " +
-            "Db char(64), Tb char(16), User char(64), Timestamp timestamp, " +
-            "PRIMARY KEY(Inner_db_id, Db_alias, Db, Tb), " +
-            "FOREIGN KEY(Inner_db_id, Db_alias, Db) REFERENCES zql_dbs(Inner_db_id, Db_alias, Db), " +
-            "FOREIGN KEY(User) REFERENCES zql_users(User))";
-    private final static String CREATE_ZQL_TABLES_PRIV = "CREATE TABLE IF NOT EXISTS %s.zql_tables_priv(User char(64), Db char(64), " +
-            "Tb char(64), Select_priv enum('Y', 'N'), Insert_priv enum('Y', 'N'), " +
-            "Update_priv enum('Y', 'N'), Delete_priv enum('Y', 'N'), All_priv enum('Y', 'N'), " +
-            "PRIMARY KEY(User, Db, Tb))";
+    private final static String CREATE_ZQL_USERS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_users (User char(64) PRIMARY KEY, Password char(41), Grant_option enum('Y', 'N') DEFAULT 'N') ENGINE=InnoDB";
+    private final static String CREATE_ZQL_DBS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_dbs (Db char(64) PRIMARY KEY, Inner_db_id int(10), Db_alias char(64), User char(64), Timestamp timestamp, FOREIGN KEY(User) REFERENCES zql_users(User) ON UPDATE CASCADE ON DELETE SET NULL) ENGINE=InnoDB";
+    private final static String CREATE_ZQL_TABLES_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_tables (Db char(64), Tb char(16), User char(64), Timestamp timestamp, PRIMARY KEY(Db, Tb), FOREIGN KEY(User) REFERENCES zql_users(User) ON UPDATE CASCADE ON DELETE SET NULL, FOREIGN KEY(Db) REFERENCES zql_dbs(Db) ON UPDATE CASCADE ON DELETE CASCADE) ENGINE=InnoDB";
+    private final static String CREATE_ZQL_TABLES_PRIV = "CREATE TABLE IF NOT EXISTS %s.zql_tables_priv (User char(64), Db char(64), Tb char(16), Select_priv enum('Y', 'N') DEFAULT 'N', Insert_priv enum('Y', 'N') DEFAULT 'N', Update_priv enum('Y', 'N') DEFAULT 'N', Delete_priv enum('Y', 'N') DEFAULT 'N', All_priv enum('Y', 'N') DEFAULT 'N',  PRIMARY KEY(User, Db, Tb), FOREIGN KEY(User) REFERENCES zql_users(User) ON UPDATE CASCADE ON DELETE CASCADE, FOREIGN KEY(Db, Tb) REFERENCES zql_tables(Db, Tb) ON UPDATE CASCADE ON DELETE CASCADE) ENGINE=InnoDB";
 
     /**
      * 创建元数据库
@@ -163,6 +153,41 @@ public class MetaDatabase extends Database {
             MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException();
             metaDatabaseOperationsException.initCause(e);
             logger.e("数据库信息登记到元数据库中失败", e);
+            throw metaDatabaseOperationsException;
+        }
+    }
+
+    public final static String DROP_DATABASE_SQL = "DELETE FROM %s.zql_dbs WHERE Db = '%s'";
+    public final static String DROP_RELEVANT_TABLES = "DELETE FROM %s.zql_tables WHERE Db = '%s'";
+    public final static String DELETE_RELEVANT_PRIV = "DELETE FROM %s.zql_tables_priv WHERE Db = '%s'";
+
+    /**
+     * 从元数据库中清除特定数据库的信息
+     *
+     * @param dbName 数据库名称
+     * @throws MetaDatabaseOperationsException 从元数据库中清除特定数据库的信息失败
+     */
+    public static void dropDatabase(String dbName) throws MetaDatabaseOperationsException {
+        /* 连接元数据库并执行命令 */
+        ConnectionPools connectionPools = ConnectionPools.getInstance();
+        Connection connection;
+        try {
+            connection = connectionPools.getConnection(0);
+            Statement statement = connection.createStatement();
+            String sqlCommandDropDb = String.format(DROP_DATABASE_SQL, metaDatabase.getMetaDbName(), dbName);
+            String sqlCommandDropTables = String.format(DROP_RELEVANT_TABLES, metaDatabase.getMetaDbName(), dbName);
+            String sqlCommandDeleteRelevantPriv = String.format(DELETE_RELEVANT_PRIV, metaDatabase.getMetaDbName(), dbName);
+
+            logger.d("从元数据库 zql_dbs 中删除数据库信息：" + sqlCommandDropDb);
+            statement.execute(sqlCommandDropDb);
+            logger.d("从元数据库 zql_tables 中删除数据库信息：" + sqlCommandDropDb);
+            statement.execute(sqlCommandDropTables);
+            logger.d("从元数据库 zql_tables_priv 中删除数据库信息：" + sqlCommandDropDb);
+            statement.execute(sqlCommandDeleteRelevantPriv);
+        } catch (SQLException e) {
+            MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException();
+            metaDatabaseOperationsException.initCause(e);
+            logger.e("从元数据库删除数据库信息", e);
             throw metaDatabaseOperationsException;
         }
     }
