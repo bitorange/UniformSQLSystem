@@ -1,12 +1,11 @@
 package cn.edu.bit.linc.zql;
 
-import cn.edu.bit.linc.zql.connections.ZQLSession;
-import cn.edu.bit.linc.zql.connections.connector.ConnectionPools;
+import cn.edu.bit.linc.zql.command.HiveCommandAdapter;
+import cn.edu.bit.linc.zql.command.MySQLCommandAdapter;
+import cn.edu.bit.linc.zql.command.SQLCommand;
+import cn.edu.bit.linc.zql.command.SQLCommandBuilder;
 import cn.edu.bit.linc.zql.util.Logger;
 import cn.edu.bit.linc.zql.util.LoggerFactory;
-
-import java.sql.Connection;
-import java.sql.SQLException;
 
 /**
  * 统一 SQL 系统入口，用于初始化系统底层的所有模块
@@ -44,20 +43,8 @@ public class ZQLContext {
         // ZQLSession sessionTwo = new ZQLSession("snow", null, "12345");
         // ZQLSession sessionThree = new ZQLSession("snow", null, "12345");
 
-        /* 测试连接池 */
-        ConnectionPools connectionPools = ConnectionPools.getInstance();
-        Connection connection = null;
-        int dbId = 0;
-        try {
-            logger.i("尝试连接到编号为 " + dbId + " 的数据库");
-            connection = connectionPools.getConnection(dbId);
-        } catch (SQLException e) {
-            logger.e("获取编号为 " + dbId + " 的数据库的连接失败");
-        }
-
-        if (connection != null) {
-            logger.i("成功连接到编号为 " + dbId + " 的数据库");
-        }
-
+        SQLCommand sqlCommand = new SQLCommand("CREATE DATABASE db_test");
+        sqlCommand.execute();
+        System.out.println(sqlCommand);
     }
 }

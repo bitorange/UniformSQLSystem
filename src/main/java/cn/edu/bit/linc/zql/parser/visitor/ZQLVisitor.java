@@ -17,7 +17,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     /**
      * 命令生成器
      */
-    public SQLCommandBuilder sqlCommandBuilder = new SQLCommandBuilder()
+    public final static SQLCommandBuilder sqlCommandBuilder = new SQLCommandBuilder()
             .addAdapter(new MySQLCommandAdapter())
             .addAdapter(new HiveCommandAdapter());
 
@@ -33,7 +33,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         int dbId = Integer.valueOf(ZQLEnv.get("innerdb.dafault.innerdb") == null ? "1" : ZQLEnv.get("innerdb.dafault.innerdb"));
         ArrayList<InnerDatabase> innerDatabasesArrayList = InnerDatabases.getInstance().getInnerDatabaseArray();
         Database.DBType dbType = innerDatabasesArrayList.get(dbId).getDbType();
-        String command = sqlCommandBuilder.createDatabase(dbType, visitSchemaNameNodeResult.getSqlCommandOrValue(), ctx.IF() == null);
+        String command = sqlCommandBuilder.createDatabase(dbType, visitSchemaNameNodeResult.getSqlCommandOrValue(), ctx.IF() != null);
 
         return new ASTNodeVisitResult(command, SQLCommand.CommandType.CREATE_DATABASE_STATEMENT, dbId);
     }

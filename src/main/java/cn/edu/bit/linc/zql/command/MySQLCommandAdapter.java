@@ -7,6 +7,7 @@ import cn.edu.bit.linc.zql.databases.Database;
  */
 public class MySQLCommandAdapter extends CommandAdapter {
     public final static String CREATE_DATABASE = "CREATE DATABASE %s %s";
+
     static {
         dbType = Database.DBType.MySQL;
     }
