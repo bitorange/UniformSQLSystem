@@ -12,6 +12,24 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface uniformSQLVisitor<T> extends ParseTreeVisitor<T> {
 	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#keyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitKeyword(uniformSQLParser.KeywordContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#delimeted_ID}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDelimeted_ID(uniformSQLParser.Delimeted_IDContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#delimited_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDelimited_statement(uniformSQLParser.Delimited_statementContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#integer_types}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -24,41 +42,17 @@ public interface uniformSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRelational_op(uniformSQLParser.Relational_opContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link uniformSQLParser#charset_name}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCharset_name(uniformSQLParser.Charset_nameContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#cast_data_type}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitCast_data_type(uniformSQLParser.Cast_data_typeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link uniformSQLParser#search_modifier}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSearch_modifier(uniformSQLParser.Search_modifierContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link uniformSQLParser#transcoding_name}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTranscoding_name(uniformSQLParser.Transcoding_nameContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#interval_unit}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitInterval_unit(uniformSQLParser.Interval_unitContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link uniformSQLParser#collation_names}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCollation_names(uniformSQLParser.Collation_namesContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#string_literal}.
 	 * @param ctx the parse tree
@@ -137,6 +131,12 @@ public interface uniformSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitSchema_name(uniformSQLParser.Schema_nameContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#database_name}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDatabase_name(uniformSQLParser.Database_nameContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#table_name}.
 	 * @param ctx the parse tree
@@ -245,6 +245,48 @@ public interface uniformSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAlias(uniformSQLParser.AliasContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#password}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPassword(uniformSQLParser.PasswordContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#server_alias}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitServer_alias(uniformSQLParser.Server_aliasContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#role_name}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRole_name(uniformSQLParser.Role_nameContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#group_name}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGroup_name(uniformSQLParser.Group_nameContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#principal_name}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrincipal_name(uniformSQLParser.Principal_nameContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#any_name}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAny_name(uniformSQLParser.Any_nameContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#priv_type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPriv_type(uniformSQLParser.Priv_typeContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#expression}.
 	 * @param ctx the parse tree
@@ -366,12 +408,6 @@ public interface uniformSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCase_when_statement2(uniformSQLParser.Case_when_statement2Context ctx);
 	/**
-	 * Visit a parse tree produced by {@link uniformSQLParser#match_against_statement}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMatch_against_statement(uniformSQLParser.Match_against_statementContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#column_spec}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -419,12 +455,6 @@ public interface uniformSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitTable_factor3(uniformSQLParser.Table_factor3Context ctx);
-	/**
-	 * Visit a parse tree produced by {@link uniformSQLParser#table_factor4}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTable_factor4(uniformSQLParser.Table_factor4Context ctx);
 	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#table_atom}.
 	 * @param ctx the parse tree
@@ -720,6 +750,18 @@ public interface uniformSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLength(uniformSQLParser.LengthContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#varchar_length}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVarchar_length(uniformSQLParser.Varchar_lengthContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#binary_length}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBinary_length(uniformSQLParser.Binary_lengthContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#alter_table_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -768,6 +810,12 @@ public interface uniformSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDrop_table_statement(uniformSQLParser.Drop_table_statementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#drop_view_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDrop_view_statement(uniformSQLParser.Drop_view_statementContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#truncate_table_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -792,9 +840,69 @@ public interface uniformSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAlter_view_statement(uniformSQLParser.Alter_view_statementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link uniformSQLParser#drop_view_statement}.
+	 * Visit a parse tree produced by {@link uniformSQLParser#create_event_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDrop_view_statement(uniformSQLParser.Drop_view_statementContext ctx);
+	T visitCreate_event_statement(uniformSQLParser.Create_event_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#drop_event_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDrop_event_statement(uniformSQLParser.Drop_event_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#grant_event_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGrant_event_statement(uniformSQLParser.Grant_event_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#principal_specification}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrincipal_specification(uniformSQLParser.Principal_specificationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#revoke_event_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRevoke_event_statement(uniformSQLParser.Revoke_event_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#show_event_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShow_event_statement(uniformSQLParser.Show_event_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#show_specification}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShow_specification(uniformSQLParser.Show_specificationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#set_event_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSet_event_statement(uniformSQLParser.Set_event_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#use_event_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUse_event_statement(uniformSQLParser.Use_event_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#service_event_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitService_event_statement(uniformSQLParser.Service_event_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#update_statements}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUpdate_statements(uniformSQLParser.Update_statementsContext ctx);
 }

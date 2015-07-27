@@ -9,6 +9,7 @@ public class ASTNodeVisitResult {
     private String sqlCommandOrValue;
     private SQLCommand.CommandType commandType;
     private Integer dbId;
+    private String[] args;
 
     /**
      * 获取底层库编号
@@ -38,15 +39,29 @@ public class ASTNodeVisitResult {
     }
 
     /**
+     * 获取 SQL 命令参数
+     *
+     * @return SQL 命令参数
+     */
+    public String[] getArgs() {
+        return args;
+    }
+
+    /**
      * 构造函数
      *
      * @param result      节点访问结果
      * @param commandType 操作类型
      * @param dbId        底层库编号
+     * @param args        SQL 命令参数
      */
-    public ASTNodeVisitResult(String result, SQLCommand.CommandType commandType, Integer dbId) {
+    public ASTNodeVisitResult(String result, SQLCommand.CommandType commandType, Integer dbId, String[] args) {
         this.sqlCommandOrValue = result;
         this.commandType = commandType;
         this.dbId = dbId;
+        if(args != null && args.length > 0) {
+            this.args = new String[args.length];
+            System.arraycopy(args, 0, this.args, 0, args.length);
+        }
     }
 }

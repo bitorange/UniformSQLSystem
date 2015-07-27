@@ -26,17 +26,29 @@ public class SQLCommandBuilder {
         return new SQLCommandBuilder(commandAdapters);
     }
 
+
     /**
      * 创建数据库
      *
-     * @param dbType        数据库类型
-     * @param dbName        数据库名
-     * @param checkIsExists 是否检查数据库已经存在
+     * @param dbType 底层库类型
+     * @param args   参数列表
      * @return SQL 命令
      */
-    public String createDatabase(Database.DBType dbType, String dbName, Boolean checkIsExists) {
-        return commandAdapters[dbType.ordinal()].createDatabase(dbName, checkIsExists);
+    public String createDatabase(Database.DBType dbType, String... args) {
+        return commandAdapters[dbType.ordinal()].createDatabase(args);
     }
+
+    /**
+     * 删除数据库
+     *
+     * @param dbType 底层库类型
+     * @param args   参数列表
+     * @return SQL命令
+     */
+    public String dropDatabase(Database.DBType dbType, String... args) {
+        return commandAdapters[dbType.ordinal()].dropDatabase(args);
+    }
+
 
     /**
      * 测试函数
@@ -45,6 +57,7 @@ public class SQLCommandBuilder {
      */
     public static void main(String[] args) {
         SQLCommandBuilder builder = new SQLCommandBuilder().addAdapter(new MySQLCommandAdapter());
-        System.out.println(builder.createDatabase(Database.DBType.MySQL, "db_name", true));
+        String[] sqlArgs = new String[]{"db_test", "IF NOT EXISTS"};
+        System.out.println(builder.createDatabase(Database.DBType.MySQL, sqlArgs));
     }
 }

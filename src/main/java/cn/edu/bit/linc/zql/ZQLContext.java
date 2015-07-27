@@ -1,9 +1,7 @@
 package cn.edu.bit.linc.zql;
 
-import cn.edu.bit.linc.zql.command.HiveCommandAdapter;
-import cn.edu.bit.linc.zql.command.MySQLCommandAdapter;
 import cn.edu.bit.linc.zql.command.SQLCommand;
-import cn.edu.bit.linc.zql.command.SQLCommandBuilder;
+import cn.edu.bit.linc.zql.connections.*;
 import cn.edu.bit.linc.zql.util.Logger;
 import cn.edu.bit.linc.zql.util.LoggerFactory;
 
@@ -38,13 +36,12 @@ public class ZQLContext {
     public static void main(String[] args) {
         ZQLContext zqlContext = new ZQLContext();
 
-        /* 伪造会话用于测试，实际是每与客户端建立连接便创建一个会话 */
-        // ZQLSession session = new ZQLSession("ihainan", "db_test", "12345");
-        // ZQLSession sessionTwo = new ZQLSession("snow", null, "12345");
-        // ZQLSession sessionThree = new ZQLSession("snow", null, "12345");
-
-        SQLCommand sqlCommand = new SQLCommand("CREATE DATABASE db_test");
-        sqlCommand.execute();
-        System.out.println(sqlCommand);
+        /* 伪造会话用于测试，实际过程是每与客户端建立连接便创建一个会话 */
+        ZQLSession session = new ZQLSession("ihainan", "db_test", "12345");
+        SQLCommand sqlCommand = new SQLCommand("CREATE DATABASE IF NOT EXISTS db_test", session);
+        sqlCommand = new SQLCommand("DROP DATABASE IF EXISTS db_test", session);
+        if (sqlCommand.execute()) {
+            System.out.println(sqlCommand);
+        }
     }
 }

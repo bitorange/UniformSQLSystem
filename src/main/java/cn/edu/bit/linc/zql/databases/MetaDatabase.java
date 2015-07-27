@@ -2,12 +2,13 @@ package cn.edu.bit.linc.zql.databases;
 
 import cn.edu.bit.linc.zql.ZQLEnv;
 import cn.edu.bit.linc.zql.connections.connector.ConnectionPools;
+import cn.edu.bit.linc.zql.exceptions.MetaDatabaseOperationsException;
 import cn.edu.bit.linc.zql.util.Logger;
 import cn.edu.bit.linc.zql.util.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 元数据库类，存储元数据相关的信息与操作
@@ -126,5 +127,75 @@ public class MetaDatabase extends Database {
             logger.f("创建元数据库失败", e);
             System.exit(0);
         }
+    }
+
+    public final static String ADD_NEW_DATABASE_SQL = "INSERT IGNORE INTO %s.zql_dbs VALUES('%s', '%s', '%s', '%s', '%s')";
+
+    /**
+     * zql_dbs 中插入新纪录，用于存储底层库内部数据库的信息
+     *
+     * @param dbId   数据库 ID
+     * @param dbName 新数据库名
+     * @param user   创建用户名
+     * @throws cn.edu.bit.linc.zql.exceptions.MetaDatabaseOperationsException 数据登记到元数据库失败
+     */
+    public static void addNewDatabase(int dbId, String dbName, String user) throws MetaDatabaseOperationsException {
+        InnerDatabases innerDatabases = InnerDatabases.getInstance();
+        ArrayList<InnerDatabase> innerDatabaseArrayList = innerDatabases.getInnerDatabaseArray();
+        if (dbId <= 0 || dbId >= innerDatabaseArrayList.size()) {
+            throw new MetaDatabaseOperationsException("数据库编号超出范围");
+        }
+
+        String innerDbAlias = innerDatabaseArrayList.get(dbId - 1).getDbAlias();
+
+        /* 连接元数据库并执行命令 */
+        ConnectionPools connectionPools = ConnectionPools.getInstance();
+        Connection connection;
+        try {
+            connection = connectionPools.getConnection(0);
+            Statement statement = connection.createStatement();
+            String sqlCommand = String.format(ADD_NEW_DATABASE_SQL, metaDatabase.getMetaDbName(),
+                    dbId, innerDbAlias, dbName, user,
+                    new Timestamp(new Date().getTime()));
+            logger.d("记录数据库到元数据库中：" + sqlCommand);
+            statement.execute(sqlCommand);
+        } catch (SQLException e) {
+            MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException();
+            metaDatabaseOperationsException.initCause(e);
+            logger.e("数据库信息登记到元数据库中失败", e);
+            throw metaDatabaseOperationsException;
+        }
+    }
+
+    public final static String SELECT_DB_FORM_ZQL_DBS_SQL = "SELECT * FROM %s.zql_dbs WHERE Db = '%s'";
+
+    /**
+     * 获取指定名字数据库所在的底层库
+     *
+     * @param dbName 数据库名
+     * @return 底层库 ID，如果元数据库中没有记录，则返回 1
+     * @throws cn.edu.bit.linc.zql.exceptions.MetaDatabaseOperationsException 从元数据库中查询某数据库所述的底层库失败
+     */
+    public int getInnerDatabaseId(String dbName) throws MetaDatabaseOperationsException {
+        /* 连接元数据库并执行命令 */
+        ConnectionPools connectionPools = ConnectionPools.getInstance();
+        Connection connection;
+        try {
+            connection = connectionPools.getConnection(0);
+            Statement statement = connection.createStatement();
+            String sqlCommand = String.format(SELECT_DB_FORM_ZQL_DBS_SQL, metaDatabase.getMetaDbName(), dbName);
+            logger.d("从元数据库中查询某数据库所述的底层库：" + sqlCommand);
+            ResultSet resultSet = statement.executeQuery(sqlCommand);
+            while (resultSet.next()) {
+                int id = Integer.valueOf(resultSet.getString("Inner_db_id"));
+                return id;
+            }
+        } catch (SQLException e) {
+            MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException();
+            metaDatabaseOperationsException.initCause(e);
+            logger.e("从元数据库中查询某数据库所述的底层库", e);
+            throw metaDatabaseOperationsException;
+        }
+        return 1;   // 默认使用第 1 个底层库
     }
 }

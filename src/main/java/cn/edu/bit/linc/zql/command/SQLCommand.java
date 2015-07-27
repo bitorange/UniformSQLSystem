@@ -1,6 +1,9 @@
 package cn.edu.bit.linc.zql.command;
 
+import cn.edu.bit.linc.zql.connections.ZQLSession;
 import cn.edu.bit.linc.zql.connections.connector.ConnectionPools;
+import cn.edu.bit.linc.zql.databases.MetaDatabase;
+import cn.edu.bit.linc.zql.exceptions.MetaDatabaseOperationsException;
 import cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError;
 import cn.edu.bit.linc.zql.exceptions.ZQLConnectionException;
 import cn.edu.bit.linc.zql.exceptions.ZQLSyntaxErrorException;
@@ -27,14 +30,15 @@ import java.sql.Statement;
  * SQL 命令类，用于执行 SQL 命令并保存执行结果
  */
 public class SQLCommand {
-    private final Logger logger = LoggerFactory.getLogger(getClass());
+    // TODO: 子类重载域
 
     /**
      * SQL 命令类型
      */
     public enum CommandType {
-        CREATE_DATABASE_STATEMENT
-
+        CREATE_DATABASE_STATEMENT,
+        CREATE_EVENT_STATEMENT,
+        DROP_DATABASE_STATEMENT,
         // -- Update / Query 分割线 --
 
     }
@@ -43,9 +47,11 @@ public class SQLCommand {
      * 构造器
      *
      * @param sqlCommand 希望执行的 SQL 命令
+     * @param session    用户会话
      */
-    public SQLCommand(String sqlCommand) {
+    public SQLCommand(String sqlCommand, ZQLSession session) {
         this.sqlCommand = sqlCommand;
+        this.session = session;
     }
 
     /**
@@ -74,6 +80,11 @@ public class SQLCommand {
         ParseTree tree = parser.root_statement();
         ZQLVisitor visitor = new ZQLVisitor();
         ASTNodeVisitResult visitResult = visitor.visit(tree);
+        if (visitResult == null) {
+            ZQLCommandExecutionError zqlConnectionException = new ZQLCommandExecutionError();
+            logger.e("反向生成 SQL 命令失败", zqlConnectionException);
+            return false;
+        }
 
         /* 通过连接池连接底层库 */
         int dbId = visitResult.getDbId();
@@ -91,8 +102,9 @@ public class SQLCommand {
         }
 
         /* 交付底层库执行 SQL 命令 */
-        boolean isQuery = true;
+        boolean isQuery;
         try {
+            logger.d("在底层库 " + dbId + " 中执行指令 " + visitResult.getSqlCommandOrValue());
             isQuery = statement.execute(visitResult.getSqlCommandOrValue());
         } catch (SQLException e) {
             ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError();
@@ -122,6 +134,17 @@ public class SQLCommand {
             }
         }
 
+        // TODO:
+        /* 更新元数据库 */
+        if (visitResult.getCommandType() == CommandType.CREATE_DATABASE_STATEMENT && this.updateCount != -1) {
+            try {
+                metaDatabase.addNewDatabase(dbId, visitResult.getArgs()[1], session.getUserName());
+            } catch (MetaDatabaseOperationsException e) {
+                logger.e("更新元数据库失败", e);
+                return false;
+            }
+        }
+
         return true;
     }
 
@@ -143,7 +166,10 @@ public class SQLCommand {
         return stringBuilder.toString();
     }
 
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     private final String sqlCommand;    // SQL 指令
+    private final MetaDatabase metaDatabase = MetaDatabase.getInstance();
+    private final ZQLSession session;   // 用户会话
     private ResultSet resultSet = null; // 执行结果，仅在执行结果返回 ResultSet 时候该值不为 null
     private int updateCount = -1;       // 更新行数，仅在执行结果返回数值时候该值不为 - 1
 }
