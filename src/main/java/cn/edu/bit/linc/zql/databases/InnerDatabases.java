@@ -6,6 +6,8 @@ import cn.edu.bit.linc.zql.util.Logger;
 import cn.edu.bit.linc.zql.util.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 数据库底层库管理类
@@ -52,6 +54,7 @@ public class InnerDatabases {
     private void getInnerDatabasesFromConfigurationFile() {
         logger.i("正在从配置文件中读取底层库信息");
         int dbNo = 1;
+        Map<String, Integer> aliasHashMap = new HashMap<String, Integer>();
         while (true) {
             String prefix = "innerdb.db" + dbNo;
             if (ZQLEnv.get(prefix) != null
@@ -61,6 +64,18 @@ public class InnerDatabases {
                 String dbHost = ZQLEnv.get(prefix + ".host");
                 String dbUser = ZQLEnv.get(prefix + ".username");
                 String dbPassword = ZQLEnv.get(prefix + ".password");
+                if (dbAlias == null || dbHost == null | dbUser == null || dbPassword == null) {
+                    logger.f("底层数据库 " + dbNo + " 配置项不完整");
+                    System.exit(0);
+                }
+
+                // 检测别名是否冲突
+                Integer preId = aliasHashMap.put(dbAlias, dbNo);
+                if (preId != null) {
+                    logger.f("数据库 " + dbNo + " 与 " + preId + " 的别名发生冲突");
+                    System.exit(-1);
+                }
+
                 Database.DBType dbType = null;
                 try {
                     dbType = Database.DBType.valueOf(ZQLEnv.get(prefix + ".type"));

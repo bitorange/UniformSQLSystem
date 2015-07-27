@@ -1,4 +1,4 @@
-package cn.edu.bit.linc.zql.parser.command;
+package cn.edu.bit.linc.zql.command;
 
 /**
  * Hive SQL 命令生成适配器

@@ -1,7 +1,6 @@
 package cn.edu.bit.linc.zql.parser.visitor;
 
-import cn.edu.bit.linc.zql.parser.command.CommandAdapter;
-import cn.edu.bit.linc.zql.parser.command.SQLCommand;
+import cn.edu.bit.linc.zql.command.*;
 
 /**
  * 访问结果类

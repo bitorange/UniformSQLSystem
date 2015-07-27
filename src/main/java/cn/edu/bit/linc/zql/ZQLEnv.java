@@ -19,7 +19,8 @@ public class ZQLEnv {
 
     /** 从配置文件中读取系统配置项，存储在 CONF_MAP 对象中 */
     static {
-        // TODO: 默认系统配置项
+        /* 默认系统配置项 */
+        CONF_MAP.put("innerdb.dafault.innerdb", "1");   // 默认底层库编号
 
         /* 读取配置文件 */
         try {
@@ -29,10 +30,6 @@ public class ZQLEnv {
             logger.f("找不到配置文件 " + CONFIG_FILE_PATH, e);
             System.exit(-1);
         }
-
-        /* 检查配置项 */
-        // TODO: 检查底层库编号是否正确
-        // TODO: 检查底层库别名是否冲突
     }
 
     /**

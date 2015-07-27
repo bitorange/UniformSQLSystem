@@ -40,9 +40,9 @@ public class ZQLContext {
         ZQLContext zqlContext = new ZQLContext();
 
         /* 伪造会话用于测试，实际是每与客户端建立连接便创建一个会话 */
-        ZQLSession session = new ZQLSession("ihainan", "db_test", "12345");
-        ZQLSession sessionTwo = new ZQLSession("snow", null, "12345");
-        ZQLSession sessionThree = new ZQLSession("snow", null, "12345");
+        // ZQLSession session = new ZQLSession("ihainan", "db_test", "12345");
+        // ZQLSession sessionTwo = new ZQLSession("snow", null, "12345");
+        // ZQLSession sessionThree = new ZQLSession("snow", null, "12345");
 
         /* 测试连接池 */
         ConnectionPools connectionPools = ConnectionPools.getInstance();

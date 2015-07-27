@@ -4,7 +4,7 @@ import cn.edu.bit.linc.zql.ZQLEnv;
 import cn.edu.bit.linc.zql.databases.Database;
 import cn.edu.bit.linc.zql.databases.InnerDatabase;
 import cn.edu.bit.linc.zql.databases.InnerDatabases;
-import cn.edu.bit.linc.zql.parser.command.*;
+import cn.edu.bit.linc.zql.command.*;
 import cn.edu.bit.linc.zql.parser.uniformSQLBaseVisitor;
 import cn.edu.bit.linc.zql.parser.uniformSQLParser;
 
@@ -41,7 +41,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     /**
      * 获取模式名、数据库名
      *
-     * @param ctx 节点上斜纹
+     * @param ctx 节点上下文
      * @return 模式名、数据库名
      */
     @Override

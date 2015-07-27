@@ -1,4 +1,4 @@
-package cn.edu.bit.linc.zql.parser.command;
+package cn.edu.bit.linc.zql.command;
 
 import cn.edu.bit.linc.zql.databases.Database;
 

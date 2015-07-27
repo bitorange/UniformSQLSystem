@@ -13,9 +13,6 @@
     <!-- 元数据库的数据库名 -->
     <entry key="metadb.dbname">meta_db</entry>
 
-    <!-- 元数据库 JDBC 驱动 -->
-    <entry key="metadb.jdbc.driver">com.mysql.jdbc.Driver</entry>
-
 
     <!-- _________________________________ 底层库相关 _________________________________ -->
     <!-- 是否开启底层库 1 -->
@@ -36,14 +33,11 @@
     <!-- 底层库 1 用户密码 -->
     <entry key="innerdb.db1.password">root</entry>
 
-    <!-- 底层库 1 JDBC 驱动 -->
-    <entry key="innerdb.db1.jdbc.driver">com.mysql.jdbc.Driver</entry>
-
     <!-- 底层库 2 类型，可填：MySQL / Hive -->
     <entry key="innerdb.db2">enable</entry>
 
     <!-- 底层库 2 别名 -->
-    <entry key="innerdb.db1.alias">db_hive</entry>
+    <entry key="innerdb.db2.alias">db_hive</entry>
 
     <entry key="innerdb.db2.type">Hive</entry>
 
@@ -56,19 +50,7 @@
     <!-- 底层库 2 用户密码 -->
     <entry key="innerdb.db2.password">hadoop</entry>
 
-    <!-- 底层库 2 JDBC 驱动 -->
-    <entry key="innerdb.db2.jdbc.driver">org.apache.hive.jdbc.HiveDriver</entry>
-
-
-    <!-- _________________________________ JDBC 连接池相关 _________________________________ -->
-
-    <!-- _________________________________ 会话管理相关 _________________________________ -->
-
-
     <!-- _________________________________ 默认底层库相关 _________________________________ -->
     <!-- 默认底层库的编号 -->
     <entry key="innerdb.dafault.innerdb">1</entry>
-
-    <!-- 默认底层库中的默认数据库 -->
-    <entry key="innerdb.dafault.database">db_test</entry>
 </property>

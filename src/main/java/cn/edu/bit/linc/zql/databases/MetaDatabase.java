@@ -82,6 +82,10 @@ public class MetaDatabase extends Database {
         String user = ZQLEnv.get("metadb.username");
         String password = ZQLEnv.get("metadb.password");
         String dbName = ZQLEnv.get("metadb.dbname");
+        if (host == null || user == null || password == null || dbName == null) {
+            logger.f("元数据库配置项不完整");
+            System.exit(0);
+        }
         metaDatabase = new MetaDatabase(host, user, password, dbName);
     }
 

@@ -1,4 +1,4 @@
-package cn.edu.bit.linc.zql.parser.command;
+package cn.edu.bit.linc.zql.command;
 
 /**
  * SQL 命令类，用于执行 SQL 命令并保存执行结果
