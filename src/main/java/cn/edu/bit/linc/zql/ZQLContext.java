@@ -38,6 +38,10 @@ public class ZQLContext {
             } catch (SQLException e) {
                 logger.e("打印执行结果失败", e);
             }
+            System.out.println("执行 SQL 命令 `" + commandStr + "` 成功 \n" );
+        }
+        else{
+            System.out.println("执行 SQL 命令 `" + commandStr + "` 失败 \n" );
         }
     }
 
@@ -53,12 +57,25 @@ public class ZQLContext {
         ZQLSession session = new ZQLSession("ihainan", "db_1_1", "12345");
 
         /* 执行命令 */
+        // executeSQL("CREATE USER ihainan IDENTIFIED BY f123345", session);           // 创建用户
+        // executeSQL("CREATE USER_ERROR ihainan IDENTIFIED BY f123345", session);     // 创建用户 - 错误语句
+        // executeSQL("CREATE USER ihainan IDENTIFIED BY f123345", session);           // 创建用户 - 重复创建
+        // executeSQL("CREATE USER ihainan72 IDENTIFIED BY f123345", session);         // 创建并删除用户
+        // executeSQL("DROP USER ihainan72", session);
+
+        executeSQL("CREATE DATABASE db_1", session);        // 创建数据库
+        executeSQL("CREATE DATABASE db_2", session);        // 创建并删除数据库
+        executeSQL("DROP DATABASE db_2", session);
+
+        // executeSQL("GRANT GRANT OPTION FOR SELECT, DELETE, INSERT ON tabl");
+
+
         // executeSQL("DROP DATABASE IF EXISTS db_test", session);
         // executeSQL("CREATE USER ihainan IDENTIFIED BY password", session);
         // executeSQL("DROP USER ihainan", session);
         // executeSQL("GRANT SELECT, DELETE, UPDATE ON tb_1_1_1 TO ihainan, snow WITH GRANT OPTION", session);
         // executeSQL("REVOKE GRANT OPTION FOR SELECT, UPDATE ON tb_1_1_1 FROM ihainan, snow", session);
         // executeSQL("SHOW GRANT", session);
-        executeSQL("SHOW DATABASES LIKE db%", session);
+        // executeSQL("SHOW DATABASES LIKE db%", session);
     }
 }

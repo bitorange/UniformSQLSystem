@@ -834,23 +834,23 @@ public interface uniformSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAlter_view_statement(uniformSQLParser.Alter_view_statementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link uniformSQLParser#create_event_statement}.
+	 * Visit a parse tree produced by {@link uniformSQLParser#create_user_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCreate_event_statement(uniformSQLParser.Create_event_statementContext ctx);
+	T visitCreate_user_statement(uniformSQLParser.Create_user_statementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link uniformSQLParser#drop_event_statement}.
+	 * Visit a parse tree produced by {@link uniformSQLParser#drop_user_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDrop_event_statement(uniformSQLParser.Drop_event_statementContext ctx);
+	T visitDrop_user_statement(uniformSQLParser.Drop_user_statementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link uniformSQLParser#grant_event_statement}.
+	 * Visit a parse tree produced by {@link uniformSQLParser#grant_privilege_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitGrant_event_statement(uniformSQLParser.Grant_event_statementContext ctx);
+	T visitGrant_privilege_statement(uniformSQLParser.Grant_privilege_statementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#principal_specification}.
 	 * @param ctx the parse tree
@@ -858,11 +858,11 @@ public interface uniformSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrincipal_specification(uniformSQLParser.Principal_specificationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link uniformSQLParser#revoke_event_statement}.
+	 * Visit a parse tree produced by {@link uniformSQLParser#revoke_privilege_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitRevoke_event_statement(uniformSQLParser.Revoke_event_statementContext ctx);
+	T visitRevoke_privilege_statement(uniformSQLParser.Revoke_privilege_statementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#show_event_statement}.
 	 * @param ctx the parse tree
@@ -888,15 +888,21 @@ public interface uniformSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitUse_event_statement(uniformSQLParser.Use_event_statementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link uniformSQLParser#service_event_statement}.
+	 * Visit a parse tree produced by {@link uniformSQLParser#server_event_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitService_event_statement(uniformSQLParser.Service_event_statementContext ctx);
+	T visitServer_event_statement(uniformSQLParser.Server_event_statementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link uniformSQLParser#update_statements}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitUpdate_statements(uniformSQLParser.Update_statementsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link uniformSQLParser#delete_statements}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDelete_statements(uniformSQLParser.Delete_statementsContext ctx);
 }

@@ -46,8 +46,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     @Override
     public ASTNodeVisitResult visitUser_name(uniformSQLParser.User_nameContext ctx) {
         String value = ctx.any_name().getText();
-        ASTNodeVisitResult result = new ASTNodeVisitResult(value, null, null);
-        return result;
+        return new ASTNodeVisitResult(value, null, null);
     }
 
     /**
@@ -59,9 +58,9 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     @Override
     public ASTNodeVisitResult visitPassword(uniformSQLParser.PasswordContext ctx) {
         String value = ctx.any_name().getText();
-        ASTNodeVisitResult result = new ASTNodeVisitResult(value, null, null);
-        return result;
+        return new ASTNodeVisitResult(value, null, null);
     }
+
 
     /**
      * 创建用户 Statement
@@ -70,14 +69,15 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
      * @return 节点访问结果
      */
     @Override
-    public ASTNodeVisitResult visitCreate_event_statement(uniformSQLParser.Create_event_statementContext ctx) {
-        /* 获取子节点数据 */
+    public ASTNodeVisitResult visitCreate_user_statement(uniformSQLParser.Create_user_statementContext ctx) {
         ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
         ArrayList<Integer> dbIds = new ArrayList<Integer>();
+
+        /* 获取子节点数据 */
         String userName = visit(ctx.user_name()).getValue();
         String passWord = visit(ctx.password()).getValue();
 
-        /* 元数据库命令 */
+         /* 元数据库命令 */
         InnerSQLCommand metaDbCommand = sqlCommandBuilder.createUser(Database.DBType.MySQL, metaDatabase.getMetaDbName(), userName, passWord);
         commands.add(metaDbCommand);
         dbIds.add(0);
@@ -86,13 +86,13 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
-     * 授权用户
+     * 授权 statement
      *
      * @param ctx 节点上下文
      * @return 节点访问结果
      */
     @Override
-    public ASTNodeVisitResult visitGrant_event_statement(uniformSQLParser.Grant_event_statementContext ctx) {
+    public ASTNodeVisitResult visitGrant_privilege_statement(uniformSQLParser.Grant_privilege_statementContext ctx) {
         ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
         ArrayList<Integer> dbIds = new ArrayList<Integer>();
 
@@ -115,7 +115,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             specs.add(visitPrincipalSpeNodeResult.getValue());
         }
 
-        boolean withGrantOption = ctx.WITH() == null;
+        // boolean withGrantOption = ctx.WITH() == null;
 
         /* 元数据库命令 */
         // TODO: 权限检查
@@ -156,7 +156,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
      * @return 节点访问结果
      */
     @Override
-    public ASTNodeVisitResult visitRevoke_event_statement(uniformSQLParser.Revoke_event_statementContext ctx) {
+    public ASTNodeVisitResult visitRevoke_privilege_statement(uniformSQLParser.Revoke_privilege_statementContext ctx) {
         ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
         ArrayList<Integer> dbIds = new ArrayList<Integer>();
 
@@ -262,8 +262,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     @Override
     public ASTNodeVisitResult visitShow_specification(uniformSQLParser.Show_specificationContext ctx) {
         String value = ctx.getText();
-        ASTNodeVisitResult result = new ASTNodeVisitResult(value, null, null);
-        return result;
+        return new ASTNodeVisitResult(value, null, null);
     }
 
     /**
@@ -275,8 +274,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     @Override
     public ASTNodeVisitResult visitTable_name(uniformSQLParser.Table_nameContext ctx) {
         String value = ctx.getText();
-        ASTNodeVisitResult result = new ASTNodeVisitResult(value, null, null);
-        return result;
+        return new ASTNodeVisitResult(value, null, null);
     }
 
     /**
@@ -288,8 +286,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     @Override
     public ASTNodeVisitResult visitPrincipal_name(uniformSQLParser.Principal_nameContext ctx) {
         String value = ctx.getText();
-        ASTNodeVisitResult result = new ASTNodeVisitResult(value, null, null);
-        return result;
+        return new ASTNodeVisitResult(value, null, null);
     }
 
     /**
@@ -301,8 +298,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     @Override
     public ASTNodeVisitResult visitPriv_type(uniformSQLParser.Priv_typeContext ctx) {
         String value = ctx.getText();
-        ASTNodeVisitResult result = new ASTNodeVisitResult(value, null, null);
-        return result;
+        return new ASTNodeVisitResult(value, null, null);
     }
 
     /**
@@ -312,8 +308,8 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
      * @return 节点访问结果
      */
     @Override
-    public ASTNodeVisitResult visitDrop_event_statement(uniformSQLParser.Drop_event_statementContext ctx) {
-        /* 获取子节点数据 */
+    public ASTNodeVisitResult visitDrop_user_statement(uniformSQLParser.Drop_user_statementContext ctx) {
+                /* 获取子节点数据 */
         ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
         ArrayList<Integer> dbIds = new ArrayList<Integer>();
         String userName = visit(ctx.user_name()).getValue();
@@ -352,7 +348,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         /* 元数据库命令 */
         String dbAlias = innerDatabasesArrayList.get(dbId - 1).getDbAlias();
         String user = session.getUserName();
-        InnerSQLCommand metaDbCommand = sqlCommandBuilder.createDatabaseMetaDb(Database.DBType.MySQL, new String[]{metaDatabase.getMetaDbName(),
+        InnerSQLCommand metaDbCommand = sqlCommandBuilder.createDatabaseMetaDb(Database.DBType.MySQL, new Object[]{metaDatabase.getMetaDbName(),
                 createDbName, String.valueOf(dbId), dbAlias, user, new TimeStamp(new Date().getTime()).toString()});
         commands.add(metaDbCommand);
         dbIds.add(0);

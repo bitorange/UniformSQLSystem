@@ -977,21 +977,21 @@ public class uniformSQLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitCreate_event_statement(uniformSQLParser.Create_event_statementContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCreate_user_statement(uniformSQLParser.Create_user_statementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDrop_event_statement(uniformSQLParser.Drop_event_statementContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDrop_user_statement(uniformSQLParser.Drop_user_statementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitGrant_event_statement(uniformSQLParser.Grant_event_statementContext ctx) { return visitChildren(ctx); }
+	@Override public T visitGrant_privilege_statement(uniformSQLParser.Grant_privilege_statementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1005,7 +1005,7 @@ public class uniformSQLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitRevoke_event_statement(uniformSQLParser.Revoke_event_statementContext ctx) { return visitChildren(ctx); }
+	@Override public T visitRevoke_privilege_statement(uniformSQLParser.Revoke_privilege_statementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1040,7 +1040,7 @@ public class uniformSQLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitService_event_statement(uniformSQLParser.Service_event_statementContext ctx) { return visitChildren(ctx); }
+	@Override public T visitServer_event_statement(uniformSQLParser.Server_event_statementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1048,4 +1048,11 @@ public class uniformSQLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitUpdate_statements(uniformSQLParser.Update_statementsContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitDelete_statements(uniformSQLParser.Delete_statementsContext ctx) { return visitChildren(ctx); }
 }
