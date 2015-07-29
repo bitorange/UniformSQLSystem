@@ -105,6 +105,17 @@ public class SQLCommandBuilder {
     }
 
     /**
+     * 删除数据表 - 元数据库
+     *
+     * @param dbType 底层库类型
+     * @param args   参数列表
+     * @return SQL命令
+     */
+    public InnerSQLCommand dropTableMetaDb(Database.DBType dbType, Object... args) {
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].dropTableMetaDb(args), args);
+    }
+
+    /**
      * 修改表名
      *
      * @param dbType 底层库类型

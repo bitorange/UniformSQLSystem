@@ -66,8 +66,8 @@ public class SQLCommandManager {
         ZQLVisitor visitor = new ZQLVisitor(session);
         ASTNodeVisitResult visitResult = visitor.visit(tree);
         if (visitResult == null) {
-            ZQLCommandExecutionError zqlConnectionException = new ZQLCommandExecutionError();
-            logger.e("反向生成 SQL 命令失败", zqlConnectionException);
+            ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError();
+            logger.e("反向生成 SQL 命令失败，错误原因" + session.getErrorMessage(), zqlCommandExecutionError);
             return false;
         }
 
@@ -98,9 +98,8 @@ public class SQLCommandManager {
                 logger.d("在数据库 " + dbId + " 中执行指令 " + innerSQLCommand.getCommandStr());
                 isQuery = statement.execute(innerSQLCommand.getCommandStr());
             } catch (SQLException e) {
-                ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError();
-                zqlCommandExecutionError.initCause(e);
-                logger.e("在数据库 " + dbId + " 执行 SQL 命令失败：" + innerSQLCommand.getCommandStr(), zqlCommandExecutionError);
+                ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError(e.getMessage());
+                logger.e("在数据库 " + dbId + " 执行 SQL 命令失败：" + innerSQLCommand.getCommandStr() + "，错误原因：", zqlCommandExecutionError);
                 return false;
             }
 

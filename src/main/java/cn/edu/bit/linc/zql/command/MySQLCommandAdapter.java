@@ -9,7 +9,7 @@ public class MySQLCommandAdapter extends CommandAdapter {
     static {
         dbType = Database.DBType.MySQL;
     }
-    
+
     /**
      * 测试函数
      *

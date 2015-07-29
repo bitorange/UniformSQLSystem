@@ -93,4 +93,20 @@ public class InnerDatabases {
             }
         }
     }
+
+    /**
+     * 根据别名获取数据库实例
+     *
+     * @param aliasName 数据库别名
+     * @return 数据库实例
+     */
+    public Database getInnerDbByAliasName(String aliasName) {
+        if (aliasName == null) return null;
+        for (Database db : innerDatabaseArray) {
+            if (db.getDbAlias().equals(aliasName)) {
+                return db;
+            }
+        }
+        return null;
+    }
 }

@@ -254,54 +254,6 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
-     * specification 你个头！！！！
-     *
-     * @param ctx 节点上下文
-     * @return 节点访问结果
-     */
-    @Override
-    public ASTNodeVisitResult visitShow_specification(uniformSQLParser.Show_specificationContext ctx) {
-        String value = ctx.getText();
-        return new ASTNodeVisitResult(value, null, null);
-    }
-
-    /**
-     * 获取表名
-     *
-     * @param ctx 节点上下文
-     * @return 节点访问结果
-     */
-    @Override
-    public ASTNodeVisitResult visitTable_name(uniformSQLParser.Table_nameContext ctx) {
-        String value = ctx.getText();
-        return new ASTNodeVisitResult(value, null, null);
-    }
-
-    /**
-     * 获取用户字段
-     *
-     * @param ctx 节点上下文
-     * @return 节点访问结果
-     */
-    @Override
-    public ASTNodeVisitResult visitPrincipal_name(uniformSQLParser.Principal_nameContext ctx) {
-        String value = ctx.getText();
-        return new ASTNodeVisitResult(value, null, null);
-    }
-
-    /**
-     * 获取权限字段
-     *
-     * @param ctx 节点上下文
-     * @return 节点访问结果
-     */
-    @Override
-    public ASTNodeVisitResult visitPriv_type(uniformSQLParser.Priv_typeContext ctx) {
-        String value = ctx.getText();
-        return new ASTNodeVisitResult(value, null, null);
-    }
-
-    /**
      * 删除用户 Statement
      *
      * @param ctx 节点上下文
@@ -366,7 +318,8 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     @Override
     public ASTNodeVisitResult visitDrop_database_statement(uniformSQLParser.Drop_database_statementContext ctx) {
         /* 获取子节点数据 */
-        ASTNodeVisitResult visitSchemaNameNodeResult = visit(ctx.schema_name());
+        ASTNodeVisitResult visitSchemaNameNodeResult;
+        visitSchemaNameNodeResult = visit(ctx.schema_name());
         String dropDbName = visitSchemaNameNodeResult.getValue(); // 数据库名
         String checkExists = ctx.IF() != null ? "IF EXISTS" : "";   // IF NOT EXISTS
 
@@ -396,5 +349,146 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
 
         /* 返回结果 */
         return new ASTNodeVisitResult(null, commands, dbIds);
+    }
+
+    /**
+     * USE DATABASE
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitUse_event_statement(uniformSQLParser.Use_event_statementContext ctx) {
+        // TODO: 检测数据库是否存在
+        ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
+
+        /* 获取子节点数据 */
+        ASTNodeVisitResult visitDatabaseNameNodeResult = visit(ctx.database_name());
+        String dbName = visitDatabaseNameNodeResult.getValue();
+
+        /* 更新 Session */
+        session.setDatabase(dbName);
+
+        return new ASTNodeVisitResult(null, commands, dbIds);
+    }
+
+    /**
+     * 删除数据表
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitDrop_table_statement(uniformSQLParser.Drop_table_statementContext ctx) {
+        ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
+
+        /* 底层库命令 */
+        if (session.getDatabase() == null) {
+            session.setErrorMessage("未指定数据库");
+            return null;
+        }
+
+        /* 获取子节点数据 */
+        ASTNodeVisitResult visitTableNameNodeResult = visit(ctx.table_name());
+        String dropTableName = visitTableNameNodeResult.getValue();
+        String checkExists = ctx.IF() == null ? "" : "IF EXISTS";
+
+        /* 获取数据库所在底层库 */
+        int dbId;
+        try {
+            dbId = metaDatabase.getInnerDatabaseId(session.getDatabase());
+        } catch (MetaDatabaseOperationsException e) {
+            session.setDatabase("获取数据库所在底层库失败，错误原因：" + e.getMessage());
+            return null;
+        }
+
+        /* 底层库命令 */
+        Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
+        InnerSQLCommand innerDbCommand = sqlCommandBuilder.dropTable(dbType, checkExists, session.getDatabase() + "." + dropTableName);
+        commands.add(innerDbCommand);
+        dbIds.add(dbId);
+
+        /* 元数据库命令 */
+        InnerSQLCommand metaDbCommand = sqlCommandBuilder.dropTableMetaDb(dbType, metaDatabase.getMetaDbName(), dropTableName, session.getDatabase());
+        commands.add(metaDbCommand);
+        dbIds.add(0);
+
+        /* 返回结果 */
+        return new ASTNodeVisitResult(null, commands, dbIds);
+    }
+
+
+    /**
+     * specification 你个头！！！！
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitShow_specification(uniformSQLParser.Show_specificationContext ctx) {
+        String value = ctx.getText();
+        return new ASTNodeVisitResult(value, null, null);
+    }
+
+    /**
+     * 获取表名
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitTable_name(uniformSQLParser.Table_nameContext ctx) {
+        String value = ctx.any_name().getText();
+        return new ASTNodeVisitResult(value, null, null);
+    }
+
+    /**
+     * 获取用户字段
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitPrincipal_name(uniformSQLParser.Principal_nameContext ctx) {
+        String value = ctx.getText();
+        return new ASTNodeVisitResult(value, null, null);
+    }
+
+    /**
+     * 获取权限字段
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitPriv_type(uniformSQLParser.Priv_typeContext ctx) {
+        String value = ctx.getText();
+        return new ASTNodeVisitResult(value, null, null);
+    }
+
+    /**
+     * 返回模式名
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitSchema_name(uniformSQLParser.Schema_nameContext ctx) {
+        String value = ctx.any_name().getText();
+        return new ASTNodeVisitResult(value, null, null);
+    }
+
+    /**
+     * 数据库名
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitDatabase_name(uniformSQLParser.Database_nameContext ctx) {
+        String value = ctx.any_name().getText();
+        return new ASTNodeVisitResult(value, null, null);
     }
 }

@@ -185,4 +185,36 @@ public class MetaDatabase extends Database {
         }
         return 1;   // 默认使用第 1 个底层库
     }
+
+    public final static String SELECT_DB_NAME_FROM_ZQL_TABLES = "SELECT Db FROM %s.zql_tables WHERE Tb = '%s'";
+
+    /**
+     * 获取数据表所在的数据库
+     * @param tableName
+     * @return
+     * @throws MetaDatabaseOperationsException
+     */
+    public String getDbNameOfATable(String tableName) throws MetaDatabaseOperationsException {
+        /* 连接元数据库并执行命令 */
+        ConnectionPools connectionPools = ConnectionPools.getInstance();
+        Connection connection;
+        try {
+            connection = connectionPools.getConnection(0);
+            Statement statement = connection.createStatement();
+            String sqlCommand = String.format(SELECT_DB_NAME_FROM_ZQL_TABLES, metaDatabase.getMetaDbName(), tableName);
+            logger.d("从元数据库中查询某数据表所在的数据库：" + sqlCommand);
+            ResultSet resultSet = statement.executeQuery(sqlCommand);
+            while (resultSet.next()) {
+                String dbName = resultSet.getString("Db");
+                return dbName;
+            }
+        } catch (SQLException e) {
+            MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException();
+            metaDatabaseOperationsException.initCause(e);
+            logger.e("从元数据库中查询某数据表所在的数据库：", e);
+            throw metaDatabaseOperationsException;
+        }
+        return null;   // 默认使用第 1 个底层库
+    }
+
 }

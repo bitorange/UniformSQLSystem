@@ -9,6 +9,8 @@ import java.util.Date;
  * 会话类，用于存储用户会话，每个实例对应一个连接
  */
 public class ZQLSession {
+    // TODO: 把 ZQLVisitor 的错误信息存放在 Session 中
+    private String errorMessage;
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
@@ -30,6 +32,24 @@ public class ZQLSession {
     private String database;
     private String token;   // Scramble Info
     private Date connectedTime;
+
+    /**
+     * 获取错误信息
+     *
+     * @return 错误信息
+     */
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    /**
+     * 设置错误信息
+     *
+     * @param errorMessage 错误信息
+     */
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
 
     /**
      * 获取连接用户名

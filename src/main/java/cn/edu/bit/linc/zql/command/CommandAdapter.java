@@ -2,11 +2,32 @@ package cn.edu.bit.linc.zql.command;
 
 import cn.edu.bit.linc.zql.databases.Database;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * SQL 命令生成适配器
  */
 public abstract class CommandAdapter {
     public static Database.DBType dbType;
+    /* 数据类型映射 - 当前以 Hive 为准 */
+    public static Map<String, String> typeMap = new HashMap<String, String>();
+
+    static {
+        typeMap.put("TINYINT", "");
+        typeMap.put("SMALLINT", "");
+        typeMap.put("INT", "");
+        typeMap.put("BIGINT", "");
+        typeMap.put("FLOAT", "");
+        typeMap.put("DOUBLE", "");
+        typeMap.put("DECIMAL", "");
+        typeMap.put("TIMESTAMP", "");
+        typeMap.put("DATE", "");
+        typeMap.put("VARCHAR", "VARCHAR");  // TODO: 长度限制
+        typeMap.put("Boolean", "");
+        typeMap.put("BINARY", "");
+    }
+
     /* 当前以 MySQL 语法为准 */
     public final static String CREATE_USER = "INSERT INTO %s.zql_users VALUES('%s', '%s', 'N')";   // CREATE USER ihainan IDENTIFIED BY 123456，只考虑 MySQL
     public final static String DROP_USER = "DELETE FROM %s.zql_users WHERE User = '%s'";  // DROP user ihainan，只考虑 MySQL
@@ -19,6 +40,8 @@ public abstract class CommandAdapter {
     public final static String SHOW_GRANT = "SELECT * FROM %s.zql_tables_priv";   // SHOW GRANT FOR ihainan
 
     public final static String DROP_TABLE = "DROP TABLE %s %s";         // DROP TABLE [IF EXISTS] tb_name
+    public final static String DROP_TABLE_META_DB = "DELETE FROM %s.zql_tables WHERE Tb = '%s' and Db = '%s'";
+
     public final static String ALTER_TABLE_NAME = "RENAME TABLE %s TO %s"; // RENAME TABLE old_table TO backup_table
     public final static String ALTER_COLUMN_NAME = "ALTER TABLE %s CHANGE COLUMN %s %s %s"; // ALTER TABLE table_name CHANGE COLUMN old_name new_name type
     public final static String SHOW_TABLES = "SELECT * FROM %s.zql_tables %s";    // SHOW TABLES [IN db_test] [LIKE "db_*"]
@@ -97,6 +120,17 @@ public abstract class CommandAdapter {
      */
     public String dropTable(Object... args) {
         String command = String.format(DROP_TABLE, args);
+        return command;
+    }
+
+    /**
+     * 删除数据表 - 元数据库
+     *
+     * @param args 参数列表
+     * @return SQL 命令
+     */
+    public String dropTableMetaDb(Object... args) {
+        String command = String.format(DROP_TABLE_META_DB, args);
         return command;
     }
 
