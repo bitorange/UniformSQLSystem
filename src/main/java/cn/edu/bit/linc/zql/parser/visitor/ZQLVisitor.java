@@ -14,9 +14,11 @@ import cn.edu.bit.linc.zql.exceptions.MetaDatabaseOperationsException;
 import cn.edu.bit.linc.zql.parser.uniformSQLBaseVisitor;
 import cn.edu.bit.linc.zql.parser.uniformSQLParser;
 import org.apache.commons.net.ntp.TimeStamp;
+import org.mortbay.log.Log;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 抽象语法树访问器
@@ -219,7 +221,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
-     * 查看授权
+     * SHOW STATEMENT
      *
      * @param ctx 节点上下文
      * @return 节点访问结果
@@ -227,30 +229,39 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     @Override
     public ASTNodeVisitResult visitShow_event_statement(uniformSQLParser.Show_event_statementContext ctx) {
         uniformSQLParser.Show_specificationContext specificationContext = ctx.show_specification();
+        ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
         if (specificationContext.GRANT() != null) {
-            ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
-            ArrayList<Integer> dbIds = new ArrayList<Integer>();
-
+            /* 查看授权 */
             /* 元数据库命令 */
             InnerSQLCommand metaDbCommand = sqlCommandBuilder.showGrant(Database.DBType.MySQL, metaDatabase.getMetaDbName());
             commands.add(metaDbCommand);
             dbIds.add(0);
-
-            return new ASTNodeVisitResult(null, commands, dbIds);
         } else if (specificationContext.DATABASES() != null) {
-            ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
-            ArrayList<Integer> dbIds = new ArrayList<Integer>();
-
+            /* 查看数据库 */
             /* 元数据库命令 */
             String likeStr = specificationContext.LIKE() == null ? "" : "WHERE Db LIKE '" + specificationContext.getChild(2).getText() + "'";
             InnerSQLCommand metaDbCommand = sqlCommandBuilder.showDatabases(Database.DBType.MySQL, metaDatabase.getMetaDbName(), likeStr);
             commands.add(metaDbCommand);
             dbIds.add(0);
+        } else if (specificationContext.TABLES() != null) {
+            /* 查看数据表 */
+            /* 获取子节点数据 */
+            String inDatabase = (specificationContext.IN() != null) ? "Db = '" + (visit(specificationContext.database_name()).getValue()) + "'" : "true";
+            String like = "true";   // TODO: 补上！
 
-            return new ASTNodeVisitResult(null, commands, dbIds);
+            /* 元数据库命令 */
+            InnerSQLCommand metaDbCommand = sqlCommandBuilder.showTables(Database.DBType.MySQL, metaDatabase.getMetaDbName(), inDatabase, like);
+            commands.add(metaDbCommand);
+            dbIds.add(0);
+        } else if (specificationContext.SERVER() != null) {
+            /* 查看数据库别名 */
+            InnerSQLCommand metaDbCommand = sqlCommandBuilder.showServerAliases(Database.DBType.MySQL, metaDatabase.getMetaDbName());
+            commands.add(metaDbCommand);
+            dbIds.add(0);
         }
 
-        return null;
+        return new ASTNodeVisitResult(null, commands, dbIds);
     }
 
     /**
@@ -300,8 +311,8 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         /* 元数据库命令 */
         String dbAlias = innerDatabasesArrayList.get(dbId - 1).getDbAlias();
         String user = session.getUserName();
-        InnerSQLCommand metaDbCommand = sqlCommandBuilder.createDatabaseMetaDb(Database.DBType.MySQL, new Object[]{metaDatabase.getMetaDbName(),
-                createDbName, String.valueOf(dbId), dbAlias, user, new TimeStamp(new Date().getTime()).toString()});
+        InnerSQLCommand metaDbCommand = sqlCommandBuilder.createDatabaseMetaDb(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
+                createDbName, String.valueOf(dbId), dbAlias, user, new TimeStamp(new Date().getTime()).toString());
         commands.add(metaDbCommand);
         dbIds.add(0);
 
@@ -383,8 +394,6 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     public ASTNodeVisitResult visitDrop_table_statement(uniformSQLParser.Drop_table_statementContext ctx) {
         ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
         ArrayList<Integer> dbIds = new ArrayList<Integer>();
-
-        /* 底层库命令 */
         if (session.getDatabase() == null) {
             session.setErrorMessage("未指定数据库");
             return null;
@@ -414,6 +423,72 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         InnerSQLCommand metaDbCommand = sqlCommandBuilder.dropTableMetaDb(dbType, metaDatabase.getMetaDbName(), dropTableName, session.getDatabase());
         commands.add(metaDbCommand);
         dbIds.add(0);
+
+        /* 返回结果 */
+        return new ASTNodeVisitResult(null, commands, dbIds);
+    }
+
+    /**
+     * 修改数据表
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitAlter_table_statement(uniformSQLParser.Alter_table_statementContext ctx) {
+        ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
+        if (session.getDatabase() == null) {
+            session.setErrorMessage("未指定数据库");
+            return null;
+        }
+
+        /* 确定数据库所在底层库以及底层库类型 */
+        int dbId;
+        try {
+            dbId = metaDatabase.getInnerDatabaseId(session.getDatabase());
+        } catch (MetaDatabaseOperationsException e) {
+            session.setDatabase("获取数据库所在底层库失败，错误原因：" + e.getMessage());
+            return null;
+        }
+        Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
+
+
+        /* 获取子节点数据 */
+        ASTNodeVisitResult visitTableNameNodeResult = visit(ctx.table_name());
+        String tableName = visitTableNameNodeResult.getValue();
+        List<uniformSQLParser.Alter_table_specificationContext> alter_table_specificationContext = ctx.alter_table_specification();
+        if (alter_table_specificationContext.get(0).children.get(0).getText().equals("RENAME")) {
+            /* 修改表名 */
+            String newTableName = alter_table_specificationContext.get(0).children.get(2).getText();
+            Log.debug("修改数据表 " + tableName + " 为 " + newTableName);
+
+            /* 底层库命令 */
+            InnerSQLCommand innerDbCommand = sqlCommandBuilder.alterTableName(dbType, session.getDatabase() + "." + tableName, session.getDatabase() + "." + newTableName);
+            commands.add(innerDbCommand);
+            dbIds.add(dbId);
+
+            /* 元数据库命令 */
+            InnerSQLCommand metaDbSQLCommand = sqlCommandBuilder.alterTableNameMetaDb(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
+                    newTableName, tableName, session.getDatabase());
+            commands.add(metaDbSQLCommand);
+            dbIds.add(dbId);
+        } else if (alter_table_specificationContext.get(0).children.get(0).getText().equals("CHANGE")) {
+            /* 修改列名 */
+            String oldColumnName, newColumnName;
+            if (alter_table_specificationContext.get(0).children.get(1).getText().equals("COLUMN")) {
+                oldColumnName = alter_table_specificationContext.get(0).children.get(2).getText();
+                newColumnName = alter_table_specificationContext.get(0).children.get(3).getText();
+            } else {
+                oldColumnName = alter_table_specificationContext.get(0).children.get(1).getText();
+                newColumnName = alter_table_specificationContext.get(0).children.get(2).getText();
+            }
+
+            /* 底层库命令 */
+            InnerSQLCommand innerDbCommand = sqlCommandBuilder.alterColumnName(dbType, session.getDatabase() + "." + tableName, oldColumnName, newColumnName, "datatype(" + session.getDatabase() + "." + tableName + ")");
+            commands.add(innerDbCommand);
+            dbIds.add(dbId);
+        }
 
         /* 返回结果 */
         return new ASTNodeVisitResult(null, commands, dbIds);

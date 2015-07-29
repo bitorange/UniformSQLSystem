@@ -190,8 +190,9 @@ public class MetaDatabase extends Database {
 
     /**
      * 获取数据表所在的数据库
-     * @param tableName
-     * @return
+     *
+     * @param tableName 表名
+     * @return 节点访问结果
      * @throws MetaDatabaseOperationsException
      */
     public String getDbNameOfATable(String tableName) throws MetaDatabaseOperationsException {

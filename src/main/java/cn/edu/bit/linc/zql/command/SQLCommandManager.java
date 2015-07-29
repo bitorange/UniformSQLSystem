@@ -44,6 +44,9 @@ public class SQLCommandManager {
      */
     public boolean execute() {
         // TODO: 抛出异常给外部处理
+        /* 记录时间 */
+        java.util.Date startTime = new java.util.Date();
+
         /* 检测语法错误 */
         InputStream is = new ByteArrayInputStream(sqlCommand.getBytes(StandardCharsets.UTF_8));
         ANTLRInputStream ais;
@@ -88,18 +91,18 @@ public class SQLCommandManager {
             } catch (SQLException e) {
                 ZQLConnectionException zqlConnectionException = new ZQLConnectionException();
                 zqlConnectionException.initCause(e);
-                logger.e("连接到数据库 " + dbId + " 失败", zqlConnectionException);
+                logger.e("连接到底层库 " + dbId + " 失败", zqlConnectionException);
                 return false;
             }
 
             /* 交付数据库（底层库 / 元数据库）执行 SQL 命令 */
             boolean isQuery;
             try {
-                logger.d("在数据库 " + dbId + " 中执行指令 " + innerSQLCommand.getCommandStr());
+                logger.d("在底层库 " + dbId + " 中执行指令 " + innerSQLCommand.getCommandStr());
                 isQuery = statement.execute(innerSQLCommand.getCommandStr());
             } catch (SQLException e) {
                 ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError(e.getMessage());
-                logger.e("在数据库 " + dbId + " 执行 SQL 命令失败：" + innerSQLCommand.getCommandStr() + "，错误原因：", zqlCommandExecutionError);
+                logger.e("在底层库 " + dbId + " 执行 SQL 命令失败：" + innerSQLCommand.getCommandStr() + "，错误原因：", zqlCommandExecutionError);
                 return false;
             }
 
@@ -126,6 +129,9 @@ public class SQLCommandManager {
             }
         }
 
+        /* 记录时间 */
+        java.util.Date endTime = new java.util.Date();
+        this.runningTime = endTime.getTime() - startTime.getTime();
         return true;
     }
 
@@ -179,9 +185,9 @@ public class SQLCommandManager {
             }
 
             System.out.println();
-            System.out.println("Total rows: " + numberOfRows);
+            System.out.println("" + numberOfRows + " rows in set (" + runningTime + " ms)");
         } else if (updateCount != -1) {
-            stringBuilder.append("Updated " + updateCount + " rows");
+            stringBuilder.append("Updated " + updateCount + " rows (" + runningTime + " ms)");
         }
     }
 
@@ -192,4 +198,5 @@ public class SQLCommandManager {
     private final ZQLSession session;   // 用户会话
     private ResultSet resultSet = null; // 执行结果，仅在执行结果返回 ResultSet 时候该值不为 null
     private int updateCount = -1;       // 更新行数，仅在执行结果返回数值时候该值不为 - 1
+    private long runningTime;
 }

@@ -10,22 +10,23 @@ import java.util.Map;
  */
 public abstract class CommandAdapter {
     public static Database.DBType dbType;
-    /* 数据类型映射 - 当前以 Hive 为准 */
+
+    /* 数据类型映射 - 当前以 MySQL 为准 */
     public static Map<String, String> typeMap = new HashMap<String, String>();
 
     static {
-        typeMap.put("TINYINT", "");
-        typeMap.put("SMALLINT", "");
-        typeMap.put("INT", "");
-        typeMap.put("BIGINT", "");
-        typeMap.put("FLOAT", "");
-        typeMap.put("DOUBLE", "");
-        typeMap.put("DECIMAL", "");
-        typeMap.put("TIMESTAMP", "");
-        typeMap.put("DATE", "");
+        typeMap.put("TINYINT", "TINYINT");
+        typeMap.put("SMALLINT", "SMALLINT");
+        typeMap.put("INT", "INT");
+        typeMap.put("BIGINT", "BIGINT");
+        typeMap.put("FLOAT", "FLOAT");
+        typeMap.put("DOUBLE", "DOUBLE");
+        typeMap.put("DECIMAL", "DECIMAL");
+        typeMap.put("TIMESTAMP", "TIMESTAMP");
+        typeMap.put("DATE", "DATE");
         typeMap.put("VARCHAR", "VARCHAR");  // TODO: 长度限制
-        typeMap.put("Boolean", "");
-        typeMap.put("BINARY", "");
+        typeMap.put("Boolean", "ENUM('true'', 'false'')");
+        typeMap.put("BINARY", "_BLOB");
     }
 
     /* 当前以 MySQL 语法为准 */
@@ -37,14 +38,17 @@ public abstract class CommandAdapter {
 
     public final static String REVOKE_GRANT = "REVOKE %s %s ON %s TO %s %s"; // REVOKE SELECT, DELETE ON table_test [GRANT OPTION] FROM ihainan, snow
 
-    public final static String SHOW_GRANT = "SELECT * FROM %s.zql_tables_priv";   // SHOW GRANT FOR ihainan
+    public final static String SHOW_GRANT = "SELECT * FROM %s.zql_tables_priv WHERE %s and %s";   // SHOW GRANT FOR ihainan
 
-    public final static String DROP_TABLE = "DROP TABLE %s %s";         // DROP TABLE [IF EXISTS] tb_name
+    public final static String DROP_TABLE = "DROP TABLE %s %s"; // DROP TABLE [IF EXISTS] tb_name
     public final static String DROP_TABLE_META_DB = "DELETE FROM %s.zql_tables WHERE Tb = '%s' and Db = '%s'";
 
     public final static String ALTER_TABLE_NAME = "RENAME TABLE %s TO %s"; // RENAME TABLE old_table TO backup_table
+    public final static String ALTER_TABLE_NAME_META_DB = "UPDATE %s.zql_tables SET Tb = '%s' WHERE Tb = '%s' and Db = '%s'";
+
     public final static String ALTER_COLUMN_NAME = "ALTER TABLE %s CHANGE COLUMN %s %s %s"; // ALTER TABLE table_name CHANGE COLUMN old_name new_name type
-    public final static String SHOW_TABLES = "SELECT * FROM %s.zql_tables %s";    // SHOW TABLES [IN db_test] [LIKE "db_*"]
+
+    public final static String SHOW_TABLES = "SELECT * FROM %s.zql_tables WHERE %s and %s";    // SHOW TABLES [IN db_test] [LIKE "db_*"]
     public final static String SHOW_COLUMNS = "SHOW COLUMNS FROM %s %s"; // SHOW COLUMNS FROM tb_name [FROM db_name]
 
     public final static String CREATE_DATABASE = "CREATE DATABASE %s %s";   // CREATE DATABASE [IF NOT EXISTS] db_name
@@ -56,6 +60,8 @@ public abstract class CommandAdapter {
     public final static String DROP_DATABASE_META_DB = "DELETE FROM %s.zql_dbs WHERE Db = '%s'";
 
     public final static String USE_DATABASE = "USE %s"; // USE db_name
+
+    public final static String SHOW_SERVER_ALIASES = "SELECT Inner_db_id, Db_alias FROM %s.zql_dbs";
 
     /**
      * 删除用户
@@ -142,6 +148,17 @@ public abstract class CommandAdapter {
      */
     public String alterTableName(Object... args) {
         String command = String.format(ALTER_TABLE_NAME, args);
+        return command;
+    }
+
+    /**
+     * 修改数据表名 - 元数据库
+     *
+     * @param args 参数列表
+     * @return SQL 命令
+     */
+    public String alterTableNameMetaDb(Object... args) {
+        String command = String.format(ALTER_TABLE_NAME_META_DB, args);
         return command;
     }
 
@@ -250,6 +267,17 @@ public abstract class CommandAdapter {
      */
     public String createUser(Object... args) {
         String command = String.format(CREATE_USER, args);
+        return command;
+    }
+
+    /**
+     * 显示 DB 别名
+     *
+     * @param args 参数列表
+     * @return SQL 命令
+     */
+    public String showServerAliases(Object... args) {
+        String command = String.format(SHOW_SERVER_ALIASES, args);
         return command;
     }
 }

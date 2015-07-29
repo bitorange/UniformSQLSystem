@@ -70,15 +70,22 @@ public class ZQLContext {
         // executeSQL("CREATE DATABASE db_2", session);        // 创建并删除数据库
         // executeSQL("DROP DATABASE db_2", session);
 
-        // 创建、删除数据表
-        executeSQL("DROP TABLE table_1_1", session);
+        // 显示、创建、删除、修改数据表、修改列名
+        // executeSQL("SHOW TABLES IN db_1 db%", session);        // identifier_with_wildcards doesn't work
+        // executeSQL("DROP TABLE table_1_1", session);
+        // executeSQL("ALTER TABLE tb_2 RENAME TO tb_1", session);
+        executeSQL("SHOW DATABASES LIKE db%", session);
+        // executeSQL("ALTER TABLE tb_1 CHANGE COLUMN col_old_name col_new_name", session);
 
         // 授权相关
-        // executeSQL("GRANT GRANT OPTION FOR SELECT, DELETE, INSERT ON tabl", session);
+        // executeSQL(" GRANT OPTION FOR SELECT, DELETE, INSERT ON tb_1", session);    // WITH GRANT OPTION doesn't work
         // executeSQL("SHOW GRANT", session);
 
+        // 数据库别名
+        // executeSQL("SHOW SERVER ALIASES", session);
+
         // executeSQL("GRANT SELECT, DELETE, UPDATE ON tb_1_1_1 TO ihainan, snow WITH GRANT OPTION", session);
-        // executeSQL("REVOKE GRANT OPTION FOR SELECT, UPDATE ON tb_1_1_1 FROM ihainan, snow", session);
+        // executeSQL("REVOKE GRANT OPTION FOR SELECT, UPDATE ON tb_1_1_1 FROM ihainan, snow", session);    // GRANT OPTION FOR doesn't work
         // executeSQL("SHOW GRANT", session);
         // executeSQL("SHOW DATABASES LIKE db%", session);
     }

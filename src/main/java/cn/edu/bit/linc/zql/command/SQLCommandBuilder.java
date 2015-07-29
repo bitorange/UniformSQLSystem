@@ -68,7 +68,6 @@ public class SQLCommandBuilder {
      */
     public InnerSQLCommand updateGrant(Database.DBType dbType, Object... args) {
         return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].updateGrant(args), args);
-
     }
 
     /**
@@ -124,6 +123,17 @@ public class SQLCommandBuilder {
      */
     public InnerSQLCommand alterTableName(Database.DBType dbType, Object... args) {
         return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].alterTableName(args), args);
+    }
+
+    /**
+     * 修改表名 - 元数据库
+     *
+     * @param dbType 底层库类型
+     * @param args   参数列表
+     * @return SQL命令
+     */
+    public InnerSQLCommand alterTableNameMetaDb(Database.DBType dbType, Object... args) {
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].alterTableNameMetaDb(args), args);
     }
 
     /**
@@ -225,6 +235,18 @@ public class SQLCommandBuilder {
     public InnerSQLCommand useDatabase(Database.DBType dbType, Object... args) {
         return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].useDatabase(args), args);
     }
+
+    /**
+     * 显示数据库别名
+     *
+     * @param dbType 底层库类型
+     * @param args   参数列表
+     * @return SQL命令
+     */
+    public InnerSQLCommand showServerAliases(Database.DBType dbType, Object... args) {
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].showServerAliases(args), args);
+    }
+
 
     /**
      * 测试函数
