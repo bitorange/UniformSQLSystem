@@ -57,7 +57,8 @@ public class ZQLContext {
         executeSQL("USE db_1", session);
         // executeSQL("CREATE TABLE IF NOT EXISTS db_1.tb_1 (ID BIGINT, AGE TINYINT)", session);
         // executeSQL("USE db_1", session);
-        executeSQL("GRANT SELECT, DELETE ON tb_1 TO snow WITH GRANT OPTION", session);
+        // executeSQL("GRANT ALL ON tb_1 TO ihainan WITH GRANT OPTION", session);
+        executeSQL("REVOKE GRANT OPTION FOR ALL ON tb_1 FROM snow", session);
         // executeSQL("GRANT SELECT, DELETE, UPDATE ON tb_1 TO ihainan", session);
         // executeSQL("CREATE DATABASE IF NOT EXISTS db_1", session);
         // executeSQL("use db_1", session);

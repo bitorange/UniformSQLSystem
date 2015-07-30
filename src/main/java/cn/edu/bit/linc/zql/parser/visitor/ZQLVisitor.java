@@ -105,11 +105,19 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         String tbName = visit(ctx.table_name()).getValue();
 
         // 权限表
-        ArrayList<String> privs = new ArrayList<String>();
+        ArrayList<String> privilegesArray = new ArrayList<String>();
         for (int i = 0; i < ctx.priv_type().size(); i++) {
             uniformSQLParser.Priv_typeContext context = ctx.priv_type().get(i);
             ASTNodeVisitResult visitPrivTypeNodeResult = visit(context);
-            privs.add(visitPrivTypeNodeResult.getValue());
+            privilegesArray.add(visitPrivTypeNodeResult.getValue());
+        }
+
+        if (privilegesArray.contains("ALL")) {
+            privilegesArray.add("SELECT");
+            privilegesArray.add("INSERT");
+            privilegesArray.add("DELETE");
+            privilegesArray.add("UPDATE");
+            privilegesArray.add("ALL");
         }
 
         // 用户表
@@ -122,61 +130,61 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
 
         boolean withGrantOption = (ctx.WITH() != null);
 
-        /* 元数据库命令 */
-        // 检查是否拥有权限
-        Map<String, String> privileges = null;
+        /* 检查是否拥有权限 */
+        Map<String, String> privilegesMap;
         try {
-            privileges = metaDatabase.getPrivilegesOfASpecifiedUserAndTable(session.getDatabase(),
+            privilegesMap = metaDatabase.getPrivilegesOfASpecifiedUserAndTable(session.getDatabase(),
                     tbName, session.getUserName());
         } catch (MetaDatabaseOperationsException e) {
             session.setErrorMessage("从元数据库获取用户 " + session.getUserName() + " 失败，失败原因 " + e.getMessage());
             return null;
         }
 
-        if (!session.getUserName().equals("root") && privileges == null) {
+        if (!session.getUserName().equals("root") && privilegesMap == null) {
             session.setErrorMessage("元数据库中找不到用户 " + session.getUserName() + " 对于数据库表 " + session.getDatabase()
                     + "." + tbName + " 的权限");
             return null;
         }
 
+        // 检查用户是否有足够权限
+        if (!session.getUserName().equals("root") && privilegesMap.get("GRANT_OPTION").equals("N")) {
+            session.setErrorMessage("用户 " + session.getUserName() + " 在数据表 " + session.getDatabase()
+                    + "." + tbName + " 中没有 GRANT 权限");
+            return null;
+        }
+
+        if (!(session.getUserName().equals("root") || privilegesMap.get("ALL").equals("Y") ||
+                (!(privilegesArray.contains("SELECT") && !privilegesMap.get("SELECT").equals("Y")) &&
+                        !(privilegesArray.contains("INSERT") && !privilegesMap.get("INSERT").equals("Y")) &&
+                        !(privilegesArray.contains("UPDATE") && !privilegesMap.get("UPDATE").equals("Y")) &&
+                        !(privilegesArray.contains("DELETE") && !privilegesMap.get("DELETE").equals("Y"))))) {
+            session.setErrorMessage("用户 " + session.getUserName() + " 在数据表 " + session.getDatabase() + "." +
+                    tbName + " 中没有足够的权限");
+            return null;
+        }
+
+        /* 元数据库命令 */
         // TODO: databaseName.tableName 的情况
-        // TODO: 权限检查
         // TODO: *.* 的情况
         for (String spec : specs) {
-            // 检查用户是否有足够权限
-            if (!session.getUserName().equals("root") && privileges.get("GRANT_OPTION").equals("N")) {
-                session.setErrorMessage("用户 " + session.getUserName() + " 在数据表 " + session.getDatabase()
-                        + "." + tbName + " 中没有 GRANT 权限");
-                return null;
-            }
-            if (session.getUserName().equals("root") || privileges.get("ALL").equals("Y") ||
-                    (!(privs.contains("SELECT") ^ privileges.get("SELECT").equals("Y")) &&
-                            !(privs.contains("INSERT") ^ privileges.get("INSERT").equals("Y")) &&
-                            !(privs.contains("UPDATE") ^ privileges.get("UPDATE").equals("Y")) &&
-                            !(privs.contains("DELETE") ^ privileges.get("DELETE").equals("Y")))) {
-                InnerSQLCommand metaDbCommand = sqlCommandBuilder.grant(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
-                        spec, session.getDatabase(), tbName
-                        , privs.contains("SELECT") ? "Y" : "N"  // SELECT Privilege
-                        , privs.contains("INSERT") ? "Y" : "N"  // INSERT Privilege
-                        , privs.contains("UPDATE") ? "Y" : "N"  // UPDATE Privilege
-                        , privs.contains("DELETE") ? "Y" : "N"  // DELETE Privilege
-                        , privs.contains("ALL") ? "Y" : "N"     // All Privilege
-                        , withGrantOption ? "Y" : "N"           // WITH GRANT OPTION
-                );
-                commands.add(metaDbCommand);
-                dbIds.add(0);
+            InnerSQLCommand metaDbCommand = sqlCommandBuilder.grant(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
+                    spec, session.getDatabase(), tbName
+                    , privilegesArray.contains("SELECT") ? "Y" : "N"  // SELECT Privilege
+                    , privilegesArray.contains("INSERT") ? "Y" : "N"  // INSERT Privilege
+                    , privilegesArray.contains("UPDATE") ? "Y" : "N"  // UPDATE Privilege
+                    , privilegesArray.contains("DELETE") ? "Y" : "N"  // DELETE Privilege
+                    , privilegesArray.contains("ALL") ? "Y" : "N"     // All Privilege
+                    , withGrantOption ? "Y" : "N"           // WITH GRANT OPTION
+            );
+            commands.add(metaDbCommand);
+            dbIds.add(0);
 
-                String updateFields = makePrivilegeFieldsSetStr(privs, withGrantOption, true);
-                InnerSQLCommand metaDbCommandUpdate = sqlCommandBuilder.updateGrant(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
-                        updateFields, spec, session.getDatabase(), tbName
-                );
-                commands.add(metaDbCommandUpdate);
-                dbIds.add(0);
-            } else {
-                session.setErrorMessage("用户 " + session.getUserName() + " 在数据表 " + session.getDatabase() + "." +
-                        tbName + " 中没有足够的权限");
-                return null;
-            }
+            String updateFields = makePrivilegeFieldsSetStr(privilegesArray, withGrantOption, true);
+            InnerSQLCommand metaDbCommandUpdate = sqlCommandBuilder.updateGrant(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
+                    updateFields, spec, session.getDatabase(), tbName
+            );
+            commands.add(metaDbCommandUpdate);
+            dbIds.add(0);
         }
 
         /* 返回结果 */
@@ -217,7 +225,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         }
         if (privs.contains("ALL")) {
             if (hasPre) updateFieldsStr += ", ";
-            updateFieldsStr += "ALL_PRIV = 'Y'";
+            updateFieldsStr += "ALL_PRIV = '" + yesOrNo + "'";
             hasPre = true;
         }
         if (grantOption) {
@@ -228,7 +236,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
-     * 撤销授权
+     * 撤销授权 Statement
      *
      * @param ctx 节点上下文
      * @return 节点访问结果
@@ -242,11 +250,19 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         String tbName = visit(ctx.table_name()).getValue();
 
         // 权限表
-        ArrayList<String> privs = new ArrayList<String>();
+        ArrayList<String> privilegesArray = new ArrayList<String>();
         for (int i = 0; i < ctx.priv_type().size(); i++) {
             uniformSQLParser.Priv_typeContext context = ctx.priv_type().get(i);
             ASTNodeVisitResult visitPrivTypeNodeResult = visit(context);
-            privs.add(visitPrivTypeNodeResult.getValue());
+            privilegesArray.add(visitPrivTypeNodeResult.getValue());
+        }
+
+        if (privilegesArray.contains("ALL")) {
+            privilegesArray.add("SELECT");
+            privilegesArray.add("INSERT");
+            privilegesArray.add("DELETE");
+            privilegesArray.add("UPDATE");
+            privilegesArray.add("ALL");
         }
 
         // 用户表
@@ -259,10 +275,42 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
 
         boolean withGrantOption = (ctx.OPTION() != null);   // GRANT OPTION FOR
 
+        /* 检查是否拥有权限 */
+        Map<String, String> privilegesMap;
+        try {
+            privilegesMap = metaDatabase.getPrivilegesOfASpecifiedUserAndTable(session.getDatabase(),
+                    tbName, session.getUserName());
+        } catch (MetaDatabaseOperationsException e) {
+            session.setErrorMessage("从元数据库获取用户 " + session.getUserName() + " 失败，失败原因 " + e.getMessage());
+            return null;
+        }
+
+        if (!session.getUserName().equals("root") && privilegesMap == null) {
+            session.setErrorMessage("元数据库中找不到用户 " + session.getUserName() + " 对于数据库表 " + session.getDatabase()
+                    + "." + tbName + " 的权限");
+            return null;
+        }
+
+        // 检查用户是否有足够权限
+        if (!session.getUserName().equals("root") && privilegesMap.get("GRANT_OPTION").equals("N")) {
+            session.setErrorMessage("用户 " + session.getUserName() + " 在数据表 " + session.getDatabase()
+                    + "." + tbName + " 中没有 GRANT 权限");
+            return null;
+        }
+
+        if (!(session.getUserName().equals("root") || privilegesMap.get("ALL").equals("Y") ||
+                (!(privilegesArray.contains("SELECT") && !privilegesMap.get("SELECT").equals("Y")) &&
+                        !(privilegesArray.contains("INSERT") && !privilegesMap.get("INSERT").equals("Y")) &&
+                        !(privilegesArray.contains("UPDATE") && !privilegesMap.get("UPDATE").equals("Y")) &&
+                        !(privilegesArray.contains("DELETE") && !privilegesMap.get("DELETE").equals("Y"))))) {
+            session.setErrorMessage("用户 " + session.getUserName() + " 在数据表 " + session.getDatabase() + "." +
+                    tbName + " 中没有足够的权限");
+            return null;
+        }
+
         /* 元数据库命令 */
-        // TODO: 权限检查
         for (String spec : specs) {
-            String updateFields = makePrivilegeFieldsSetStr(privs, withGrantOption, false);
+            String updateFields = makePrivilegeFieldsSetStr(privilegesArray, withGrantOption, false);
             InnerSQLCommand metaDbCommandUpdate = sqlCommandBuilder.updateGrant(Database.DBType.MySQL, metaDatabase.getMetaDbName()
                     , updateFields, spec, session.getDatabase(), tbName
             );

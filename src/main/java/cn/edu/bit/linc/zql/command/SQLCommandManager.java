@@ -50,24 +50,30 @@ public class SQLCommandManager {
         /* 检测语法错误 */
         InputStream is = new ByteArrayInputStream(sqlCommand.getBytes(StandardCharsets.UTF_8));
         ANTLRInputStream ais;
+        uniformSQLLexer lexer;
+        CommonTokenStream tokens;
+        uniformSQLParser parser;
+        ParseTree tree;
+        ASTNodeVisitResult visitResult;
         try {
+            /* 词法解析器与语法解析器 */
             ais = new ANTLRInputStream(is);
-        } catch (IOException e) {
+            lexer = new uniformSQLLexer(ais);
+            tokens = new CommonTokenStream(lexer);
+            parser = new uniformSQLParser(tokens);
+
+            /* 遍历语法树 */
+            tree = parser.root_statement();
+            ZQLVisitor visitor = new ZQLVisitor(session);
+            visitResult = visitor.visit(tree);
+        }
+        catch (Exception e){
             ZQLSyntaxErrorException zqlSyntaxErrorException = new ZQLSyntaxErrorException();
             zqlSyntaxErrorException.initCause(e);
             logger.e("发生语法错误：" + sqlCommand, zqlSyntaxErrorException);
             return false;
         }
 
-        /* 词法解析器与语法解析器 */
-        uniformSQLLexer lexer = new uniformSQLLexer(ais);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        uniformSQLParser parser = new uniformSQLParser(tokens);
-
-        /* 遍历语法树 */
-        ParseTree tree = parser.root_statement();
-        ZQLVisitor visitor = new ZQLVisitor(session);
-        ASTNodeVisitResult visitResult = visitor.visit(tree);
         if (visitResult == null) {
             ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError();
             logger.e("反向生成 SQL 命令失败，错误原因：" + session.getErrorMessage(), zqlCommandExecutionError);
