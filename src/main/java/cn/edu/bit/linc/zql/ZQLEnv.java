@@ -7,6 +7,7 @@ import org.apache.commons.configuration.XMLConfiguration;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.io.File;
 import java.util.HashMap;
 
 /**
@@ -19,17 +20,22 @@ public class ZQLEnv {
 
     /** 从配置文件中读取系统配置项，存储在 CONF_MAP 对象中 */
     static {
-        /* 默认系统配置项 */
-        CONF_MAP.put("innerdb.dafault.innerdb", "1");   // 默认底层库编号
-
         /* 读取配置文件 */
         try {
-            logger.d("正在读取系统配置文件");
+            logger.i("正在读取配置文件 " + new File(CONFIG_FILE_PATH).getAbsolutePath());
             readConFile(CONFIG_FILE_PATH);
         } catch (ConfigurationException e) {
-            logger.f("找不到配置文件 " + CONFIG_FILE_PATH, e);
+            logger.f("找不到配置文件 " + new File(CONFIG_FILE_PATH).getAbsolutePath(), e);
             System.exit(-1);
         }
+
+        /* 默认系统配置项 */
+        if (CONF_MAP.get("innerdb.dafault.innerdb") == null) {
+            logger.i("默认底层库 innerdb.dafault.innerdb 未设置，使用默认值 1");
+            CONF_MAP.put("innerdb.dafault.innerdb", "1");   // 默认底层库编号
+        }
+
+        logger.i("读取配置文件成功");
     }
 
     /**

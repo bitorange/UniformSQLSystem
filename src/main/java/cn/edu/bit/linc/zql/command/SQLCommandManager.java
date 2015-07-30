@@ -70,7 +70,7 @@ public class SQLCommandManager {
         ASTNodeVisitResult visitResult = visitor.visit(tree);
         if (visitResult == null) {
             ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError();
-            logger.e("反向生成 SQL 命令失败，错误原因" + session.getErrorMessage(), zqlCommandExecutionError);
+            logger.e("反向生成 SQL 命令失败，错误原因：" + session.getErrorMessage(), zqlCommandExecutionError);
             return false;
         }
 

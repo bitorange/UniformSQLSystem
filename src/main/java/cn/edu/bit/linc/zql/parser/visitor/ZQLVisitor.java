@@ -11,13 +11,14 @@ import cn.edu.bit.linc.zql.databases.InnerDatabase;
 import cn.edu.bit.linc.zql.databases.InnerDatabases;
 import cn.edu.bit.linc.zql.databases.MetaDatabase;
 import cn.edu.bit.linc.zql.exceptions.MetaDatabaseOperationsException;
+import cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError;
 import cn.edu.bit.linc.zql.parser.uniformSQLBaseVisitor;
 import cn.edu.bit.linc.zql.parser.uniformSQLParser;
-import org.apache.commons.net.ntp.TimeStamp;
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.mortbay.log.Log;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -97,6 +98,10 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     public ASTNodeVisitResult visitGrant_privilege_statement(uniformSQLParser.Grant_privilege_statementContext ctx) {
         ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
         ArrayList<Integer> dbIds = new ArrayList<Integer>();
+        if (session.getDatabase() == null) {
+            session.setErrorMessage("未指定数据库，使用命令 `use db_name` 指定数据库");
+            return null;
+        }
 
         /* 获取子节点数据 */
         String tbName = visit(ctx.table_name()).getValue();
@@ -117,38 +122,78 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             specs.add(visitPrincipalSpeNodeResult.getValue());
         }
 
-        // boolean withGrantOption = ctx.WITH() == null;
+        boolean withGrantOption = (ctx.WITH() != null);
 
         /* 元数据库命令 */
         // TODO: 权限检查
+        // TODO: *.* 的情况
         for (String spec : specs) {
             InnerSQLCommand metaDbCommand = sqlCommandBuilder.grant(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
                     spec, session.getDatabase(), tbName
-                    , privs.contains("SELECT") ? "Y" : "N"
-                    , privs.contains("INSERT") ? "Y" : "N"
-                    , privs.contains("UPDATE") ? "Y" : "N"
-                    , privs.contains("DELETE") ? "Y" : "N"
-                    , privs.contains("ALL") ? "Y" : "N"
+                    , privs.contains("SELECT") ? "Y" : "N"  // SELECT Privilege
+                    , privs.contains("INSERT") ? "Y" : "N"  // INSERT Privilege
+                    , privs.contains("UPDATE") ? "Y" : "N"  // UPDATE Privilege
+                    , privs.contains("DELETE") ? "Y" : "N"  // DELETE Privilege
+                    , privs.contains("ALL") ? "Y" : "N"     // All Privilege
+                    , withGrantOption ? "Y" : "N"           // WITH GRANT OPTION
             );
             commands.add(metaDbCommand);
             dbIds.add(0);
 
-            InnerSQLCommand metaDbCommandUpdate = sqlCommandBuilder.updateGrant(Database.DBType.MySQL, metaDatabase.getMetaDbName()
-                    , "Select_priv = '" + (privs.contains("SELECT") ? "Y" : "N") + "', " +
-                            "Insert_priv = '" + (privs.contains("INSERT") ? "Y" : "N") + "', " +
-                            "Update_priv = '" + (privs.contains("UPDATE") ? "Y" : "N") + "', " +
-                            "Delete_priv = '" + (privs.contains("DELETE") ? "Y" : "N") + "', " +
-                            "All_priv = '" + (privs.contains("ALL") ? "Y" : "N") + "'",
-                    spec, session.getDatabase(), tbName
+            String updateFields = makePrivilegeFieldsSetStr(privs, withGrantOption, true);
+            InnerSQLCommand metaDbCommandUpdate = sqlCommandBuilder.updateGrant(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
+                    updateFields, spec, session.getDatabase(), tbName
             );
             commands.add(metaDbCommandUpdate);
             dbIds.add(0);
         }
 
-        // TODO: 考虑 WITH GRANT OPTION，修改 zql_users 表
-
         /* 返回结果 */
         return new ASTNodeVisitResult(null, commands, dbIds);
+    }
+
+    /**
+     * 根据用户命令构建 zql_tables_priv 表 Update 操作 Set 部分字符串
+     *
+     * @param privs       用户命令中的权限设置
+     * @param grantOption WITH GRANT OPTION / GRANT OPTION FOR
+     * @param isGrant     GRANT 还是 REVOKE 语句，<code>true</code> 为 GRANT，<code>false</code> 为 REVOKE
+     * @ret rn zql_tables_p iv 表 Update 操作 Set 部分
+     */
+    private static String makePrivilegeFieldsSetStr(ArrayList<String> privs, boolean grantOption, boolean isGrant) {
+        String yesOrNo = "Y";
+        if (!isGrant) yesOrNo = "N";
+        String updateFieldsStr = "";
+        boolean hasPre = false;
+        if (privs.contains("SELECT")) {
+            updateFieldsStr += "SELECT_PRIV = '" + yesOrNo + "'";
+            hasPre = true;
+        }
+        if (privs.contains("INSERT")) {
+            if (hasPre) updateFieldsStr += ", ";
+            updateFieldsStr += "INSERT_PRIV = '" + yesOrNo + "'";
+            hasPre = true;
+        }
+        if (privs.contains("UPDATE")) {
+            if (hasPre) updateFieldsStr += ", ";
+            updateFieldsStr += "UPDATE_PRIV = '" + yesOrNo + "'";
+            hasPre = true;
+        }
+        if (privs.contains("DELETE")) {
+            if (hasPre) updateFieldsStr += ", ";
+            updateFieldsStr += "DELETE_PRIV = '" + yesOrNo + "'";
+            hasPre = true;
+        }
+        if (privs.contains("ALL")) {
+            if (hasPre) updateFieldsStr += ", ";
+            updateFieldsStr += "ALL_PRIV = 'Y'";
+            hasPre = true;
+        }
+        if (grantOption) {
+            if (hasPre) updateFieldsStr += ", ";
+            updateFieldsStr += "GRANT_OPTION = '" + yesOrNo + "'";
+        }
+        return updateFieldsStr;
     }
 
     /**
@@ -181,43 +226,21 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             specs.add(visitPrincipalSpeNodeResult.getValue());
         }
 
+        boolean withGrantOption = (ctx.OPTION() != null);   // GRANT OPTION FOR
+
         /* 元数据库命令 */
         // TODO: 权限检查
         for (String spec : specs) {
-            String setStr = "";
-            for (int i = 0; i < privs.size(); ++i) {
-                setStr += getGrantUpdateSet(privs.get(i), i, privs.size());
-            }
+            String updateFields = makePrivilegeFieldsSetStr(privs, withGrantOption, false);
             InnerSQLCommand metaDbCommandUpdate = sqlCommandBuilder.updateGrant(Database.DBType.MySQL, metaDatabase.getMetaDbName()
-                    , setStr, spec, session.getDatabase(), tbName
+                    , updateFields, spec, session.getDatabase(), tbName
             );
             commands.add(metaDbCommandUpdate);
             dbIds.add(0);
         }
 
-        // TODO: 考虑 GRANT OPTION FOR，修改 zql_users 表
         /* 返回结果 */
         return new ASTNodeVisitResult(null, commands, dbIds);
-    }
-
-    private static String getGrantUpdateSet(String privStr, int n, int length) {
-        String str = "";
-        if (privStr.equals("SELECT")) {
-            str += ("Select_priv = 'N'") + (n == length - 1 ? "" : ", ");
-        }
-        if (privStr.equals("INSERT")) {
-            str += ("Insert_priv = 'N'") + (n == length - 1 ? "" : ", ");
-        }
-        if (privStr.equals("UPDATE")) {
-            str += ("Update_priv = 'N'") + (n == length - 1 ? "" : ", ");
-        }
-        if (privStr.equals("DELETE")) {
-            str += ("Delete_priv = 'N'") + (n == length - 1 ? "" : ", ");
-        }
-        if (privStr.equals("ALL")) {
-            str += ("All_priv = 'N'") + (n == length - 1 ? "" : ", ");
-        }
-        return str;
     }
 
     /**
@@ -272,7 +295,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
      */
     @Override
     public ASTNodeVisitResult visitDrop_user_statement(uniformSQLParser.Drop_user_statementContext ctx) {
-                /* 获取子节点数据 */
+        /* 获取子节点数据 */
         ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
         ArrayList<Integer> dbIds = new ArrayList<Integer>();
         String userName = visit(ctx.user_name()).getValue();
@@ -293,14 +316,20 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
      */
     @Override
     public ASTNodeVisitResult visitCreate_database_statement(uniformSQLParser.Create_database_statementContext ctx) {
-        /* 获取子节点数据 */
-        ASTNodeVisitResult visitSchemaNameNodeResult = visit(ctx.schema_name());
-        String createDbName = visitSchemaNameNodeResult.getValue(); // 数据库名
-        String checkExists = ctx.IF() != null ? "IF NOT EXISTS" : "";   // IF NOT EXISTS
-        int dbId = Integer.valueOf(ZQLEnv.get("innerdb.dafault.innerdb") == null ? "1" : ZQLEnv.get("innerdb.dafault.innerdb"));    // 底层库
-
         ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
         ArrayList<Integer> dbIds = new ArrayList<Integer>();
+
+        /* 底层库 */
+        if (ZQLEnv.get("innerdb.dafault.innerdb") == null) {
+            session.setErrorMessage("没有指定底层库");
+            return null;
+        }
+        int dbId = Integer.valueOf(ZQLEnv.get("innerdb.dafault.innerdb"));    // 默认底层库
+
+        /* 获取子节点数据 */
+        ASTNodeVisitResult visitSchemaNameNodeResult = visit(ctx.schema_name());
+        String createDbName = visitSchemaNameNodeResult.getValue();     // 数据库名
+        String checkExists = ctx.IF() != null ? "IF NOT EXISTS" : "";   // IF NOT EXISTS
 
         /* 底层库命令 */
         Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
@@ -312,7 +341,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         String dbAlias = innerDatabasesArrayList.get(dbId - 1).getDbAlias();
         String user = session.getUserName();
         InnerSQLCommand metaDbCommand = sqlCommandBuilder.createDatabaseMetaDb(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
-                createDbName, String.valueOf(dbId), dbAlias, user, new TimeStamp(new Date().getTime()).toString());
+                createDbName, String.valueOf(dbId), dbAlias, user, new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
         commands.add(metaDbCommand);
         dbIds.add(0);
 
@@ -344,6 +373,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         try {
             dbId = metaDatabase.getInnerDatabaseId(dropDbName);
         } catch (MetaDatabaseOperationsException e) {
+            session.setErrorMessage(e.getMessage());
             return null;
         }
 
@@ -395,7 +425,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
         ArrayList<Integer> dbIds = new ArrayList<Integer>();
         if (session.getDatabase() == null) {
-            session.setErrorMessage("未指定数据库");
+            session.setErrorMessage("未指定数据库，使用命令 `use db_name` 指定数据库");
             return null;
         }
 
@@ -484,8 +514,17 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
                 newColumnName = alter_table_specificationContext.get(0).children.get(2).getText();
             }
 
+            /* 获取列类型 */
+            String columnType;
+            try {
+                columnType = innerDatabase.getColumnType(dbId, session.getDatabase(), tableName, oldColumnName);
+            } catch (ZQLCommandExecutionError throwables) {
+                session.setErrorMessage(throwables.getMessage());
+                return null;
+            }
+
             /* 底层库命令 */
-            InnerSQLCommand innerDbCommand = sqlCommandBuilder.alterColumnName(dbType, session.getDatabase() + "." + tableName, oldColumnName, newColumnName, "datatype(" + session.getDatabase() + "." + tableName + ")");
+            InnerSQLCommand innerDbCommand = sqlCommandBuilder.alterColumnName(dbType, session.getDatabase() + "." + tableName, oldColumnName, newColumnName, columnType);
             commands.add(innerDbCommand);
             dbIds.add(dbId);
         }
@@ -564,6 +603,96 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     @Override
     public ASTNodeVisitResult visitDatabase_name(uniformSQLParser.Database_nameContext ctx) {
         String value = ctx.any_name().getText();
+        return new ASTNodeVisitResult(value, null, null);
+    }
+
+    /**
+     * SELECT Statement
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitSelect_expression(uniformSQLParser.Select_expressionContext ctx) {
+        ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
+
+        /* 获取子节点数据 */
+        String allOrDistinct = (ctx.ALL() != null ? "ALL" : (ctx.DISTINCT() != null ? "DISTINCT" : ""));
+
+        /* 确定数据库所在底层库以及底层库类型 */
+        int dbId;
+        try {
+            dbId = metaDatabase.getInnerDatabaseId(session.getDatabase());
+        } catch (MetaDatabaseOperationsException e) {
+            session.setDatabase("获取数据库所在底层库失败，错误原因：" + e.getMessage());
+            return null;
+        }
+        Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
+
+        // SELECT ITEMS
+        // TODO: 应该进一步分析
+        String selectList = "";
+        for (ParseTree selectItemNode : ctx.select_list().children) {
+            ASTNodeVisitResult visitResult = visit(selectItemNode);
+            String selectItem = visitResult.getValue();
+            selectList += selectItem + ", ";
+        }
+        selectList = selectList.substring(0, selectList.length());
+
+        // FROM TABLES
+        String fromTables = "";
+        for (ParseTree fromTableNode : ctx.table_references().children) {
+            ASTNodeVisitResult visitResult = visit(fromTableNode);
+            String fromTable = visitResult.getValue();
+            fromTables += fromTable + ",";
+        }
+        fromTables = fromTables.substring(0, fromTables.length());
+
+        // WHERE CONDITIONS
+        String whereConditions = "";
+
+        // GROUP BY
+        String groupBy = "";
+
+        // ORDER BY
+        String orderBy = "";
+
+        // LIMIT
+        String limit = "";
+
+
+        /* 底层库命令 */
+        InnerSQLCommand innerDBcommands = sqlCommandBuilder.select(dbType, allOrDistinct, selectList,
+                fromTables, whereConditions, groupBy, orderBy, limit);
+        commands.add(innerDBcommands);
+        dbIds.add(dbId);
+
+        /* 返回结果 */
+        return new ASTNodeVisitResult(null, commands, dbIds);
+    }
+
+    /**
+     * 获取 Displayed Column 数据
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitDisplayed_column(uniformSQLParser.Displayed_columnContext ctx) {
+        String value = ctx.column_spec().column_name().any_name().keyword().getText();
+        return new ASTNodeVisitResult(value, null, null);
+    }
+
+    /**
+     * 获取 Table Reference 数据
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitTable_reference(uniformSQLParser.Table_referenceContext ctx) {
+        String value = ctx.table_factor1().table_factor2().table_factor3().get(0).table_atom().get(0).table_spec().table_name().any_name().keyword().getText();
         return new ASTNodeVisitResult(value, null, null);
     }
 }

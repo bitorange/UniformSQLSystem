@@ -72,6 +72,11 @@ public class Database {
     private int dbId;
     private DBType dbType;
 
+    @Override
+    public String toString() {
+        return dbAlias + "(" + dbHost + ", " + dbType +")";
+    }
+
     /**
      * 构造函数
      *

@@ -51,6 +51,6 @@
     <entry key="innerdb.db2.password">hadoop</entry>
 
     <!-- _________________________________ 默认底层库相关 _________________________________ -->
-    <!-- 默认底层库的编号 -->
-    <entry key="innerdb.dafault.innerdb">1</entry>
+    <!-- 默认底层库的编号，如果不设置 -->
+    <!-- <entry key="innerdb.dafault.innerdb">1</entry> -->
 </property>

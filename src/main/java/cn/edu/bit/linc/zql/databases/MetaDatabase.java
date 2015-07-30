@@ -88,19 +88,22 @@ public class MetaDatabase extends Database {
             System.exit(0);
         }
         metaDatabase = new MetaDatabase(host, user, password, dbName);
+        logger.i("从配置文件中读取得到元数据库 " + metaDatabase + " 的信息");
     }
 
     private final static String CREATE_META_DB_SQL = "CREATE DATABASE IF NOT EXISTS %s";
-    private final static String CREATE_ZQL_USERS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_users (User char(64) PRIMARY KEY, Password char(41), Grant_option enum('Y', 'N') DEFAULT 'N') ENGINE=InnoDB";
+    private final static String CREATE_ZQL_USERS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_users (User char(64) PRIMARY KEY, Password char(41)) ENGINE=InnoDB";
     private final static String CREATE_ZQL_DBS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_dbs (Db char(64) PRIMARY KEY, Inner_db_id int(10), Db_alias char(64), User char(64), Timestamp timestamp, FOREIGN KEY(User) REFERENCES zql_users(User) ON UPDATE CASCADE ON DELETE SET NULL) ENGINE=InnoDB";
     private final static String CREATE_ZQL_TABLES_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_tables (Db char(64), Tb char(16), User char(64), Timestamp timestamp, PRIMARY KEY(Db, Tb), FOREIGN KEY(User) REFERENCES zql_users(User) ON UPDATE CASCADE ON DELETE SET NULL, FOREIGN KEY(Db) REFERENCES zql_dbs(Db) ON UPDATE CASCADE ON DELETE CASCADE) ENGINE=InnoDB";
-    private final static String CREATE_ZQL_TABLES_PRIV = "CREATE TABLE IF NOT EXISTS %s.zql_tables_priv (User char(64), Db char(64), Tb char(16), Select_priv enum('Y', 'N') DEFAULT 'N', Insert_priv enum('Y', 'N') DEFAULT 'N', Update_priv enum('Y', 'N') DEFAULT 'N', Delete_priv enum('Y', 'N') DEFAULT 'N', All_priv enum('Y', 'N') DEFAULT 'N',  PRIMARY KEY(User, Db, Tb), FOREIGN KEY(User) REFERENCES zql_users(User) ON UPDATE CASCADE ON DELETE CASCADE, FOREIGN KEY(Db, Tb) REFERENCES zql_tables(Db, Tb) ON UPDATE CASCADE ON DELETE CASCADE) ENGINE=InnoDB";
+    private final static String CREATE_ZQL_TABLES_PRIV = "CREATE TABLE IF NOT EXISTS %s.zql_tables_priv (User char(64), Db char(64), Tb char(16), Select_priv enum('Y', 'N') DEFAULT 'N', Insert_priv enum('Y', 'N') DEFAULT 'N', Update_priv enum('Y', 'N') DEFAULT 'N', Delete_priv enum('Y', 'N') DEFAULT 'N', All_priv enum('Y', 'N') DEFAULT 'N',  grant_option enum('Y', 'N') DEFAULT 'N', PRIMARY KEY(User, Db, Tb), FOREIGN KEY(User) REFERENCES zql_users(User) ON UPDATE CASCADE ON DELETE CASCADE, FOREIGN KEY(Db, Tb) REFERENCES zql_tables(Db, Tb) ON UPDATE CASCADE ON DELETE CASCADE) ENGINE=InnoDB";
+    private final static String CREATE_ROOT_USER = "INSERT IGNORE INTO %s.zql_users VALUES('root', 'root')";
 
     /**
      * 创建元数据库
      */
     private static void createMetaDatabase() {
-        logger.i("正在创建元数据库");
+        // TODO: 根据数据中原来已经有的内容，构建数据库
+        logger.i("正在创建和初始化元数据库");
 
         /* 连接元数据库 */
         ConnectionPools connectionPools = ConnectionPools.getInstance();
@@ -113,8 +116,10 @@ public class MetaDatabase extends Database {
             statement.execute(String.format(CREATE_ZQL_DBS_TB_SQL, metaDatabase.getMetaDbName()));
             statement.execute(String.format(CREATE_ZQL_TABLES_TB_SQL, metaDatabase.getMetaDbName()));
             statement.execute(String.format(CREATE_ZQL_TABLES_PRIV, metaDatabase.getMetaDbName()));
+            statement.execute(String.format(CREATE_ROOT_USER, metaDatabase.getMetaDbName()));
+            logger.i("创建和初始化元数据库成功");
         } catch (SQLException e) {
-            logger.f("创建元数据库失败", e);
+            logger.f("创建元数据库失败，错误原因：", e);
             System.exit(0);
         }
     }
@@ -215,7 +220,6 @@ public class MetaDatabase extends Database {
             logger.e("从元数据库中查询某数据表所在的数据库：", e);
             throw metaDatabaseOperationsException;
         }
-        return null;   // 默认使用第 1 个底层库
+        return META_DB_ALIAS;   // 默认使用第 1 个底层库
     }
-
 }

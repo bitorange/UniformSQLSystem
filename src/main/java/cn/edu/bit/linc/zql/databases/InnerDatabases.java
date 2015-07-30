@@ -1,11 +1,18 @@
 package cn.edu.bit.linc.zql.databases;
 
 import cn.edu.bit.linc.zql.ZQLEnv;
+import cn.edu.bit.linc.zql.connections.connector.ConnectionPools;
 import cn.edu.bit.linc.zql.exceptions.UnsupportedDatabaseException;
+import cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError;
 import cn.edu.bit.linc.zql.util.Logger;
 import cn.edu.bit.linc.zql.util.LoggerFactory;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -92,6 +99,7 @@ public class InnerDatabases {
                 break;
             }
         }
+        logger.i("正在从配置文件中读取底层库信息成功，共有 " + innerDatabaseArray.size() + " 个底层库：" + innerDatabaseArray);
     }
 
     /**
@@ -108,5 +116,37 @@ public class InnerDatabases {
             }
         }
         return null;
+    }
+
+    public final static String SELECT_FIELD_TYPE = "SHOW FIELDS FROM %s.%s where Field ='%s'";
+
+    /**
+     * 获取特定数据列的类型
+     *
+     * @param DbNo         底层库编号
+     * @param databaseName 数据库名
+     * @param tableName    数据表名
+     * @param columnName   数据列名
+     * @return
+     */
+    public String getColumnType(int DbNo, String databaseName, String tableName, String columnName) throws ZQLCommandExecutionError {
+        /* 连接底层库并执行命令 */
+        ConnectionPools connectionPools = ConnectionPools.getInstance();
+        Connection connection;
+        try {
+            connection = connectionPools.getConnection(DbNo);
+            Statement statement = connection.createStatement();
+            String sqlCommand = String.format(SELECT_FIELD_TYPE, databaseName, tableName, columnName);
+            ResultSet resultSet = statement.executeQuery(sqlCommand);
+            while (resultSet.next()) {
+                String columnType = resultSet.getString("Type");
+                return columnType;
+            }
+        } catch (SQLException e) {
+            ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError();
+            zqlCommandExecutionError.initCause(e);
+            throw zqlCommandExecutionError;
+        }
+        return "INT";
     }
 }

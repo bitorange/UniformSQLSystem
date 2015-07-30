@@ -30,10 +30,10 @@ public abstract class CommandAdapter {
     }
 
     /* 当前以 MySQL 语法为准 */
-    public final static String CREATE_USER = "INSERT INTO %s.zql_users VALUES('%s', '%s', 'N')";   // CREATE USER ihainan IDENTIFIED BY 123456，只考虑 MySQL
+    public final static String CREATE_USER = "INSERT INTO %s.`zql_users` VALUES('%s', '%s', 'N')";   // CREATE USER ihainan IDENTIFIED BY 123456，只考虑 MySQL
     public final static String DROP_USER = "DELETE FROM %s.zql_users WHERE User = '%s'";  // DROP user ihainan，只考虑 MySQL
 
-    public final static String GRANT = "INSERT IGNORE INTO %s.zql_tables_priv VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";  // GRANT SELECT, DELETE ON table_test TO ihainan, snow [WITH GRANT OPTION]，只考虑 MySQL
+    public final static String GRANT = "INSERT IGNORE INTO %s.zql_tables_priv VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";  // GRANT SELECT, DELETE ON table_test TO ihainan, snow [WITH GRANT OPTION]，只考虑 MySQL
     public final static String UPDATE_GRANT = "UPDATE %s.zql_tables_priv SET %s WHERE User = '%s' and Db = '%s' and Tb = '%s'";
 
     public final static String REVOKE_GRANT = "REVOKE %s %s ON %s TO %s %s"; // REVOKE SELECT, DELETE ON table_test [GRANT OPTION] FROM ihainan, snow
@@ -62,6 +62,8 @@ public abstract class CommandAdapter {
     public final static String USE_DATABASE = "USE %s"; // USE db_name
 
     public final static String SHOW_SERVER_ALIASES = "SELECT Inner_db_id, Db_alias FROM %s.zql_dbs";
+
+    public final static String SELECT = "SELECT %s %s FROM %s %s %s %s %s";
 
     /**
      * 删除用户
@@ -280,4 +282,16 @@ public abstract class CommandAdapter {
         String command = String.format(SHOW_SERVER_ALIASES, args);
         return command;
     }
+
+    /**
+     * SELECT
+     *
+     * @param args 参数列表
+     * @return SQL 命令
+     */
+    public String select(Object... args) {
+        String command = String.format(SELECT, args);
+        return command;
+    }
+
 }
