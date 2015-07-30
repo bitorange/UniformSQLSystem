@@ -99,7 +99,7 @@ public class InnerDatabases {
                 break;
             }
         }
-        logger.i("正在从配置文件中读取底层库信息成功，共有 " + innerDatabaseArray.size() + " 个底层库：" + innerDatabaseArray);
+        logger.i("从配置文件中读取底层库信息成功，共有 " + innerDatabaseArray.size() + " 个底层库：" + innerDatabaseArray);
     }
 
     /**

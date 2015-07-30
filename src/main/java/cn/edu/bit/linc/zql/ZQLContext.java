@@ -27,13 +27,14 @@ public class ZQLContext {
         SQLCommandManager sqlCommandManager = new SQLCommandManager(commandStr, session);
         if (sqlCommandManager.execute()) {
             try {
-                sqlCommandManager.printResult();
+                System.out.println("执行 SQL 命令 `" + commandStr + "` 成功");
+                // sqlCommandManager.printResult();
+                System.out.println(sqlCommandManager.print());
             } catch (SQLException e) {
                 logger.e("打印执行结果失败", e);
             }
-            System.out.println("执行 SQL 命令 `" + commandStr + "` 成功 \n");
         } else {
-            System.out.println("执行 SQL 命令 `" + commandStr + "` 失败 \n");
+            System.out.println("执行 SQL 命令 `" + commandStr + "` 失败");
         }
     }
 
@@ -43,8 +44,7 @@ public class ZQLContext {
      * @param args 程序参数
      */
     public static void main(String[] args) {
-        ZQLContext zqlContext = new ZQLContext();
-        zqlContext.initializeSystem();
+        initializeSystem();
 
         /* 伪造会话用于测试，实际过程是每与客户端建立连接便创建一个会话 */
         ZQLSession session = new ZQLSession("ihainan", null, "12345");
@@ -55,6 +55,9 @@ public class ZQLContext {
         // executeSQL("CREATE USER ihainan IDENTIFIED BY f123456", session);
         // executeSQL("CREATE DATABASE IF NOT EXISTS db_1", session);
         executeSQL("USE db_1", session);
+        executeSQL("SHOW SERVER ALIASES", session);
+        // executeSQL("SHOW CREATE TABLE tb_1", session);
+        // executeSQL("SHOW DATABASES LIKE db_1%", session);
         // executeSQL("CREATE DATABASE db_2", session);
         // executeSQL("DROP TABLE tb_2", session);
         // executeSQL("CREATE TABLE db_2.tb_2 (ID INT, Password Float)", session);

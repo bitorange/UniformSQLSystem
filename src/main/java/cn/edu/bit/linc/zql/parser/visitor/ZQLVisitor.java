@@ -363,7 +363,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             InnerSQLCommand metaDbCommand = sqlCommandBuilder.showServerAliases(Database.DBType.MySQL, metaDatabase.getMetaDbName());
             commands.add(metaDbCommand);
             dbIds.add(0);
-        } else if(specificationContext.CREATE() != null && specificationContext.TABLE() != null){
+        } else if (specificationContext.CREATE() != null && specificationContext.TABLE() != null) {
             /* 获取子节点数据 */
             String tableName = visit(specificationContext.table_name()).getValue();
 
@@ -483,7 +483,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         dbIds.add(dbId);
 
         /* 元数据库命令 */
-        InnerSQLCommand metaDbCommand = sqlCommandBuilder.dropDatabaseMetaDb(Database.DBType.MySQL, new String[]{metaDatabase.getMetaDbName(), dropDbName});
+        InnerSQLCommand metaDbCommand = sqlCommandBuilder.dropDatabaseMetaDb(Database.DBType.MySQL, metaDatabase.getMetaDbName(), dropDbName);
         commands.add(metaDbCommand);
         dbIds.add(0);
 

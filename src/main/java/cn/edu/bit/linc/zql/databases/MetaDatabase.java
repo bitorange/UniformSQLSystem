@@ -6,9 +6,10 @@ import cn.edu.bit.linc.zql.exceptions.MetaDatabaseOperationsException;
 import cn.edu.bit.linc.zql.util.Logger;
 import cn.edu.bit.linc.zql.util.LoggerFactory;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,21 +18,6 @@ import java.util.Map;
  */
 public class MetaDatabase extends Database {
     private final static Logger logger = LoggerFactory.getLogger(MetaDatabase.class);
-
-    /**
-     * 构造函数
-     *
-     * @param dbId       数据库编号（从 0 开始，其中 0 表示元数据库）
-     * @param dbType     数据库类型
-     * @param dbAlias    数据库别名
-     * @param dbHost     数据库地址
-     * @param dbUser     数据库连接用户
-     * @param dbPassword 数据库用户密码
-     */
-    private MetaDatabase(int dbId, DBType dbType, String dbAlias, String dbHost, String dbUser, String dbPassword) {
-        super(dbId, dbType, dbAlias, dbHost, dbUser, dbPassword);
-    }
-
     private String metaDbName;  // 元数据库中，存储元数据的数据库的名字
     public final static int META_DB_ID = 0;    // 元数据库的编号固定为 1
     public final static String META_DB_ALIAS = "db_meta";   // 元数据库的别名固定为 db_meta
@@ -133,41 +119,6 @@ public class MetaDatabase extends Database {
         }
     }
 
-    public final static String DROP_DATABASE_SQL = "DELETE FROM %s.zql_dbs WHERE Db = '%s'";
-    public final static String DROP_RELEVANT_TABLES = "DELETE FROM %s.zql_tables WHERE Db = '%s'";
-    public final static String DELETE_RELEVANT_PRIV = "DELETE FROM %s.zql_tables_priv WHERE Db = '%s'";
-
-    /**
-     * 从元数据库中清除特定数据库的信息
-     *
-     * @param dbName 数据库名称
-     * @throws MetaDatabaseOperationsException 从元数据库中清除特定数据库的信息失败
-     */
-    public static void dropDatabase(String dbName) throws MetaDatabaseOperationsException {
-        /* 连接元数据库并执行命令 */
-        ConnectionPools connectionPools = ConnectionPools.getInstance();
-        Connection connection;
-        try {
-            connection = connectionPools.getConnection(0);
-            Statement statement = connection.createStatement();
-            String sqlCommandDropDb = String.format(DROP_DATABASE_SQL, metaDatabase.getMetaDbName(), dbName);
-            String sqlCommandDropTables = String.format(DROP_RELEVANT_TABLES, metaDatabase.getMetaDbName(), dbName);
-            String sqlCommandDeleteRelevantPriv = String.format(DELETE_RELEVANT_PRIV, metaDatabase.getMetaDbName(), dbName);
-
-            logger.d("从元数据库 zql_dbs 中删除数据库信息：" + sqlCommandDropDb);
-            statement.execute(sqlCommandDropDb);
-            logger.d("从元数据库 zql_tables 中删除数据库信息：" + sqlCommandDropDb);
-            statement.execute(sqlCommandDropTables);
-            logger.d("从元数据库 zql_tables_priv 中删除数据库信息：" + sqlCommandDropDb);
-            statement.execute(sqlCommandDeleteRelevantPriv);
-        } catch (SQLException e) {
-            MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException();
-            metaDatabaseOperationsException.initCause(e);
-            logger.e("从元数据库删除数据库信息", e);
-            throw metaDatabaseOperationsException;
-        }
-    }
-
     public final static String SELECT_DB_FORM_ZQL_DBS_SQL = "SELECT * FROM %s.zql_dbs WHERE Db = '%s'";
 
     /**
@@ -187,9 +138,8 @@ public class MetaDatabase extends Database {
             String sqlCommand = String.format(SELECT_DB_FORM_ZQL_DBS_SQL, metaDatabase.getMetaDbName(), dbName);
             logger.d("从元数据库中查询某数据库所述的底层库：" + sqlCommand);
             ResultSet resultSet = statement.executeQuery(sqlCommand);
-            while (resultSet.next()) {
-                int id = Integer.valueOf(resultSet.getString("Inner_db_id"));
-                return id;
+            if (resultSet.next()) {
+                return Integer.valueOf(resultSet.getString("Inner_db_id"));
             }
         } catch (SQLException e) {
             MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException();
@@ -198,36 +148,6 @@ public class MetaDatabase extends Database {
             throw metaDatabaseOperationsException;
         }
         return 1;   // 默认使用第 1 个底层库
-    }
-
-    public final static String SELECT_DB_NAME_FROM_ZQL_TABLES = "SELECT Db FROM %s.zql_tables WHERE Tb = '%s'";
-
-    /**
-     * 获取数据表所在的数据库
-     *
-     * @param tableName 表名
-     * @return 节点访问结果
-     * @throws MetaDatabaseOperationsException
-     */
-    public String getDbNameOfATable(String tableName) throws MetaDatabaseOperationsException {
-        /* 连接元数据库并执行命令 */
-        ConnectionPools connectionPools = ConnectionPools.getInstance();
-        Connection connection;
-        try {
-            connection = connectionPools.getConnection(0);
-            Statement statement = connection.createStatement();
-            String sqlCommand = String.format(SELECT_DB_NAME_FROM_ZQL_TABLES, metaDatabase.getMetaDbName(), tableName);
-            ResultSet resultSet = statement.executeQuery(sqlCommand);
-            while (resultSet.next()) {
-                String dbName = resultSet.getString("Db");
-                return dbName;
-            }
-        } catch (SQLException e) {
-            MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException("从元数据库中查询数据表" + tableName + "所在的数据库失败");
-            metaDatabaseOperationsException.initCause(e);
-            throw metaDatabaseOperationsException;
-        }
-        return META_DB_ALIAS;   // 默认使用第 1 个底层库
     }
 
     public final static String SELECT_PRIVILEGES_SQL = "SELECT * FROM %s.zql_tables_priv WHERE Db = '%s' " +
@@ -245,7 +165,7 @@ public class MetaDatabase extends Database {
             String sqlCommand = String.format(SELECT_PRIVILEGES_SQL, metaDatabase.getMetaDbName(), databaseName,
                     tableName, user);
             ResultSet resultSet = statement.executeQuery(sqlCommand);
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 Map<String, String> privileges = new HashMap<String, String>();
                 privileges.put("SELECT", resultSet.getString("Select_priv"));
                 privileges.put("INSERT", resultSet.getString("Insert_priv"));

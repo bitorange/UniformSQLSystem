@@ -2,7 +2,6 @@ package cn.edu.bit.linc.zql.command;
 
 import cn.edu.bit.linc.zql.connections.ZQLSession;
 import cn.edu.bit.linc.zql.connections.connector.ConnectionPools;
-import cn.edu.bit.linc.zql.databases.MetaDatabase;
 import cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError;
 import cn.edu.bit.linc.zql.exceptions.ZQLConnectionException;
 import cn.edu.bit.linc.zql.exceptions.ZQLSyntaxErrorException;
@@ -10,6 +9,7 @@ import cn.edu.bit.linc.zql.parser.uniformSQLLexer;
 import cn.edu.bit.linc.zql.parser.uniformSQLParser;
 import cn.edu.bit.linc.zql.parser.visitor.ASTNodeVisitResult;
 import cn.edu.bit.linc.zql.parser.visitor.ZQLVisitor;
+import cn.edu.bit.linc.zql.util.AsciiArtTable;
 import cn.edu.bit.linc.zql.util.Logger;
 import cn.edu.bit.linc.zql.util.LoggerFactory;
 import dnl.utils.text.table.TextTable;
@@ -18,7 +18,6 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
@@ -66,8 +65,7 @@ public class SQLCommandManager {
             tree = parser.root_statement();
             ZQLVisitor visitor = new ZQLVisitor(session);
             visitResult = visitor.visit(tree);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             ZQLSyntaxErrorException zqlSyntaxErrorException = new ZQLSyntaxErrorException();
             zqlSyntaxErrorException.initCause(e);
             logger.e("发生语法错误：" + sqlCommand, zqlSyntaxErrorException);
@@ -142,19 +140,17 @@ public class SQLCommandManager {
     }
 
     /**
-     * 打印结果
+     * 打印 SQL 命令输出结果
      */
-    public void printResult() throws SQLException {
+    public String print() throws SQLException {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("SQL Command: " + sqlCommand + "\n");
         if (resultSet != null) {
-            // TODO: 格式化 ResultSet
-            System.out.println("QUERY OK!");
+            AsciiArtTable asciiArtTable = new AsciiArtTable();
+            stringBuilder.append("QUERY OK!\n");
+
             /* 获取表头 */
             ResultSetMetaData rsmd;
             rsmd = resultSet.getMetaData();
-
-
             ArrayList<String> headerList = new ArrayList<String>();
             if (rsmd != null) {
                 for (int i = 1; i <= rsmd.getColumnCount(); ++i) {
@@ -163,11 +159,12 @@ public class SQLCommandManager {
             }
             String[] header = new String[headerList.size()];
             header = headerList.toArray(header);
+            asciiArtTable.addHeaderCols(header);
 
             /* 获取表中数据并存放在二维数据中 */
             int i = 0;
             int numberOfRows = 0;
-            String[][] data = null;
+            String[][] data;
             if (resultSet != null) {
                 resultSet.last();
                 numberOfRows = resultSet.getRow();
@@ -175,32 +172,25 @@ public class SQLCommandManager {
                 resultSet.beforeFirst();
 
                 while (resultSet.next()) {
+                    assert rsmd != null;
                     for (int j = 1; j <= rsmd.getColumnCount(); ++j) {
                         String result = resultSet.getString(j);
                         data[i][j - 1] = result;
                     }
+                    asciiArtTable.add(data[i]);
                     i++;
                 }
             }
-
-            /* 打印表格 */
-            if (data != null) {
-                TextTable textTable = new TextTable(header, data);
-                textTable.setAddRowNumbering(true);
-                textTable.printTable();
-            }
-
-            System.out.println();
-            System.out.println("" + numberOfRows + " rows in set (" + runningTime + " ms)");
-        } else if (updateCount != -1) {
-            stringBuilder.append("Updated " + updateCount + " rows (" + runningTime + " ms)");
+            stringBuilder.append(asciiArtTable.getOutput());
+            stringBuilder.append("" + numberOfRows + " rows in set (" + runningTime + " ms)\n");
+        } else {
+            stringBuilder.append("Updated ").append(updateCount).append(" rows (").append(runningTime).append(" ms)\n");
         }
+        return stringBuilder.toString();
     }
-
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
     private final String sqlCommand;    // SQL 指令
-    private final MetaDatabase metaDatabase = MetaDatabase.getInstance();
     private final ZQLSession session;   // 用户会话
     private ResultSet resultSet = null; // 执行结果，仅在执行结果返回 ResultSet 时候该值不为 null
     private int updateCount = -1;       // 更新行数，仅在执行结果返回数值时候该值不为 - 1
