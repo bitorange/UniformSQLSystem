@@ -50,10 +50,13 @@ public class ZQLContext {
         ZQLSession session = new ZQLSession("root", null, "12345");
 
         /* 测试命令 */
-        executeSQL("CREATE DATABASE IF NOT EXISTS db_1", session);
-        executeSQL("use db_1", session);
-        executeSQL("GRANT INSERT ON tb_1 TO root WITH GRANT OPTION", session);
+        // executeSQL("CREATE DATABASE IF NOT EXISTS db_1", session);
+        // executeSQL("use db_1", session);
+        // executeSQL("GRANT INSERT ON tb_1 TO root WITH GRANT OPTION", session);
         // executeSQL("REVOKE GRANT OPTION FOR SELECT ON tb_1 FROM root", session);
+        executeSQL("CREATE TABLE IF NOT EXISTS db_1.tb_1 (Id INT, Password INT COMMENT 'comment') COMMENT 'This is comment' AS SELECT * FROM USER", session);
+        // executeSQL("use db_1", session);
+        // executeSQL("DROP TABLE tb_1", session);
 
         // 用户相关
         // executeSQL("CREATE USER ihainan IDENTIFIED BY f123345", session);           // 创建用户

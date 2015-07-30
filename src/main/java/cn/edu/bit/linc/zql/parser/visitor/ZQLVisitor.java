@@ -1,10 +1,7 @@
 package cn.edu.bit.linc.zql.parser.visitor;
 
 import cn.edu.bit.linc.zql.ZQLEnv;
-import cn.edu.bit.linc.zql.command.HiveCommandAdapter;
-import cn.edu.bit.linc.zql.command.InnerSQLCommand;
-import cn.edu.bit.linc.zql.command.MySQLCommandAdapter;
-import cn.edu.bit.linc.zql.command.SQLCommandBuilder;
+import cn.edu.bit.linc.zql.command.*;
 import cn.edu.bit.linc.zql.connections.ZQLSession;
 import cn.edu.bit.linc.zql.databases.Database;
 import cn.edu.bit.linc.zql.databases.InnerDatabase;
@@ -15,6 +12,7 @@ import cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError;
 import cn.edu.bit.linc.zql.parser.uniformSQLBaseVisitor;
 import cn.edu.bit.linc.zql.parser.uniformSQLParser;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.apache.hadoop.fs.shell.Command;
 import org.mortbay.log.Log;
 
 import java.util.ArrayList;
@@ -412,6 +410,113 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         session.setDatabase(dbName);
 
         return new ASTNodeVisitResult(null, commands, dbIds);
+    }
+
+    /**
+     * 创建表格
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitCreate_table_statement1(uniformSQLParser.Create_table_statement1Context ctx) {
+        ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
+
+        /* 获取子节点数据 */
+        String temporary = ctx.TEMPORARY() == null ? "" : "TEMPORARY";
+        String external = "";
+        String checkExists = ctx.IF() == null ? "" : "IF NOT EXISTS";
+        String tableName = visit(ctx.table_name()).getValue();
+        String databaseName = (ctx.database_name() != null ? visit(ctx.database_name()).getValue() :
+                (session.getDatabase() != null ? session.getDatabase() : null));
+        if (databaseName == null) {
+            session.setErrorMessage("未指定数据库");
+            return null;
+        }
+
+        // 获取数据库所在的底层库
+        int dbId;
+        try {
+            dbId = metaDatabase.getInnerDatabaseId(databaseName);
+        } catch (MetaDatabaseOperationsException e) {
+            session.setDatabase("获取数据库所在底层库失败，错误原因：" + e.getMessage());
+            return null;
+        }
+
+        String columns = "";
+        for (ParseTree tree : ctx.create_definition()) {
+            String columnName = visit(tree.getChild(0)).getValue();
+            ASTNodeVisitResult visitColumnDefinitionNodeResult = visit(tree.getChild(1));
+            int index = visitColumnDefinitionNodeResult.getValue().indexOf(" ");
+            String columnCommend = (index != -1 ? "COMMENT " + visitColumnDefinitionNodeResult.getValue().split(" ")[1]
+                    : "");
+            String columnType = visitColumnDefinitionNodeResult.getValue().split(" ")[0];
+            if (!CommandAdapter.TYPE_MAP.containsKey(columnType.toUpperCase())) {
+                session.setErrorMessage("找不到类型 " + columnType);
+                return null;
+            }
+            columns += columnName + " " + CommandAdapter.TYPE_MAP.get(columnType) + " " + columnCommend + ", ";
+        }
+        columns = columns.substring(0, columns.length() - 2);
+
+        /* 底层库命令 */
+        Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
+        InnerSQLCommand innerDbCommand = sqlCommandBuilder.createTable(dbType, temporary, external, checkExists, databaseName, tableName,
+                columns, "", "");
+        commands.add(innerDbCommand);
+        dbIds.add(dbId);
+
+        /* 元数据库命令 */
+        InnerSQLCommand metaDbCommand = sqlCommandBuilder.createTableMateDb(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
+                databaseName, tableName, session.getUserName(),
+                new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
+        commands.add(metaDbCommand);
+        dbIds.add(0);
+
+        /* 返回结果 */
+        return new ASTNodeVisitResult(null, commands, dbIds);
+    }
+
+    /**
+     * 获取字段定义
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitColumn_definition(uniformSQLParser.Column_definitionContext ctx) {
+        String columnType = visit(ctx.column_data_type_header()).getValue();
+        String comment = "";
+        if (ctx.COMMENT() != null) {
+            comment = ctx.getChild(2).getText();
+        }
+        String value = columnType + (comment.equals("") ? "" : (" " + comment));
+        return new ASTNodeVisitResult(value, null, null);
+    }
+
+    /**
+     * 获取字段类型
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitColumn_data_type_header(uniformSQLParser.Column_data_type_headerContext ctx) {
+        String value = ctx.getText();
+        return new ASTNodeVisitResult(value, null, null);
+    }
+
+    /**
+     * 获取列名
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitColumn_name(uniformSQLParser.Column_nameContext ctx) {
+        String value = ctx.any_name().getText();
+        return new ASTNodeVisitResult(value, null, null);
     }
 
     /**

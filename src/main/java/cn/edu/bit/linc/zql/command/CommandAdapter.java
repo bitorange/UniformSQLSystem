@@ -12,21 +12,21 @@ public abstract class CommandAdapter {
     public static Database.DBType dbType;
 
     /* 数据类型映射 - 当前以 MySQL 为准 */
-    public static Map<String, String> typeMap = new HashMap<String, String>();
+    public static Map<String, String> TYPE_MAP = new HashMap<String, String>();
 
     static {
-        typeMap.put("TINYINT", "TINYINT");
-        typeMap.put("SMALLINT", "SMALLINT");
-        typeMap.put("INT", "INT");
-        typeMap.put("BIGINT", "BIGINT");
-        typeMap.put("FLOAT", "FLOAT");
-        typeMap.put("DOUBLE", "DOUBLE");
-        typeMap.put("DECIMAL", "DECIMAL");
-        typeMap.put("TIMESTAMP", "TIMESTAMP");
-        typeMap.put("DATE", "DATE");
-        typeMap.put("VARCHAR", "VARCHAR");  // TODO: 长度限制
-        typeMap.put("Boolean", "ENUM('true'', 'false'')");
-        typeMap.put("BINARY", "_BLOB");
+        TYPE_MAP.put("TINYINT", "TINYINT");
+        TYPE_MAP.put("SMALLINT", "SMALLINT");
+        TYPE_MAP.put("INT", "INT");
+        TYPE_MAP.put("BIGINT", "BIGINT");
+        TYPE_MAP.put("FLOAT", "FLOAT");
+        TYPE_MAP.put("DOUBLE", "DOUBLE");
+        TYPE_MAP.put("DECIMAL", "DECIMAL");
+        TYPE_MAP.put("TIMESTAMP", "TIMESTAMP");
+        TYPE_MAP.put("DATE", "DATE");
+        TYPE_MAP.put("VARCHAR", "VARCHAR");  // TODO: 长度限制
+        TYPE_MAP.put("Boolean", "ENUM('true'', 'false'')");
+        TYPE_MAP.put("BINARY", "_BLOB");
     }
 
     /* 当前以 MySQL 语法为准 */
@@ -42,6 +42,10 @@ public abstract class CommandAdapter {
 
     public final static String DROP_TABLE = "DROP TABLE %s %s"; // DROP TABLE [IF EXISTS] tb_name
     public final static String DROP_TABLE_META_DB = "DELETE FROM %s.zql_tables WHERE Tb = '%s' and Db = '%s'";
+
+    public final static String CREATE_TABLE = "CREATE %s %s TABLE %s %s.%s (%s) %s %s";
+    public final static String CREATE_TABLE_META = "INSERT INTO %s.zql_tables VALUES('%s', '%s', '%s', '%s')";
+
 
     public final static String ALTER_TABLE_NAME = "RENAME TABLE %s TO %s"; // RENAME TABLE old_table TO backup_table
     public final static String ALTER_TABLE_NAME_META_DB = "UPDATE %s.zql_tables SET Tb = '%s' WHERE Tb = '%s' and Db = '%s'";
@@ -117,6 +121,28 @@ public abstract class CommandAdapter {
      */
     public String showGrant(Object... args) {
         String command = String.format(SHOW_GRANT, args);
+        return command;
+    }
+
+    /**
+     * 创建数据表
+     *
+     * @param args 参数列表
+     * @return SQL 命令
+     */
+    public String createTable(Object... args) {
+        String command = String.format(CREATE_TABLE, args);
+        return command;
+    }
+
+    /**
+     * 创建数据表 - 元数据库
+     *
+     * @param args 参数列表
+     * @return SQL 命令
+     */
+    public String createTableMateDb(Object... args) {
+        String command = String.format(CREATE_TABLE_META, args);
         return command;
     }
 

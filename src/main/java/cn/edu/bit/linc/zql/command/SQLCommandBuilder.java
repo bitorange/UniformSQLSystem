@@ -93,6 +93,28 @@ public class SQLCommandBuilder {
     }
 
     /**
+     * 创建数据表
+     *
+     * @param dbType 底层库类型
+     * @param args   参数列表
+     * @return SQL命令
+     */
+    public InnerSQLCommand createTable(Database.DBType dbType, Object... args) {
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].createTable(args), args);
+    }
+
+    /**
+     * 创建数据表 - 元数据库
+     *
+     * @param dbType 底层库类型
+     * @param args   参数列表
+     * @return SQL命令
+     */
+    public InnerSQLCommand createTableMateDb(Database.DBType dbType, Object... args) {
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].createTableMateDb(args), args);
+    }
+
+    /**
      * 删除数据表
      *
      * @param dbType 底层库类型
