@@ -26,5 +26,8 @@
         <module name="uniformSQL" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="uniformSQL" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
