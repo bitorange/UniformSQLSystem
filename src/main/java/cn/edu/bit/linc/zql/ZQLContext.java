@@ -55,7 +55,10 @@ public class ZQLContext {
         // executeSQL("CREATE USER ihainan IDENTIFIED BY f123456", session);
         // executeSQL("CREATE DATABASE IF NOT EXISTS db_1", session);
         executeSQL("USE db_1", session);
-        executeSQL("SHOW CREATE TABLE tb_1", session);
+        // executeSQL("CREATE DATABASE db_2", session);
+        // executeSQL("DROP TABLE tb_2", session);
+        // executeSQL("CREATE TABLE db_2.tb_2 (ID INT, Password Float)", session);
+        // executeSQL("SHOW TABLES", session);
         // executeSQL("CREATE TABLE IF NOT EXISTS db_1.tb_1 (ID BIGINT, AGE TINYINT)", session);
         // executeSQL("USE db_1", session);
         // executeSQL("GRANT ALL ON tb_1 TO ihainan WITH GRANT OPTION", session);

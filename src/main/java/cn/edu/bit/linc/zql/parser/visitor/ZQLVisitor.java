@@ -557,7 +557,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
                 session.setErrorMessage("找不到类型 " + columnType);
                 return null;
             }
-            columns += columnName + " " + CommandAdapter.TYPE_MAP.get(columnType) + " " + columnCommend + ", ";
+            columns += columnName + " " + CommandAdapter.TYPE_MAP.get(columnType.toUpperCase()) + " " + columnCommend + ", ";
         }
         columns = columns.substring(0, columns.length() - 2);
 
