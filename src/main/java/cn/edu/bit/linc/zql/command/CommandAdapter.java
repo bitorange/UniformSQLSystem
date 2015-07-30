@@ -55,6 +55,8 @@ public abstract class CommandAdapter {
     public final static String SHOW_TABLES = "SELECT * FROM %s.zql_tables WHERE %s and %s";    // SHOW TABLES [IN db_test] [LIKE "db_*"]
     public final static String SHOW_COLUMNS = "SHOW COLUMNS FROM %s %s"; // SHOW COLUMNS FROM tb_name [FROM db_name]
 
+    public final static String SHOW_CREATE_TABLE = "SHOW CREATE TABLE %s";
+
     public final static String CREATE_DATABASE = "CREATE DATABASE %s %s";   // CREATE DATABASE [IF NOT EXISTS] db_name
     public final static String CREATE_DATABASE_META_DB = "INSERT IGNORE INTO %s.zql_dbs VALUES('%s', '%s', '%s', '%s', '%s')";
 
@@ -220,6 +222,17 @@ public abstract class CommandAdapter {
      */
     public String showColumns(Object... args) {
         String command = String.format(SHOW_COLUMNS, args);
+        return command;
+    }
+
+    /**
+     * 查看创建表语句
+     *
+     * @param args 参数列表
+     * @return SQL 命令
+     */
+    public String showCreateTable(Object... args) {
+        String command = String.format(SHOW_CREATE_TABLE, args);
         return command;
     }
 

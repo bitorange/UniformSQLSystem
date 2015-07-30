@@ -39,7 +39,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
-     * 用户名节点
+     * 获取用户名
      *
      * @param ctx 节点上下文
      * @return 节点访问结果
@@ -64,7 +64,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
 
 
     /**
-     * 创建用户 Statement
+     * 创建用户 STATEMENT
      *
      * @param ctx 节点上下文
      * @return 节点访问结果
@@ -87,13 +87,15 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
-     * 授权 statement
+     * 授权 STATEMENT
      *
      * @param ctx 节点上下文
      * @return 节点访问结果
      */
     @Override
     public ASTNodeVisitResult visitGrant_privilege_statement(uniformSQLParser.Grant_privilege_statementContext ctx) {
+        // TODO: databaseName.tableName 的情况
+        // TODO: *.* 的情况
         ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
         ArrayList<Integer> dbIds = new ArrayList<Integer>();
         if (session.getDatabase() == null) {
@@ -164,8 +166,6 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         }
 
         /* 元数据库命令 */
-        // TODO: databaseName.tableName 的情况
-        // TODO: *.* 的情况
         for (String spec : specs) {
             InnerSQLCommand metaDbCommand = sqlCommandBuilder.grant(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
                     spec, session.getDatabase(), tbName
@@ -236,13 +236,15 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
-     * 撤销授权 Statement
+     * 撤销授权 STATEMENT
      *
      * @param ctx 节点上下文
      * @return 节点访问结果
      */
     @Override
     public ASTNodeVisitResult visitRevoke_privilege_statement(uniformSQLParser.Revoke_privilege_statementContext ctx) {
+        // TODO: databaseName.tableName 的情况
+        // TODO: *.* 的情况
         ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
         ArrayList<Integer> dbIds = new ArrayList<Integer>();
 
@@ -361,13 +363,31 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             InnerSQLCommand metaDbCommand = sqlCommandBuilder.showServerAliases(Database.DBType.MySQL, metaDatabase.getMetaDbName());
             commands.add(metaDbCommand);
             dbIds.add(0);
+        } else if(specificationContext.CREATE() != null && specificationContext.TABLE() != null){
+            /* 获取子节点数据 */
+            String tableName = visit(specificationContext.table_name()).getValue();
+
+            // 获取数据库所在底层库编号
+            int dbId;
+            try {
+                dbId = metaDatabase.getInnerDatabaseId(session.getDatabase());
+            } catch (MetaDatabaseOperationsException e) {
+                session.setErrorMessage(e.getMessage());
+                return null;
+            }
+
+            /* 底层库命令 */
+            Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
+            InnerSQLCommand innerDbCommand = sqlCommandBuilder.showCreateTable(dbType, session.getDatabase() + "." + tableName);
+            commands.add(innerDbCommand);
+            dbIds.add(dbId);
         }
 
         return new ASTNodeVisitResult(null, commands, dbIds);
     }
 
     /**
-     * 删除用户 Statement
+     * 删除用户 STATEMENT
      *
      * @param ctx 节点上下文
      * @return 节点访问结果
@@ -388,7 +408,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
-     * 创建数据库 Statement
+     * 创建数据库 STATEMENT
      *
      * @param ctx 节点上下文
      * @return 节点访问结果
@@ -429,7 +449,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
-     * 删除指定数据库
+     * 删除指定数据库 STATEMENT
      *
      * @param ctx 节点上下文
      * @return 节点访问结果
@@ -494,7 +514,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
-     * 创建表格
+     * 创建表格 STATEMENT
      *
      * @param ctx 节点上下文
      * @return 节点访问结果
@@ -645,13 +665,14 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
-     * 修改数据表
+     * 修改数据表 STATEMENT
      *
      * @param ctx 节点上下文
      * @return 节点访问结果
      */
     @Override
     public ASTNodeVisitResult visitAlter_table_statement(uniformSQLParser.Alter_table_statementContext ctx) {
+        // TODO: 增加对 dbName.tableName 的支持
         ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
         ArrayList<Integer> dbIds = new ArrayList<Integer>();
         if (session.getDatabase() == null) {
@@ -668,7 +689,6 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             return null;
         }
         Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
-
 
         /* 获取子节点数据 */
         ASTNodeVisitResult visitTableNameNodeResult = visit(ctx.table_name());

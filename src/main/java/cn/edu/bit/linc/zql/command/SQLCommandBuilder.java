@@ -192,6 +192,17 @@ public class SQLCommandBuilder {
     }
 
     /**
+     * 查看创建表语句
+     *
+     * @param dbType 底层库类型
+     * @param args   参数列表
+     * @return SQL命令
+     */
+    public InnerSQLCommand showCreateTable(Database.DBType dbType, Object... args) {
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].showCreateTable(args), args);
+    }
+
+    /**
      * 创建数据库
      *
      * @param dbType 底层库类型
