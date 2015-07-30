@@ -30,7 +30,7 @@ public abstract class CommandAdapter {
     }
 
     /* 当前以 MySQL 语法为准 */
-    public final static String CREATE_USER = "INSERT INTO %s.`zql_users` VALUES('%s', '%s', 'N')";   // CREATE USER ihainan IDENTIFIED BY 123456，只考虑 MySQL
+    public final static String CREATE_USER = "INSERT INTO %s.`zql_users` VALUES('%s', '%s')";   // CREATE USER ihainan IDENTIFIED BY 123456，只考虑 MySQL
     public final static String DROP_USER = "DELETE FROM %s.zql_users WHERE User = '%s'";  // DROP user ihainan，只考虑 MySQL
 
     public final static String GRANT = "INSERT IGNORE INTO %s.zql_tables_priv VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";  // GRANT SELECT, DELETE ON table_test TO ihainan, snow [WITH GRANT OPTION]，只考虑 MySQL

@@ -9,6 +9,8 @@ import cn.edu.bit.linc.zql.util.LoggerFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 元数据库类，存储元数据相关的信息与操作
@@ -98,7 +100,9 @@ public class MetaDatabase extends Database {
             "Timestamp timestamp, FOREIGN KEY(User) REFERENCES %s.zql_users(User) " +
             "ON UPDATE CASCADE ON DELETE SET NULL) ENGINE=InnoDB";
     private final static String CREATE_ZQL_TABLES_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_tables (Db char(64), Tb char(16), User char(64), Timestamp timestamp, PRIMARY KEY(Db, Tb), FOREIGN KEY(User) REFERENCES %s.zql_users(User) ON UPDATE CASCADE ON DELETE SET NULL, FOREIGN KEY(Db) REFERENCES %s.zql_dbs(Db) ON UPDATE CASCADE ON DELETE CASCADE) ENGINE=InnoDB";
-    private final static String CREATE_ZQL_TABLES_PRIV = "CREATE TABLE IF NOT EXISTS %s.zql_tables_priv (User char(64), Db char(64), Tb char(16), Select_priv enum('Y', 'N') DEFAULT 'N', Insert_priv enum('Y', 'N') DEFAULT 'N', Update_priv enum('Y', 'N') DEFAULT 'N', Delete_priv enum('Y', 'N') DEFAULT 'N', All_priv enum('Y', 'N') DEFAULT 'N',  grant_option enum('Y', 'N') DEFAULT 'N', PRIMARY KEY(User, Db, Tb), FOREIGN KEY(User) " +
+    private final static String CREATE_ZQL_TABLES_PRIV = "CREATE TABLE IF NOT EXISTS %s.zql_tables_priv (User char(64), Db char(64), Tb char(16), Select_priv enum('Y', 'N') DEFAULT 'N', Insert_priv enum('Y', 'N') DEFAULT 'N', Update_priv enum('Y', 'N') DEFAULT 'N', Delete_priv enum('Y', 'N') DEFAULT 'N'," +
+            " All_priv enum('Y', 'N') DEFAULT 'N',  Grant_option enum('Y', 'N') DEFAULT 'N', " +
+            "PRIMARY KEY(User, Db, Tb), FOREIGN KEY(User) " +
             "REFERENCES %s.zql_users(User) ON UPDATE CASCADE ON DELETE CASCADE, FOREIGN KEY(Db, Tb) " +
             "REFERENCES %s.zql_tables(Db, Tb) ON UPDATE CASCADE ON DELETE CASCADE) ENGINE=InnoDB";
     private final static String CREATE_ROOT_USER = "INSERT IGNORE INTO %s.zql_users VALUES('root', 'root')";
@@ -120,7 +124,7 @@ public class MetaDatabase extends Database {
             statement.execute(String.format(CREATE_ZQL_USERS_TB_SQL, metaDatabase.getMetaDbName()));
             statement.execute(String.format(CREATE_ZQL_DBS_TB_SQL, metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName()));
             statement.execute(String.format(CREATE_ZQL_TABLES_TB_SQL, metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName()));
-            statement.execute(String.format(CREATE_ZQL_TABLES_PRIV, metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName(),  metaDatabase.getMetaDbName()));
+            statement.execute(String.format(CREATE_ZQL_TABLES_PRIV, metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName()));
             statement.execute(String.format(CREATE_ROOT_USER, metaDatabase.getMetaDbName()));
             logger.i("创建和初始化元数据库成功");
         } catch (SQLException e) {
@@ -213,18 +217,50 @@ public class MetaDatabase extends Database {
             connection = connectionPools.getConnection(0);
             Statement statement = connection.createStatement();
             String sqlCommand = String.format(SELECT_DB_NAME_FROM_ZQL_TABLES, metaDatabase.getMetaDbName(), tableName);
-            logger.d("从元数据库中查询某数据表所在的数据库：" + sqlCommand);
             ResultSet resultSet = statement.executeQuery(sqlCommand);
             while (resultSet.next()) {
                 String dbName = resultSet.getString("Db");
                 return dbName;
             }
         } catch (SQLException e) {
-            MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException();
+            MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException("从元数据库中查询数据表" + tableName + "所在的数据库失败");
             metaDatabaseOperationsException.initCause(e);
-            logger.e("从元数据库中查询某数据表所在的数据库：", e);
             throw metaDatabaseOperationsException;
         }
         return META_DB_ALIAS;   // 默认使用第 1 个底层库
+    }
+
+    public final static String SELECT_PRIVILEGES_SQL = "SELECT * FROM %s.zql_tables_priv WHERE Db = '%s' " +
+            "and Tb = '%s' and User = '%s'";
+
+    public Map<String, String> getPrivilegesOfASpecifiedUserAndTable(String databaseName, String tableName, String user) throws MetaDatabaseOperationsException {
+
+        /* 连接元数据库并执行命令 */
+        ConnectionPools connectionPools = ConnectionPools.getInstance();
+        Connection connection;
+
+        try {
+            connection = connectionPools.getConnection(0);
+            Statement statement = connection.createStatement();
+            String sqlCommand = String.format(SELECT_PRIVILEGES_SQL, metaDatabase.getMetaDbName(), databaseName,
+                    tableName, user);
+            ResultSet resultSet = statement.executeQuery(sqlCommand);
+            while (resultSet.next()) {
+                Map<String, String> privileges = new HashMap<String, String>();
+                privileges.put("SELECT", resultSet.getString("Select_priv"));
+                privileges.put("INSERT", resultSet.getString("Insert_priv"));
+                privileges.put("UPDATE", resultSet.getString("Update_priv"));
+                privileges.put("DELETE", resultSet.getString("Delete_priv"));
+                privileges.put("ALL", resultSet.getString("All_priv"));
+                privileges.put("GRANT_OPTION", resultSet.getString("Grant_option"));
+                return privileges;
+            }
+        } catch (SQLException e) {
+            MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException("从元数据库中获取用户 " + user + " 对于数据表" + databaseName + "." + tableName + " 的权限失败");
+            metaDatabaseOperationsException.initCause(e);
+            throw metaDatabaseOperationsException;
+        }
+
+        return null;
     }
 }
