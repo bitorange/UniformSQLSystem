@@ -8,6 +8,9 @@ import cn.edu.bit.linc.zql.databases.Database;
 public class MySQLCommandAdapter extends CommandAdapter {
     static {
         dbType = Database.DBType.MySQL;
+
+        /* MySQL 模板在此定义*/
+        CREATE_USER = "INSERT INTO %s.`zql_users` VALUES('%s', '%s')";   // CREATE USER ihainan IDENTIFIED BY 123456，只考虑 MySQL
     }
 
     /**
@@ -16,11 +19,5 @@ public class MySQLCommandAdapter extends CommandAdapter {
      * @param args 程序参数
      */
     public static void main(String[] args) {
-        /*
-        MySQLCommandAdapter builder = new MySQLCommandAdapter();
-        System.out.println(builder.createDatabase("db_name", true));
-        CommandAdapter newBuilder = new MySQLCommandAdapter();
-        newBuilder.createDatabase("db_name", true);
-        */
     }
 }

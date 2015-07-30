@@ -12,7 +12,6 @@ import cn.edu.bit.linc.zql.parser.visitor.ZQLVisitor;
 import cn.edu.bit.linc.zql.util.AsciiArtTable;
 import cn.edu.bit.linc.zql.util.Logger;
 import cn.edu.bit.linc.zql.util.LoggerFactory;
-import dnl.utils.text.table.TextTable;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -142,7 +141,7 @@ public class SQLCommandManager {
     /**
      * 打印 SQL 命令输出结果
      */
-    public String print() throws SQLException {
+    public String getOutput() throws SQLException {
         StringBuilder stringBuilder = new StringBuilder();
         if (resultSet != null) {
             AsciiArtTable asciiArtTable = new AsciiArtTable();
@@ -159,7 +158,7 @@ public class SQLCommandManager {
             }
             String[] header = new String[headerList.size()];
             header = headerList.toArray(header);
-            asciiArtTable.addHeaderCols(header);
+            asciiArtTable.addHeaderCols(new Object[]{header});
 
             /* 获取表中数据并存放在二维数据中 */
             int i = 0;
@@ -177,7 +176,7 @@ public class SQLCommandManager {
                         String result = resultSet.getString(j);
                         data[i][j - 1] = result;
                     }
-                    asciiArtTable.add(data[i]);
+                    asciiArtTable.add(new Object[]{data[i]});
                     i++;
                 }
             }

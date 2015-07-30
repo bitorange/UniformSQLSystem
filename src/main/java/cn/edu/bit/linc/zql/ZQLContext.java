@@ -29,7 +29,7 @@ public class ZQLContext {
             try {
                 System.out.println("执行 SQL 命令 `" + commandStr + "` 成功");
                 // sqlCommandManager.printResult();
-                System.out.println(sqlCommandManager.print());
+                System.out.println(sqlCommandManager.getOutput());
             } catch (SQLException e) {
                 logger.e("打印执行结果失败", e);
             }

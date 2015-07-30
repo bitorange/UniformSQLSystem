@@ -102,22 +102,6 @@ public class InnerDatabases {
         logger.i("从配置文件中读取底层库信息成功，共有 " + innerDatabaseArray.size() + " 个底层库：" + innerDatabaseArray);
     }
 
-    /**
-     * 根据别名获取数据库实例
-     *
-     * @param aliasName 数据库别名
-     * @return 数据库实例
-     */
-    public Database getInnerDbByAliasName(String aliasName) {
-        if (aliasName == null) return null;
-        for (Database db : innerDatabaseArray) {
-            if (db.getDbAlias().equals(aliasName)) {
-                return db;
-            }
-        }
-        return null;
-    }
-
     public final static String SELECT_FIELD_TYPE = "SHOW FIELDS FROM %s.%s where Field ='%s'";
 
     /**
@@ -127,7 +111,7 @@ public class InnerDatabases {
      * @param databaseName 数据库名
      * @param tableName    数据表名
      * @param columnName   数据列名
-     * @return
+     * @return 数据列的类型
      */
     public String getColumnType(int DbNo, String databaseName, String tableName, String columnName) throws ZQLCommandExecutionError {
         /* 连接底层库并执行命令 */
@@ -138,9 +122,8 @@ public class InnerDatabases {
             Statement statement = connection.createStatement();
             String sqlCommand = String.format(SELECT_FIELD_TYPE, databaseName, tableName, columnName);
             ResultSet resultSet = statement.executeQuery(sqlCommand);
-            while (resultSet.next()) {
-                String columnType = resultSet.getString("Type");
-                return columnType;
+            if (resultSet.next()) {
+                return resultSet.getString("Type");
             }
         } catch (SQLException e) {
             ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError();

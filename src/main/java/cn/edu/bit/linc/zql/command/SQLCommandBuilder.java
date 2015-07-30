@@ -21,7 +21,7 @@ public class SQLCommandBuilder {
      * @param commandAdapter 适配器
      */
     public SQLCommandBuilder addAdapter(CommandAdapter commandAdapter) {
-        Database.DBType dbType = commandAdapter.dbType;
+        Database.DBType dbType = CommandAdapter.dbType;
         commandAdapters[dbType.ordinal()] = commandAdapter;
         return new SQLCommandBuilder(commandAdapters);
     }
@@ -210,7 +210,7 @@ public class SQLCommandBuilder {
      * @return SQL 命令
      */
     public InnerSQLCommand createDatabase(Database.DBType dbType, String... args) {
-        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].createDatabase(args), args);
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].createDatabase(new Object[]{args}), args);
     }
 
     /**
@@ -233,7 +233,7 @@ public class SQLCommandBuilder {
      * @return SQL命令
      */
     public InnerSQLCommand dropDatabase(Database.DBType dbType, String... args) {
-        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].dropDatabase(args), args);
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].dropDatabase(new Object[]{args}), args);
     }
 
     /**
