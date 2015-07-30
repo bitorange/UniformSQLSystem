@@ -158,7 +158,7 @@ public class SQLCommandManager {
             }
             String[] header = new String[headerList.size()];
             header = headerList.toArray(header);
-            asciiArtTable.addHeaderCols(new Object[]{header});
+            asciiArtTable.addHeaderCols(header);
 
             /* 获取表中数据并存放在二维数据中 */
             int i = 0;
@@ -176,7 +176,7 @@ public class SQLCommandManager {
                         String result = resultSet.getString(j);
                         data[i][j - 1] = result;
                     }
-                    asciiArtTable.add(new Object[]{data[i]});
+                    asciiArtTable.add(data[i]);
                     i++;
                 }
             }

@@ -81,11 +81,18 @@ public class MetaDatabase extends Database {
 
     private final static String CREATE_META_DB_SQL = "CREATE DATABASE IF NOT EXISTS %s";
     private final static String CREATE_ZQL_USERS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_users (User char(64) PRIMARY KEY, Password char(41)) ENGINE=InnoDB";
+    private final static String CREATE_ZQL_INNER_DBS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_inner_dbs " +
+            "(Inner_db_id INT(10), Db_alias CHAR(64), PRIMARY KEY(Inner_db_id, Db_alias)) ENGINE=InnoDB";
+    public final static String INSERT_INTO_INNER_DBS_TB_SQL = "INSERT IGNORE INTO %s.zql_inner_dbs VALUES(%s, '%s')";
     private final static String CREATE_ZQL_DBS_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_dbs " +
             "(Db char(64) PRIMARY KEY, Inner_db_id int(10), Db_alias char(64), User char(64), " +
-            "Timestamp timestamp, FOREIGN KEY(User) REFERENCES %s.zql_users(User) " +
-            "ON UPDATE CASCADE ON DELETE SET NULL) ENGINE=InnoDB";
-    private final static String CREATE_ZQL_TABLES_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_tables (Db char(64), Tb char(16), User char(64), Timestamp timestamp, PRIMARY KEY(Db, Tb), FOREIGN KEY(User) REFERENCES %s.zql_users(User) ON UPDATE CASCADE ON DELETE SET NULL, FOREIGN KEY(Db) REFERENCES %s.zql_dbs(Db) ON UPDATE CASCADE ON DELETE CASCADE) ENGINE=InnoDB";
+            "Timestamp timestamp, FOREIGN KEY(User) REFERENCES %s.zql_users(User), " +
+            "FOREIGN KEY(Inner_db_id, Db_alias) REFERENCES %s.zql_inner_dbs(Inner_db_id, Db_alias) ON UPDATE CASCADE ON DELETE CASCADE" +
+            ") ENGINE=InnoDB";
+    private final static String CREATE_ZQL_TABLES_TB_SQL = "CREATE TABLE IF NOT EXISTS %s.zql_tables " +
+            "(Db char(64), Tb char(16), User char(64), Timestamp timestamp, PRIMARY KEY(Db, Tb), " +
+            "FOREIGN KEY(User) REFERENCES %s.zql_users(User) ON UPDATE CASCADE ON DELETE SET NULL, " +
+            "FOREIGN KEY(Db) REFERENCES %s.zql_dbs(Db) ON UPDATE CASCADE ON DELETE CASCADE) ENGINE=InnoDB";
     private final static String CREATE_ZQL_TABLES_PRIV = "CREATE TABLE IF NOT EXISTS %s.zql_tables_priv (User char(64), Db char(64), Tb char(16), Select_priv enum('Y', 'N') DEFAULT 'N', Insert_priv enum('Y', 'N') DEFAULT 'N', Update_priv enum('Y', 'N') DEFAULT 'N', Delete_priv enum('Y', 'N') DEFAULT 'N'," +
             " All_priv enum('Y', 'N') DEFAULT 'N',  Grant_option enum('Y', 'N') DEFAULT 'N', " +
             "PRIMARY KEY(User, Db, Tb), FOREIGN KEY(User) " +
@@ -107,8 +114,14 @@ public class MetaDatabase extends Database {
             connection = connectionPools.getConnection(0);
             Statement statement = connection.createStatement();
             statement.execute(String.format(CREATE_META_DB_SQL, metaDatabase.getMetaDbName()));
+            statement.execute(String.format(CREATE_ZQL_INNER_DBS_TB_SQL, metaDatabase.getMetaDbName()));
+            for(InnerDatabase innerDatabase: InnerDatabases.getInstance().getInnerDatabaseArray()){
+                statement.execute(String.format(INSERT_INTO_INNER_DBS_TB_SQL, metaDatabase.getMetaDbName(),
+                        innerDatabase.getDbId(), innerDatabase.getDbAlias()));
+            }
             statement.execute(String.format(CREATE_ZQL_USERS_TB_SQL, metaDatabase.getMetaDbName()));
-            statement.execute(String.format(CREATE_ZQL_DBS_TB_SQL, metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName()));
+            statement.execute(String.format(CREATE_ZQL_DBS_TB_SQL, metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName(),
+                    metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName()));
             statement.execute(String.format(CREATE_ZQL_TABLES_TB_SQL, metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName()));
             statement.execute(String.format(CREATE_ZQL_TABLES_PRIV, metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName(), metaDatabase.getMetaDbName()));
             statement.execute(String.format(CREATE_ROOT_USER, metaDatabase.getMetaDbName()));

@@ -67,7 +67,7 @@ public abstract class CommandAdapter {
 
     public static String USE_DATABASE = "USE %s"; // USE db_name
 
-    public static String SHOW_SERVER_ALIASES = "SELECT Inner_db_id, Db_alias FROM %s.zql_dbs";
+    public static String SHOW_SERVER_ALIASES = "SELECT Inner_db_id, Db_alias FROM %s.zql_inner_dbs";
 
     public static String SELECT = "SELECT %s %s FROM %s %s %s %s %s";
 
