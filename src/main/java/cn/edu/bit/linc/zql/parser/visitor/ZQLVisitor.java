@@ -907,21 +907,21 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         String databaseName = visit(ctx.database_name()).getValue();
 
         /* 检查底层库是否存在 */
-        int i;
-        for (i = 0; i < innerDatabasesArrayList.size(); ++i) {
-            if (innerDatabasesArrayList.get(i).getDbAlias().equals(serverAlias)) {
+        int dbId;
+        for (dbId = 0; dbId < innerDatabasesArrayList.size(); ++dbId) {
+            if (innerDatabasesArrayList.get(dbId).getDbAlias().equals(serverAlias)) {
                 break;
             }
         }
 
-        if (i == innerDatabasesArrayList.size()) {
+        if (dbId == innerDatabasesArrayList.size()) {
             session.setErrorMessage("底层库不存在");
             return null;
         }
 
         /* 检查数据库是否存在并且数据库是否在底层库中 */
         try {
-            if (metaDatabase.getInnerDatabaseId(databaseName) != i + 1) {
+            if (metaDatabase.getInnerDatabaseId(databaseName) != dbId + 1) {
                 session.setErrorMessage("数据库 " + databaseName + " 不存在或不在底层库当中");
                 return null;
             }
@@ -950,6 +950,48 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     @Override
     public ASTNodeVisitResult visitServer_alias(uniformSQLParser.Server_aliasContext ctx) {
         return new ASTNodeVisitResult(ctx.any_name().getText(), null, null);
+    }
+
+    /**
+     * 指定底层库运行 STATEMENT
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitServer_event_statement(uniformSQLParser.Server_event_statementContext ctx) {
+        ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
+
+        /* 获取子节点数据 */
+        String serverAlias = visit(ctx.server_alias()).getValue();
+
+        /* 检查底层库是否存在 */
+        int dbId;
+        for (dbId = 0; dbId < innerDatabasesArrayList.size(); ++dbId) {
+            if (innerDatabasesArrayList.get(dbId).getDbAlias().equals(serverAlias)) {
+                break;
+            }
+        }
+
+        if (dbId == innerDatabasesArrayList.size()) {
+            session.setErrorMessage("底层库不存在");
+            return null;
+        }
+
+        /* 访问语句，提取执行结果 */
+        ASTNodeVisitResult visitResult = visit(ctx.root_statement());
+        if (visitResult == null) {
+            return null;
+        } else {
+            commands.addAll(visitResult.getCommands());
+            for (int id : visitResult.getDbIds()) {
+                dbIds.add(id == 0 ? 0 : dbId + 1);  // 保留元数据库相关操作
+            }
+        }
+
+        /* 返回结果 */
+        return new ASTNodeVisitResult(null, commands, dbIds);
     }
 
     /**

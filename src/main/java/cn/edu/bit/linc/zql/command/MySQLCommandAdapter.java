@@ -10,7 +10,7 @@ public class MySQLCommandAdapter extends CommandAdapter {
         dbType = Database.DBType.MySQL;
 
         /* MySQL 模板在此定义*/
-       CREATE_DATABASE = "CREATE DATABASE %s %s";   // CREATE DATABASE [IF NOT EXISTS] db_name
+        CREATE_DATABASE = "CREATE DATABASE %s %s";   // CREATE DATABASE [IF NOT EXISTS] db_name
     }
 
     /**

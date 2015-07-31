@@ -62,7 +62,8 @@ public class ZQLContext {
         // executeSQL("DROP TABLE tb_2", session);
         // executeSQL("CREATE TABLE db_1.tb_1 (ID INT, Password Float)", session);
         executeSQL("SHOW TABLES in db_1 'db%'", session);
-        executeSQL("SET TABLE tb_test TO db_mysql.db_1", session);
+        executeSQL("SERVER ALIAS db_mysql CREATE TABLE IF NOT EXISTS tb_2 (Id INT)", session);
+        // executeSQL("SET TABLE tb_test TO db_mysql.db_1", session);
         // executeSQL("CREATE TABLE IF NOT EXISTS db_1.tb_1 (ID BIGINT, AGE TINYINT)", session);
         // executeSQL("USE db_1", session);
         // executeSQL("GRANT ALL ON tb_1 TO ihainan WITH GRANT OPTION", session);
