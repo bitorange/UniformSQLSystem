@@ -181,7 +181,7 @@ public class SQLCommandManager {
                 }
             }
             stringBuilder.append(asciiArtTable.getOutput());
-            stringBuilder.append("" + numberOfRows + " rows in set (" + runningTime + " ms)\n");
+            stringBuilder.append("").append(numberOfRows).append(" rows in set (").append(runningTime).append(" ms)\n");
         } else {
             stringBuilder.append("Updated ").append(updateCount).append(" rows (").append(runningTime).append(" ms)\n");
         }

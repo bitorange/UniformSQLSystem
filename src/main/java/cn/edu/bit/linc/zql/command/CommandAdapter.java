@@ -323,5 +323,4 @@ public abstract class CommandAdapter {
     public String select(Object... args) {
         return String.format(SELECT, args);
     }
-
 }

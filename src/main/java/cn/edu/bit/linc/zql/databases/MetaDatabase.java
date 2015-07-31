@@ -18,10 +18,10 @@ import java.util.Map;
  */
 public class MetaDatabase extends Database {
     private final static Logger logger = LoggerFactory.getLogger(MetaDatabase.class);
-    private String metaDbName;  // 元数据库中，存储元数据的数据库的名字
-    public final static int META_DB_ID = 0;    // 元数据库的编号固定为 1
-    public final static String META_DB_ALIAS = "db_meta";   // 元数据库的别名固定为 db_meta
-    public final static DBType META_DB_TYPE = DBType.MySQL; // 元数据的数据库类型固定为 MySQL
+    private String metaDbName;                  // 元数据库中，存储元数据的数据库的名字
+    public final static int META_DB_ID = 0;     // 元数据库的编号固定为 0
+    public final static String META_DB_ALIAS = "db_meta";       // 元数据库的别名固定为 db_meta
+    public final static DBType META_DB_TYPE = DBType.MySQL;     // 元数据的数据库类型固定为 MySQL
 
     /**
      * 获取元数据库中，存储元数据的数据库的名字
@@ -31,7 +31,6 @@ public class MetaDatabase extends Database {
     public String getMetaDbName() {
         return metaDbName;
     }
-
 
     /**
      * 构造函数
@@ -60,7 +59,6 @@ public class MetaDatabase extends Database {
         }
         return metaDatabase;
     }
-
 
     /**
      * 从系统配置中读取元数据库信息

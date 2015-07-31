@@ -52,17 +52,18 @@ public class ZQLContext {
         /* 测试命令 */
         // executeSQL("CREATE DATABASE IF NOT EXISTS db_1", session);
         // executeSQL("CREATE USER snow IDENTIFIED BY f123456", session);
-        // executeSQL("CREATE USER ihainan IDENTIFIED BY f123456", session);
+        // executeSQL("CREATE USER xwc IDENTIFIED BY '123456'", session);
         // executeSQL("CREATE DATABASE IF NOT EXISTS db_1", session);
-        executeSQL("USE db_1", session);
-        executeSQL("SHOW SERVER ALIASES", session);
+        // executeSQL("USE db_1", session);
+        // executeSQL("SHOW SERVER ALIASES", session);
         // executeSQL("SHOW CREATE TABLE tb_1", session);
         // executeSQL("SHOW DATABASES LIKE db_1%", session);
         // executeSQL("CREATE DATABASE db_2", session);
         // executeSQL("DROP TABLE tb_2", session);
         // executeSQL("CREATE TABLE db_1.tb_1 (ID INT, Password Float)", session);
-        executeSQL("SHOW TABLES in db_1 'db%'", session);
-        executeSQL("SERVER ALIAS db_mysql CREATE TABLE IF NOT EXISTS tb_2 (Id INT)", session);
+        // executeSQL("USE db_1", session);
+        executeSQL("SHOW TABLES in db_1 'tb_2%'", session);
+        // executeSQL("SERVER ALIAS db_mysql CREATE TABLE IF NOT EXISTS tb_2 (Id INT)", session);
         // executeSQL("SET TABLE tb_test TO db_mysql.db_1", session);
         // executeSQL("CREATE TABLE IF NOT EXISTS db_1.tb_1 (ID BIGINT, AGE TINYINT)", session);
         // executeSQL("USE db_1", session);

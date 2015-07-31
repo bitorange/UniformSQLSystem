@@ -62,7 +62,6 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         return new ASTNodeVisitResult(value, null, null);
     }
 
-
     /**
      * 创建用户 STATEMENT
      *
@@ -76,7 +75,8 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
 
         /* 获取子节点数据 */
         String userName = visit(ctx.user_name()).getValue();
-        String passWord = visit(ctx.password()).getValue();
+        String passWord = ctx.children.get(5).getText();
+        passWord = passWord.substring(1, passWord.length() - 1);
 
          /* 元数据库命令 */
         InnerSQLCommand metaDbCommand = sqlCommandBuilder.createUser(Database.DBType.MySQL, metaDatabase.getMetaDbName(), userName, passWord);
@@ -352,7 +352,8 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             /* 查看数据表 */
             /* 获取子节点数据 */
             String inDatabase = (specificationContext.IN() != null) ? "Db = '" + (visit(specificationContext.database_name()).getValue()) + "'" : "true";
-            String like = "true";   // TODO: 补上！
+            String like = (specificationContext.children.size() >= 4) ?
+                    "tb LIKE " + specificationContext.children.get(3).getText() : "";
 
             /* 元数据库命令 */
             InnerSQLCommand metaDbCommand = sqlCommandBuilder.showTables(Database.DBType.MySQL, metaDatabase.getMetaDbName(), inDatabase, like);
@@ -886,7 +887,8 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
      */
     @Override
     public ASTNodeVisitResult visitDisplayed_column(uniformSQLParser.Displayed_columnContext ctx) {
-        String value = ctx.column_spec().column_name().any_name().keyword().getText();
+        // String value = ctx.column_spec().column_name().any_name().keyword().getText();
+        String value = "";
         return new ASTNodeVisitResult(value, null, null);
     }
 
