@@ -337,8 +337,14 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         ArrayList<Integer> dbIds = new ArrayList<Integer>();
         if (specificationContext.GRANT() != null) {
             /* 查看授权 */
+            String userName = specificationContext.principal_name() == null ? "true "
+                    : "User = '" + visit(specificationContext.principal_name()).getValue() + "'";    // 用户名
+            String tableName = specificationContext.table_name() == null ? "true"
+                    : "Tb = '" + visit(specificationContext.table_name()).getValue() + "'";
+
             /* 元数据库命令 */
-            InnerSQLCommand metaDbCommand = sqlCommandBuilder.showGrant(Database.DBType.MySQL, metaDatabase.getMetaDbName());
+            InnerSQLCommand metaDbCommand = sqlCommandBuilder.showGrant(Database.DBType.MySQL, metaDatabase.getMetaDbName()
+                , userName, tableName);
             commands.add(metaDbCommand);
             dbIds.add(0);
         } else if (specificationContext.DATABASES() != null) {

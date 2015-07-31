@@ -47,7 +47,7 @@ public class ZQLContext {
         initializeSystem();
 
         /* 伪造会话用于测试，实际过程是每与客户端建立连接便创建一个会话 */
-        ZQLSession session = new ZQLSession("ihainan", null, "12345");
+        ZQLSession session = new ZQLSession("root", null, "12345");
 
         /* 测试命令 */
         // executeSQL("CREATE DATABASE IF NOT EXISTS db_1", session);
@@ -62,7 +62,11 @@ public class ZQLContext {
         // executeSQL("DROP TABLE tb_2", session);
         // executeSQL("CREATE TABLE db_1.tb_1 (ID INT, Password Float)", session);
         // executeSQL("USE db_1", session);
-        executeSQL("SHOW TABLES in db_1 'tb_2%'", session);
+        // executeSQL("SHOW TABLES in db_1 'tb_2%'", session);
+        executeSQL("USE db_1", session);
+        executeSQL("CREATE USER snow IDENTIFIED BY '23456'", session);
+        executeSQL("GRANT SELECT, DELETE ON tb_1 TO snow", session);
+        executeSQL("SHOW GRANT ON ALL", session);
         // executeSQL("SERVER ALIAS db_mysql CREATE TABLE IF NOT EXISTS tb_2 (Id INT)", session);
         // executeSQL("SET TABLE tb_test TO db_mysql.db_1", session);
         // executeSQL("CREATE TABLE IF NOT EXISTS db_1.tb_1 (ID BIGINT, AGE TINYINT)", session);
