@@ -891,6 +891,43 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
+     * 设置元数据 STATEMENT
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitSet_event_statement(uniformSQLParser.Set_event_statementContext ctx) {
+        ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
+
+        /* 获取子节点数据 */
+        String tableName = visit(ctx.table_name()).getValue();
+        String serverAlias = visit(ctx.server_alias()).getValue();
+        String databaseName = visit(ctx.database_name()).getValue();
+
+        /* 元数据库命令 */
+        // InnerSQLCommand metaDbSQLCommand = sqlCommandBuilder.alterTableNameMetaDb(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
+        //        databaseName, );
+        // commands.add(metaDbSQLCommand);
+        dbIds.add(0);
+
+        /* 返回结果 */
+        return new ASTNodeVisitResult(null, commands, dbIds);
+    }
+
+    /**
+     * 获取底层库别名
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitServer_alias(uniformSQLParser.Server_aliasContext ctx) {
+        return new ASTNodeVisitResult(ctx.any_name().getText(), null, null);
+    }
+
+    /**
      * 获取 Table Reference 数据
      *
      * @param ctx 节点上下文
@@ -901,4 +938,5 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         String value = ctx.table_factor1().table_factor2().table_factor3().get(0).table_atom().get(0).table_spec().table_name().any_name().keyword().getText();
         return new ASTNodeVisitResult(value, null, null);
     }
+
 }

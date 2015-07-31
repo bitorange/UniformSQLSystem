@@ -210,7 +210,7 @@ public class SQLCommandBuilder {
      * @return SQL 命令
      */
     public InnerSQLCommand createDatabase(Database.DBType dbType, String... args) {
-        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].createDatabase(new Object[]{args}), args);
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].createDatabase(args), args);
     }
 
     /**
@@ -233,7 +233,7 @@ public class SQLCommandBuilder {
      * @return SQL命令
      */
     public InnerSQLCommand dropDatabase(Database.DBType dbType, String... args) {
-        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].dropDatabase(new Object[]{args}), args);
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].dropDatabase(args), args);
     }
 
     /**
@@ -278,6 +278,17 @@ public class SQLCommandBuilder {
      */
     public InnerSQLCommand showServerAliases(Database.DBType dbType, Object... args) {
         return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].showServerAliases(args), args);
+    }
+
+    /**
+     * 设置元数据
+     *
+     * @param dbType 底层库类型
+     * @param args   参数列表
+     * @return SQL命令
+     */
+    public InnerSQLCommand setTableNameToServerAlias(Database.DBType dbType, Object... args) {
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].setTableNameToServerAlias(args), args);
     }
 
     /**

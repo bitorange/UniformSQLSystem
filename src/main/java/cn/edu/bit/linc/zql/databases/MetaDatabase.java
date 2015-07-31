@@ -115,7 +115,7 @@ public class MetaDatabase extends Database {
             Statement statement = connection.createStatement();
             statement.execute(String.format(CREATE_META_DB_SQL, metaDatabase.getMetaDbName()));
             statement.execute(String.format(CREATE_ZQL_INNER_DBS_TB_SQL, metaDatabase.getMetaDbName()));
-            for(InnerDatabase innerDatabase: InnerDatabases.getInstance().getInnerDatabaseArray()){
+            for (InnerDatabase innerDatabase : InnerDatabases.getInstance().getInnerDatabaseArray()) {
                 statement.execute(String.format(INSERT_INTO_INNER_DBS_TB_SQL, metaDatabase.getMetaDbName(),
                         innerDatabase.getDbId(), innerDatabase.getDbAlias()));
             }

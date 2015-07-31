@@ -60,8 +60,8 @@ public class ZQLContext {
         // executeSQL("SHOW DATABASES LIKE db_1%", session);
         // executeSQL("CREATE DATABASE db_2", session);
         // executeSQL("DROP TABLE tb_2", session);
-        // executeSQL("CREATE TABLE db_2.tb_2 (ID INT, Password Float)", session);
-        // executeSQL("SHOW TABLES", session);
+        // executeSQL("CREATE TABLE db_1.tb_1 (ID INT, Password Float)", session);
+        executeSQL("SHOW TABLES in db_1 LIKE 'db%'", session);
         // executeSQL("CREATE TABLE IF NOT EXISTS db_1.tb_1 (ID BIGINT, AGE TINYINT)", session);
         // executeSQL("USE db_1", session);
         // executeSQL("GRANT ALL ON tb_1 TO ihainan WITH GRANT OPTION", session);

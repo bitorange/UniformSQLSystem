@@ -69,7 +69,10 @@ public abstract class CommandAdapter {
 
     public static String SHOW_SERVER_ALIASES = "SELECT Inner_db_id, Db_alias FROM %s.zql_inner_dbs";
 
+    public static String SET_TABLE_NAME_TO_SERVER_ALIAS = "INSERT INTO %s.zql_tables VALUES(%s, %s, %s, %s)";
+
     public static String SELECT = "SELECT %s %s FROM %s %s %s %s %s";
+
 
     /**
      * 删除用户
@@ -299,6 +302,16 @@ public abstract class CommandAdapter {
      */
     public String showServerAliases(Object... args) {
         return String.format(SHOW_SERVER_ALIASES, args);
+    }
+
+    /**
+     * 设置元数据
+     *
+     * @param args 参数列表
+     * @return SQL 命令
+     */
+    public String setTableNameToServerAlias(Object... args) {
+        return String.format(SET_TABLE_NAME_TO_SERVER_ALIAS, args);
     }
 
     /**
