@@ -138,7 +138,7 @@ public class MetaDatabase extends Database {
      * 获取指定名字数据库所在的底层库
      *
      * @param dbName 数据库名
-     * @return 底层库 ID，如果元数据库中没有记录，则返回 1
+     * @return 底层库 ID，如果元数据库中没有记录，则返回 -1
      * @throws cn.edu.bit.linc.zql.exceptions.MetaDatabaseOperationsException 从元数据库中查询某数据库所述的底层库失败
      */
     public int getInnerDatabaseId(String dbName) throws MetaDatabaseOperationsException {
@@ -149,18 +149,17 @@ public class MetaDatabase extends Database {
             connection = connectionPools.getConnection(0);
             Statement statement = connection.createStatement();
             String sqlCommand = String.format(SELECT_DB_FORM_ZQL_DBS_SQL, metaDatabase.getMetaDbName(), dbName);
-            logger.d("从元数据库中查询某数据库所述的底层库：" + sqlCommand);
+            logger.d("从元数据库中查询某数据库所在的底层库：" + sqlCommand);
             ResultSet resultSet = statement.executeQuery(sqlCommand);
             if (resultSet.next()) {
                 return Integer.valueOf(resultSet.getString("Inner_db_id"));
             }
         } catch (SQLException e) {
-            MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException();
+            MetaDatabaseOperationsException metaDatabaseOperationsException = new MetaDatabaseOperationsException("从元数据库中查询数据库" + dbName + " 所在的底层库失败");
             metaDatabaseOperationsException.initCause(e);
-            logger.e("从元数据库中查询某数据库所述的底层库", e);
             throw metaDatabaseOperationsException;
         }
-        return 1;   // 默认使用第 1 个底层库
+        return -1;   // 默认使用第 1 个底层库
     }
 
     public final static String SELECT_PRIVILEGES_SQL = "SELECT * FROM %s.zql_tables_priv WHERE Db = '%s' " +

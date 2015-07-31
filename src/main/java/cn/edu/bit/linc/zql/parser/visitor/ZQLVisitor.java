@@ -906,10 +906,35 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         String serverAlias = visit(ctx.server_alias()).getValue();
         String databaseName = visit(ctx.database_name()).getValue();
 
+        /* 检查底层库是否存在 */
+        int i;
+        for (i = 0; i < innerDatabasesArrayList.size(); ++i) {
+            if (innerDatabasesArrayList.get(i).getDbAlias().equals(serverAlias)) {
+                break;
+            }
+        }
+
+        if (i == innerDatabasesArrayList.size()) {
+            session.setErrorMessage("底层库不存在");
+            return null;
+        }
+
+        /* 检查数据库是否存在并且数据库是否在底层库中 */
+        try {
+            if (metaDatabase.getInnerDatabaseId(databaseName) != i + 1) {
+                session.setErrorMessage("数据库 " + databaseName + " 不存在或不在底层库当中");
+                return null;
+            }
+        } catch (MetaDatabaseOperationsException e) {
+            session.setErrorMessage("连接元数据库获取数据库 " + databaseName + " 所在底层库失败，失败原因：");
+            return null;
+        }
+
         /* 元数据库命令 */
-        // InnerSQLCommand metaDbSQLCommand = sqlCommandBuilder.alterTableNameMetaDb(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
-        //        databaseName, );
-        // commands.add(metaDbSQLCommand);
+
+        InnerSQLCommand metaDbSQLCommand = sqlCommandBuilder.setTableNameToServerAlias(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
+                databaseName, tableName, session.getUserName(), new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
+        commands.add(metaDbSQLCommand);
         dbIds.add(0);
 
         /* 返回结果 */
