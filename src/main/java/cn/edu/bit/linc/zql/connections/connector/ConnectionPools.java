@@ -19,9 +19,6 @@ import java.util.ArrayList;
 public class ConnectionPools {
     private static ConnectionPools connectionPools;
     private ComboPooledDataSource[] cpdsArray;
-    private InnerDatabases innerDatabases = null;
-    private ArrayList<InnerDatabase> innerDatabaseArray;
-    private MetaDatabase metaDatabase = null;
     private final Logger logger = LoggerFactory.getLogger(ConnectionPools.class);
 
     /**
@@ -29,9 +26,9 @@ public class ConnectionPools {
      */
     private ConnectionPools() {
         // 获取底层库和元数据库
-        innerDatabases = InnerDatabases.getInstance();
-        innerDatabaseArray = innerDatabases.getInnerDatabaseArray();
-        metaDatabase = MetaDatabase.getInstance();
+        InnerDatabases innerDatabases = InnerDatabases.getInstance();
+        ArrayList<InnerDatabase> innerDatabaseArray = innerDatabases.getInnerDatabaseArray();
+        MetaDatabase metaDatabase = MetaDatabase.getInstance();
 
         // 初始化连接池
         int size = innerDatabaseArray.size() + 1;

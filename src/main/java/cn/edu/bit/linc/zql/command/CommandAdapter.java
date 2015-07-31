@@ -25,8 +25,8 @@ public abstract class CommandAdapter {
         TYPE_MAP.put("TIMESTAMP", "TIMESTAMP");
         TYPE_MAP.put("DATE", "DATE");
         TYPE_MAP.put("VARCHAR", "VARCHAR");  // TODO: 长度限制
-        TYPE_MAP.put("Boolean", "ENUM('true'', 'false'')");
-        TYPE_MAP.put("BINARY", "_BLOB");
+        TYPE_MAP.put("BOOLEAN", "ENUM('true', 'false')");
+        TYPE_MAP.put("BINARY", "BLOB");
     }
 
     /* 当前以 MySQL 语法为准 */
@@ -44,7 +44,7 @@ public abstract class CommandAdapter {
     public static String DROP_TABLE_META_DB = "DELETE FROM %s.zql_tables WHERE Tb = '%s' and Db = '%s'";
 
     public static String CREATE_TABLE = "CREATE %s %s TABLE %s %s.%s (%s) %s %s";
-    public static String CREATE_TABLE_META = "INSERT INTO %s.zql_tables VALUES('%s', '%s', '%s', '%s')";
+    public static String CREATE_TABLE_META = "INSERT IGNORE INTO %s.zql_tables VALUES('%s', '%s', '%s', '%s')";
 
 
     public static String ALTER_TABLE_NAME = "RENAME TABLE %s TO %s"; // RENAME TABLE old_table TO backup_table
@@ -53,7 +53,7 @@ public abstract class CommandAdapter {
     public static String ALTER_COLUMN_NAME = "ALTER TABLE %s CHANGE COLUMN %s %s %s"; // ALTER TABLE table_name CHANGE COLUMN old_name new_name type
 
     public static String SHOW_TABLES = "SELECT * FROM %s.zql_tables WHERE %s and %s";    // SHOW TABLES [IN db_test] [LIKE "db_*"]
-    public static String SHOW_COLUMNS = "SHOW COLUMNS FROM %s %s"; // SHOW COLUMNS FROM tb_name [FROM db_name]
+    public static String SHOW_COLUMNS = "SHOW COLUMNS FROM %s FROM %s"; // SHOW COLUMNS FROM tb_name [FROM db_name]
 
     public static String SHOW_CREATE_TABLE = "SHOW CREATE TABLE %s";
 
@@ -69,7 +69,7 @@ public abstract class CommandAdapter {
 
     public static String SHOW_SERVER_ALIASES = "SELECT Inner_db_id, Db_alias FROM %s.zql_inner_dbs";
 
-    public static String SET_TABLE_NAME_TO_SERVER_ALIAS = "INSERT INTO %s.zql_tables VALUES('%s', '%s', '%s', '%s')";
+    public static String SET_TABLE_NAME_TO_SERVER_ALIAS = "INSERT IGNORE INTO %s.zql_tables VALUES('%s', '%s', '%s', '%s')";
 
     public static String SELECT = "SELECT %s %s FROM %s %s %s %s %s";
 

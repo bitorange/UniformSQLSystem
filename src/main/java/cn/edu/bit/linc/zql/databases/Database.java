@@ -9,7 +9,7 @@ import cn.edu.bit.linc.zql.util.LoggerFactory;
 public class Database {
     private final static Logger logger = LoggerFactory.getLogger(Database.class);
     public static final String MYSQL_DRIVER = "com.mysql.jdbc.Driver";  // MYSQL JDBC 驱动
-    public static final String HIVE_DRIVER = "org.apache.hive.jdbc.HiveDrive";   // HIVE JDBC 驱动
+    public static final String HIVE_DRIVER = "org.apache.hive.jdbc.HiveDriver";   // HIVE JDBC 驱动
 
     /**
      * 获取数据库别名
@@ -74,7 +74,7 @@ public class Database {
 
     @Override
     public String toString() {
-        return dbAlias + "(" + dbHost + ", " + dbType +")";
+        return dbAlias + "(" + dbHost + ", " + dbType + ")";
     }
 
     /**

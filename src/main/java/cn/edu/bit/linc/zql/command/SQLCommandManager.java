@@ -2,6 +2,9 @@ package cn.edu.bit.linc.zql.command;
 
 import cn.edu.bit.linc.zql.connections.ZQLSession;
 import cn.edu.bit.linc.zql.connections.connector.ConnectionPools;
+import cn.edu.bit.linc.zql.databases.Database;
+import cn.edu.bit.linc.zql.databases.InnerDatabases;
+import cn.edu.bit.linc.zql.databases.MetaDatabase;
 import cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError;
 import cn.edu.bit.linc.zql.exceptions.ZQLConnectionException;
 import cn.edu.bit.linc.zql.exceptions.ZQLSyntaxErrorException;
@@ -26,6 +29,16 @@ import java.util.ArrayList;
  * SQL 命令类，用于执行 SQL 命令并保存执行结果
  */
 public class SQLCommandManager {
+    private static final Logger logger = LoggerFactory.getLogger(SQLCommandManager.class);
+    private final String sqlCommand;    // SQL 指令
+    private final ZQLSession session;   // 用户会话
+    private ResultSet resultSet = null; // 执行结果，仅在执行结果返回 ResultSet 时候该值不为 null
+    private int updateCount = 0;        // 更新行数，仅在执行结果返回数值时候该值不为 - 1
+    private long runningTime;           // SQL 命令运行时间
+    private ResultSetMetaData rsmd;     // ResultSetMetaData
+    public static ArrayList<Connection> connections = new ArrayList<Connection>();      // 到数据库的连接
+    private static ArrayList<Database> databases = new ArrayList<Database>();
+
     /**
      * 构造器
      *
@@ -35,6 +48,26 @@ public class SQLCommandManager {
     public SQLCommandManager(String sqlCommand, ZQLSession session) {
         this.sqlCommand = sqlCommand;
         this.session = session;
+    }
+
+
+    static {
+        ConnectionPools connectionPools = ConnectionPools.getInstance();
+
+        databases.add(MetaDatabase.getInstance());
+        databases.addAll(InnerDatabases.getInstance().getInnerDatabaseArray());
+        for (int i = 0; i < databases.size(); ++i) {
+            try {
+                logger.i("正在建立到数据库 " + databases.get(i) + " 的连接");
+                connections.add(connectionPools.getConnection(i));
+                logger.i("成功连接到数据库 " + databases.get(i));
+            } catch (SQLException e) {
+                ZQLConnectionException zqlConnectionException = new ZQLConnectionException("建立到数据库 " + databases.get(i) + " 的连接失败");
+                zqlConnectionException.initCause(zqlConnectionException);
+                logger.f("建立到数据库 " + databases.get(i) + " 的连接失败", zqlConnectionException);
+                System.exit(0);
+            }
+        }
     }
 
     /**
@@ -85,27 +118,25 @@ public class SQLCommandManager {
         for (int i = 0; i < commands.size(); ++i) {
             int dbId = dbIds.get(i);
             InnerSQLCommand innerSQLCommand = commands.get(i);
-            ConnectionPools connectionPools = ConnectionPools.getInstance();
-            Connection connection;
+            Connection connection = connections.get(dbId);
             Statement statement;
             try {
-                connection = connectionPools.getConnection(dbId);
                 statement = connection.createStatement();
             } catch (SQLException e) {
-                ZQLConnectionException zqlConnectionException = new ZQLConnectionException();
+                ZQLConnectionException zqlConnectionException = new ZQLConnectionException("创建数据库 " + dbId + " 的 Statement 对象失败，失败原因：");
                 zqlConnectionException.initCause(e);
-                logger.e("连接到底层库 " + dbId + " 失败", zqlConnectionException);
+                logger.e("创建数据库 " + dbId + " 的 Statement 对象失败，失败原因：", zqlConnectionException);
                 return false;
             }
 
             /* 交付数据库（底层库 / 元数据库）执行 SQL 命令 */
             boolean isQuery;
             try {
-                logger.d("在底层库 " + dbId + " 中执行指令 " + innerSQLCommand.getCommandStr());
+                logger.d("在数据库 " + dbId + " 中执行指令 " + innerSQLCommand.getCommandStr());
                 isQuery = statement.execute(innerSQLCommand.getCommandStr());
             } catch (SQLException e) {
                 ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError(e.getMessage());
-                logger.e("在底层库 " + dbId + " 执行 SQL 命令失败：" + innerSQLCommand.getCommandStr() + "，错误原因：", zqlCommandExecutionError);
+                logger.e("在数据库 " + dbId + " 执行 SQL 命令失败：" + innerSQLCommand.getCommandStr() + "，错误原因：", zqlCommandExecutionError);
                 return false;
             }
 
@@ -121,7 +152,6 @@ public class SQLCommandManager {
                 }
             } else {
                 try {
-                    if (updateCount == -1) updateCount = 0;
                     this.updateCount += statement.getUpdateCount();
                 } catch (SQLException e) {
                     ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError();
@@ -148,7 +178,6 @@ public class SQLCommandManager {
             stringBuilder.append("QUERY OK!\n");
 
             /* 获取表头 */
-            ResultSetMetaData rsmd;
             rsmd = resultSet.getMetaData();
             ArrayList<String> headerList = new ArrayList<String>();
             if (rsmd != null) {
@@ -174,6 +203,7 @@ public class SQLCommandManager {
                     assert rsmd != null;
                     for (int j = 1; j <= rsmd.getColumnCount(); ++j) {
                         String result = resultSet.getString(j);
+                        if (result == null) result = "";
                         data[i][j - 1] = result;
                     }
                     asciiArtTable.add(data[i]);
@@ -187,11 +217,4 @@ public class SQLCommandManager {
         }
         return stringBuilder.toString();
     }
-
-    private final Logger logger = LoggerFactory.getLogger(getClass());
-    private final String sqlCommand;    // SQL 指令
-    private final ZQLSession session;   // 用户会话
-    private ResultSet resultSet = null; // 执行结果，仅在执行结果返回 ResultSet 时候该值不为 null
-    private int updateCount = -1;       // 更新行数，仅在执行结果返回数值时候该值不为 - 1
-    private long runningTime;
 }

@@ -268,6 +268,7 @@ public class AsciiArtTable {
         // get the count of rows in a cell must be used for given subjects
         int countRows = 1;
         for (Object subject : subjects) {
+            if(subject == null) subject = "";
             if (subject.toString().length() > maxLength) {
                 // FIXME a single word could be longer than allowed
                 int countRowsForThisSubject = 1;

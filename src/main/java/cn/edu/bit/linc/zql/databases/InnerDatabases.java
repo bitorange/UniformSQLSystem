@@ -126,7 +126,8 @@ public class InnerDatabases {
                 return resultSet.getString("Type");
             }
         } catch (SQLException e) {
-            ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError();
+            ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError("获取数据列 " +
+                    databaseName + "." + tableName + "." + columnName + " 的类型失败");
             zqlCommandExecutionError.initCause(e);
             throw zqlCommandExecutionError;
         }
