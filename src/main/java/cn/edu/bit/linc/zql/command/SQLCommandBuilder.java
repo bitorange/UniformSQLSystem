@@ -6,13 +6,13 @@ import cn.edu.bit.linc.zql.databases.Database;
  * SQL 命令生成器
  */
 public class SQLCommandBuilder {
-    private CommandAdapter[] commandAdapters = new CommandAdapter[Database.DBType.values().length];
-
+    private CommandAdapter[] commandAdapters;
     public SQLCommandBuilder() {
+        commandAdapters = new CommandAdapter[Database.DBType.values().length];
     }
 
     public SQLCommandBuilder(CommandAdapter[] commandAdapters) {
-        System.arraycopy(commandAdapters, 0, this.commandAdapters, 0, this.commandAdapters.length);
+        this.commandAdapters = commandAdapters;
     }
 
     /**
@@ -21,7 +21,7 @@ public class SQLCommandBuilder {
      * @param commandAdapter 适配器
      */
     public SQLCommandBuilder addAdapter(CommandAdapter commandAdapter) {
-        Database.DBType dbType = CommandAdapter.dbType;
+        Database.DBType dbType = commandAdapter.dbType;
         commandAdapters[dbType.ordinal()] = commandAdapter;
         return new SQLCommandBuilder(commandAdapters);
     }
@@ -170,6 +170,17 @@ public class SQLCommandBuilder {
     }
 
     /**
+     * 修改数据列 - 获取数据类型
+     *
+     * @param dbType 底层库类型
+     * @param args   参数列表
+     * @return SQL命令
+     */
+    public InnerSQLCommand getColumnType(Database.DBType dbType, Object... args) {
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].getColumnType(args), args);
+    }
+
+    /**
      * 显示数据表
      *
      * @param dbType 底层库类型
@@ -268,6 +279,7 @@ public class SQLCommandBuilder {
     public InnerSQLCommand useDatabase(Database.DBType dbType, Object... args) {
         return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].useDatabase(args), args);
     }
+
 
     /**
      * 显示数据库别名

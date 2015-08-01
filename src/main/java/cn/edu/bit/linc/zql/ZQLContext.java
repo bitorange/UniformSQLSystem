@@ -2,6 +2,7 @@ package cn.edu.bit.linc.zql;
 
 import cn.edu.bit.linc.zql.command.SQLCommandManager;
 import cn.edu.bit.linc.zql.connections.*;
+import cn.edu.bit.linc.zql.databases.Database;
 import cn.edu.bit.linc.zql.databases.MetaDatabase;
 import cn.edu.bit.linc.zql.util.Logger;
 import cn.edu.bit.linc.zql.util.LoggerFactory;
@@ -24,7 +25,6 @@ public class ZQLContext {
         logger.i("正在初始化系统模块");
         ZQLEnv.init();
         MetaDatabase.initConnection();
-
     }
 
     private static void executeSQL(String commandStr, ZQLSession session) {
@@ -43,20 +43,12 @@ public class ZQLContext {
         System.out.println();
     }
 
-    /**
-     * 系统入口，在此启动系统
-     *
-     * @param args 程序参数
-     */
-    public static void main(String[] args) {
-        initializeSystem();
-
+    private static void mySQLTest() {
         /* 伪造会话用于测试，实际过程是每与客户端建立连接便创建一个会话 */
         ZQLSession session = new ZQLSession("root", null, "12345");
 
         /* 测试命令 */
         // 创建、删除用户
-
         String userOne = "User_" + StringUtil.RandomStringGenerator.generateRandomString
                 (5, StringUtil.RandomStringGenerator.Mode.ALPHA);           // 用户一
         String userTwo = "User_" + StringUtil.RandomStringGenerator.generateRandomString
@@ -125,5 +117,56 @@ public class ZQLContext {
         executeSQL("SERVER ALIAS db_mysql CREATE DATABASE IF NOT EXISTS db_2", session);  // 指定底层库运行
         executeSQL("SHOW DATABASES", session);          // 显示数据库
         executeSQL("SHOW TABLES", session);             // 显示数据表
+    }
+
+    public static void hiveTest() {
+        /* 伪造会话用于测试，实际过程是每与客户端建立连接便创建一个会话 */
+        ZQLSession session = new ZQLSession("root", null, "12345");
+
+        // 创建、使用数据库、数据表
+        executeSQL("USE db_1", session);        // 使用数据库一
+        /*
+        executeSQL("CREATE DATABASE IF NOT EXISTS db_1", session);  // 创建数据库
+        executeSQL("CREATE DATABASE IF NOT EXISTS db_2", session);  // 创建数据库
+        executeSQL("CREATE DATABASE IF NOT EXISTS db_3", session);  // 创建数据库
+        executeSQL("CREATE TABLE IF NOT EXISTS db_1.tb_1 (C1 TINYINT, C2 SMALLINT, C3 INT, C4 BigInt," +
+                " C5 FLOAT, C7 DOUBLE, C8 DECIMAL, C10 TIMESTAMP, c11 date, C12 Boolean, " +
+                "C13 BINARY) COMMENT 'Table 1 Comment'", session);        // 创建数据表一
+        executeSQL("USE db_1", session);        // 使用数据库一
+        executeSQL("CREATE TABLE IF NOT EXISTS tb_2 (C1 TINYINT, C2 SMALLINT, C3 INT, C4 BigInt," +
+                " C5 FLOAT, C7 DOUBLE, C8 DECIMAL, C10 TIMESTAMP, c11 date, C12 Boolean, " +
+                "C13 BINARY) COMMENT 'Table 2 Comment'", session);        // 创建数据表二 / 不带数据库名
+        executeSQL("CREATE TABLE IF NOT EXISTS tb_3 (C1 TINYINT, C2 SMALLINT, C3 INT, C4 BigInt," +
+                " C5 FLOAT, C7 DOUBLE, C8 DECIMAL, C10 TIMESTAMP, c11 date, C12 Boolean, " +
+                "C13 BINARY) COMMENT 'Table 3 Comment'", session);        // 创建数据表三 / 不带数据库名
+
+
+        // 删除数据库、数据表
+        executeSQL("USE db_1", session);        // 使用数据库一
+        executeSQL("DROP DATABASE IF EXISTS db_2", session);    // 删除数据库2
+        executeSQL("DROP TABLE IF EXISTS tb_3", session);       // 删除数据表3
+
+
+        // 修改数据表
+        executeSQL("ALTER TABLE tb_2 RENAME TO tb_N", session); // 修改数据表名
+        executeSQL("ALTER TABLE tb_N CHANGE C3 C3_NEW", session);    // 修改列名
+        executeSQL("ALTER TABLE tb_N CHANGE COLUMN C2 C2_NEW", session);    // 修改列名
+        */
+
+        // 查看数据库、数据表、数据列
+        executeSQL("USE db_1", session);        // 使用数据库一
+        executeSQL("SHOW DATABASES", session);
+
+    }
+
+    /**
+     * 系统入口，在此启动系统
+     *
+     * @param args 程序参数
+     */
+    public static void main(String[] args) {
+        initializeSystem();
+        mySQLTest();
+        // hiveTest();
     }
 }
