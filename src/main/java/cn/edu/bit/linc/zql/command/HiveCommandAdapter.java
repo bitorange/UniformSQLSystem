@@ -33,5 +33,6 @@ public class HiveCommandAdapter extends CommandAdapter {
         ALTER_TABLE_NAME = "ALTER TABLE %s RENAME TO %s"; // RENAME TABLE old_table TO backup_table
         SELECT_FIELD_TYPE = "DESCRIBE %s.%s";
         TYPE_FILED_NAME = "data_type";
+        SHOW_COLUMNS = "DESCRIBE %s.%s";
     }
 }

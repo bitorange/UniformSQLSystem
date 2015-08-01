@@ -418,7 +418,20 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             }
 
             Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
-            InnerSQLCommand innerDbCommand = sqlCommandBuilder.showColumns(dbType, tableName, databaseName);
+            String[] args = new String[2];
+            if(dbType == Database.DBType.MySQL){
+                args[0] = tableName;
+                args[1] = databaseName;
+            }
+            else if(dbType == Database.DBType.Hive){
+                args[0] = databaseName;
+                args[1] = tableName;
+            }
+            else {
+                session.setErrorMessage("不支持的数据库类型 " + dbType);
+                return null;
+            }
+            InnerSQLCommand innerDbCommand = sqlCommandBuilder.showColumns(dbType, args);
             commands.add(innerDbCommand);
             dbIds.add(dbId);
         }

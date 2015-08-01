@@ -49,6 +49,7 @@ public class ZQLContext {
 
         /* 测试命令 */
         // 创建、删除用户
+        /*
         String userOne = "User_" + StringUtil.RandomStringGenerator.generateRandomString
                 (5, StringUtil.RandomStringGenerator.Mode.ALPHA);           // 用户一
         String userTwo = "User_" + StringUtil.RandomStringGenerator.generateRandomString
@@ -61,8 +62,10 @@ public class ZQLContext {
         executeSQL("CREATE USER " + userOne + " IDENTIFIED BY '123456'", session);   // 创建普通用户一
         executeSQL("CREATE USER " + userTwo + " IDENTIFIED BY '123456'", session);   // 创建普通用户二
         executeSQL("CREATE USER " + userThree + " IDENTIFIED BY '123456'", session);   // 创建普通用户二
+        */
 
         // 创建、使用数据库、数据表
+        /*
         executeSQL("CREATE DATABASE IF NOT EXISTS db_1", session);  // 创建数据库
         executeSQL("CREATE DATABASE IF NOT EXISTS db_2", session);  // 创建数据库
         executeSQL("CREATE DATABASE IF NOT EXISTS db_3", session);  // 创建数据库
@@ -87,8 +90,10 @@ public class ZQLContext {
         executeSQL("ALTER TABLE tb_2 RENAME TO tb_N", session); // 修改数据表名
         executeSQL("ALTER TABLE tb_N CHANGE COLUMN C2 C2_NEW", session);    // 修改列名
         executeSQL("ALTER TABLE tb_N CHANGE C3 C3_NEW", session);    // 修改列名
+        */
 
-        // 查看数据库、数据表、数据列
+        // 查看数据库、数据表、数据列、创建表语句
+        executeSQL("USE db_1", session);        // 使用数据库一
         // TODO: line 1:14 mismatched input '<EOF>' expecting LIKE
         executeSQL("SHOW DATABASES", session);  // 查看数据库
         executeSQL("SHOW SCHEMAS LIKE 'db\\_%'", session);     // 带条件查看数据库
@@ -96,8 +101,11 @@ public class ZQLContext {
         executeSQL("SHOW TABLES in db_1 'tb%'", session);   // 查看特定数据库中符合指定条件的数据表
         executeSQL("SHOW COLUMNS FROM tb_1", session);
         executeSQL("SHOW COLUMNS FROM tb_1 FROM db_1", session);
+        executeSQL("SHOW CREATE TABLE db1.tb_1", session);
+        executeSQL("SHOW CREATE TABLE tb_n", session);
 
         // 授权、撤销、查看授权
+        /*
         executeSQL("GRANT SELECT, UPDATE ON tb_1 TO " + userOne + " WITH GRANT OPTION", session);    // 授权
         executeSQL("GRANT INSERT, UPDATE ON tb_1 TO " + userOne, session);      // 授权累加
         executeSQL("GRANT ALL ON tb_N TO " + userTwo, session);                         // GRANT ALL
@@ -117,6 +125,7 @@ public class ZQLContext {
         executeSQL("SERVER ALIAS db_mysql CREATE DATABASE IF NOT EXISTS db_2", session);  // 指定底层库运行
         executeSQL("SHOW DATABASES", session);          // 显示数据库
         executeSQL("SHOW TABLES", session);             // 显示数据表
+        */
     }
 
     public static void hiveTest() {
@@ -125,7 +134,7 @@ public class ZQLContext {
 
         // 创建、使用数据库、数据表
         executeSQL("USE db_1", session);        // 使用数据库一
-        /*
+
         executeSQL("CREATE DATABASE IF NOT EXISTS db_1", session);  // 创建数据库
         executeSQL("CREATE DATABASE IF NOT EXISTS db_2", session);  // 创建数据库
         executeSQL("CREATE DATABASE IF NOT EXISTS db_3", session);  // 创建数据库
@@ -151,12 +160,23 @@ public class ZQLContext {
         executeSQL("ALTER TABLE tb_2 RENAME TO tb_N", session); // 修改数据表名
         executeSQL("ALTER TABLE tb_N CHANGE C3 C3_NEW", session);    // 修改列名
         executeSQL("ALTER TABLE tb_N CHANGE COLUMN C2 C2_NEW", session);    // 修改列名
-        */
+
 
         // 查看数据库、数据表、数据列
-        executeSQL("USE db_1", session);        // 使用数据库一
-        executeSQL("SHOW DATABASES", session);
 
+        // TODO: line 1:14 mismatched input '<EOF>' expecting LIKE
+        executeSQL("SHOW DATABASES", session);  // 查看数据库
+        executeSQL("SHOW SCHEMAS LIKE 'db\\_%'", session);     // 带条件查看数据库
+        executeSQL("SHOW TABLES", session);     // 查看数据表
+        executeSQL("SHOW TABLES in db_1 'tb%'", session);   // 查看特定数据库中符合指定条件的数据表
+        executeSQL("SHOW COLUMNS FROM tb_1", session);
+        executeSQL("SHOW COLUMNS FROM tb_n FROM db_1", session);
+        executeSQL("USE db_1", session);        // 使用数据库一
+        executeSQL("SHOW CREATE TABLE db1.tb_1", session);
+        executeSQL("SHOW CREATE TABLE tb_n", session);
+
+
+        // executeSQL("SERVER ALIAS db_hive CREATE DATABASE IF NOT EXISTS db_2", session);  // 指定底层库运行
     }
 
     /**
@@ -166,7 +186,7 @@ public class ZQLContext {
      */
     public static void main(String[] args) {
         initializeSystem();
-        mySQLTest();
-        // hiveTest();
+        // mySQLTest();
+        hiveTest();
     }
 }
