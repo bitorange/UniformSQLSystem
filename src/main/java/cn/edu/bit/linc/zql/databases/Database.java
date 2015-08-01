@@ -126,8 +126,7 @@ public class Database {
         if (dbType == DBType.MySQL) {
             return "jdbc:mysql://" + host + "/" + connectDBName;
         } else if (dbType == DBType.Hive) {
-            return "jdbc:hive://" + host + "/" + connectDBName;
-
+            return "jdbc:hive2://" + host + "/" + connectDBName;
         }
         return null;
     }

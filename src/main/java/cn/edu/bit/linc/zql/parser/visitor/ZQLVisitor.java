@@ -26,9 +26,14 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     /**
      * 命令生成器
      */
-    public final static SQLCommandBuilder sqlCommandBuilder = new SQLCommandBuilder()
-            .addAdapter(new MySQLCommandAdapter())
-            .addAdapter(new HiveCommandAdapter());
+    public final static SQLCommandBuilder sqlCommandBuilder;
+
+    static {
+        sqlCommandBuilder = new SQLCommandBuilder();
+        sqlCommandBuilder.addAdapter(new MySQLCommandAdapter());
+        sqlCommandBuilder.addAdapter(new HiveCommandAdapter());
+    }
+
     private final static InnerDatabases innerDatabase = InnerDatabases.getInstance();
     private final static ArrayList<InnerDatabase> innerDatabasesArrayList = innerDatabase.getInnerDatabaseArray();
     private final static MetaDatabase metaDatabase = MetaDatabase.getInstance();
@@ -413,7 +418,20 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             }
 
             Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
-            InnerSQLCommand innerDbCommand = sqlCommandBuilder.showColumns(dbType, tableName, databaseName);
+            String[] args = new String[2];
+            if(dbType == Database.DBType.MySQL){
+                args[0] = tableName;
+                args[1] = databaseName;
+            }
+            else if(dbType == Database.DBType.Hive){
+                args[0] = databaseName;
+                args[1] = tableName;
+            }
+            else {
+                session.setErrorMessage("不支持的数据库类型 " + dbType);
+                return null;
+            }
+            InnerSQLCommand innerDbCommand = sqlCommandBuilder.showColumns(dbType, args);
             commands.add(innerDbCommand);
             dbIds.add(dbId);
         }
@@ -513,6 +531,11 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             return null;
         }
 
+        // TODO: 数据库已经被删除
+        if (dbId == -1) {
+
+        }
+
         /* 底层库命令 */
         Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
         InnerSQLCommand innerDbCommand = sqlCommandBuilder.dropDatabase(dbType, checkExists, dropDbName);
@@ -593,6 +616,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             session.setDatabase("获取数据库所在底层库失败，错误原因：" + e.getMessage());
             return null;
         }
+        Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
 
         String columns = "";
         for (ParseTree tree : ctx.create_definition()) {
@@ -602,16 +626,17 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             String columnCommend = (index != -1 ? "COMMENT " + visitColumnDefinitionNodeResult.getValue().split(" ")[1]
                     : "");
             String columnType = visitColumnDefinitionNodeResult.getValue().split(" ")[0];
-            if (!CommandAdapter.TYPE_MAP.containsKey(columnType.toUpperCase())) {
+            // TODO: CommandAdapter 换成对应数据类型
+            CommandAdapter commandAdapter = CommandAdapter.getAdapterInstance(dbType);
+            if (!commandAdapter.TYPE_MAP.containsKey(columnType.toUpperCase())) {
                 session.setErrorMessage("找不到类型 " + columnType);
                 return null;
             }
-            columns += columnName + " " + CommandAdapter.TYPE_MAP.get(columnType.toUpperCase()) + " " + columnCommend + ", ";
+            columns += columnName + " " + commandAdapter.TYPE_MAP.get(columnType.toUpperCase()) + " " + columnCommend + ", ";
         }
         columns = columns.substring(0, columns.length() - 2);
 
         /* 底层库命令 */
-        Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
         InnerSQLCommand innerDbCommand = sqlCommandBuilder.createTable(dbType, temporary, external, checkExists, databaseName, tableName,
                 columns, "", "");
         commands.add(innerDbCommand);
@@ -757,7 +782,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             InnerSQLCommand metaDbSQLCommand = sqlCommandBuilder.alterTableNameMetaDb(Database.DBType.MySQL, metaDatabase.getMetaDbName(),
                     newTableName, tableName, session.getDatabase());
             commands.add(metaDbSQLCommand);
-            dbIds.add(dbId);
+            dbIds.add(0);
         } else if (alter_table_specificationContext.get(0).children.get(0).getText().equals("CHANGE")) {
             /* 修改列名 */
             String oldColumnName, newColumnName;

@@ -192,24 +192,18 @@ public class SQLCommandManager {
             /* 获取表中数据并存放在二维数据中 */
             int i = 0;
             int numberOfRows = 0;
-            String[][] data;
-            if (resultSet != null) {
-                resultSet.last();
-                numberOfRows = resultSet.getRow();
-                data = new String[numberOfRows][headerList.size()];
-                resultSet.beforeFirst();
-
-                while (resultSet.next()) {
-                    assert rsmd != null;
-                    for (int j = 1; j <= rsmd.getColumnCount(); ++j) {
-                        String result = resultSet.getString(j);
-                        if (result == null) result = "";
-                        data[i][j - 1] = result;
-                    }
-                    asciiArtTable.add(data[i]);
-                    i++;
+            while (resultSet.next()) {
+                assert rsmd != null;
+                String[] rowData = new String[rsmd.getColumnCount()];
+                for (int j = 1; j <= rsmd.getColumnCount(); ++j) {
+                    String result = resultSet.getString(j);
+                    if (result == null) result = "";
+                    rowData[j - 1] = result;
                 }
+                asciiArtTable.add(rowData);
+                i++;
             }
+
             stringBuilder.append(asciiArtTable.getOutput());
             stringBuilder.append("").append(numberOfRows).append(" rows in set (").append(runningTime).append(" ms)\n");
         } else {

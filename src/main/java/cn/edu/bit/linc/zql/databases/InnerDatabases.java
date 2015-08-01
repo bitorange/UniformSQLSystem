@@ -1,6 +1,7 @@
 package cn.edu.bit.linc.zql.databases;
 
 import cn.edu.bit.linc.zql.ZQLEnv;
+import cn.edu.bit.linc.zql.command.*;
 import cn.edu.bit.linc.zql.connections.connector.ConnectionPools;
 import cn.edu.bit.linc.zql.exceptions.UnsupportedDatabaseException;
 import cn.edu.bit.linc.zql.exceptions.ZQLCommandExecutionError;
@@ -23,6 +24,12 @@ public class InnerDatabases {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private ArrayList<InnerDatabase> innerDatabaseArray = new ArrayList<InnerDatabase>();  // 底层库数组
+    public final static SQLCommandBuilder sqlCommandBuilder;
+    static {
+        sqlCommandBuilder = new SQLCommandBuilder();
+        sqlCommandBuilder.addAdapter(new MySQLCommandAdapter());
+        sqlCommandBuilder.addAdapter(new HiveCommandAdapter());
+    }
 
     /**
      * 获取底层库连接信息
@@ -102,34 +109,54 @@ public class InnerDatabases {
         logger.i("从配置文件中读取底层库信息成功，共有 " + innerDatabaseArray.size() + " 个底层库：" + innerDatabaseArray);
     }
 
-    public final static String SELECT_FIELD_TYPE = "SHOW FIELDS FROM %s.%s where Field ='%s'";
-
     /**
      * 获取特定数据列的类型
      *
-     * @param DbNo         底层库编号
+     * @param dbNo         底层库编号
      * @param databaseName 数据库名
      * @param tableName    数据表名
      * @param columnName   数据列名
      * @return 数据列的类型
      */
-    public String getColumnType(int DbNo, String databaseName, String tableName, String columnName) throws ZQLCommandExecutionError {
+    public String getColumnType(int dbNo, String databaseName, String tableName, String columnName) throws ZQLCommandExecutionError {
         /* 连接底层库并执行命令 */
         ConnectionPools connectionPools = ConnectionPools.getInstance();
-        Connection connection;
+        Connection connection = null;
+        Statement statement = null;
         try {
-            connection = connectionPools.getConnection(DbNo);
-            Statement statement = connection.createStatement();
-            String sqlCommand = String.format(SELECT_FIELD_TYPE, databaseName, tableName, columnName);
-            ResultSet resultSet = statement.executeQuery(sqlCommand);
+            CommandAdapter adapterAdapter = CommandAdapter.getAdapterInstance(innerDatabaseArray.get(dbNo - 1).getDbType());
+            connection = connectionPools.getConnection(dbNo);
+            statement = connection.createStatement();
+            // USE db_name
+            InnerSQLCommand command = sqlCommandBuilder.useDatabase(adapterAdapter.dbType, databaseName);
+            statement.execute(command.getCommandStr());
+            // GET COLUMN_TYPE
+            command = sqlCommandBuilder.getColumnType(adapterAdapter.dbType, tableName, columnName);
+            ResultSet resultSet = statement.executeQuery(command.getCommandStr());
             if (resultSet.next()) {
-                return resultSet.getString("Type");
+                return resultSet.getString(adapterAdapter.TYPE_FILED_NAME);
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError("获取数据列 " +
                     databaseName + "." + tableName + "." + columnName + " 的类型失败");
             zqlCommandExecutionError.initCause(e);
             throw zqlCommandExecutionError;
+        } finally {
+            if (statement != null) try {
+                statement.close();
+            } catch (SQLException e) {
+                ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError("关闭 Statement 失败");
+                zqlCommandExecutionError.initCause(e);
+                throw zqlCommandExecutionError;
+            }
+
+            if (connection != null) try {
+                connection.close();
+            } catch (SQLException e) {
+                ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError("关闭 Connection 失败");
+                zqlCommandExecutionError.initCause(e);
+                throw zqlCommandExecutionError;
+            }
         }
         return "INT";
     }
