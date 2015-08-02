@@ -419,15 +419,13 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
 
             Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
             String[] args = new String[2];
-            if(dbType == Database.DBType.MySQL){
+            if (dbType == Database.DBType.MySQL) {
                 args[0] = tableName;
                 args[1] = databaseName;
-            }
-            else if(dbType == Database.DBType.Hive){
+            } else if (dbType == Database.DBType.Hive) {
                 args[0] = databaseName;
                 args[1] = tableName;
-            }
-            else {
+            } else {
                 session.setErrorMessage("不支持的数据库类型 " + dbType);
                 return null;
             }
@@ -598,7 +596,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
 
         /* 获取子节点数据 */
         String temporary = ctx.TEMPORARY() == null ? "" : "TEMPORARY";
-        String external = "";
+        String external = ctx.EXTERNAL() == null ? "" : "EXTERNAL";
         String checkExists = ctx.IF() == null ? "" : "IF NOT EXISTS";
         String tableName = visit(ctx.table_name()).getValue();
         String databaseName = (ctx.database_name() != null ? visit(ctx.database_name()).getValue() :
@@ -623,16 +621,25 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             String columnName = visit(tree.getChild(0)).getValue();
             ASTNodeVisitResult visitColumnDefinitionNodeResult = visit(tree.getChild(1));
             int index = visitColumnDefinitionNodeResult.getValue().indexOf(" ");
-            String columnCommend = (index != -1 ? "COMMENT " + visitColumnDefinitionNodeResult.getValue().split(" ")[1]
+            String columnCommend = (index != -1 ? "COMMENT "
+                    + visitColumnDefinitionNodeResult.getValue().substring(index + 1, visitColumnDefinitionNodeResult.getValue().length())
                     : "");
             String columnType = visitColumnDefinitionNodeResult.getValue().split(" ")[0];
-            // TODO: CommandAdapter 换成对应数据类型
+            int leftBracketsIndex = columnType.indexOf('(');
+            int rightBracketsIndex = columnType.indexOf(')');
+            // 括号内容
+            String bracketContent = "";
+            if (leftBracketsIndex != -1) {
+                bracketContent = columnType.substring(leftBracketsIndex, rightBracketsIndex + 1);
+                columnType = columnType.substring(0, leftBracketsIndex);
+            }
+
             CommandAdapter commandAdapter = CommandAdapter.getAdapterInstance(dbType);
             if (!commandAdapter.TYPE_MAP.containsKey(columnType.toUpperCase())) {
                 session.setErrorMessage("找不到类型 " + columnType);
                 return null;
             }
-            columns += columnName + " " + commandAdapter.TYPE_MAP.get(columnType.toUpperCase()) + " " + columnCommend + ", ";
+            columns += columnName + " " + commandAdapter.TYPE_MAP.get(columnType.toUpperCase()) + bracketContent + " " + columnCommend + ", ";
         }
         columns = columns.substring(0, columns.length() - 2);
 
@@ -671,6 +678,39 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
+     * 获取 DECIMAL 的 NUMBER LITERAL
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitNumber_literal(uniformSQLParser.Number_literalContext ctx) {
+        return new ASTNodeVisitResult(ctx.getText(), null, null);
+    }
+
+    /**
+     * 获取 VARCHAR 的长度字段
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitVarchar_length(uniformSQLParser.Varchar_lengthContext ctx) {
+        return new ASTNodeVisitResult(ctx.getText(), null, null);
+    }
+
+    /**
+     * 获取 DECIMAL 的 LENGTH
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitLength(uniformSQLParser.LengthContext ctx) {
+        return new ASTNodeVisitResult(ctx.getText(), null, null);
+    }
+
+    /**
      * 获取字段类型
      *
      * @param ctx 节点上下文
@@ -678,7 +718,12 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
      */
     @Override
     public ASTNodeVisitResult visitColumn_data_type_header(uniformSQLParser.Column_data_type_headerContext ctx) {
-        String value = ctx.getText();
+        String value = ctx.getChild(0).getText();
+        if (value.equals("VARCHAR")) {
+            value += "(" + visit(ctx.getChild(2)).getValue() + ")";
+        } else if (value.equals("DECIMAL")) {
+            value += "(" + visit(ctx.getChild(2)).getValue() + "," + visit(ctx.getChild(4)).getValue() + ")";
+        }
         return new ASTNodeVisitResult(value, null, null);
     }
 

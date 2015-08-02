@@ -16,11 +16,13 @@ import java.io.*;
  * Reference: https://github.com/stdunbar/jisql
  */
 public class Shell {
-    private String user, password, inputQuery, fileName;
+    private String user, password, inputQuery, fileName, database;
     private final String commandTerminator = ";";
     private final static Logger logger = LoggerFactory.getLogger(Shell.class);
 
     public void doInputSQLCommand() {
+        ZQLSession session = new ZQLSession(user, database, password);
+
         /* 确定输入源 */
         BufferedReader reader = null;
         StringBuffer query;
@@ -87,12 +89,11 @@ public class Shell {
                 }
 
                 // 删除注释
-                String queryStr = StringUtil.RegexStringTool.removeComments(query.toString().replaceAll("\n", " "));
+                String queryStr = StringUtil.RegexStringTool.removeComments(query.toString().replaceAll("\n", " ")).trim();
                 if (queryStr.length() == 0) continue;
-                System.out.println(queryStr);
+                System.out.println("Query Command: " + queryStr);
 
                 /* 执行 SQL 语句 */
-                ZQLSession session = new ZQLSession("ihainan", null, "123456");
                 SQLCommandManager sqlCommandManager = new SQLCommandManager(queryStr, session);
                 sqlCommandManager.execute();
                 System.out.println(sqlCommandManager.getOutput());
@@ -120,6 +121,7 @@ public class Shell {
         parser.accepts("p").withRequiredArg().ofType(String.class);
         parser.accepts("f").withRequiredArg().ofType(String.class);
         parser.accepts("q").withRequiredArg().ofType(String.class);
+        parser.accepts("d").withRequiredArg().ofType(String.class);
         parser.accepts("help");
 
         /* 解析与提取参数 */
@@ -132,12 +134,16 @@ public class Shell {
         if (options.has("u")) {
             user = (String) options.valueOf("u");
         }
+        else{
+            user = "root";
+        }
 
         if (options.has("p")) {
             password = (String) options.valueOf("p");
         }
 
         if (options.has("f")) {
+            fileName = (String) options.valueOf("f");
             fileName = (String) options.valueOf("f");
         }
 
@@ -146,7 +152,16 @@ public class Shell {
             fileName = null;
         }
 
-        System.out.println(user + " " + password + " " + fileName + " " + inputQuery);
+        if (options.has("d")) {
+            database = (String) options.valueOf("d");
+        }
+
+        System.out.println("User = " + user);
+        System.out.println("Password = " + password);
+        System.out.println("DatabaseName = " + database);
+        System.out.println("File Name = " + fileName);
+        System.out.println("Query = " + inputQuery);
+
     }
 
     /**
@@ -154,7 +169,7 @@ public class Shell {
      */
     private static void printUsage() {
         System.err.println();
-        System.err.println("Usage: java " + Shell.class.getName() + " -u username -p password [-f file_name] " +
+        System.err.println("Usage: java " + Shell.class.getName() + " -u username -p password  [-d database_name] [-f file_name] " +
                 " [-q query_command]");
         System.err.println("Where:");
         System.err.println("\t-u Specifies a user name to log into a database server with.");

@@ -322,6 +322,13 @@ LOW_PRIORITY: L_ O_ W_ '_' P_ R_ I_ O_ R_ I_ T_ Y_ ;
 HIGH_PRIORITY: H_ I_ G_ H_ '_' P_ R_ I_ O_ R_ I_ T_ Y_ ;
 HASH: H_ A_ S_ H_ ;
 REFERENCES: R_ E_ F_ E_ R_ E_ N_ C_ E_ S_ ;
+TO_CHAR: T_ O_ '_' C_ H_ A_ R_;
+DATE_FORMAT: D_ A_ T_ E_ '_' F_ O_ R_ M_ A_ T_;
+SIGNED: S_ I_ G_ N_ E_ D_ ;
+INTEGER: I_ N_ T_ E_ G_ E_ R_ ;
+LENGTH: L_ E_ N_ G_ T_ H_ ;
+REVERSE: R_ E_ V_ E_ R_ S_ E_ ;
+IFNULL: I_ F_ N_ U_ L_ L_ ;
 // basic token definition ------------------------------------------------------------
 
 DIVIDE	: (  D_ I_ V_ ) | '/' ;
@@ -341,7 +348,7 @@ ALL_FIELDS	: '.*' ;
 
 SEMI	: ';' ;
 COLON	: ':' ;
-DOT	: '.' ;
+DOT    	: '.' ;
 COMMA	: ',' ;
 ASTERISK: '*' ;
 RPAREN	: ')' ;
@@ -494,10 +501,10 @@ cast_data_type:
 	| CHAR (INTEGER_NUM)?
 	| DATE
 	| DATETIME
-	| DECIMAL ( INTEGER_NUM (COMMA INTEGER_NUM)? )?
-	//| SIGNED (INTEGER)?
+	| DECIMAL (LPAREN INTEGER_NUM (COMMA INTEGER_NUM)? RPAREN )?
+	| SIGNED (INTEGER)?
 	//| TIME
-	//| UNSIGNED (INTEGER)?
+	| UNSIGNED (INTEGER)?
 ;
 
 /*search_modifier:
@@ -560,7 +567,7 @@ functionList:
 	| char_functions
 	| time_functions
 	| other_functions
-	| group_functions
+//	| group_functions
 ;
 
 number_functions:
@@ -592,6 +599,9 @@ char_functions:
 	| TRIM
 	| UCASE
 	| UPPER
+	| TO_CHAR
+	| LENGTH
+	| REVERSE
 ;
 
 time_functions:
@@ -605,10 +615,12 @@ time_functions:
 	| YEAR
 	| DATE_ADD
 	| DATE_SUB
+	| DATE_FORMAT
 ;
 
 other_functions:
     COALESCE
+    |IFNULL
 ;
 
 group_functions:
@@ -650,6 +662,7 @@ role_name           : any_name ;
 group_name          : any_name ;
 principal_name      : any_name ;
 
+
 any_name
  : ID
  | keyword
@@ -669,7 +682,7 @@ priv_type:
 ;
 
 // expression statement -------------------------------------------------------------------------------
-expression:	exp_factor1 ( OR exp_factor1 )* ;
+expression:	    exp_factor1 ( OR exp_factor1 )* ;
 exp_factor1:	exp_factor2 ( XOR exp_factor2 )* ;
 exp_factor2:	exp_factor3 ( AND exp_factor3 )* ;
 exp_factor3:	(NOT)? exp_factor4 ;
@@ -752,7 +765,7 @@ case_when_statement2:
 column_spec:
 	( ( schema_name DOT )? table_name DOT )? (column_name) ;
 
-
+//expresstion without Lparen or Rparen
 raw_expression_list:
      column_name (OR column_name)+
      |column_name (AND column_name)+
@@ -784,7 +797,7 @@ table_factor1:
 //	table_factor3 (  STRAIGHT_JOIN table_atom (ON expression)?  )?
 //;
 table_factor2:
-	table_factor3 (  (LEFT|RIGHT|FULL) (OUTER)? JOIN table_factor3 join_condition  )?
+	table_factor3 (  (LEFT|RIGHT|FULL) (OUTER)? JOIN table_factor3 join_condition  )*?
 ;
 table_factor3:
 	table_atom (  ( (LEFT|RIGHT|FULL) (OUTER)? )? JOIN table_atom )?
@@ -908,8 +921,8 @@ offset:		INTEGER_NUM ;
 row_count:	INTEGER_NUM ;
 
 select_list:
-	 (( displayed_column ( COMMA displayed_column )*)
-	|  ASTERISK)
+	  displayed_column ( COMMA displayed_column )*
+	//|   ASTERISK   //TODO:注释这里
 ;
 
 column_list:
@@ -921,15 +934,18 @@ subquery:
 ;
 
 table_spec:
-	( schema_name DOT )? table_name (DOT ASTERISK)?
+	( schema_name DOT )? table_name
 ;
 
+
+//-----------displayed_column------------------------
 displayed_column :
-	 table_spec
-/*	|
+      ASTERISK
+	| table_spec DOT ASTERISK      //TODO:实现table.*，但是读不出来
+	|
 	( column_spec (alias)? )
 	|
-	( bit_expr (alias)? )  */
+	( bit_expr (alias)? )
 ;
 
 
@@ -992,7 +1008,7 @@ create_table_statement:
 
 create_table_statement1:
 	CREATE (TEMPORARY)? (EXTERNAL)? TABLE (IF NOT EXISTS)?  (database_name DOT)? table_name
-	(LPAREN create_definition (COMMA create_definition)* RPAREN)?  COMMENT TEXT_STRING
+	(LPAREN create_definition (COMMA create_definition)* RPAREN)?  (COMMENT TEXT_STRING)?
 	( AS select_statement)?
 ;
 
@@ -1059,7 +1075,7 @@ reference_option:
 
 length	:	INTEGER_NUM;
 varchar_length :    INTEGER_NUM;
-binary_length :     BINARY_NUM;
+binary_length :     INTEGER_NUM;
 
 //---alter table------------------------------------------------------
 alter_table_statement:
@@ -1138,7 +1154,7 @@ alter_view_statement:
 create_user_statement:
 	CREATE USER
 	user_name
-	IDENTIFIED BY  TEXT_STRING
+	IDENTIFIED BY TEXT_STRING
 ;
 
 // ---------------------------- drop_event_statement--------------------------------------
@@ -1179,7 +1195,7 @@ show_specification:
          CREATE (TABLE | VIEW) (database_name DOT)? table_name
 //    | ABLES (IN database_name)? (IDENTIFIER_WITH_WILDCARDS)?
        | COLUMNS FROM table_name (FROM database_name)?
-       | (DATABASES | SCHEMAS) LIKE  TEXT_STRING     //TODO:这里使用通配符
+       | (DATABASES | SCHEMAS) (LIKE  TEXT_STRING)?     //TODO:这里使用通配符
        | SERVER ALIASES
        | TABLES (IN database_name)? (TEXT_STRING)?   //这里也是通配符
        | GRANT (principal_name | principal_specification)?  ON  (ALL | (TABLE)? table_name)

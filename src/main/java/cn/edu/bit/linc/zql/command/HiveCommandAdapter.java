@@ -23,7 +23,7 @@ public class HiveCommandAdapter extends CommandAdapter {
         TYPE_MAP.put("DECIMAL", "DECIMAL");
         TYPE_MAP.put("TIMESTAMP", "TIMESTAMP");
         TYPE_MAP.put("DATE", "DATE");
-        TYPE_MAP.put("VARCHAR", "STRING");  // TODO: 长度限制
+        TYPE_MAP.put("VARCHAR", "VARCHAR");  // TODO: 长度限制
         TYPE_MAP.put("BOOLEAN", "BOOLEAN");
         TYPE_MAP.put("BINARY", "BINARY");
 
