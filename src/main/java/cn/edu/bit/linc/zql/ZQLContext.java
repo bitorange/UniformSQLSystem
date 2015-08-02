@@ -40,7 +40,7 @@ public class ZQLContext {
                 .withSocketHandlerFactory(uniformSQLSocketHandlerFactory)
                 .build();
 
-        server.start();
+        // server.start();
 
     }
 
@@ -205,9 +205,9 @@ public class ZQLContext {
      *
      * @param args 程序参数
      */
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         initializeSystem();
         // mySQLTest();
-        hiveTest();
+        // hiveTest();
     }
 }

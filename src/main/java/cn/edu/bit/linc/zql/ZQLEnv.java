@@ -35,6 +35,9 @@ public class ZQLEnv {
             CONF_MAP.put("innerdb.dafault.innerdb", "1");   // 默认底层库编号
         }
 
+        CONF_MAP.put("server.version", "version 0.1");  // 服务器版本
+        CONF_MAP.put("protocol.version", "1");          // 协议版本
+
         logger.i("读取配置文件成功");
     }
 

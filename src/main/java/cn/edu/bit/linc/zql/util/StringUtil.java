@@ -43,4 +43,22 @@ public class StringUtil {
             return buffer.toString();
         }
     }
+
+    public static class RegexStringTool {
+        public static String removeNumberSignAndDoubleDashComment(String sqlLine){
+            return sqlLine.replaceAll("-- .*$", "").replaceAll("#.*$", "");
+
+        }
+
+        public static String removeComments(String sqlCommand) {
+            return sqlCommand.replaceAll("(?://.*)|(/\\*(?:.|[\\n\\r])*?\\*/)", "");
+        }
+    }
+
+    public static void main(String[] args) {
+        // System.out.println(RegexStringTool.removeComments("SELECT * FROM /* comment*/ user -- comment"));
+        System.out.println(RegexStringTool.removeNumberSignAndDoubleDashComment("SELECT * FROM user # comment\n"));
+        System.out.println(RegexStringTool.removeComments("SELECT * FROM user/* comment */ WHERE"));
+
+    }
 }
