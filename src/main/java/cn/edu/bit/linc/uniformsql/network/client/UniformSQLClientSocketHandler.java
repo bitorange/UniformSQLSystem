@@ -112,6 +112,7 @@ public class UniformSQLClientSocketHandler implements ClientSocketHandler {
 
         // 发送命令
 
+        /*
         String userOne = "User_" + StringUtil.RandomStringGenerator.generateRandomString
                 (5, StringUtil.RandomStringGenerator.Mode.ALPHA);           // 用户一
         String userTwo = "User_" + StringUtil.RandomStringGenerator.generateRandomString
@@ -255,6 +256,7 @@ public class UniformSQLClientSocketHandler implements ClientSocketHandler {
         // 关闭连接（测试）
         closeQuietly(in);
         closeQuietly(out);
+        */
     }
 
     /**

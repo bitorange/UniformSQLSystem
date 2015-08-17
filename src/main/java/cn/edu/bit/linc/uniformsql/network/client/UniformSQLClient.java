@@ -2,6 +2,7 @@ package cn.edu.bit.linc.uniformsql.network.client;
 
 import java.io.IOException;
 import java.net.Socket;
+import cn.edu.bit.linc.zql.util.StringUtil;
 
 /**
  * 客户端
@@ -11,6 +12,7 @@ public class UniformSQLClient {
     private final int port;             // 服务器端口
     private final String serverHost;    // 服务器地址
     private final ClientSocketHandlerFactory socketHandlerFactory;
+    private static ClientSocketHandler handler = null;
 
     /**
      * 构造函数
@@ -25,6 +27,10 @@ public class UniformSQLClient {
         this.socketHandlerFactory = socketHandlerFactory;
     }
 
+    public ClientSocketHandler getHandler() {
+        return handler;
+    }
+
     /**
      * 连接远程服务器
      *
@@ -32,7 +38,7 @@ public class UniformSQLClient {
      */
     public void connect() throws IOException {
         Socket clientSocket = new Socket(serverHost, port);
-        final ClientSocketHandler handler = socketHandlerFactory.newSocketHandler(clientSocket);
+        handler = socketHandlerFactory.newSocketHandler(clientSocket);
         handler.handleSocket();
     }
 
@@ -105,5 +111,18 @@ public class UniformSQLClient {
                 .build();
 
         client.connect();
+        UniformSQLClientSocketHandler handler = (UniformSQLClientSocketHandler) client.getHandler();
+
+        String userOne = "User_" + StringUtil.RandomStringGenerator.generateRandomString
+                (5, StringUtil.RandomStringGenerator.Mode.ALPHA);           // 用户一
+        String userTwo = "User_" + StringUtil.RandomStringGenerator.generateRandomString
+                (5, StringUtil.RandomStringGenerator.Mode.ALPHA);           // 用户二
+        String userThree = "User_" + StringUtil.RandomStringGenerator.generateRandomString
+                (5, StringUtil.RandomStringGenerator.Mode.ALPHA);           // 用户三
+        handler.sendCommand(1, "CREATE USER " + userOne + " IDENTIFIED BY '123456'");
+        handler.getResult();
+        // TODO: 检测用户是否存在
+        handler.sendCommand(1, "DROP USER " + userOne);                       // 删除用户一
+        handler.getResult();
     }
 }
