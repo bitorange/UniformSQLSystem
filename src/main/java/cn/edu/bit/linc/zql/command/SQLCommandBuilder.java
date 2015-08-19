@@ -315,6 +315,17 @@ public class SQLCommandBuilder {
     }
 
     /**
+     * SELECT Statement
+     *
+     * @param dbType 底层库类型
+     * @param args   参数列表
+     * @return SQL命令
+     */
+    public InnerSQLCommand delete(Database.DBType dbType, Object... args) {
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].delete(args), args);
+    }
+
+    /**
      * 测试函数
      *
      * @param args 程序参数
@@ -324,4 +335,6 @@ public class SQLCommandBuilder {
         String[] sqlArgs = new String[]{"db_test", "IF NOT EXISTS"};
         System.out.println(builder.createDatabase(Database.DBType.MySQL, sqlArgs));
     }
+
+
 }

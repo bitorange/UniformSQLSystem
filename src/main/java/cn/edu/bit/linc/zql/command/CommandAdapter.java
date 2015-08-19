@@ -90,7 +90,7 @@ public abstract class CommandAdapter {
 
     public String SELECT = "SELECT %s %s FROM %s %s %s %s %s";
 
-
+    public String DELETE = "DELETE FROM %s %s";
     /**
      * 删除用户
      *
@@ -350,5 +350,15 @@ public abstract class CommandAdapter {
      */
     public String select(Object... args) {
         return String.format(SELECT, args);
+    }
+
+    /**
+     * DELETE
+     *
+     * @param args 参数列表
+     * @return SQL 命令
+     */
+    public String delete(Object... args) {
+        return String.format(DELETE, args);
     }
 }

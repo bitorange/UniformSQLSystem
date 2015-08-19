@@ -1126,4 +1126,42 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         return new ASTNodeVisitResult(value, null, null);
     }
 
+
+    /**
+     * 指定底层库运行 STATEMENT
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override
+    public ASTNodeVisitResult visitDelete_statements(uniformSQLParser.Delete_statementsContext ctx) {
+        ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
+
+        /* 底层库 */
+        if (ZQLEnv.get("innerdb.dafault.innerdb") == null) {
+            session.setErrorMessage("没有指定底层库");
+            return null;
+        }
+        String database = session.getDatabase();
+        /* 获取子节点数据 */
+        ASTNodeVisitResult visitSchemaNameNodeResult = visit(ctx.table_name());
+        String tableName = visitSchemaNameNodeResult.getValue();     // 数据库名
+        /* 确定数据库所在底层库以及底层库类型 */
+        int dbId;
+        try {
+            dbId = metaDatabase.getInnerDatabaseId(session.getDatabase());
+        } catch (MetaDatabaseOperationsException e) {
+            session.setDatabase("获取数据库所在底层库失败，错误原因：" + e.getMessage());
+            return null;
+        }
+        Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
+        /* 底层库命令 */
+        InnerSQLCommand innerDbCommand = sqlCommandBuilder.delete(dbType,session.getDatabase() + "." + tableName, "");
+        commands.add(innerDbCommand);
+        dbIds.add(dbId);
+
+        /* 返回结果 */
+        return new ASTNodeVisitResult(null, commands, dbIds);
+    }
 }
