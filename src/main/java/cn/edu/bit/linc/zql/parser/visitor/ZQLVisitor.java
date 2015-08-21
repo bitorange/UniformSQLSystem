@@ -1,5 +1,6 @@
 package cn.edu.bit.linc.zql.parser.visitor;
 
+import antlr.collections.AST;
 import cn.edu.bit.linc.zql.ZQLEnv;
 import cn.edu.bit.linc.zql.command.*;
 import cn.edu.bit.linc.zql.connections.ZQLSession;
@@ -42,6 +43,21 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
 
     public ZQLVisitor(ZQLSession session) {
         this.session = session;
+    }
+
+    /**
+     * 根据DBID获取Database对象
+     *
+     * @param dbid 数据库id
+     * @return InnerDatabases对象
+     */
+    public InnerDatabase getInnerDatabaseByDBID (int dbid) {
+        for (int i = 0; i < innerDatabasesArrayList.size(); i++) {
+            if (innerDatabasesArrayList.get(i).getDbId() == dbid) {
+                return innerDatabasesArrayList.get(i);
+            }
+        }
+        return null;
     }
 
     /**
@@ -1156,7 +1172,7 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             session.setDatabase("获取数据库所在底层库失败，错误原因：" + e.getMessage());
             return null;
         }
-        Database.DBType dbType = innerDatabasesArrayList.get(dbId - 1).getDbType();
+        Database.DBType dbType = getInnerDatabaseByDBID(dbId).getDbType();
 
         ASTNodeVisitResult visitWhereClauseResult = visit(ctx.where_clause());
         String whereString = visitWhereClauseResult.getValue();
@@ -1178,9 +1194,12 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
      * @return 节点访问结果
      */
     @Override public ASTNodeVisitResult visitWhere_clause(uniformSQLParser.Where_clauseContext ctx) {
-        String whereString = "WHERE";
-        ASTNodeVisitResult childrenResult = visit(ctx.children.get(1));
-        whereString = whereString + " " + childrenResult.getValue();
+        String whereString = "";
+        if (ctx.WHERE() != null) {
+            whereString += " " + ctx.WHERE() + " ";
+            ASTNodeVisitResult childrenResult = visit(ctx.expression());
+            whereString = whereString + " " + childrenResult.getValue();
+        }
         return new ASTNodeVisitResult(whereString, null, null);
     }
 
@@ -1725,6 +1744,46 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
     }
 
     /**
+     * String_literal
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitString_literal(uniformSQLParser.String_literalContext ctx) {
+        return new ASTNodeVisitResult(ctx.getText(), null, null);
+    }
+
+    /**
+     * Hex_literal
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitHex_literal(uniformSQLParser.Hex_literalContext ctx) {
+        return new ASTNodeVisitResult(ctx.getText(), null, null);
+    }
+
+    /**
+     * Bit_literal
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitBit_literal(uniformSQLParser.Bit_literalContext ctx) {
+        return new ASTNodeVisitResult(ctx.getText(), null, null);
+    }
+
+    /**
+     * Any_name
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitAny_name(uniformSQLParser.Any_nameContext ctx) {
+        return new ASTNodeVisitResult(ctx.getText(), null, null);
+    }
+
+    /**
      * Column_spec
      *
      * @param ctx 节点上下文
@@ -1984,4 +2043,113 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         if (ctx.GET() != null) valueStr += " " + ctx.GET() + " ";
         return new ASTNodeVisitResult(valueStr, null, null);
     }
+
+    /**
+     * Update_statements
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitUpdate_statements(uniformSQLParser.Update_statementsContext ctx) {
+        ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
+                /* 底层库 */
+        if (ZQLEnv.get("innerdb.dafault.innerdb") == null) {
+            session.setErrorMessage("没有指定底层库");
+            return null;
+        }
+        String database = session.getDatabase();
+        if (ctx.database_name() != null) {
+            ASTNodeVisitResult database_nameResult = visit(ctx.database_name());
+            if (database_nameResult.getValue() != null) {
+                database = database_nameResult.getValue();
+            }
+        }
+
+
+        /* 确定数据库所在底层库以及底层库类型 */
+        int dbId;
+        try {
+            dbId = metaDatabase.getInnerDatabaseId(database);
+        } catch (MetaDatabaseOperationsException e) {
+            session.setDatabase("获取数据库所在底层库失败，错误原因：" + e.getMessage());
+            return null;
+        }
+        Database.DBType dbType = getInnerDatabaseByDBID(dbId).getDbType();
+
+        String tableName = "";
+        if (ctx.user_name() != null) {
+            ASTNodeVisitResult user_nameResult = visit(ctx.user_name());
+            if (user_nameResult.getValue() != null) {
+                tableName = user_nameResult.getValue();
+            }
+        }
+
+        String setString = "";
+        if (ctx.set_columns_cluase() != null) {
+            ASTNodeVisitResult setResult = visit(ctx.set_columns_cluase());
+            if (setResult.getValue() != null) {
+                setString = setResult.getValue();
+            }
+        }
+
+        String whereString = "";
+        if (ctx.where_clause() != null) {
+            ASTNodeVisitResult visitWhereClauseResult = visit(ctx.where_clause());
+            if (visitWhereClauseResult.getValue() != null) {
+                whereString = visitWhereClauseResult.getValue();
+            }
+        }
+
+        /* 底层库命令 */
+        InnerSQLCommand innerDbCommand = sqlCommandBuilder.update(dbType,database + "." + tableName, setString, whereString);
+        commands.add(innerDbCommand);
+        dbIds.add(dbId);
+
+        return new ASTNodeVisitResult(null, commands, dbIds);
+    }
+
+    /**
+     * Set_columns_cluase
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitSet_columns_cluase(uniformSQLParser.Set_columns_cluaseContext ctx) {
+        String valueStr = "";
+        for (int i = 0; i < ctx.children.size(); i++) {
+            if (ctx.children.get(i).getText().equals("SET") || ctx.children.get(i).getText().equals(",")) {
+                valueStr += " " + ctx.children.get(i).getText() + " ";
+            } else {
+                ASTNodeVisitResult whateverResult = visit(ctx.children.get(i));
+                if (whateverResult.getValue() != null) {
+                    valueStr += whateverResult.getValue();
+                }
+            }
+        }
+        return new ASTNodeVisitResult(valueStr, null, null);
+    }
+
+    /**
+     * Set_column_cluase
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitSet_column_cluase(uniformSQLParser.Set_column_cluaseContext ctx) {
+        String valueStr = "";
+        for (int i = 0; i < ctx.children.size(); i++) {
+            if (ctx.children.get(i).getText().equals("DEFAULT") || ctx.children.get(i).getText().equals("<=>") || ctx.children.get(i).getText().equals("=")) {
+                valueStr += " " + ctx.children.get(i).getText() + " ";
+            } else {
+                ASTNodeVisitResult whateverResult = visit(ctx.children.get(i));
+                if (whateverResult.getValue() != null) {
+                    valueStr += whateverResult.getValue();
+                }
+            }
+        }
+        return new ASTNodeVisitResult(valueStr, null, null);
+    }
+
+
 }
