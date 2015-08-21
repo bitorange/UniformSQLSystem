@@ -1322,28 +1322,30 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
             if (predicateResult.getValue() != null) {
                 valueStr += predicateResult.getValue();
             }
-            ASTNodeVisitResult opResult = visit(ctx.relational_op());
-            if (opResult.getValue() != null) {
-                valueStr += opResult.getValue();
-            }
-            if (ctx.predicate().size() != 1) {
-                //( predicate relational_op predicate )
-                ASTNodeVisitResult predicateResult2 = visit(ctx.predicate(1));
-                if (predicateResult2.getValue() != null) {
-                    valueStr += predicateResult2.getValue();
+            if (ctx.relational_op() != null) {
+                ASTNodeVisitResult opResult = visit(ctx.relational_op());
+                if (opResult.getValue() != null) {
+                    valueStr += opResult.getValue();
                 }
-            } else {
-                if (ctx.subquery() != null) {
-                    //( predicate relational_op ( ALL  )? subquery )
-                    if (ctx.ALL() != null) {
-                        valueStr += " " + ctx.ALL() + " ";
-                    }
-                    ASTNodeVisitResult subQueryResult = visit(ctx.subquery());
-                    if (subQueryResult.getValue() != null) {
-                        valueStr += subQueryResult.getValue();
+                if (ctx.predicate().size() != 1) {
+                    //( predicate relational_op predicate )
+                    ASTNodeVisitResult predicateResult2 = visit(ctx.predicate(1));
+                    if (predicateResult2.getValue() != null) {
+                        valueStr += predicateResult2.getValue();
                     }
                 } else {
-                    //(predicate)
+                    if (ctx.subquery() != null) {
+                        //( predicate relational_op ( ALL  )? subquery )
+                        if (ctx.ALL() != null) {
+                            valueStr += " " + ctx.ALL() + " ";
+                        }
+                        ASTNodeVisitResult subQueryResult = visit(ctx.subquery());
+                        if (subQueryResult.getValue() != null) {
+                            valueStr += subQueryResult.getValue();
+                        }
+                    } else {
+                        //(predicate)
+                    }
                 }
             }
         } else {
@@ -1886,6 +1888,83 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
                 }
             }
         }
+        return new ASTNodeVisitResult(valueStr, null, null);
+    }
+
+    /**
+     * Function_call
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitFunction_call(uniformSQLParser.Function_callContext ctx) {
+        String valueStr = "";
+        for (int i = 0; i < ctx.children.size(); i++) {
+            if (ctx.children.get(i).getText().equals("(") || ctx.children.get(i).getText().equals(")") || ctx.children.get(i).getText().equals(",") || ctx.children.get(i).getText().equals("CAST") || ctx.children.get(i).getText().equals("*") || ctx.children.get(i).getText().equals("ALL") || ctx.children.get(i).getText().equals("DISTINCT")) {
+                valueStr += " " + ctx.children.get(i).getText() + " ";
+            } else {
+                ASTNodeVisitResult whateverResult = visit(ctx.children.get(i));
+                if (whateverResult.getValue() != null) {
+                    valueStr += whateverResult.getValue();
+                }
+            }
+        }
+        return new ASTNodeVisitResult(valueStr, null, null);
+    }
+
+    /**
+     * FunctionList
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitFunctionList(uniformSQLParser.FunctionListContext ctx) {
+        String valueStr = "";
+        ASTNodeVisitResult whateverResult = visit(ctx.children.get(0));
+        if (whateverResult.getValue() != null) {
+            valueStr += whateverResult.getValue();
+        }
+        return new ASTNodeVisitResult(valueStr, null, null);
+    }
+
+    /**
+     * Cast_data_type
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitCast_data_type(uniformSQLParser.Cast_data_typeContext ctx) {
+//        BINARY (INTEGER_NUM)?
+//        | CHAR (INTEGER_NUM)?
+//        | DATE
+//        | DATETIME
+//        | DECIMAL (LPAREN INTEGER_NUM (COMMA INTEGER_NUM)? RPAREN )?
+//        | SIGNED (INTEGER)?
+//        //| TIME
+//        | UNSIGNED (INTEGER)?
+        String valueStr = "";
+        for (int i = 0; i < ctx.children.size(); i++) {
+            if (ctx.children.get(i).getText().equals("(") || ctx.children.get(i).getText().equals(")") || ctx.children.get(i).getText().equals(",") ||
+                    ctx.children.get(i).getText().equals("BINARY") || ctx.children.get(i).getText().equals("CHAR") || ctx.children.get(i).getText().equals("DATE") ||
+                    ctx.children.get(i).getText().equals("DATETIME") || ctx.children.get(i).getText().equals("DECIMAL") || ctx.children.get(i).getText().equals("SIGNED") ||
+                    ctx.children.get(i).getText().equals("UNSIGNED") || ctx.children.get(i).getText().equals("INTEGER")) {
+                valueStr += " " + ctx.children.get(i).getText() + " ";
+            } else {
+                valueStr += ctx.children.get(i).getText();
+            }
+        }
+        return new ASTNodeVisitResult(valueStr, null, null);
+    }
+
+    /**
+     * Group_functions
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitGroup_functions(uniformSQLParser.Group_functionsContext ctx) {
+        String valueStr = "";
+        valueStr += " " + ctx.children.get(0).getText() + " ";
         return new ASTNodeVisitResult(valueStr, null, null);
     }
 
