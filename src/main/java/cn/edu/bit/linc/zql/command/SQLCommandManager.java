@@ -138,6 +138,7 @@ public class SQLCommandManager {
             boolean isQuery;
             try {
                 logger.d("在数据库 " + dbId + " 中执行指令 " + innerSQLCommand.getCommandStr());
+                String a = innerSQLCommand.getCommandStr();
                 isQuery = statement.execute(innerSQLCommand.getCommandStr());
             } catch (SQLException e) {
                 ZQLCommandExecutionError zqlCommandExecutionError = new ZQLCommandExecutionError(e.getMessage());
