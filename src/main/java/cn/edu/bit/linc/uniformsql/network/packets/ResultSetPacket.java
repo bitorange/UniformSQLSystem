@@ -4,6 +4,9 @@ import cn.edu.bit.linc.uniformsql.network.packets.type.IntegerType;
 import cn.edu.bit.linc.uniformsql.network.packets.type.LengthCodeBinaryType;
 import cn.edu.bit.linc.uniformsql.network.packets.type.LengthCodeStringType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 结果集报文
  */
@@ -110,16 +113,29 @@ public class ResultSetPacket extends BasePacket {
      * @return 域描述报文
      */
     public FieldPacket[] getFieldPacketArray() {
-        FieldPacket[] fieldPacketArray = new FieldPacket[fieldPacketOffset.length-1];
 
-        for(int index = 0; index < fieldPacketArray.length; ++index) {
-            byte[] data = new byte[fieldPacketOffset[index+1] - fieldPacketOffset[index]];
-            System.arraycopy(_data_, fieldPacketOffset[index], data, 0, data.length);
-            FieldPacket fieldPacket = new FieldPacket(data.length);
-            fieldPacket.setData(data);
-            fieldPacketArray[index] = fieldPacket;
+        List<FieldPacket> fieldPacketList = new ArrayList<FieldPacket> ();
+        List<Integer> fieldPacketOffsetList = new ArrayList<Integer> ();
+        int nowOffset = resultHeadPacketLen;
+        int index = 0;
+        fieldPacketOffsetList.add(index);
+
+        while(!EOFPacket.isEOFPacket(_data_, nowOffset)) {
+            FieldPacket fieldPacket = new FieldPacket(_data_.length);
+            nowOffset += fieldPacket.getFieldPacketFromByte(_data_, nowOffset);
+            fieldPacketOffsetList.add(nowOffset);
+            fieldPacketList.add(fieldPacket);
         }
-        return fieldPacketArray;
+
+        fieldPacketOffset = new int[fieldPacketOffsetList.size()];
+        for(int i = 0; i < fieldPacketOffset.length; ++i)
+            fieldPacketOffset[i] = fieldPacketOffsetList.get(i);
+
+        FieldPacket[] fieldPackets = new FieldPacket[fieldPacketList.size()];
+        for(int i = 0; i < fieldPackets.length; ++i)
+            fieldPackets[i] = fieldPacketList.get(i);
+
+        return fieldPackets;
     }
 
     /**
@@ -141,10 +157,11 @@ public class ResultSetPacket extends BasePacket {
      * @return EOF报文1
      */
     public EOFPacket getEOFPacket1() {
-        byte[] data = new byte[eofPacketLen1];
-        System.arraycopy(_data_, eofPacketOffset1, data, 0, data.length);
-        EOFPacket eofPacket = new EOFPacket(data.length);
-        eofPacket.setData(data);
+
+        EOFPacket eofPacket = new EOFPacket(_data_.length);
+        eofPacketOffset1 = fieldPacketOffset[fieldPacketOffset.length-1];
+        eofPacketLen1 = eofPacket.getEOFPacketFromByte(_data_, eofPacketOffset1);
+
         return eofPacket;
     }
 
@@ -169,17 +186,62 @@ public class ResultSetPacket extends BasePacket {
      *
      * @return 行数据报文
      */
-    public RowDataPacket[] getRowDataPacketArray() {
-        RowDataPacket[] rowDataPacketArray = new RowDataPacket[rowDataPacketOffset.length-1];
+    public RowDataPacket[] getRowDataPacketArray(int fieldNum) {
 
-        for(int index = 0; index < rowDataPacketArray.length; ++index) {
+
+        /*List<FieldPacket> fieldPacketList = new ArrayList<FieldPacket> ();
+        List<Integer> fieldPacketOffsetList = new ArrayList<Integer> ();
+        int nowOffset = resultHeadPacketLen;
+        int index = 0;
+        fieldPacketOffsetList.add(index);
+
+        while(!EOFPacket.isEOFPacket(_data_, nowOffset)) {
+            FieldPacket fieldPacket = new FieldPacket(_data_.length);
+            nowOffset += fieldPacket.getFieldPacketFromByte(_data_, nowOffset);
+            fieldPacketOffsetList.add(nowOffset);
+            fieldPacketList.add(fieldPacket);
+        }
+
+        fieldPacketOffset = new int[fieldPacketOffsetList.size()];
+        for(int i = 0; i < fieldPacketOffset.length; ++i)
+            fieldPacketOffset[i] = fieldPacketOffsetList.get(i);
+
+        FieldPacket[] fieldPackets = new FieldPacket[fieldPacketList.size()];
+        for(int i = 0; i < fieldPackets.length; ++i)
+            fieldPackets[i] = fieldPacketList.get(i);
+
+        return fieldPackets;*/
+
+        //RowDataPacket[] rowDataPacketArray = new RowDataPacket[rowDataPacketOffset.length-1];
+        List<RowDataPacket> rowDataPacketList = new ArrayList<RowDataPacket> ();
+        List<Integer> rowOffsetList = new ArrayList<Integer> ();
+        int nowOffset = eofPacketOffset1 + eofPacketLen1;
+        int index = 0;
+        rowOffsetList.add(index);
+
+        while(!EOFPacket.isEOFPacket(_data_, nowOffset)) {
+            RowDataPacket rowDataPacket = new RowDataPacket(_data_.length);
+            nowOffset += rowDataPacket.getRowDataPacketFromByte(_data_, nowOffset, fieldNum);
+            rowDataPacketList.add(rowDataPacket);
+            rowOffsetList.add(nowOffset);
+        }
+
+        rowDataPacketOffset = new int[rowOffsetList.size()];
+        for(int i = 0; i < rowDataPacketOffset.length; ++i)
+            rowDataPacketOffset[i] = rowOffsetList.get(i);
+
+        RowDataPacket[] rowDataPackets = new RowDataPacket[rowDataPacketList.size()];
+        for(int i = 0; i < rowDataPackets.length; ++i)
+            rowDataPackets[i] = rowDataPacketList.get(i);
+
+        /*for(int index = 0; index < rowDataPacketArray.length; ++index) {
             byte[] data = new byte[rowDataPacketOffset[index+1] - rowDataPacketOffset[index]];
             System.arraycopy(_data_, rowDataPacketOffset[index], data, 0, data.length);
             RowDataPacket rowDataPacket = new RowDataPacket(data.length);
             rowDataPacket.setData(data);
             rowDataPacketArray[index] = rowDataPacket;
-        }
-        return rowDataPacketArray;
+        }*/
+        return rowDataPackets;
     }
 
     /**
@@ -201,11 +263,61 @@ public class ResultSetPacket extends BasePacket {
      * @return EOF报文1
      */
     public EOFPacket getEOFPacket2() {
-        byte[] data = new byte[eofPacketLen2];
+        EOFPacket eofPacket = new EOFPacket(_data_.length);
+        eofPacketOffset2 = rowDataPacketOffset[rowDataPacketOffset.length-1];
+        eofPacketLen2 = eofPacket.getEOFPacketFromByte(_data_, eofPacketOffset2);
+
+        /*byte[] data = new byte[eofPacketLen2];
         System.arraycopy(_data_, eofPacketOffset2, data, 0, data.length);
         EOFPacket eofPacket = new EOFPacket(data.length);
-        eofPacket.setData(data);
+        eofPacket.setData(data);*/
         return eofPacket;
+    }
+
+    /**
+     * 获取在完整data数组头部的结果头包
+     *
+     * @param __data 完整数组
+     */
+    public void getResultSetPacketFromByte(byte[] __data) {
+        setData(__data);
+
+        ResultHeadPacket resultHeadPacket = new ResultHeadPacket(__data.length);
+        resultHeadPacketLen = resultHeadPacket.getResultHeadPacketFromByte(__data, 0);
+        //System.out.println("resultHeadPacket : " + resultHeadPacket);
+
+        FieldPacket[] fieldPacketArray = getFieldPacketArray();
+        //for(int i = 0; i < fieldPacketArray.length; ++i) {
+        //   System.out.println("fieldPacket : " + fieldPacketArray[i]);
+        //}
+
+        EOFPacket eofPacket1 = getEOFPacket1();
+        //System.out.println("eofPacket : " + eofPacket1);
+
+        RowDataPacket[] rowDataPacketArray = getRowDataPacketArray(fieldPacketArray.length);
+        //for(int i = 0; i < rowDataPacketArray.length; ++i) {
+            //System.out.println("rowDataPacket" + rowDataPacketArray[i]);
+        //}
+
+        EOFPacket eofPacket2 = getEOFPacket2();
+        //System.out.println("eofPacket : " + eofPacket2);
+
+    }
+
+    public static ResultSetPacket getResultSetPacket(ResultHeadPacket resultHeadPacket, FieldPacket[] fieldPackets, EOFPacket eofPacket1, RowDataPacket[] rowDataPackets, EOFPacket eofPacket2) {
+        int size = resultHeadPacket.getSize() + eofPacket1.getSize() + eofPacket2.getSize();
+        for(int i = 0; i < fieldPackets.length; ++i)
+            size += fieldPackets[i].getSize();
+        for(int i = 0; i < rowDataPackets.length; ++i)
+            size += rowDataPackets[i].getSize();
+
+        ResultSetPacket resultSetPacket = new ResultSetPacket(size);
+        resultSetPacket.setResultHeadPacket(resultHeadPacket);
+        resultSetPacket.setFieldPacketArray(fieldPackets);
+        resultSetPacket.setEOFPacket1(eofPacket1);
+        resultSetPacket.setRowDataPacketArray(rowDataPackets);
+        resultSetPacket.setEOFPacket2(eofPacket2);
+        return resultSetPacket;
     }
 
     /**
@@ -255,7 +367,7 @@ public class ResultSetPacket extends BasePacket {
         fieldPacket.setReservedField(reservedField);
         fieldPacket.setDefaultValue(defaultValue);
 
-        FieldPacket[] fieldPacketArray = new FieldPacket[] {fieldPacket, fieldPacket};
+        FieldPacket[] fieldPacketArray = new FieldPacket[] {fieldPacket, fieldPacket, fieldPacket};
 
         /* EOF报文1 */
         IntegerType packetIdentifier = IntegerType.getIntegerType(0xFE, EOFPacket.LENGTH_PACKET_IDENTIFIER);
@@ -275,12 +387,14 @@ public class ResultSetPacket extends BasePacket {
         RowDataPacket[] rowDataPacketArray = new RowDataPacket[] {rowDataPacket, rowDataPacket, rowDataPacket};
 
         /* 构建结果集报文 */
-        ResultSetPacket resultSetPacket = new ResultSetPacket(resultHeadPacket.getSize() + fieldPacket.getSize()*2 + eofPacket.getSize()*2 + rowDataPacket.getSize()*3);
+        ResultSetPacket resultSetPacket = new ResultSetPacket(resultHeadPacket.getSize() + fieldPacket.getSize()*3 + eofPacket.getSize()*2 + rowDataPacket.getSize()*3);
         resultSetPacket.setResultHeadPacket(resultHeadPacket);
         resultSetPacket.setFieldPacketArray(fieldPacketArray);
         resultSetPacket.setEOFPacket1(eofPacket);
         resultSetPacket.setRowDataPacketArray(rowDataPacketArray);
         resultSetPacket.setEOFPacket2(eofPacket);
+
+        //ResultSetPacket resultSetPacket = ResultSetPacket.getResultSetPacket(resultHeadPacket, fieldPacketArray, eofPacket, rowDataPacketArray, eofPacket);
 
         System.out.println("resultSetPacket : " + resultSetPacket);
         System.out.println();
@@ -298,7 +412,7 @@ public class ResultSetPacket extends BasePacket {
         EOFPacket eofPacket1Get = resultSetPacket.getEOFPacket1();
         System.out.println("EOFPacket1 : " + eofPacket1Get);
 
-        RowDataPacket[] rowDataPacketArrayGet = resultSetPacket.getRowDataPacketArray();
+        RowDataPacket[] rowDataPacketArrayGet = resultSetPacket.getRowDataPacketArray(3);
         for(RowDataPacket rowDataPacketGet : rowDataPacketArrayGet) {
             System.out.println("rowDataPacket : " + rowDataPacketGet);
         }
@@ -308,7 +422,7 @@ public class ResultSetPacket extends BasePacket {
 
 
         /* 解析内容 */
-        System.out.println();
+        /*System.out.println();
         System.out.println("resultHeadPacket : " + resultHeadPacketGet);
 
         System.out.println();
@@ -325,7 +439,36 @@ public class ResultSetPacket extends BasePacket {
         }
 
         System.out.println();
-        System.out.println("EOFPacket2 : " + eofPacket2Get);
+        System.out.println("EOFPacket2 : " + eofPacket2Get);*/
+
+        /* 通过byte[]构建 */
+        System.out.println();
+        System.out.println("By byte");
+        ResultSetPacket resultSetPacketCopy = new ResultSetPacket(resultSetPacket.getSize());
+        byte[] data = new byte[resultSetPacket.getSize()];
+        resultSetPacket.getData(data);
+
+        resultSetPacketCopy.getResultSetPacketFromByte(data);
+
+        //ResultHeadPacket resultHeadPacketCopy = new ResultHeadPacket(resultSetPacketCopy.getSize());
+        //resultHeadPacketCopy.getResultHeadPacketFromByte(resultSetPacketCopy._data_);
+        //System.out.println("resultHeadPacket : " + resultHeadPacketCopy);
+
+//        FieldPacket[] fieldPacketArrayCopy = resultSetPacketCopy.getFieldPacketArray();
+//        for(FieldPacket fieldPacketGet : fieldPacketArrayCopy) {
+//            System.out.println("fieldPacket : " + fieldPacketGet);
+//        }
+//
+//        EOFPacket eofPacket1Copy = resultSetPacketCopy.getEOFPacket1();
+//        System.out.println("EOFPacket1 : " + eofPacket1Copy);
+//
+//        RowDataPacket[] rowDataPacketArrayCopy = resultSetPacketCopy.getRowDataPacketArray();
+//        for(RowDataPacket rowDataPacketGet : rowDataPacketArrayCopy) {
+//            System.out.println("rowDataPacket : " + rowDataPacketGet);
+//        }
+//
+//        EOFPacket eofPacket2Copy = resultSetPacketCopy.getEOFPacket2();
+//        System.out.println("EOFPacket2 : " + eofPacket2Copy);
 
     }
     /* Output:

@@ -260,6 +260,23 @@ public class UniformSQLClientSocketHandler implements ClientSocketHandler {
     }
 
     /**
+     * 断开连接
+     *
+     */
+    public void disconnect() {
+        sendCommand(0, null);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        closeQuietly(in);
+        closeQuietly(out);
+    }
+
+    /**
      * 向远程服务器发送命令
      *
      * @param commandType 命令类型
@@ -314,12 +331,16 @@ public class UniformSQLClientSocketHandler implements ClientSocketHandler {
     public void getResult() throws IOException{
         Packet packer = readPacket(in);
         byte[] ResultBytes = packer.getPacketBody();
-        if(ResultBytes[0] == 0x00){
+
+        for(int i = 0; i < ResultBytes.length; ++i)
+            System.out.print(ResultBytes[i] +" ");
+
+        if(ResultBytes[0] == 0){
 
             SuccessPacket resultPacket = new SuccessPacket(ResultBytes.length);
             resultPacket.setData(ResultBytes);
-            logger.i("Received result packet from server " + clientSocket.getInetAddress());
-            logger.i("resultPacket : " + resultPacket);
+            logger.i("Received success packet from server " + clientSocket.getInetAddress());
+            logger.i("successPacket : " + resultPacket);
             System.out.println("Packet Identifier : " + IntegerType.getIntegerValue(resultPacket.getPacketIdentifier()));
             System.out.print("Changed Rows      : ");
             byte[] bytes = LengthCodeBinaryType.getBytes(resultPacket.getChangedRows());
@@ -338,8 +359,94 @@ public class UniformSQLClientSocketHandler implements ClientSocketHandler {
             System.out.println("Server Message    : " + LengthCodeStringType.getString(resultPacket.getServerMessage()));
             System.out.println();
         }
-        else if(ResultBytes[0] == 0xFF){
+        else if(ResultBytes[0] == -1){
+            ErrorPacket errorPacket = new ErrorPacket(ResultBytes.length);
+            errorPacket.setData(ResultBytes);
+            System.out.println(errorPacket);
+            System.out.println("Packet Identifier : " + IntegerType.getIntegerValue(errorPacket.getPacketIdentifier()));
+            System.out.println("Error Code        : " + IntegerType.getIntegerValue(errorPacket.getErrorCode()));
+            System.out.println("Server Status     : " + IntegerType.getIntegerValue(errorPacket.getServerStatus()));
+            System.out.println("Error Message     : " + LengthCodeStringType.getString(errorPacket.getErrorMessage()));
 
+        }
+        else if(ResultBytes[0] == 254){
+            EOFPacket eofPacket = new EOFPacket(ResultBytes.length);
+            eofPacket.setData(ResultBytes);
+
+            System.out.println(eofPacket);
+            System.out.println("Packet Identifier      : " + IntegerType.getIntegerValue(eofPacket.getPacketIdentifier()));
+            System.out.println("Warning Number         : " + IntegerType.getIntegerValue(eofPacket.getWarningNumber()));
+            System.out.println("Server Status Bit Mask : " + IntegerType.getIntegerValue(eofPacket.getServerStatusBitMask()));
+
+        }
+        else {
+            int fieldNumber = 0;
+            ResultSetPacket resultSetPacket = new ResultSetPacket(ResultBytes.length);
+            resultSetPacket.getResultSetPacketFromByte(ResultBytes);
+            logger.i("Received resultSetPacket from server " + clientSocket.getInetAddress());
+            //logger.i("resultSetPacket : " + resultSetPacket);
+
+            ResultHeadPacket resultHeadPacket = resultSetPacket.getResultHeadPacket();
+            /*System.out.println("resultHeadPacket : " + resultHeadPacket);
+            System.out.print("Field Number      : ");
+            byte[] bytes = LengthCodeBinaryType.getBytes(resultHeadPacket.getFieldNumber());
+            for(byte b : bytes) {
+                System.out.print(b + " ");
+            }
+            System.out.println();
+            System.out.print("Extra Message     : ");
+            bytes = LengthCodeBinaryType.getBytes(resultHeadPacket.getExtraMessage());
+            for(byte b : bytes) {
+                System.out.print(b + " ");
+            }
+            System.out.println();*/
+
+            FieldPacket[] fieldPacketArrayGet = resultSetPacket.getFieldPacketArray();
+            fieldNumber = fieldPacketArrayGet.length;
+            for(FieldPacket fieldPacketGet : fieldPacketArrayGet) {
+//                System.out.println("fieldPacket : " + fieldPacketGet);
+//                System.out.println("Data Field          : " + LengthCodeStringType.getString(fieldPacketGet.getDataField()));
+//                System.out.println("Database Name       : " + LengthCodeStringType.getString(fieldPacketGet.getDatabaseName()));
+//                System.out.println("Table Alias Name    : " + LengthCodeStringType.getString(fieldPacketGet.getTableAliasName()));
+//                System.out.println("Table Name          : " + LengthCodeStringType.getString(fieldPacketGet.getTableName()));
+//                System.out.println("Field Alias Name    : " + LengthCodeStringType.getString(fieldPacketGet.getFieldAliasName()));
+//                System.out.println("Field Name          : " + LengthCodeStringType.getString(fieldPacketGet.getFieldName()));
+//                System.out.println("Fill Number         : " + IntegerType.getIntegerValue(fieldPacketGet.getFillNumber()));
+//                System.out.println("Character Set       : " + IntegerType.getIntegerValue(fieldPacketGet.getCharacterSet()));
+//                System.out.println("Field Length        : " + IntegerType.getIntegerValue(fieldPacketGet.getFieldLength()));
+//                System.out.println("Field Type Code     : " + IntegerType.getIntegerValue(fieldPacketGet.getFieldTypeCode()));
+//                System.out.println("Field Flag Bit Mask : " + IntegerType.getIntegerValue(fieldPacketGet.getFieldFlagBitMask()));
+//                System.out.println("Decimal Point Pre   : " + IntegerType.getIntegerValue(fieldPacketGet.getDecimalPointPrecision()));
+//                System.out.println("Reserved Field      : " + IntegerType.getIntegerValue(fieldPacketGet.getReservedField()));
+//                System.out.println("Default Value       : " + LengthCodeStringType.getString(fieldPacketGet.getDefaultValue()));
+
+                System.out.print(LengthCodeStringType.getString(fieldPacketGet.getFieldName()) + "   ");
+            }
+            System.out.println();
+
+            EOFPacket eofPacket1Get = resultSetPacket.getEOFPacket1();
+            /*System.out.println("EOFPacket1 : " + eofPacket1Get);
+            System.out.println("Packet Identifier      : " + IntegerType.getIntegerValue(eofPacket1Get.getPacketIdentifier()));
+            System.out.println("Warning Number         : " + IntegerType.getIntegerValue(eofPacket1Get.getWarningNumber()));
+            System.out.println("Server Status Bit Mask : " + IntegerType.getIntegerValue(eofPacket1Get.getServerStatusBitMask()));*/
+
+            RowDataPacket[] rowDataPacketArrayGet = resultSetPacket.getRowDataPacketArray(fieldNumber);
+            for(RowDataPacket rowDataPacketGet : rowDataPacketArrayGet) {
+                //System.out.println("rowDataPacket : " + rowDataPacketGet);
+                LengthCodeStringType[] rowDataArrayRes = rowDataPacketGet.getRowData(fieldNumber);
+                for(LengthCodeStringType rowData : rowDataArrayRes) {
+                    System.out.print(LengthCodeStringType.getString(rowData) + " ");
+                }
+                System.out.println();
+            }
+
+            EOFPacket eofPacket2Get = resultSetPacket.getEOFPacket2();
+            /*System.out.println("EOFPacket2 : " + eofPacket2Get);
+            System.out.println("Packet Identifier      : " + IntegerType.getIntegerValue(eofPacket2Get.getPacketIdentifier()));
+            System.out.println("Warning Number         : " + IntegerType.getIntegerValue(eofPacket2Get.getWarningNumber()));
+            System.out.println("Server Status Bit Mask : " + IntegerType.getIntegerValue(eofPacket2Get.getServerStatusBitMask()));*/
+            System.out.println();
+            System.out.println();
         }
 
     }

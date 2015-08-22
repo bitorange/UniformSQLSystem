@@ -511,6 +511,95 @@ public class FieldPacket extends BasePacket{
     }
 
     /**
+     * 获取在完整data数组头部的域描述包
+     *
+     * @param __data 完整数组
+     * @return 域描述包的长度
+     */
+    public int getFieldPacketFromByte(byte[] __data, int offset) {
+
+        byte[] _data = new byte[__data.length - offset];
+        System.arraycopy(__data, offset, _data, 0, __data.length - offset);
+
+        setData(_data);
+        getDataField();
+        getDatabaseName();
+        getTableAliasName();
+        getTableName();
+        getFieldAliasName();
+        getFieldName();
+        getFillNumber();
+        getCharacterSet();
+        getFieldLength();
+        getFieldTypeCode();
+        getFieldFlagBitMask();
+        getDecimalPointPrecision();
+        getReservedField();
+        getDefaultValue();
+
+        int newLen = dataLen + databaseLen + tableAliasLen + tableLen + fieldAliasLen + fieldLen + OFFSET_DEFAULT_VALUE_MINUS_FIELD_LENGTH + defaultValueLen;
+        byte[] newData = new byte[newLen];
+        System.arraycopy(_data_, 0, newData, 0, newLen);
+        setData(newData);
+
+        return newLen;
+    }
+
+    /**
+     * 根据参数构造数据域报文
+     *
+     * @param _dataField
+     * @param _databaseName
+     * @param _tableAliasName
+     * @param _tableName
+     * @param _fieldAliasName
+     * @param _fieldName
+     * @param _fillNumber
+     * @param _characterSet
+     * @param _filedLength
+     * @param _fieldTypeCode
+     * @param _fieldFlagBitMask
+     * @param _decimalPointPrecision
+     * @param _reservedField
+     * @param _defaultValue
+     * @return 数据域报文
+     */
+    public static FieldPacket getFieldPacket(String _dataField, String _databaseName, String _tableAliasName, String _tableName, String _fieldAliasName, String _fieldName, int _fillNumber, int _characterSet, int _filedLength, int _fieldTypeCode, int _fieldFlagBitMask, int _decimalPointPrecision, int _reservedField, String _defaultValue) {
+        LengthCodeStringType dataField = LengthCodeStringType.getLengthCodeString(_dataField);
+        LengthCodeStringType databaseName = LengthCodeStringType.getLengthCodeString(_databaseName);
+        LengthCodeStringType tableAliasName = LengthCodeStringType.getLengthCodeString(_tableAliasName);
+        LengthCodeStringType tableName = LengthCodeStringType.getLengthCodeString(_tableName);
+        LengthCodeStringType fieldAliasName = LengthCodeStringType.getLengthCodeString(_fieldAliasName);
+        LengthCodeStringType fieldName = LengthCodeStringType.getLengthCodeString(_fieldName);
+        IntegerType fillNumber = IntegerType.getIntegerType(_fillNumber, LENGTH_FILL_NUMBER);
+        IntegerType characterSet = IntegerType.getIntegerType(_characterSet, LENGTH_CHARACTER_SET);
+        IntegerType filedLength = IntegerType.getIntegerType(_filedLength, LENGTH_FIELD_LENGTH);
+        IntegerType fieldTypeCode = IntegerType.getIntegerType(_fieldTypeCode, LENGTH_FIELD_TYPE_CODE);
+        IntegerType fieldFlagBitMask = IntegerType.getIntegerType(_fieldFlagBitMask, LENGTH_FIELD_FLAG_BIT_MASK);
+        IntegerType decimalPointPrecision = IntegerType.getIntegerType(_decimalPointPrecision, LENGTH_DECIMAL_POINT_PRECISION);
+        IntegerType reservedField = IntegerType.getIntegerType(_reservedField, LENGTH_RESERVED_FIELD);
+        LengthCodeStringType defaultValue = LengthCodeStringType.getLengthCodeString(_defaultValue);
+
+        FieldPacket fieldPacket = new FieldPacket(dataField.getSize() + databaseName.getSize() + tableAliasName.getSize() + tableName.getSize() + fieldAliasName.getSize() + fieldName.getSize() + fillNumber.getSize() + characterSet.getSize() + filedLength.getSize() + fieldTypeCode.getSize() + fieldFlagBitMask.getSize() + decimalPointPrecision.getSize() + reservedField.getSize() + defaultValue.getSize());
+        fieldPacket.setDataField(dataField);
+        fieldPacket.setDatabaseName(databaseName);
+        fieldPacket.setTableAliasName(tableAliasName);
+        fieldPacket.setTableName(tableName);
+        fieldPacket.setFieldAliasName(fieldAliasName);
+        fieldPacket.setFieldName(fieldName);
+        fieldPacket.setFillNumber(fillNumber);
+        fieldPacket.setCharacterSet(characterSet);
+        fieldPacket.setFieldLength(filedLength);
+        fieldPacket.setFieldTypeCode(fieldTypeCode);
+        fieldPacket.setFieldFlagBitMask(fieldFlagBitMask);
+        fieldPacket.setDecimalPointPrecision(decimalPointPrecision);
+        fieldPacket.setReservedField(reservedField);
+        fieldPacket.setDefaultValue(defaultValue);
+
+        return fieldPacket;
+    }
+
+    /**
      * 测试函数
      *
      * @param args 程序参数
@@ -548,6 +637,8 @@ public class FieldPacket extends BasePacket{
         fieldPacket.setReservedField(reservedField);
         fieldPacket.setDefaultValue(defaultValue);
 
+        //FieldPacket fieldPacket = FieldPacket.getFieldPacket("def", "DATABASE", "TABLE ALIAS NAME", "TABLE NAME", "FIELD ALIAS NAME", "FIELD NAME", 0xC0, 0, 10000, 3, 0x0002, 1, 0, "DEFAULT");
+
         System.out.println(fieldPacket);
         System.out.println("Data Field          : " + LengthCodeStringType.getString(fieldPacket.getDataField()));
         System.out.println("Database Name       : " + LengthCodeStringType.getString(fieldPacket.getDatabaseName()));
@@ -568,7 +659,12 @@ public class FieldPacket extends BasePacket{
         FieldPacket fieldPacketCopy = new FieldPacket(fieldPacket.getSize());
         byte[] data = new byte[fieldPacket.getSize()];
         fieldPacket.getData(data);
-        fieldPacketCopy.setData(data);
+        byte[] newdata = new byte[data.length+2];
+        for(int i = 0; i < data.length; ++i)
+            newdata[i+1] = data[i];
+        newdata[newdata.length-1] = 1;
+        newdata[0] = 2;
+        fieldPacketCopy.getFieldPacketFromByte(newdata, 1);
         System.out.println();
 
         System.out.println(fieldPacketCopy);
@@ -620,6 +716,6 @@ public class FieldPacket extends BasePacket{
     Decimal Point Pre   : 1
     Reserved Field      : 0
     Default Value       : DEFAULT VALUE
-     */
+    */
 
 }

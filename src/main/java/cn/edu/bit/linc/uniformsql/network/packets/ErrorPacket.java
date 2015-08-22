@@ -142,6 +142,28 @@ public class ErrorPacket extends BasePacket {
     }
 
     /**
+     * 指定参数构造错误报文
+     *
+     * @param _errorCode 错误码
+     * @param _serverStatus 服务器状态
+     * @param _errorMessage 错误信息
+     */
+    public static ErrorPacket getErrorPacket(int _errorCode, int _serverStatus, String _errorMessage) {
+        IntegerType packetIdentifier = IntegerType.getIntegerType(0xff, LENGTH_PACKET_IDENTIFIER);
+        IntegerType errorCode = IntegerType.getIntegerType(_errorCode, LENGTH_ERROR_CODE);
+        IntegerType serverStatus = IntegerType.getIntegerType(_serverStatus, LENGTH_SERVER_STATUS);
+        LengthCodeStringType errorMessage = LengthCodeStringType.getLengthCodeString(_errorMessage);
+
+        ErrorPacket errorPacket = new ErrorPacket(packetIdentifier.getSize() + errorCode.getSize() + serverStatus.getSize() + errorMessage.getSize());
+        errorPacket.setPacketIdentifier(packetIdentifier);
+        errorPacket.setErrorCode(errorCode);
+        errorPacket.setServerStatus(serverStatus);
+        errorPacket.setErrorMessage(errorMessage);
+
+        return errorPacket;
+    }
+
+    /**
      * 测试函数
      *
      * @param args 程序参数

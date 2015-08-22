@@ -101,6 +101,47 @@ public class ResultHeadPacket extends BasePacket {
     }
 
     /**
+     * 获取在完整data数组头部的结果头包
+     *
+     * @param __data 完整数组
+     * @return 结果头包的长度
+     */
+    public int getResultHeadPacketFromByte(byte[] __data, int offset) {
+
+        byte[] _data = new byte[__data.length - offset];
+        System.arraycopy(__data, offset, _data, 0, __data.length - offset);
+
+        setData(_data);
+        getFieldNumber();
+        getExtraMessage();
+
+        int newLen = fieldLen + OFFSET_EXTRA_MESSAGE_MINUS_FIELD_LENGTH + extraLen;
+        byte[] newData = new byte[newLen];
+        System.arraycopy(_data_, 0, newData, 0, newLen);
+        setData(newData);
+
+        return newLen;
+    }
+
+    /**
+     * 通过参数构建结果头报文
+     *
+     * @param _fieldNumber
+     * @param _extraMessage
+     * @return
+     */
+    public static ResultHeadPacket getResultHeadPacket(byte[] _fieldNumber, byte[] _extraMessage) {
+        LengthCodeBinaryType fieldNumber = LengthCodeBinaryType.getLengthCodeBinaryType(_fieldNumber);
+        LengthCodeBinaryType extraMessage = LengthCodeBinaryType.getLengthCodeBinaryType(_extraMessage);
+
+        ResultHeadPacket resultHeadPacket = new ResultHeadPacket(fieldNumber.getSize() + extraMessage.getSize());
+        resultHeadPacket.setFieldNumber(fieldNumber);
+        resultHeadPacket.setExtraMessage(extraMessage);
+
+        return resultHeadPacket;
+    }
+
+    /**
      * 测试函数
      *
      * @param args 程序参数
@@ -113,6 +154,8 @@ public class ResultHeadPacket extends BasePacket {
         ResultHeadPacket resultHeadPacket = new ResultHeadPacket(fieldNumber.getSize() + extraMessage.getSize());
         resultHeadPacket.setFieldNumber(fieldNumber);
         resultHeadPacket.setExtraMessage(extraMessage);
+
+        //ResultHeadPacket resultHeadPacket = ResultHeadPacket.getResultHeadPacket(new byte[] {1, 3, 4}, new byte[] {3, 2, 1});
 
         System.out.println(resultHeadPacket);
         System.out.print("Field Number      : ");
@@ -129,11 +172,16 @@ public class ResultHeadPacket extends BasePacket {
         }
         System.out.println();
 
-         /* 通过byte[]构建 */
-        ResultHeadPacket resultHeadPacketCopy = new ResultHeadPacket(resultHeadPacket.getSize());
+        /* 通过byte[]构建 */
+        ResultHeadPacket resultHeadPacketCopy = new ResultHeadPacket(resultHeadPacket.getSize()+2);
         byte[] data = new byte[resultHeadPacket.getSize()];
         resultHeadPacket.getData(data);
-        resultHeadPacketCopy.setData(data);
+        byte[] newdata = new byte[data.length+2];
+        for(int i = 0; i < data.length; ++i)
+            newdata[i] = data[i];
+        newdata[newdata.length-1] = 1;
+        newdata[newdata.length-2] = 2;
+        resultHeadPacketCopy.getResultHeadPacketFromByte(newdata, 0);
         System.out.println();
 
         System.out.println(resultHeadPacketCopy);

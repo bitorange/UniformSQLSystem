@@ -32,20 +32,6 @@ public class RowDataPacket extends BasePacket {
     @Override
     public void setData(byte[] data) {
         super.setData(data);
-
-        ArrayList <Integer> tmpRowOffsets = new ArrayList<Integer>();
-        int index = 0, offset = 0;
-        tmpRowOffsets.add(0, 0);
-        while(offset < _data_.length) {
-            byte[] tmp = new byte[_data_.length - tmpRowOffsets.get(index)];
-            System.arraycopy(_data_, tmpRowOffsets.get(index), tmp, 0, tmp.length);
-            tmpRowOffsets.add(index+1, tmpRowOffsets.get(index) + LengthCodeBinaryType.getLength(tmp));
-            offset = tmpRowOffsets.get(index+1);
-            index++;
-        }
-        rowOffsets = new int[tmpRowOffsets.size()];
-        for(int i = 0; i < tmpRowOffsets.size(); ++i)
-            rowOffsets[i] = tmpRowOffsets.get(i);
     }
 
     /**
@@ -69,12 +55,27 @@ public class RowDataPacket extends BasePacket {
      *
      * @return 行数据数组
      */
-    public LengthCodeStringType[] getRowData() {
+    public LengthCodeStringType[] getRowData(int len) {
+
+        ArrayList <Integer> tmpRowOffsets = new ArrayList<Integer>();
+        int index = 0, offset = 0;
+        tmpRowOffsets.add(0, 0);
+        while(index < len) {
+            byte[] tmp = new byte[_data_.length - tmpRowOffsets.get(index)];
+            System.arraycopy(_data_, tmpRowOffsets.get(index), tmp, 0, tmp.length);
+            tmpRowOffsets.add(index+1, tmpRowOffsets.get(index) + LengthCodeBinaryType.getLength(tmp));
+            offset = tmpRowOffsets.get(index+1);
+            index++;
+        }
+        rowOffsets = new int[tmpRowOffsets.size()];
+        for(int i = 0; i < tmpRowOffsets.size(); ++i)
+            rowOffsets[i] = tmpRowOffsets.get(i);
+
         LengthCodeStringType[] rowDataArray = new LengthCodeStringType[rowOffsets.length-1];
         ArrayList tmpOffset = new ArrayList();
         tmpOffset.add(0);
-        for(int index = 0; index < rowDataArray.length; ++index) {
-            rowDataArray[index] = getRowDataByIndex(index);
+        for(int i = 0; i < rowDataArray.length; ++i) {
+            rowDataArray[i] = getRowDataByIndex(i);
         }
         return rowDataArray;
     }
@@ -92,6 +93,47 @@ public class RowDataPacket extends BasePacket {
     }
 
     /**
+     * 获取在完整data数组头部的行数据包
+     *
+     * @param __data 完整数组
+     * @return 行数据包的长度
+     */
+    public int getRowDataPacketFromByte(byte[] __data, int offset, int len) {
+        byte[] _data = new byte[__data.length - offset];
+        System.arraycopy(__data, offset, _data, 0, __data.length - offset);
+        setData(_data);
+        getRowData(len);
+
+        int newLen = rowOffsets[rowOffsets.length-1];
+        byte[] newData = new byte[newLen];
+        System.arraycopy(_data_, 0, newData, 0, newLen);
+        setData(newData);
+
+        return rowOffsets[rowOffsets.length-1];
+    }
+
+    /**
+     * 根据参数构建行数据报文
+     *
+     * @param _rowData
+     * @return 行数据报文
+     */
+    public static RowDataPacket getRowDataPacket(String[] _rowData) {
+        //LengthCodeStringType[] rowDataArray = new LengthCodeStringType[] {LengthCodeStringType.getLengthCodeString("111"), LengthCodeStringType.getLengthCodeString("222"), LengthCodeStringType.getLengthCodeString("333")};
+
+        LengthCodeStringType[] rowDataArray = new LengthCodeStringType[_rowData.length];
+        int size = 0;
+        for(int i = 0; i < _rowData.length; ++i) {
+            rowDataArray[i] = LengthCodeStringType.getLengthCodeString(_rowData[i]);
+            size += rowDataArray[i].getSize();
+        }
+        RowDataPacket rowDataPacket = new RowDataPacket(size);
+        rowDataPacket.setRowData(rowDataArray);
+
+        return rowDataPacket;
+    }
+
+    /**
      * 测试函数
      *
      * @param args 程序参数
@@ -103,9 +145,11 @@ public class RowDataPacket extends BasePacket {
         RowDataPacket rowDataPacket = new RowDataPacket(12);
         rowDataPacket.setRowData(rowDataArray);
 
+        //RowDataPacket rowDataPacket = RowDataPacket.getRowDataPacket(new String [] {"111", "222", "33"});
+
         System.out.println(rowDataPacket);
 
-        LengthCodeStringType[] rowDataArrayRes = rowDataPacket.getRowData();
+        LengthCodeStringType[] rowDataArrayRes = rowDataPacket.getRowData(3);
         for(LengthCodeStringType rowData : rowDataArrayRes) {
             System.out.print(LengthCodeStringType.getString(rowData) + " ");
         }
@@ -115,12 +159,18 @@ public class RowDataPacket extends BasePacket {
         RowDataPacket rowDataPacketCopy = new RowDataPacket(rowDataPacket.getSize());
         byte[] data = new byte[rowDataPacket.getSize()];
         rowDataPacket.getData(data);
-        rowDataPacketCopy.setData(data);
+
+        byte[] newdata = new byte[data.length+2];
+        for(int i = 0; i < data.length; ++i)
+            newdata[i] = data[i];
+        newdata[newdata.length-1] = 1;
+        newdata[newdata.length-2] = 2;
+        rowDataPacketCopy.getRowDataPacketFromByte(newdata, 0, 3);
 
         System.out.println();
         System.out.println(rowDataPacketCopy);
 
-        rowDataArrayRes = rowDataPacketCopy.getRowData();
+        rowDataArrayRes = rowDataPacketCopy.getRowData(3);
         for(LengthCodeStringType rowData : rowDataArrayRes) {
             System.out.print(LengthCodeStringType.getString(rowData) + " ");
         }

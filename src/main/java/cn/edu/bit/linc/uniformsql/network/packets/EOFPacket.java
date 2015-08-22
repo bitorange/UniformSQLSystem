@@ -124,6 +124,65 @@ public class EOFPacket extends BasePacket{
     }
 
     /**
+     * 获取在完整data数组头部的EOF包
+     *
+     * @param __data 完整数组
+     * @return EOF包的长度
+     */
+    public int getEOFPacketFromByte(byte[] __data, int offset) {
+
+        byte[] _data = new byte[__data.length - offset];
+        System.arraycopy(__data, offset, _data, 0, __data.length - offset);
+
+        setData(_data);
+        getPacketIdentifier();
+        getWarningNumber();
+        getServerStatusBitMask();
+
+        int newLen = OFFSET_SERVER_STATUS_BIT_MASK + LENGTH_SERVER_STATUS_BIT_MASK;
+        byte[] newData = new byte[newLen];
+        System.arraycopy(_data_, 0, newData, 0, newLen);
+        setData(newData);
+
+        return newLen;
+    }
+
+    /**
+     * 判断byte数组offset处是否是EOF包
+     *
+     * @param __data byte数组
+     * @param offset 偏移量，判断的起始位置
+     * @return
+     */
+    public static boolean isEOFPacket(byte[] __data, int offset) {
+
+        byte[] data = new byte[LENGTH_PACKET_IDENTIFIER];
+        System.arraycopy(__data, offset, data, 0, data.length);
+
+        return 0xFE == IntegerType.getIntegerValue(IntegerType.getIntegerType(data));
+    }
+
+    /**
+     * 根据参数构建EOF报文
+     *
+     * @param _warningNumber
+     * @param _serverStatusBitMask
+     * @return EOF报文
+     */
+    public static EOFPacket getEOFPacket(int _warningNumber, int _serverStatusBitMask) {
+        IntegerType packetIdentifier = IntegerType.getIntegerType(0xFE, LENGTH_PACKET_IDENTIFIER);
+        IntegerType warningNumber = IntegerType.getIntegerType(_warningNumber, LENGTH_WARNING_NUMBER);
+        IntegerType serverStatusBitMask = IntegerType.getIntegerType(_serverStatusBitMask, LENGTH_SERVER_STATUS_BIT_MASK);
+
+        EOFPacket eofPacket = new EOFPacket(packetIdentifier.getSize() + warningNumber.getSize() + serverStatusBitMask.getSize());
+        eofPacket.setPacketIdentifier(packetIdentifier);
+        eofPacket.setWarningNumber(warningNumber);
+        eofPacket.setServerStatusBitMask(serverStatusBitMask);
+
+        return eofPacket;
+    }
+
+    /**
      * 测试函数
      *
      * @param args 程序参数
@@ -134,11 +193,12 @@ public class EOFPacket extends BasePacket{
         IntegerType warningNumber = IntegerType.getIntegerType(2, LENGTH_WARNING_NUMBER);
         IntegerType serverStatusBitMask = IntegerType.getIntegerType(0xFFFF, LENGTH_SERVER_STATUS_BIT_MASK);
 
-
         EOFPacket eofPacket = new EOFPacket(packetIdentifier.getSize() + warningNumber.getSize() + serverStatusBitMask.getSize());
         eofPacket.setPacketIdentifier(packetIdentifier);
         eofPacket.setWarningNumber(warningNumber);
         eofPacket.setServerStatusBitMask(serverStatusBitMask);
+
+        //EOFPacket eofPacket = EOFPacket.getEOFPacket(2, 0xFFFF);
 
         System.out.println(eofPacket);
         System.out.println("Packet Identifier      : " + IntegerType.getIntegerValue(eofPacket.getPacketIdentifier()));
@@ -149,7 +209,14 @@ public class EOFPacket extends BasePacket{
         EOFPacket eofPacketCopy = new EOFPacket(eofPacket.getSize());
         byte[] data = new byte[eofPacket.getSize()];
         eofPacket.getData(data);
-        eofPacketCopy.setData(data);
+        byte[] newdata = new byte[data.length+2];
+        for(int i = 0; i < data.length; ++i)
+            newdata[i] = data[i];
+        newdata[newdata.length-1] = 1;
+        newdata[newdata.length-2] = 2;
+        eofPacketCopy.getEOFPacketFromByte(newdata, 0);
+
+        //System.out.println(EOFPacket.isEOFPacket(data, 1) + "" + EOFPacket.isEOFPacket(newdata, 0));
 
         System.out.println();
         System.out.println(eofPacketCopy);

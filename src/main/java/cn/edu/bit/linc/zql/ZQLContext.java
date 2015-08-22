@@ -1,5 +1,6 @@
 package cn.edu.bit.linc.zql;
 
+import cn.edu.bit.linc.uniformsql.network.packets.*;
 import cn.edu.bit.linc.uniformsql.network.server.UniformSQLServer;
 import cn.edu.bit.linc.uniformsql.network.server.UniformSQLServerSocketHandlerFactory;
 import cn.edu.bit.linc.zql.command.SQLCommandManager;
@@ -40,28 +41,56 @@ public class ZQLContext {
                 .withSocketHandlerFactory(uniformSQLSocketHandlerFactory)
                 .build();
 
-        // server.start();
+        server.start();
 
     }
 
-    public static String executeSQL(String commandStr, ZQLSession session) {
+    public static Packet executeSQL(String commandStr, ZQLSession session) {
+        BasePacket basePacket = null;
         SQLCommandManager sqlCommandManager = new SQLCommandManager(commandStr, session);
-        String ret = "";
+        //String ret = "";
         if (sqlCommandManager.execute()) {
             try {
                 System.out.println("执行 SQL 命令 `" + commandStr + "` 成功");
                 // sqlCommandManager.printResult();
-                ret = sqlCommandManager.getOutput();
-                System.out.println(ret);
+                System.out.println(sqlCommandManager.getOutput());
+
+                if(sqlCommandManager.getReturnType()) {
+                    String ret = sqlCommandManager.getReturnString();
+                    basePacket = SuccessPacket.getSuccessPacket(new byte[]{1, 2, 3, 4}, new byte[]{3, 2, 1}, 200, 0, ret);
+                } else {
+                    basePacket = sqlCommandManager.getReturnPacket();
+                }
+
             } catch (SQLException e) {
                 logger.e("打印执行结果失败", e);
             }
         } else {
             System.out.println("执行 SQL 命令 `" + commandStr + "` 失败");
-            ret = "error";
+            int errorCode = 0;
+            int serverStatus = 500;
+            String errorMessage = "执行 SQL 命令 `" + commandStr + "` 失败";
+            basePacket = ErrorPacket.getErrorPacket(errorCode, serverStatus, errorMessage);
+            System.out.println(basePacket);
+            //ret = "error";
         }
         System.out.println();
-        return ret;
+
+        byte[] body = new byte[basePacket.getSize()];
+        basePacket.getData(body);
+
+        /* 构建包头 */
+        PacketHeader packetHeader = new PacketHeader(4);
+        packetHeader.setPacketLength(basePacket.getSize());
+        packetHeader.setPacketID((byte) 0);     // TODO: 包序列号
+
+        /* 构建数据包 */
+        Packet packet = new Packet(packetHeader.getSize() + body.length);
+        packet.setPacketHeader(packetHeader);
+        packet.setPacketBody(body);
+
+        return packet;
+
     }
 
     private static void mySQLTest() {
@@ -208,7 +237,7 @@ public class ZQLContext {
      */
     public static void main(String[] args) throws IOException {
         initializeSystem();
-        mySQLTest();
+        //mySQLTest();
         // hiveTest();
     }
 }

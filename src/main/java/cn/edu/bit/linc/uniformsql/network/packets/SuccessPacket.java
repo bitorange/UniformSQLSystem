@@ -226,6 +226,36 @@ public class SuccessPacket extends BasePacket {
         return LengthCodeStringType.getLengthCodeBinaryTypeUsingData(data);
     }
 
+
+    /**
+     * 通过参数构造相应成功报文
+     *
+     * @param _changedRows
+     * @param _indexID
+     * @param _serverStatus
+     * @param _warningNumber
+     * @param _serverMessage
+     * @return 响应成功报文
+     */
+    public static SuccessPacket getSuccessPacket(byte[] _changedRows, byte[] _indexID, int _serverStatus, int _warningNumber, String _serverMessage) {
+        IntegerType packetIdentifier = IntegerType.getIntegerType(0x00, LENGTH_PACKET_IDENTIFIER);
+        LengthCodeBinaryType changedRows = LengthCodeBinaryType.getLengthCodeBinaryType(_changedRows);
+        LengthCodeBinaryType indexID = LengthCodeBinaryType.getLengthCodeBinaryType(_indexID);
+        IntegerType serverStatus = IntegerType.getIntegerType(_serverStatus, LENGTH_SERVER_STATUS);
+        IntegerType warningNumber = IntegerType.getIntegerType(_warningNumber, LENGTH_WARNING_NUMBER);
+        LengthCodeStringType serverMessage = LengthCodeStringType.getLengthCodeString(_serverMessage);
+
+        SuccessPacket successPacket = new SuccessPacket(packetIdentifier.getSize() + changedRows.getSize() + indexID.getSize() + serverStatus.getSize() + warningNumber.getSize() + serverMessage.getSize());
+        successPacket.setPacketIdentifier(packetIdentifier);
+        successPacket.setChangedRows(changedRows);
+        successPacket.setIndexID(indexID);
+        successPacket.setServerStatus(serverStatus);
+        successPacket.setWarningNumber(warningNumber);
+        successPacket.setServerMessage(serverMessage);
+
+        return successPacket;
+    }
+
     /**
      * 测试函数
      *
@@ -247,6 +277,8 @@ public class SuccessPacket extends BasePacket {
         successPacket.setServerStatus(serverStatus);
         successPacket.setWarningNumber(warningNumber);
         successPacket.setServerMessage(serverMessage);
+
+        //SuccessPacket successPacket = SuccessPacket.getSuccessPacket(new byte[]{1, 2, 3, 4, 5, 6, 7, 8}, new byte[]{1, 2, 3, 4, 5, 6, 7, 8}, 200, 2, "message");
 
         System.out.println(successPacket);
         System.out.println("Packet Identifier : " + IntegerType.getIntegerValue(successPacket.getPacketIdentifier()));

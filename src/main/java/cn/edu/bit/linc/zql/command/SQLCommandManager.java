@@ -24,6 +24,10 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
+
+import cn.edu.bit.linc.uniformsql.network.packets.*;
+import org.apache.avro.generic.GenericData;
 
 /**
  * SQL 命令类，用于执行 SQL 命令并保存执行结果
@@ -35,6 +39,7 @@ public class SQLCommandManager {
     private ResultSet resultSet = null; // 执行结果，仅在执行结果返回 ResultSet 时候该值不为 null
     private int updateCount = 0;        // 更新行数，仅在执行结果返回数值时候该值不为 - 1
     private long runningTime;           // SQL 命令运行时间
+    private ResultSetPacket resultSetPacket; //结果集报文
     private ResultSetMetaData rsmd;     // ResultSetMetaData
     public static ArrayList<Connection> connections = new ArrayList<Connection>();      // 到数据库的连接
     private static ArrayList<Database> databases = new ArrayList<Database>();
@@ -169,11 +174,35 @@ public class SQLCommandManager {
     }
 
     /**
+     * 获取SQL命令返回结果的类型
+     *
+     * @return true为字符串结果 false为结果集
+     */
+    public boolean getReturnType() {
+        return resultSet == null;
+    }
+
+    public String getReturnString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Updated ").append(updateCount).append(" rows (").append(runningTime).append(" ms)\n");
+        return stringBuilder.toString();
+    }
+
+    public ResultSetPacket getReturnPacket() throws SQLException {
+
+        return resultSetPacket;
+    }
+
+    /**
      * 打印 SQL 命令输出结果
      */
     public String getOutput() throws SQLException {
         StringBuilder stringBuilder = new StringBuilder();
         if (resultSet != null) {
+
+            /* 结果集包 */
+            ResultHeadPacket resultHeadPacket = ResultHeadPacket.getResultHeadPacket(new byte[]{1, 3, 4}, new byte[]{3, 2, 1});
+
             AsciiArtTable asciiArtTable = new AsciiArtTable();
             stringBuilder.append("QUERY OK!\n");
 
@@ -189,9 +218,16 @@ public class SQLCommandManager {
             header = headerList.toArray(header);
             asciiArtTable.addHeaderCols(header);
 
+            /* 域报文 */
+            FieldPacket[] fieldPacketArray = new FieldPacket[header.length];
+            for(int i = 0; i < header.length; ++i)
+                fieldPacketArray[i] = FieldPacket.getFieldPacket("def", "DATABASE", "TABLE ALIAS NAME", "TABLE NAME", "FIELD ALIAS NAME", header[i], 0xC0, 0, 10000, 3, 0x0002, 1, 0, "DEFAULT");
+            EOFPacket eofPacket1 = EOFPacket.getEOFPacket(2, 0xFFFF);
+
             /* 获取表中数据并存放在二维数据中 */
             int i = 0;
             int numberOfRows = 0;
+            List<String[]> rowDataList = new ArrayList<String[]> ();
             while (resultSet.next()) {
                 assert rsmd != null;
                 String[] rowData = new String[rsmd.getColumnCount()];
@@ -200,10 +236,18 @@ public class SQLCommandManager {
                     if (result == null) result = "";
                     rowData[j - 1] = result;
                 }
+                rowDataList.add(rowData);
                 asciiArtTable.add(rowData);
                 i++;
             }
 
+            RowDataPacket[] rowDataPacketArray = new RowDataPacket[rowDataList.size()];
+            for(int j = 0; j < rowDataList.size(); ++j) {
+                rowDataPacketArray[j] = RowDataPacket.getRowDataPacket(rowDataList.get(j));
+            }
+            EOFPacket eofPacket2 = EOFPacket.getEOFPacket(1, 0xFFFF);
+
+            resultSetPacket = ResultSetPacket.getResultSetPacket(resultHeadPacket, fieldPacketArray, eofPacket1, rowDataPacketArray, eofPacket2);
             stringBuilder.append(asciiArtTable.getOutput());
             stringBuilder.append("").append(numberOfRows).append(" rows in set (").append(runningTime).append(" ms)\n");
         } else {

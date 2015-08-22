@@ -123,10 +123,11 @@ public class UniformSQLServerSocketHandler implements ServerSocketHandler {
             System.out.println("Command           : " + LengthCodeStringType.getString(commandPacket.getCommand()));
             //System.out.println();
 
-            String ret =  ZQLContext.executeSQL(LengthCodeStringType.getString(commandPacket.getCommand()), session);
+            Packet packet =  ZQLContext.executeSQL(LengthCodeStringType.getString(commandPacket.getCommand()), session);
 
             // 发送结果包（测试）
             try {
+                /*
                 if(ret.contains("\r\n"))
                     ret = ret.substring(0, ret.indexOf("\r\n"));
                 successPacket = buildSuccessPacket(ret);
@@ -135,6 +136,10 @@ public class UniformSQLServerSocketHandler implements ServerSocketHandler {
                 out.write(data);
                 logger.i("Send success packet to client " + clientSocket.getInetAddress());
                 logger.i("successPacket : " + successPacket + "\r\n");
+                */
+                byte[] data = new byte[packet.getSize()];
+                packet.getData(data);
+                out.write(data);
             } catch (Exception ex) {
                 // TODO: 正确处理异常
                 return;
