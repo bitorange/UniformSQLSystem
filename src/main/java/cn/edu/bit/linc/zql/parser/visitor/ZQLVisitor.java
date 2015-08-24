@@ -2151,5 +2151,318 @@ public class ZQLVisitor extends uniformSQLBaseVisitor<ASTNodeVisitResult> {
         return new ASTNodeVisitResult(valueStr, null, null);
     }
 
+    /**
+     * Insert_statements
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitInsert_statements(uniformSQLParser.Insert_statementsContext ctx) {
+        ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
+        if (ctx.insert_statement() != null) {
+            ASTNodeVisitResult insertResult = visit(ctx.insert_statement());
+            commands = insertResult.getCommands();
+            dbIds = insertResult.getDbIds();
+        }
+        return new ASTNodeVisitResult(null, commands, dbIds);
+    }
 
+    /**
+     * Insert_statement
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitInsert_statement(uniformSQLParser.Insert_statementContext ctx) {
+        ArrayList<InnerSQLCommand> commands = new ArrayList<InnerSQLCommand>();
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
+        /* 底层库 */
+        if (ZQLEnv.get("innerdb.dafault.innerdb") == null) {
+            session.setErrorMessage("没有指定底层库");
+            return null;
+        }
+        String database = session.getDatabase();
+        /* 确定数据库所在底层库以及底层库类型 */
+        int dbId;
+        try {
+            dbId = metaDatabase.getInnerDatabaseId(database);
+        } catch (MetaDatabaseOperationsException e) {
+            session.setDatabase("获取数据库所在底层库失败，错误原因：" + e.getMessage());
+            return null;
+        }
+        Database.DBType dbType = getInnerDatabaseByDBID(dbId).getDbType();
+
+        String insert_headerStr = "";
+        if (ctx.insert_header() != null) {
+            ASTNodeVisitResult whateverResult = visit(ctx.insert_header());
+            if (whateverResult.getValue() != null) {
+                insert_headerStr += whateverResult.getValue();
+            }
+            if (whateverResult.getDbIds() != null) {
+                dbIds = whateverResult.getDbIds();
+            }
+        }
+
+        String column_listStr = "";
+        if (ctx.column_list() != null) {
+            ASTNodeVisitResult whateverResult = visit(ctx.column_list());
+            if (whateverResult.getValue() != null) {
+                column_listStr += whateverResult.getValue();
+            }
+        }
+
+        String select_expressionStr = "";
+        if (ctx.select_expression() != null) {
+            ASTNodeVisitResult whateverResult = visit(ctx.select_expression());
+            if (whateverResult.getValue() != null) {
+                select_expressionStr += whateverResult.getValue();
+            }
+        }
+
+        String value_list_clauseStr = "";
+        if (ctx.value_list_clause() != null) {
+            ASTNodeVisitResult whateverResult = visit(ctx.value_list_clause());
+            if (whateverResult.getValue() != null) {
+                value_list_clauseStr += whateverResult.getValue();
+            }
+        }
+
+        String insert_subfixStr = "";
+        if (ctx.insert_subfix() != null) {
+            ASTNodeVisitResult whateverResult = visit(ctx.insert_subfix());
+            if (whateverResult.getValue() != null) {
+                insert_subfixStr += whateverResult.getValue();
+            }
+        }
+
+        /* 底层库命令 */
+        InnerSQLCommand innerDbCommand = sqlCommandBuilder.insert(dbType,insert_headerStr, column_listStr, select_expressionStr + value_list_clauseStr, insert_subfixStr);
+        commands.add(innerDbCommand);
+        dbIds.add(dbId);
+        return new ASTNodeVisitResult(null, commands, dbIds);
+    }
+
+    /**
+     * Insert_header
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitInsert_header(uniformSQLParser.Insert_headerContext ctx) {
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
+        String valueStr = "";
+        if (ctx.LOW_PRIORITY() != null) {
+            valueStr += " " + ctx.LOW_PRIORITY() + " ";
+        }
+        if (ctx.HIGH_PRIORITY() != null) {
+            valueStr += " " + ctx.HIGH_PRIORITY() + " ";
+        }
+        if (ctx.IGNORE() != null) {
+            valueStr += " " + ctx.IGNORE() + " ";
+        }
+        if (ctx.INTO() != null) {
+            valueStr += " " + ctx.INTO() + " ";
+        }
+        if (ctx.table_spec() != null) {
+            ASTNodeVisitResult tableResult = visit(ctx.table_spec());
+            if (tableResult.getValue() != null) {
+                valueStr += tableResult.getValue();
+            }
+        }
+        if (ctx.partition_clause() != null) {
+            ASTNodeVisitResult partition_clauseResult = visit(ctx.partition_clause());
+            if (partition_clauseResult.getValue() != null) {
+                valueStr += partition_clauseResult.getValue();
+            }
+        }
+        return new ASTNodeVisitResult(valueStr, null, dbIds);
+    }
+
+    /**
+     * Table_spec
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitTable_spec(uniformSQLParser.Table_specContext ctx) {
+        ArrayList<Integer> dbIds = new ArrayList<Integer>();
+        String valueStr = "";
+        if (ctx.schema_name() != null) {
+            //databasename
+            ASTNodeVisitResult schema_nameResult = visit(ctx.schema_name());
+            String database = "";
+            if (schema_nameResult.getValue() != null) {
+                valueStr += schema_nameResult.getValue();
+                database = schema_nameResult.getValue();
+            }
+
+            int dbId;
+            try {
+                dbId = metaDatabase.getInnerDatabaseId(database);
+            } catch (MetaDatabaseOperationsException e) {
+                session.setDatabase("获取数据库所在底层库失败，错误原因：" + e.getMessage());
+                return null;
+            }
+            dbIds.add(dbId);
+            if (ctx.DOT() != null) {
+                valueStr += ctx.DOT();
+            }
+        } else {
+            dbIds = null;
+            valueStr += session.getDatabase() + ".";
+        }
+        if (ctx.table_name() != null) {
+            ASTNodeVisitResult table_nameResult = visit(ctx.table_name());
+            if (table_nameResult.getValue() != null) {
+                valueStr += table_nameResult.getValue();
+            }
+        }
+
+        return new ASTNodeVisitResult(valueStr, null, dbIds);
+    }
+
+    /**
+     * Partition_clause
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitPartition_clause(uniformSQLParser.Partition_clauseContext ctx) {
+        String valueStr = "";
+        if (ctx.PARTITION() != null) {
+            valueStr += " " + ctx.PARTITION() + " ";
+        }
+        if (ctx.LPAREN() != null) {
+            valueStr += ctx.LPAREN();
+        }
+
+        if (ctx.partition_names() != null) {
+            ASTNodeVisitResult partition_namesResult = visit(ctx.partition_names());
+            if (partition_namesResult.getValue() != null) {
+                valueStr += partition_namesResult.getValue();
+            }
+        }
+        if (ctx.RPAREN() != null) {
+            valueStr += ctx.RPAREN();
+        }
+        return new ASTNodeVisitResult(valueStr, null, null);
+    }
+
+    /**
+     * Partition_names
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitPartition_names(uniformSQLParser.Partition_namesContext ctx) {
+        String valueStr = "";
+        for (int i = 0; i < ctx.children.size(); i++) {
+            if (ctx.children.get(i).getText().equals(",")) {
+                valueStr += ctx.children.get(i).getText() + " ";
+            } else {
+                ASTNodeVisitResult whateverResult = visit(ctx.children.get(i));
+                if (whateverResult.getValue() != null) {
+                    valueStr += whateverResult.getValue();
+                }
+            }
+        }
+        return new ASTNodeVisitResult(valueStr, null, null);
+    }
+
+    /**
+     * Partition_name
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitPartition_name(uniformSQLParser.Partition_nameContext ctx) {
+        return new ASTNodeVisitResult(ctx.any_name().getText(), null, null);
+    }
+
+    /**
+     * Column_list
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitColumn_list(uniformSQLParser.Column_listContext ctx) {
+        String valueStr = "";
+        for (int i = 0; i < ctx.children.size(); i++) {
+            if (ctx.children.get(i).getText().equals(",") || ctx.children.get(i).getText().equals("(") || ctx.children.get(i).getText().equals(")")) {
+                valueStr += " " + ctx.children.get(i).getText() + " ";
+            } else {
+                ASTNodeVisitResult whateverResult = visit(ctx.children.get(i));
+                if (whateverResult.getValue() != null) {
+                    valueStr += whateverResult.getValue();
+                }
+            }
+        }
+        return new ASTNodeVisitResult(valueStr, null, null);
+    }
+
+    /**
+     * Value_list_clause
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitValue_list_clause(uniformSQLParser.Value_list_clauseContext ctx) {
+        String valueStr = "";
+        for (int i = 0; i < ctx.children.size(); i++) {
+            if (ctx.children.get(i).getText().equals("VALUES") || ctx.children.get(i).getText().equals("VALUE") || ctx.children.get(i).getText().equals(",")) {
+                valueStr += " " + ctx.children.get(i).getText() + " ";
+            } else {
+                ASTNodeVisitResult whateverResult = visit(ctx.children.get(i));
+                if (whateverResult.getValue() != null) {
+                    valueStr += whateverResult.getValue();
+                }
+            }
+        }
+        return new ASTNodeVisitResult(valueStr, null, null);
+    }
+
+    /**
+     * Value_list_clause
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitColumn_value_list(uniformSQLParser.Column_value_listContext ctx) {
+        String valueStr = "";
+        for (int i = 0; i < ctx.children.size(); i++) {
+            if (ctx.children.get(i).getText().equals("(") || ctx.children.get(i).getText().equals(")") || ctx.children.get(i).getText().equals(",") || ctx.children.get(i).getText().equals("DEFAULT")) {
+                valueStr += " " + ctx.children.get(i).getText() + " ";
+            } else {
+                ASTNodeVisitResult whateverResult = visit(ctx.children.get(i));
+                if (whateverResult.getValue() != null) {
+                    valueStr += whateverResult.getValue();
+                }
+            }
+        }
+        return new ASTNodeVisitResult(valueStr, null, null);
+    }
+
+    /**
+     * Insert_subfix(
+     *
+     * @param ctx 节点上下文
+     * @return 节点访问结果
+     */
+    @Override public ASTNodeVisitResult visitInsert_subfix(uniformSQLParser.Insert_subfixContext ctx) {
+        String valueStr = "";
+        for (int i = 0; i < ctx.children.size(); i++) {
+            if (ctx.children.get(i).getText().equals("ON") || ctx.children.get(i).getText().equals("DUPLICATE") || ctx.children.get(i).getText().equals("KEY")
+                    || ctx.children.get(i).getText().equals("UPDATE") || ctx.children.get(i).getText().equals(",") || ctx.children.get(i).getText().equals("=")
+                    || ctx.children.get(i).getText().equals("<=>")) {
+                valueStr += " " + ctx.children.get(i).getText() + " ";
+            } else {
+                ASTNodeVisitResult whateverResult = visit(ctx.children.get(i));
+                if (whateverResult.getValue() != null) {
+                    valueStr += whateverResult.getValue();
+                }
+            }
+        }
+        return new ASTNodeVisitResult(valueStr, null, null);
+    }
 }

@@ -337,6 +337,16 @@ public class SQLCommandBuilder {
     }
 
     /**
+     * INSERT Statement
+     *
+     * @param dbType 底层库类型
+     * @param args   参数列表
+     * @return SQL命令
+     */
+    public InnerSQLCommand insert(Database.DBType dbType, Object... args) {
+        return new InnerSQLCommand(dbType, commandAdapters[dbType.ordinal()].insert(args), args);
+    }
+    /**
      * 测试函数
      *
      * @param args 程序参数
