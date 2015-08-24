@@ -1,5 +1,6 @@
 package cn.edu.bit.linc.uniformsql.network.client;
 
+import cn.edu.bit.linc.uniformsql.jdbc.RowData;
 import cn.edu.bit.linc.uniformsql.network.packets.*;
 import cn.edu.bit.linc.uniformsql.network.packets.type.IntegerType;
 import cn.edu.bit.linc.uniformsql.network.packets.type.LengthCodeBinaryType;
@@ -16,7 +17,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Comparator;
 
 /**
@@ -28,6 +31,8 @@ public class UniformSQLClientSocketHandler implements ClientSocketHandler {
     private final Socket clientSocket;
     private InputStream in;
     private OutputStream out;
+
+    private List<RowData> results;
 
     /**
      * 构造函数
@@ -403,6 +408,9 @@ public class UniformSQLClientSocketHandler implements ClientSocketHandler {
 
             FieldPacket[] fieldPacketArrayGet = resultSetPacket.getFieldPacketArray();
             fieldNumber = fieldPacketArrayGet.length;
+            System.out.println("Field Name");
+            String[] fieldNames = new String[fieldNumber];
+            int cnt = 0;
             for(FieldPacket fieldPacketGet : fieldPacketArrayGet) {
 //                System.out.println("fieldPacket : " + fieldPacketGet);
 //                System.out.println("Data Field          : " + LengthCodeStringType.getString(fieldPacketGet.getDataField()));
@@ -421,6 +429,7 @@ public class UniformSQLClientSocketHandler implements ClientSocketHandler {
 //                System.out.println("Default Value       : " + LengthCodeStringType.getString(fieldPacketGet.getDefaultValue()));
 
                 System.out.print(LengthCodeStringType.getString(fieldPacketGet.getFieldName()) + "   ");
+                fieldNames[cnt++] = LengthCodeStringType.getString(fieldPacketGet.getFieldName());
             }
             System.out.println();
 
@@ -431,13 +440,19 @@ public class UniformSQLClientSocketHandler implements ClientSocketHandler {
             System.out.println("Server Status Bit Mask : " + IntegerType.getIntegerValue(eofPacket1Get.getServerStatusBitMask()));*/
 
             RowDataPacket[] rowDataPacketArrayGet = resultSetPacket.getRowDataPacketArray(fieldNumber);
+            System.out.println("Row Data");
+            results = new ArrayList<RowData>();
             for(RowDataPacket rowDataPacketGet : rowDataPacketArrayGet) {
                 //System.out.println("rowDataPacket : " + rowDataPacketGet);
                 LengthCodeStringType[] rowDataArrayRes = rowDataPacketGet.getRowData(fieldNumber);
+                RowData row = new RowData();
+                int pos = 0;
                 for(LengthCodeStringType rowData : rowDataArrayRes) {
                     System.out.print(LengthCodeStringType.getString(rowData) + " ");
+                    row.add(fieldNames[pos++], LengthCodeStringType.getString(rowData));
                 }
                 System.out.println();
+                results.add(row);
             }
 
             EOFPacket eofPacket2Get = resultSetPacket.getEOFPacket2();
@@ -449,6 +464,25 @@ public class UniformSQLClientSocketHandler implements ClientSocketHandler {
             System.out.println();
         }
 
+    }
+
+
+    /**
+     * 向远程服务器发送sql命令并返回结果
+     * @param sql
+     * @return
+     */
+    public List<RowData> execute(String sql){
+        results = null;
+        sendCommand(1, sql);
+        try {
+            getResult();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(results == null)
+            results = new ArrayList<RowData>();
+        return results;
     }
 
     /**
